@@ -1,0 +1,74 @@
+* {
+  box-sizing: border-box;
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  font-family: 'Spoqa Han Sans Neo', 'sans-serif';
+}
+
+button,
+input,
+optgroup,
+select,
+textarea {
+  font-family: inherit; /* 1 */
+  font-size: 100%; /* 1 */
+  line-height: 1.15; /* 1 */
+  margin: 0; /* 2 */
+  border: 0;
+}
+
+button,
+
+button {
+  background-color: var(--button-color);
+  color: var(--button-text-color);
+}
+
+textarea {
+  overflow: auto;
+  resize: none;
+  margin-top: 4px;
+  border-radius: 2px;
+}
+
+.App {
+  min-height: 100%;
+}
+
+main {
+  display: flex;
+  flex-direction: row;
+  flex: 1 0 0;
+}
+
+.header {
+  background-color: #4a84dd;
+}
+
+.sidebar {
+  background-color: #003380;
+}
+
+.far,
+.fas {
+  font-size: 2rem;
+  color: var(--default-text-color);
+  padding: 1.3rem;
+  cursor: pointer;
+}
+
+.features {
+  width: 564px;
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--main-border-color);
+  flex: 1 0 0;
+}
+
+#logo {
+  position: absolute;
+  left: 12px;
+  top: 4px;
+  height: 22px;
+}

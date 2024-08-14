@@ -1,0 +1,90 @@
+body {
+
+  }
+  h1 {
+    position: relative;
+    text-align: center;
+    color: #353535;
+    font-size: 50px;
+    font-family: "Cormorant Garamond", serif;
+  }
+  
+  p {
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    text-align: center;
+    font-size: 18px;
+    color: #676767;
+  }
+  .frame {
+    width: 90%;
+    margin: 40px auto;
+    text-align: center;
+  }
+  button {
+    margin: 20px;
+  }
+
+  .custom-btn {
+    width: 130px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 10px 25px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+  }
+
+  .custom-mini-btn {
+    width: 60px;
+    height: 40px;
+    color: #fff;
+    border-radius: 5px;
+    padding: 5px 5px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 500;
+    background: transparent;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    position: relative;
+    display: inline-block;
+    outline: none;
+  }
+
+.btn-1 {
+    background: rgb(0, 0, 0);
+    border: none;
+  }
+  .btn-1:hover {
+     background: rgb(80, 80, 80);
+  }
+.qnatitle{
+    width: 350px;
+  height: 20px;
+}
+.qnabody{
+width: 400px;
+  height:100px;
+}
+.qnanum{
+width: 50px;
+  height: 20px;
+}
+
+@font-face {
+  font-family: 'DOSSaemmul';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSSaemmul.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+.DOSSaemmul {
+  font-family: 'DOSSaemmul' !important;
+}
+
