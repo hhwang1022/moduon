@@ -1,4 +1,4 @@
 package com.springboot.board.balancegame.entity;
 
-public class BalanceGameChoice {
+public class BalanceGameVote {
 }
