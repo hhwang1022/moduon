@@ -18,28 +18,47 @@ public class BalanceGame extends Auditable {
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long balanceGameId;
 
-	@Column
+	@Column(nullable = false)
 	private String title;
 
-	@Column
+	@Column(nullable = false)
 	private String voteItem1;
 
-	@Column
+	@Column(nullable = false)
 	private String voteItem2;
 
-	@Column
+	@Column(nullable = false)
 	private String voteImage1;
 
-	@Column
+	@Column(nullable = false)
 	private String voteImage2;
 
-	@Column
+	@Column(nullable = false)
 	private Long votePoint1;
 
-	@Column
+	@Column(nullable = false)
 	private Long votePoint2;
 
 	@CreatedDate
-	@Column(name = "CREATED_AT", updatable = false)
-	private LocalDateTime createdAt;
+	@Column(name = "CREATE_DATE", updatable = false)
+	private LocalDateTime createDate;
+
+	@Column(name = "END_DATE")
+	private LocalDateTime endDate;
+
+	@Enumerated(value = EnumType.STRING)
+	@Column(nullable = false)
+	private String category;
+
+	public enum category {
+		GENERATION_8090("8090세대"),
+		GENERATION_9000("9000세대"),
+		GENERATION_0010("0010세대"),
+		GENERATION_1020("1020세대");
+
+		@Getter
+		private String category;
+
+		category(String category) {this.category = category;}
+	}
 }

@@ -1,4 +1,8 @@
 package com.springboot.board.balancegame.mapper;
 
-public class BalanceGameMapper {
+import org.mapstruct.Mapper;
+import org.mapstruct.ReportingPolicy;
+
+@Mapper(componentModel = "spring", unmappedSourcePolicy = ReportingPolicy.IGNORE)
+public interface BalanceGameMapper {
 }
