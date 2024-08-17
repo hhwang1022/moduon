@@ -1,5 +1,6 @@
 package com.springboot.board.balancegame.controller;
 
+import com.springboot.board.balancegame.dto.BalanceGameDto;
 import com.springboot.board.balancegame.entity.BalanceGame;
 import com.springboot.board.balancegame.mapper.BalanceGameMapper;
 import com.springboot.board.balancegame.service.BalanceGameService;
@@ -11,20 +12,28 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import java.net.URI;
+
 @RestController
-@RequestMapping
+@RequestMapping("/balancegames")
 @Validated
 @Slf4j
 public class BalanceGameController {
 	private final BalanceGameService balanceGameService;
-	private final BalanceGameMapper balanceGameMapper;
+	private final BalanceGameMapper mapper;
 
-	public BalanceGameController(BalanceGameService balanceGameService, BalanceGameMapper balanceGameMapper) {
+	public BalanceGameController(BalanceGameService balanceGameService, BalanceGameMapper mapper) {
 		this.balanceGameService = balanceGameService;
-		this.balanceGameMapper = balanceGameMapper;
+		this.mapper = mapper;
 	}
 
+	@PostMapping
+	public ResponseEntity postBalanceGame(@Validated @RequestBody BalanceGameDto.Post requestBody) {
+		BalanceGame balanceGame = mapper.balanceGamePostToBalanceGame(requestBody);
+		
 
+		BalanceGame createBalanceGame = balanceGameService.createBalanceGame(balanceGame);
+
+		return ResponseEntity.ok().body(createBalanceGame);
+	}
 }
-@PostMapping
-public ResponseEntity addBalanceGame(@Validated @RequestBody BalanceGame balanceGame) {}

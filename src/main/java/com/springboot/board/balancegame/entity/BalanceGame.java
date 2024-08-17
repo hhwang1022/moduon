@@ -4,7 +4,6 @@ import com.springboot.audit.Auditable;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -34,12 +33,11 @@ public class BalanceGame extends Auditable {
 	private String voteImage2;
 
 	@Column(nullable = false)
-	private Long votePoint1;
+	private Long votePoint1 = 0L;
 
 	@Column(nullable = false)
-	private Long votePoint2;
+	private Long votePoint2 = 0L;
 
-	@CreatedDate
 	@Column(name = "CREATE_DATE", updatable = false)
 	private LocalDateTime createDate;
 
@@ -48,9 +46,9 @@ public class BalanceGame extends Auditable {
 
 	@Enumerated(value = EnumType.STRING)
 	@Column(nullable = false)
-	private String category;
+	private GenerateCategory category;
 
-	public enum category {
+	public enum GenerateCategory {
 		GENERATION_8090("8090세대"),
 		GENERATION_9000("9000세대"),
 		GENERATION_0010("0010세대"),
@@ -59,6 +57,6 @@ public class BalanceGame extends Auditable {
 		@Getter
 		private String category;
 
-		category(String category) {this.category = category;}
+		GenerateCategory(String category) {this.category = category;}
 	}
 }

@@ -3,6 +3,7 @@ package com.springboot;
 import com.springboot.member.entity.Member;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.util.LinkedMultiValueMap;
@@ -13,6 +14,7 @@ import org.springframework.web.util.UriComponentsBuilder;
 
 import javax.validation.constraints.Positive;
 
+@EnableJpaAuditing
 @SpringBootApplication
 public class SpringStartApplication {
   public static void main(String[] args) {
