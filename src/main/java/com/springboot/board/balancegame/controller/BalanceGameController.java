@@ -30,7 +30,6 @@ public class BalanceGameController {
 	@PostMapping
 	public ResponseEntity postBalanceGame(@Validated @RequestBody BalanceGameDto.Post requestBody) {
 		BalanceGame balanceGame = mapper.balanceGamePostToBalanceGame(requestBody);
-		
 
 		BalanceGame createBalanceGame = balanceGameService.createBalanceGame(balanceGame);
 

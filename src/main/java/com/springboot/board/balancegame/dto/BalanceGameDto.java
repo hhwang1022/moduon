@@ -12,25 +12,25 @@ public class BalanceGameDto {
 	@Getter
 	@AllArgsConstructor
 	public static class Post {
-		@NotBlank(message = "title 오류")
+		@NotBlank(message = "title이 공백이면 안됩니다.")
 		private String title;
 
-		@NotBlank(message = "voteItem1 오류")
+		@NotBlank(message = "투표주제1이 공백이면 안됩니다.")
 		private String voteItem1;
 
-		@NotBlank(message = "voteItem2 오류")
+		@NotBlank(message = "투표주제2가 공백이면 안됩니다.")
 		private String voteItem2;
 
-		@NotBlank(message = "voteImage1 오류")
+		@NotBlank(message = "투표이미지1이 공백이면 안됩니다.")
 		private String voteImage1;
 
-		@NotBlank(message = "voteImage2 오류")
+		@NotBlank(message = "투표이미지2가 공백이면 안됩니다.")
 		private String voteImage2;
 
 		private List<Integer> createDateList;
 
 		private List<Integer> endDateList;
 
-		private BalanceGame.GenerateCategory category;
+		private String generation;
 	}
 }

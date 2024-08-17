@@ -17,7 +17,8 @@ public interface BalanceGameMapper {
 		balanceGame.setVoteItem2(requestBody.getVoteItem2());
 		balanceGame.setVoteImage1(requestBody.getVoteImage1());
 		balanceGame.setVoteImage2(requestBody.getVoteImage2());
-		balanceGame.setCategory(requestBody.getCategory());
+		balanceGame.setBalanceGameGeneration(
+				BalanceGame.Generation.valueOfGeneration(requestBody.getGeneration()));
 
 		balanceGame.setCreateDate(LocalDateTime.of(
 				requestBody.getCreateDateList().get(0),

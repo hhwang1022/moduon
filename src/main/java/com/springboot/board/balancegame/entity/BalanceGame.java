@@ -1,12 +1,14 @@
 package com.springboot.board.balancegame.entity;
 
 import com.springboot.audit.Auditable;
+import com.springboot.member.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.Arrays;
 
 @NoArgsConstructor
 @Getter
@@ -46,17 +48,26 @@ public class BalanceGame extends Auditable {
 
 	@Enumerated(value = EnumType.STRING)
 	@Column(nullable = false)
-	private GenerateCategory category;
+	private Generation balanceGameGeneration;
 
-	public enum GenerateCategory {
+	public enum Generation {
 		GENERATION_8090("8090세대"),
 		GENERATION_9000("9000세대"),
 		GENERATION_0010("0010세대"),
 		GENERATION_1020("1020세대");
 
 		@Getter
-		private String category;
+		private String generation;
 
-		GenerateCategory(String category) {this.category = category;}
+		Generation(String generation) {
+			this.generation = generation;
+		}
+
+		public static Generation valueOfGeneration(String generation) {
+			return Arrays.stream(values())
+					.filter(value -> value.getGeneration().contains(generation))
+					.findAny()
+					.orElse(null);
+		}
 	}
 }
