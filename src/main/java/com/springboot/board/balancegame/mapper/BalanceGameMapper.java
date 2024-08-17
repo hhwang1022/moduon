@@ -6,6 +6,7 @@ import org.mapstruct.Mapper;
 import org.mapstruct.ReportingPolicy;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Mapper(componentModel = "spring", unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface BalanceGameMapper {
@@ -18,23 +19,44 @@ public interface BalanceGameMapper {
 		balanceGame.setVoteImage1(requestBody.getVoteImage1());
 		balanceGame.setVoteImage2(requestBody.getVoteImage2());
 		balanceGame.setBalanceGameGeneration(
-				BalanceGame.Generation.valueOfGeneration(requestBody.getGeneration()));
+				BalanceGame.Generation.valueOfGeneration(requestBody.getGeneration())
+		);
 
-		balanceGame.setCreateDate(LocalDateTime.of(
-				requestBody.getCreateDateList().get(0),
-				requestBody.getCreateDateList().get(1),
-				requestBody.getCreateDateList().get(2),
-				requestBody.getCreateDateList().get(3),
-				requestBody.getCreateDateList().get(4)
-		));
-		balanceGame.setEndDate(LocalDateTime.of(
-				requestBody.getEndDateList().get(0),
-				requestBody.getEndDateList().get(1),
-				requestBody.getEndDateList().get(2),
-				requestBody.getEndDateList().get(3),
-				requestBody.getEndDateList().get(4)
-		));
+		balanceGame.setCreateDate(createLocalDateTime(requestBody.getCreateDateList()));
+		balanceGame.setEndDate(createLocalDateTime(requestBody.getEndDateList()));
 
 		return balanceGame;
+	}
+
+	default BalanceGame balanceGamePatchToBalanceGame(BalanceGameDto.Patch requestBody) {
+		BalanceGame balanceGame = new BalanceGame();
+
+		balanceGame.setBalanceGameId(requestBody.getBalanceGameId());
+		balanceGame.setTitle(requestBody.getTitle());
+		balanceGame.setVoteItem1(requestBody.getVoteItem1());
+		balanceGame.setVoteItem2(requestBody.getVoteItem2());
+		balanceGame.setVoteImage1(requestBody.getVoteImage1());
+		balanceGame.setVoteImage2(requestBody.getVoteImage2());
+		balanceGame.setBalanceGameGeneration(
+				BalanceGame.Generation.valueOfGeneration(requestBody.getGeneration())
+		);
+
+		balanceGame.setCreateDate(createLocalDateTime(requestBody.getCreateDateList()));
+		balanceGame.setEndDate(createLocalDateTime(requestBody.getEndDateList()));
+
+		return balanceGame;
+	}
+
+	private LocalDateTime createLocalDateTime(List<Integer> dateList) {
+		if (dateList == null || dateList.isEmpty()) {
+			return null;
+		}
+		return LocalDateTime.of(
+				dateList.get(0),
+				dateList.get(1),
+				dateList.get(2),
+				dateList.get(3),
+				dateList.get(4)
+		);
 	}
 }

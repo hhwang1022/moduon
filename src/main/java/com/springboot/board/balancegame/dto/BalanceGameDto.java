@@ -3,6 +3,7 @@ package com.springboot.board.balancegame.dto;
 import com.springboot.board.balancegame.entity.BalanceGame;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
@@ -28,7 +29,24 @@ public class BalanceGameDto {
 		private String voteImage2;
 
 		private List<Integer> createDateList;
+		private List<Integer> endDateList;
 
+		private String generation;
+	}
+
+	@Getter
+	@AllArgsConstructor
+	public static class Patch {
+		@Setter
+		private long balanceGameId;
+
+		private String title;
+		private String voteItem1;
+		private String voteItem2;
+		private String voteImage1;
+		private String voteImage2;
+
+		private List<Integer> createDateList;
 		private List<Integer> endDateList;
 
 		private String generation;

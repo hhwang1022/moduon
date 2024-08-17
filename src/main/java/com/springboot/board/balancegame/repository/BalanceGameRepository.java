@@ -9,4 +9,5 @@ public interface BalanceGameRepository extends JpaRepository<BalanceGame, Long> 
 	Optional<BalanceGame> findByTitle(String title);
 	Optional<BalanceGame> findByVoteItem1(String voteItem1);
 	Optional<BalanceGame> findByVoteItem2(String voteItem2);
+	Optional<BalanceGame> findByBalanceGameId(Long balanceGameId);
 }

@@ -64,8 +64,11 @@ public class BalanceGame extends Auditable {
 		}
 
 		public static Generation valueOfGeneration(String generation) {
+			if (generation == null) {
+				return null;
+			}
 			return Arrays.stream(values())
-					.filter(value -> value.getGeneration().contains(generation))
+					.filter(value -> value.generation.contains(generation))
 					.findAny()
 					.orElse(null);
 		}

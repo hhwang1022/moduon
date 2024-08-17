@@ -4,14 +4,14 @@ import com.springboot.board.balancegame.dto.BalanceGameDto;
 import com.springboot.board.balancegame.entity.BalanceGame;
 import com.springboot.board.balancegame.mapper.BalanceGameMapper;
 import com.springboot.board.balancegame.service.BalanceGameService;
+import com.springboot.dto.SingleResponseDto;
 import lombok.extern.slf4j.Slf4j;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import javax.validation.constraints.Positive;
 import java.net.URI;
 
 @RestController
@@ -34,5 +34,19 @@ public class BalanceGameController {
 		BalanceGame createBalanceGame = balanceGameService.createBalanceGame(balanceGame);
 
 		return ResponseEntity.ok().body(createBalanceGame);
+	}
+
+	@PatchMapping("/{balance-game-id}")
+	public ResponseEntity patchBalanceGame(@PathVariable("balance-game-id") @Positive Long balanceGameId,
+										   @Validated @RequestBody BalanceGameDto.Patch requestBody) {
+		requestBody.setBalanceGameId(balanceGameId);
+		BalanceGame balanceGame = balanceGameService.updateBalanceGame(
+				mapper.balanceGamePatchToBalanceGame(requestBody)
+		);
+		
+		return new ResponseEntity<>(
+				new SingleResponseDto<>(balanceGame),
+				HttpStatus.OK
+		);
 	}
 }
