@@ -33,7 +33,10 @@ public class BalanceGameController {
 
 		BalanceGame createBalanceGame = balanceGameService.createBalanceGame(balanceGame);
 
-		return ResponseEntity.ok().body(createBalanceGame);
+		return new ResponseEntity<>(
+				new SingleResponseDto<>(createBalanceGame),
+				HttpStatus.OK
+		);
 	}
 
 	@PatchMapping("/{balance-game-id}")
@@ -48,5 +51,12 @@ public class BalanceGameController {
 				new SingleResponseDto<>(balanceGame),
 				HttpStatus.OK
 		);
+	}
+
+	@DeleteMapping("{balance-game-id}")
+	public ResponseEntity deleteBalanceGame(@PathVariable("balance-game-id") Long balanceGameId) {
+		balanceGameService.deleteBalanceGame(balanceGameId);
+
+		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
 }

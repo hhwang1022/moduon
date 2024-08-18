@@ -46,6 +46,19 @@ public class BalanceGame extends Auditable {
 	@Column(name = "END_DATE")
 	private LocalDateTime endDate;
 
+	@Column(nullable = false)
+	private BalanceGameStatus balanceGameStatus = BalanceGameStatus.ACTIVE;
+
+	public enum BalanceGameStatus {
+		ACTIVE("공개중인 게시판"),
+		INACTIVE("삭제된 게시판");
+
+		@Getter
+		private String boardStatus;
+
+		BalanceGameStatus(String boardStatus) {this.boardStatus = boardStatus;}
+	}
+
 	@Enumerated(value = EnumType.STRING)
 	@Column(nullable = false)
 	private Generation balanceGameGeneration;

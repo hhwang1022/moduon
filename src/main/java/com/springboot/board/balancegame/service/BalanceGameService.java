@@ -48,6 +48,13 @@ public class BalanceGameService {
 		return balanceGameRepository.save(findBalanceGame);
 	}
 
+	public void deleteBalanceGame(long balanceGameId) {
+		BalanceGame findBalanceGame = findVerifiedBalanceGame(balanceGameId);
+		findBalanceGame.setBalanceGameStatus(BalanceGame.BalanceGameStatus.INACTIVE);
+
+		balanceGameRepository.save(findBalanceGame);
+	}
+
 	public BalanceGame findVerifiedBalanceGame(long balanceGameId) {
 		Optional<BalanceGame> optionalBalanceGame = balanceGameRepository.findByBalanceGameId(balanceGameId);
 
