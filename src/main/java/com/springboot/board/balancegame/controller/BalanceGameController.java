@@ -64,6 +64,7 @@ public class BalanceGameController {
 										  @RequestParam String generation) {
 		Page<BalanceGame> pageBalanceGames = balanceGameService.findBalanceGames(page - 1, size);
 		List<BalanceGame> balanceGames = pageBalanceGames.stream()
+				.filter(value -> value.getBalanceGameStatus() == BalanceGame.BalanceGameStatus.ACTIVE)
 				.filter(value -> value.getBalanceGameGeneration().getGeneration().contains(generation))
 				.toList();
 
