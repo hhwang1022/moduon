@@ -5,6 +5,10 @@ import com.springboot.board.balancegame.repository.BalanceGameRepository;
 import com.springboot.exception.BusinessLogicException;
 import com.springboot.exception.ExceptionCode;
 import com.springboot.member.service.MemberService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,6 +52,12 @@ public class BalanceGameService {
 		return balanceGameRepository.save(findBalanceGame);
 	}
 
+	public Page<BalanceGame> findBalanceGames(int page, int size) {
+		return balanceGameRepository.findAll(PageRequest.of(page, size,
+				Sort.by("balanceGameId").descending())
+		);
+	}
+
 	public void deleteBalanceGame(long balanceGameId) {
 		BalanceGame findBalanceGame = findVerifiedBalanceGame(balanceGameId);
 		findBalanceGame.setBalanceGameStatus(BalanceGame.BalanceGameStatus.DELETED);
@@ -60,7 +70,8 @@ public class BalanceGameService {
 
 		BalanceGame findBalanceGame =
 				optionalBalanceGame.orElseThrow(() ->
-						new BusinessLogicException(ExceptionCode.BALANCEGAME_NOT_EXISTS));
+						new BusinessLogicException(ExceptionCode.BALANCEGAME_NOT_EXISTS)
+				);
 
 		return findBalanceGame;
 	}
