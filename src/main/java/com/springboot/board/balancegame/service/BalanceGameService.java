@@ -50,7 +50,7 @@ public class BalanceGameService {
 
 	public void deleteBalanceGame(long balanceGameId) {
 		BalanceGame findBalanceGame = findVerifiedBalanceGame(balanceGameId);
-		findBalanceGame.setBalanceGameStatus(BalanceGame.BalanceGameStatus.INACTIVE);
+		findBalanceGame.setBalanceGameStatus(BalanceGame.BalanceGameStatus.DELETED);
 
 		balanceGameRepository.save(findBalanceGame);
 	}

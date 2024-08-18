@@ -46,12 +46,14 @@ public class BalanceGame extends Auditable {
 	@Column(name = "END_DATE")
 	private LocalDateTime endDate;
 
+	@Enumerated(value = EnumType.STRING)
 	@Column(nullable = false)
 	private BalanceGameStatus balanceGameStatus = BalanceGameStatus.ACTIVE;
 
 	public enum BalanceGameStatus {
-		ACTIVE("공개중인 게시판"),
-		INACTIVE("삭제된 게시판");
+		ACTIVE("진행중인 투표"),
+		INACTIVE("종료된 투표"),
+		DELETED("삭제된 투표");
 
 		@Getter
 		private String boardStatus;
