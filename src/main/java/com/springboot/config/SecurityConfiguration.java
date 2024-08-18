@@ -56,8 +56,8 @@ public class SecurityConfiguration {
                         .antMatchers(HttpMethod.DELETE, "/*/members/**").hasRole("USER")
                         .antMatchers(HttpMethod.POST, "/balancegames").hasRole("ADMIN")
                         .antMatchers(HttpMethod.PATCH,  "/balancegames/**").hasRole("ADMIN")
-                        .antMatchers(HttpMethod.GET,  "/balancegames/**").permitAll()
-                        .antMatchers(HttpMethod.GET,  "/balancegames").permitAll()
+                        .antMatchers(HttpMethod.GET,  "/balancegames/end").permitAll()
+                        .antMatchers(HttpMethod.GET,  "/balancegames/this-week").permitAll()
                         .antMatchers(HttpMethod.DELETE,  "/balancegames/**").hasRole("ADMIN")
                         .anyRequest().permitAll());
 
