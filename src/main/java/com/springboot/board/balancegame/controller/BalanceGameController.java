@@ -59,12 +59,27 @@ public class BalanceGameController {
 	}
 
 	@GetMapping("/this-week")
-	public ResponseEntity getBalanceGames(@Positive @RequestParam int page,
+	public ResponseEntity getThisWeekBalanceGames(@Positive @RequestParam int page,
 										  @Positive @RequestParam int size,
 										  @RequestParam String generation) {
 		Page<BalanceGame> pageBalanceGames = balanceGameService.findBalanceGames(page - 1, size);
 		List<BalanceGame> balanceGames = pageBalanceGames.stream()
 				.filter(value -> value.getBalanceGameStatus() == BalanceGame.BalanceGameStatus.ACTIVE)
+				.filter(value -> value.getBalanceGameGeneration().getGeneration().contains(generation))
+				.toList();
+
+		return new ResponseEntity<>(
+				new MultiResponseDto<>(balanceGames, pageBalanceGames),
+				HttpStatus.OK);
+	}
+
+	@GetMapping("/end")
+	public ResponseEntity getEndBalanceGames(@Positive @RequestParam int page,
+											 @Positive @RequestParam int size,
+											 @RequestParam String generation) {
+		Page<BalanceGame> pageBalanceGames = balanceGameService.findBalanceGames(page - 1, size);
+		List<BalanceGame> balanceGames = pageBalanceGames.stream()
+				.filter(value -> value.getBalanceGameStatus() == BalanceGame.BalanceGameStatus.INACTIVE)
 				.filter(value -> value.getBalanceGameGeneration().getGeneration().contains(generation))
 				.toList();
 
