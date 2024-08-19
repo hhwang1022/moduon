@@ -110,7 +110,7 @@ public class PostService {
                 Sort.by("postId").descending()));
     }
 
-    public Page<Post> findPostsSort(int page, int size, Sort sort) {
+    public Page<Post> findPostsSort(int page, int size, Sort sort, Post.Category category) {
         return postRepository.findAll(PageRequest.of(page, size, sort));
     }
     public void deletePost(long postId) {
