@@ -8,15 +8,19 @@ import com.springboot.dto.MultiResponseDto;
 import com.springboot.dto.SingleResponseDto;
 import com.springboot.utils.UriCreator;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/posts")
@@ -68,6 +72,25 @@ public class PostController {
         List<Post> posts = pagePost.getContent();
         return new ResponseEntity<>(
                 new MultiResponseDto<>(mapper.postsToPostResponseDtos(posts), pagePost), HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity search (@RequestParam String keyword,
+                          Model model,
+                          @PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
+                          @RequestParam String category) {
+        // 카테고리를 enum으로 변환
+        Post.Category postCategory;
+        try {
+            postCategory = Post.Category.valueOf(category);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>("Invalid category provided", HttpStatus.BAD_REQUEST);
+        }
+        Page<Post> searchList = postService.search(pageable, keyword, postCategory);
+        List<PostDto.Response> responsesList = searchList.stream()
+                .map(mapper::postToPostResponseDto)
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(new MultiResponseDto<>(responsesList, searchList), HttpStatus.OK);
     }
 
     @DeleteMapping("/{post-id}")
