@@ -40,7 +40,7 @@ public class Member extends Auditable {
 
     @Enumerated(value = EnumType.STRING)
     @Column(length = 20, nullable = false)
-    private Generation memberGeneration;
+    private Generation memberGeneration = Generation.GENERATION_1020;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
