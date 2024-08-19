@@ -9,6 +9,18 @@ public class BalanceGameReplyDto {
     @Getter
     @AllArgsConstructor
     public static class Post {
+
         @NotBlank
+        private Long balanceGameId;
+
+        @NotBlank
+        private String body;
+    }
+
+    @Getter
+    @AllArgsConstructor
+    public static class Response {
+        private Long balanceGameReplyId;
+        private String body;
     }
 }
