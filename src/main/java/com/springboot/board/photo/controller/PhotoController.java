@@ -8,15 +8,19 @@ import com.springboot.dto.MultiResponseDto;
 import com.springboot.dto.SingleResponseDto;
 import com.springboot.utils.UriCreator;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
 import java.net.URI;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/photos")
@@ -68,6 +72,27 @@ public class PhotoController {
         List<Photo> photos = pagePhoto.getContent();
         return new ResponseEntity<>(
                 new MultiResponseDto<>(mapper.photosToPhotoResponseDtos(photos), pagePhoto), HttpStatus.OK);
+    }
+
+    @GetMapping("/search")
+    public ResponseEntity search(@RequestParam String keyword,
+                                 Model model,
+                                 @PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
+                                 @RequestParam String category) {
+
+        Photo.Category photoCategory;
+        try {
+            photoCategory = Photo.Category.valueOf(category);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity<>("Invalid category provided", HttpStatus.BAD_REQUEST);
+        }
+        Page<Photo> searchList = photoService.search(pageable, keyword, photoCategory);
+        List<PhotoDto.Response> responsesList = searchList.stream()
+                .map(mapper::photoToPhotoResponseDto)
+                .collect(Collectors.toList());
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(responsesList, searchList), HttpStatus.OK
+        );
     }
 
     @DeleteMapping("/{photo-id}")
