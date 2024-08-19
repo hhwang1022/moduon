@@ -1,0 +1,38 @@
+.header{
+    margin-right: 200px;
+    margin-left: 200px;
+    display: flex;
+  }
+
+  .padding{
+    margin: 5px;
+  }
+
+  .right{
+    margin-left:auto;
+    padding-left: 10px;
+  }
+
+  .left{
+    margin-right:auto;
+    padding-right: 10px;
+  }
+
+  .vline {
+    border-left : medium  solid #000000;
+    height : 100px;
+    margin-left: 20px;
+  }
+
+  .hline {
+    border-top : medium  solid #000000;
+    height : 1px;
+    margin-left: 20px;
+    margin-right: 100px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .title{
+    font-weight: 900;
+  }

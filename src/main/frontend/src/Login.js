@@ -36,11 +36,11 @@ const Login = () => {
   return (<div>
         <div>
             <label htmlFor="qnaTitle">이메일</label>
-            <input className='qnatitleinput' type="text" value={id} onChange={(e) => setId(e.target.value)} />
+            <input className='logininput' type="text" value={id} onChange={(e) => setId(e.target.value)} />
         </div>
         <div>
             <label htmlFor="qnaTitle">비밀번호</label>
-            <input className='qnatitleinput' type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input className='logininput' type="password" value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
         <div>
             <button className="btn-1 custom-btn" onClick={handleLogin}>로그인</button>

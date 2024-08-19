@@ -1,0 +1,27 @@
+.balencegame_scroll_btn_active {
+
+    width : 5px;
+    height : 5px;
+    border-radius: 50%;
+    background-color: rgb(71, 143, 202);
+    margin: 3px;
+  }
+
+  .balencegame_scroll_btn_unactive {
+
+    width : 5px;
+    height : 5px;
+    border-radius: 50%;
+    background-color: rgb(54, 54, 54);
+    margin: 3px;
+  
+  }
+
+  .balencegame_scroll_btncontent{
+    display: flex;
+  }
+
+  .middle{
+    position: absolute;
+    left: 45%;
+  }

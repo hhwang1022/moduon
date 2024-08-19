@@ -1,0 +1,69 @@
+.hotpostlist1020title{
+    background-color: aqua;
+    font-size: 12pt;
+    font-weight: 900;
+    text-align: center;
+    font-family: 'DungGeunMo';
+    width: 100px;
+    margin: auto;
+    margin-bottom: 10pt;
+}
+
+.hotpostlist1020item{
+    text-align: center;
+    font-family: 'DungGeunMo';
+    margin: 7pt;
+}
+
+.hotpostlist0010title{
+    background-color: aqua;
+    font-size: 12pt;
+    font-weight: 900;
+    text-align: center;
+    font-family: 'DungGeunMo';
+    width: 100px;
+    margin: auto;
+    margin-bottom: 10pt;
+}
+
+.hotpostlist0010item{
+    text-align: center;
+    font-family: 'DungGeunMo';
+    margin: 7pt;
+}
+
+
+.hotpostlist9000title{
+    font-size: 12pt;
+    font-weight: 900;
+    text-align: center;
+    font-family: 'DOSIyagiMedium';
+    width: 100px;
+    margin: auto;
+    margin-bottom: 10pt;
+}
+
+.hotpostlist9000item{
+    text-align: center;
+    font-family: 'DOSIyagiMedium';
+    margin: 7pt;
+}
+
+
+.hotpostlist8090title{
+    font-size: 12pt;
+    font-weight: 900;
+    text-align: center;
+    font-family: 'DOSIyagiMedium';
+    width: 100px;
+    margin: auto;
+    margin-bottom: 10pt;
+    color: red;
+}
+
+.hotpostlist8090item{
+    text-align: center;
+    font-family: 'DOSIyagiMedium';
+    margin: 7pt;
+    color: white;
+}

@@ -1,0 +1,84 @@
+.mainbox{
+    border: 2px solid black;
+    width: 600px;
+    height: 600px;
+    text-align: center;
+    margin: 50px;
+    padding: 50px;
+    background-color: white;
+}
+
+.leftgame{
+    left: -1000px;
+    position: relative;
+    transform : scale(0.5,0.5);
+    z-index: 0;
+}
+
+.rightgame{
+    left: -1100px;
+    position: relative;
+    transform : scale(0.5,0.5);
+    z-index: 0;
+}
+
+.middlegame{
+    z-index: 1;
+}
+
+.maingamebutton{
+    margin-left: -60px;
+    padding: 0;
+}
+
+.itembox{
+    display: flex;
+    justify-content: center;
+    padding: 50px;
+}
+
+.title{
+    color: black;
+}
+
+.category{
+    color: magenta;
+    font-size: 30px;
+}
+
+.body{
+    color: black;
+    font-size: 40px;
+    font-weight: 900;
+    margin-top: 30px;
+}
+
+.bodyprogress{
+    margin-top: -60px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.gamevsfont {
+    font-size: 40px;
+    background: linear-gradient(to right, red 0%, orange 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+    font-weight: 900;
+}
+
+.gamevs {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    /* 원 안에 그라디언트 속성을 넣으려면 먼저 투명을 해야함 */
+    border: 10px solid transparent;
+    background-image: linear-gradient(#fff, #fff),
+    linear-gradient(to right, red 0%, orange 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    position: absolute;
+
+    margin-top: 70px;
+}

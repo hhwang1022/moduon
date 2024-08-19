@@ -1,0 +1,98 @@
+.postlist8090item{
+    height:40px;
+    border-bottom: 1px dashed rgb(145, 145, 145);
+    margin-left: 15px;
+    margin-right: 15px;
+    font-family: 'DungGeunMo';
+    color: white;
+}
+
+  .postitem8090newtext{
+    font-weight: 900;
+    color: blue;
+    margin: 10px;
+  }
+
+  .postitem8090hottext{
+    font-weight: 900;
+    color: tomato;
+  }
+
+ .postlist8090text{
+  font-family: 'DungGeunMo';
+  color: white;
+}
+
+/*---------------------------------------------------------*/
+
+.postlist9000item{
+  height:40px;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-family: 'DungGeunMo';
+}
+
+.postitem9000newtext{
+  font-weight: 900;
+  color: rgb(0, 255, 98);
+  margin: 10px;
+}
+
+.postitem9000hottext{
+  font-weight: 900;
+  color: tomato;
+}
+
+.postlist9000text{
+font-family: 'DungGeunMo';
+}
+
+/*---------------------------------------------------------*/
+
+.postlist0010item{
+  height:40px;
+  border-bottom: 1px dashed rgb(145, 145, 145);
+  margin-left: 15px;
+  margin-right: 15px;
+  font-family: 'DungGeunMo';
+}
+
+.postitem0010newtext{
+  font-weight: 900;
+  color: blue;
+  margin: 10px;
+}
+
+.postitem0010hottext{
+  font-weight: 900;
+  color: tomato;
+}
+
+.postlist0010text{
+font-family: 'DungGeunMo';
+}
+
+/*---------------------------------------------------------*/
+
+.postlist1020item{
+  height:40px;
+  border-bottom: 1px dashed rgb(145, 145, 145);
+  margin-left: 15px;
+  margin-right: 15px;
+  font-family: 'DungGeunMo';
+}
+
+.postitem1020newtext{
+  font-weight: 900;
+  color: blue;
+  margin: 10px;
+}
+
+.postitem1020hottext{
+  font-weight: 900;
+  color: tomato;
+}
+
+.postlist1020text{
+font-family: 'DungGeunMo';
+}
