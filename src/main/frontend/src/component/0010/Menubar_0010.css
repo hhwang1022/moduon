@@ -1,0 +1,33 @@
+.main0010menubar{
+    position: absolute;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    margin-top: 50px;
+}
+
+.main0010menubtn{
+    background-color: #00c3ff;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    width: 80px;
+    height: 40px;
+    left: -62px;
+    position: relative;
+    color: white;
+    margin-top: 20px;
+    font-family: 'DungGeunMo';
+}
+
+.main0010menubtnactive{
+    background-color: #ffffff;
+    border-radius: 10px;
+    border: 1px solid #000000;
+    width: 80px;
+    height: 40px;
+    left: -62px;
+    position: relative;
+    color: #000000;
+    margin-top: 20px;
+    font-family: 'DungGeunMo';
+}

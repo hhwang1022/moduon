@@ -54,6 +54,22 @@ public class SecurityConfiguration {
                         .antMatchers(HttpMethod.GET, "/*/members").hasRole("ADMIN")
                         .antMatchers(HttpMethod.GET, "/*/members/**").hasAnyRole("ADMIN", "USER")
                         .antMatchers(HttpMethod.DELETE, "/*/members/**").hasRole("USER")
+                        .antMatchers(HttpMethod.POST, "/balancegames").hasRole("ADMIN")
+                        .antMatchers(HttpMethod.PATCH,  "/balancegames/**").hasRole("ADMIN")
+                        .antMatchers(HttpMethod.GET,  "/balancegames/end").permitAll()
+                        .antMatchers(HttpMethod.GET,  "/balancegames/this-week").permitAll()
+                        .antMatchers(HttpMethod.DELETE,  "/balancegames/**").hasRole("ADMIN")
+                        .antMatchers(HttpMethod.POST, "/posts").permitAll()
+                        .antMatchers(HttpMethod.PATCH, "/posts/**").permitAll()
+                        .antMatchers(HttpMethod.GET, "/posts").permitAll()
+                        .antMatchers(HttpMethod.GET, "/posts/**").permitAll()
+                        .antMatchers(HttpMethod.DELETE, "/posts/**").permitAll()
+                        .antMatchers(HttpMethod.POST, "/photos").permitAll()
+                        .antMatchers(HttpMethod.PATCH, "/photos/**").permitAll()
+                        .antMatchers(HttpMethod.GET, "/photos").permitAll()
+                        .antMatchers(HttpMethod.GET, "/photos/**").permitAll()
+                        .antMatchers(HttpMethod.GET, "/photos").permitAll()
+                        .antMatchers(HttpMethod.DELETE, "/photos/**").permitAll()
                         .anyRequest().permitAll());
 
         return http.build();
@@ -84,7 +100,7 @@ public class SecurityConfiguration {
 
                 JwtAuthenticationFilter jwtAuthenticationFilter =
                         new JwtAuthenticationFilter(authenticationManager, jwtTokenizer);
-                jwtAuthenticationFilter.setFilterProcessesUrl("/v1/members/login");
+                jwtAuthenticationFilter.setFilterProcessesUrl("/members/login");
 
                 JwtVerificationFilter jwtVerificationFilter =
                         new JwtVerificationFilter(jwtTokenizer, authorityUtils);

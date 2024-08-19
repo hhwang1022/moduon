@@ -1,0 +1,242 @@
+.postmiddle{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+/*--------------------------------------------------------*/
+
+.postlist8090mainbox{
+    margin-top: 50px;
+}
+
+.postlist8090title{
+    height: 40px;
+}
+
+.pagebtnselect8090{
+    color: #ff7b00;
+    margin: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ff7b00;
+}
+
+.pagebtn8090{
+    color: white;
+    margin: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid white;
+}
+
+.postlist8090margin{
+    margin: 15px;
+    width: 750px;
+}
+
+.postlist8090line{
+    border-bottom: 1px dashed #444444;
+}
+
+.postpagebtn8090{
+    color: white;
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postpagewritebtn8090{
+    color: white;
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postlistselect8090{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    padding: 5px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+/*--------------------------------------------------------*/
+
+.postlist9000mainbox{
+    
+}
+
+.postlist9000title{
+    height: 40px;
+    margin: 15px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.pagebtnselect9000{
+    color: #ff7b00;
+    margin: 5px;
+}
+
+.pagebtn9000{
+    color: black;
+    margin: 5px;
+}
+
+.postlist9000margin{
+    margin: 15px;
+    width: 680px;
+}
+
+.postlist9000line{
+
+}
+
+.postpagebtn9000{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postpagewritebtn9000{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postlistselect9000{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+/*--------------------------------------------------------*/
+
+.postlist0010mainbox{
+    margin-top: 20px;
+}
+
+.postlist0010title{
+    background-color: rgb(179, 179, 179);
+    height: 40px;
+    margin: 15px;
+}
+
+.pagebtnselect0010{
+    color: #ff7b00;
+    margin: 5px;
+}
+
+.pagebtn0010{
+    color: black;
+    margin: 5px;
+}
+
+.postlist0010margin{
+    margin: 15px;
+    width: 560px;
+}
+
+.postlist0010line{
+    border-bottom: 1px dashed #444444;
+}
+
+.postpagebtn0010{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postpagewritebtn0010{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postlistselect0010{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+/*--------------------------------------------------------*/
+
+.postlist1020mainbox{
+    margin-top: 50px;
+}
+
+.postlist1020title{
+    background-color: rgb(179, 179, 179);
+    height: 40px;
+    margin: 15px;
+}
+
+.pagebtnselect1020{
+    color: #ff7b00;
+    margin: 5px;
+}
+
+.pagebtn1020{
+    color: black;
+    margin: 5px;
+}
+
+.postlist1020margin{
+    margin: 15px;
+    width: 750px;
+}
+
+.postlist1020line{
+    border-bottom: 1px dashed #444444;
+}
+
+.postpagebtn1020{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postpagewritebtn1020{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postlistselect1020{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}

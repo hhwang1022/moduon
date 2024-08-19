@@ -1,0 +1,150 @@
+@font-face {
+    font-family: 'DOSIyagiMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/DOSIyagiMedium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DOSGothic';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSGothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.main9000background{
+    width: 100vw;
+    height: 100vh;
+
+    background-color: #008080;
+}
+
+.main9000outwindow{
+    width: 1024px;
+    height: 800px;
+
+    top: 50px;
+    
+    margin: auto;
+    position: relative;
+}
+
+
+.main9000dafaultwindow{
+    font-family: 'DOSIyagiMedium';
+    border: 4px solid #ffffff;
+    background-color: #E6E6E6;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    font-size: 17pt;
+}
+
+.main9000button{
+
+}
+
+.main9000windowtopbarbackground{
+    width: 99.6%;
+    background-color: darkblue;
+    height: 50px;
+    font-size: 24pt;
+    padding-left: 20pt;
+    color: white;
+    font-family: 'DOSIyagiMedium';
+}
+
+.main9000windowtopbarbuttonarea{
+    margin-left: 690px;
+}
+
+.main9000windowtopbarbutton{
+    height: 38px;
+    width: 45px;
+    background-color: #E6E6E6;
+    color: black;
+    font-size: 22pt;
+    margin-top: 5px;
+    margin-left: 10px;
+    display: inline-block;
+    margin-right: auto;
+    text-align: center;
+}
+
+.main9000windowbottombarbackground{
+    width: 99.8%;
+    background-color: #E6E6E6;
+    height: 50px;
+    font-size: 24pt;
+    padding-left: 20pt;
+    border-top: 4px solid #ffffff;
+    color: black;
+    font-family: 'DOSIyagiMedium';
+    bottom: 0px;
+	position: absolute;
+}
+
+.main9000windowcontentbox{
+    width: 1000px;
+    height: 630px;
+    margin: 10px;
+    border: 2px solid black;
+    border-bottom: 2px solid #E6E6E6;
+    border-right: 2px solid #E6E6E6;
+    background-color: white;
+}
+
+.main9000categorybar{
+    display: flex;
+    flex-direction: row;
+}
+
+.main9000categorybutton{
+    color: black;
+    font-family: 'DOSIyagiMedium';
+    width: 500px;
+    font-size: 24pt;
+}
+
+.main9000contentbox{
+    width: 700px;
+    height: 500px;
+    background-color: white;
+    margin: 10px;
+    margin-top: 120px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 3;
+    overflow-y: auto;
+}
+
+.main9000lefticon{
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    font-family: 'DOSGothic';
+    font-size: 16pt;
+    margin: 20px;
+
+    padding: 20px;
+}
+
+.main9000righticon{
+    position: absolute;
+    top: 800px;
+    right: 100px;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    color: white;
+    font-family: 'DOSGothic';
+    font-size: 16pt;
+    line-height:100%;
+}
+
+.main9000cstegorytab{
+    position: absolute;
+    top: 150px;
+    left: 20px;
+}

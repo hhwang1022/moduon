@@ -1,0 +1,152 @@
+@font-face {
+    font-family: 'DOSIyagiMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/DOSIyagiMedium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DOSGothic';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSGothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+.main8090outwindow {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+
+.main8090dafaultwindow {
+    font-family: 'DOSIyagiMedium';
+    border: 4px solid #ffffff;
+    background-color: #000000;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+    font-size: 17pt;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.main8090button {}
+
+.main8090topbanner {
+    background-color: #E6E6E6;
+    font-size: 24pt;
+    padding: 5px;
+    color: rgb(0, 0, 0);
+    font-family: 'DOSIyagiMedium';
+}
+
+.main8090windowtopbarbackground {
+    width: 100%;
+    background-image: linear-gradient(to right, darkblue, rgb(86, 145, 255));
+    height: 50px;
+    font-size: 24pt;
+    padding-left: 20pt;
+    color: white;
+    font-family: 'DOSIyagiMedium';
+}
+
+.main8090windowtopbarbuttonarea {
+    float: right;
+    margin-right: 5px;
+}
+
+.main8090windowtopbarbutton {
+    height: 38px;
+    width: 45px;
+    background-color: #E6E6E6;
+    color: black;
+    font-size: 22pt;
+    margin-top: 5px;
+    margin-left: 10px;
+    display: inline-block;
+    margin-right: auto;
+    text-align: center;
+}
+
+.main8090windowbottombarbackground {
+    width: 99.8%;
+    background-color: #E6E6E6;
+    height: 50px;
+    font-size: 24pt;
+    padding-left: 20pt;
+    border-top: 4px solid #ffffff;
+    color: black;
+    font-family: 'DOSIyagiMedium';
+    bottom: 50px;
+    position: absolute;
+}
+
+
+.main8090windowcontentoutbox {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    margin-bottom: 100px;
+}
+
+
+.main8090windowcontentbox {
+    background-color: transparent;
+    width: 800px;
+    height: 100%;
+    z-index: 3;
+    overflow-x: hidden;
+    border-left: 4px solid darkcyan;
+    border-right: 4px solid darkcyan;
+    display: flex;
+    flex-direction: column;
+}
+
+.main8090windowcontentinbox{
+    border-top: 4px solid darkcyan;
+    border-bottom: 4px solid darkcyan;
+    flex-grow: 1;
+}
+
+.main8090windowcontentboxline {
+    height: 50px;
+    border-top: 4px solid darkcyan;
+    border-bottom: 4px solid darkcyan;
+    background-color: black;
+}
+
+.main8090categorybar {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: darkcyan;
+}
+
+.main8090memberbox {
+    border-left: 2px solid #000000;
+    z-index: 3;
+    font-family: 'DOSIyagiMedium';
+    margin: auto;
+}
+
+.main8090categorybutton {
+    color: white;
+    font-family: 'DOSIyagiMedium';
+    width: 200px;
+    font-size: 24pt;
+    background-color: darkcyan;
+    border: 4px solid #ffffff;
+    border-bottom: 2px solid black;
+    border-right: 2px solid black;
+
+}
+
+.main8090cstegorytab {
+    position: absolute;
+    top: 150px;
+    left: 20px;
+}

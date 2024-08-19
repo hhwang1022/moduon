@@ -1,0 +1,87 @@
+@font-face {
+    font-family: 'DungGeunMo';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.main0010background{
+    width: 100vw;
+    height: 100vh;
+
+    background:
+		linear-gradient(to bottom, transparent 38px, #ddd 38px) 0 0 / 100vw 40px repeat-y,
+		linear-gradient(to right, transparent 38px, #ddd 38px) 0 0 / 40px 100vh repeat-x
+	    rgb(141, 141, 141);
+}
+
+.main0010outbox{
+    background-color: #00c3ff;
+    border-radius: 20px;
+    border: 1px solid #000000;
+    width: 960px;
+    height: 660px;
+    top: 50px;
+    margin: auto;
+    position: relative;
+}
+
+.main0010dotbox{
+    border: 2px dashed white;
+    border-radius: 10px;
+    left: 15px;
+    top: 60px;
+    right: 15px;
+    bottom: 15px;
+    position: absolute;
+}
+
+.main0010inbox{
+    width: 905px;
+    height: 560px;
+    background-color: white;
+    margin: 10px;
+    border-radius: 10px;
+    position: absolute;
+    border: 1px solid #000000;
+    z-index: 3;
+}
+
+.main0010contentbox{
+    width: 600px;
+    height: 470px;
+    background-color: white;
+    margin: 10px;
+    margin-top: 50px;
+    border-radius: 10px;
+    position: absolute;
+    border: 1px solid #000000;
+    z-index: 3;
+    overflow-y: auto;
+}
+
+.main0010category{
+    font-family: 'DungGeunMo';
+    color: white;
+    font-size: 20pt;
+    margin-left: 20px;
+}
+
+.main1020categorybuttonarea{
+    margin-left: 120px;
+}
+
+.main1020categorybutton{
+    font-size: 25pt;
+    margin-left: 80px;
+    top: -25px;
+    position: relative;
+}
+
+.main0010footer{
+    top: 510px;
+    left: 20px;
+    margin: 15px;
+    position: relative;
+    font-family: 'DungGeunMo';
+}

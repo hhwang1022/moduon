@@ -2,7 +2,7 @@ import Login from './Login';
 
 const Sidebar = () => {
   return (
-    <div className="sidebar">
+    <div className='sidebar'>
       <Login/>
     </div>
   );

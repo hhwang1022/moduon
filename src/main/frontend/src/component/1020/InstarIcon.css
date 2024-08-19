@@ -1,0 +1,52 @@
+/* 프레젠테이션 프로필 이미지 div */
+.presentation_profile_image {
+    background-color: white;
+    width: 80px;
+    height: 64px;
+
+    /* 아이템을 수평, 수직 가운데 정렬하는 코드 */
+    display: flex;
+    flex-direction: column;
+    /* 방향을 row로 바꾸면 한 줄로 나온다! */
+    justify-content: center;
+    align-items: center;
+}
+
+/* 프레젠테이션 프로필 이미지 캔버스 */
+.presentation_profile_image_canvas {
+    background-color: transparent;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    position: absolute;
+}
+
+/* 프레젠테이션 프로필 이름 div */
+.presentation_profile_name {
+    width: 64px;
+    height: 16px;
+    font-size: 16px;
+    padding-left: 20px;
+    color: #000000;
+    text-decoration-line :none;
+}
+
+/* 프로필 이미지 테두리 div */
+.presentation_profile_image_border {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    /* 원 안에 그라디언트 속성을 넣으려면 먼저 투명을 해야함 */
+    border: 2px solid transparent;
+    background-image: linear-gradient(#fff, #fff),
+    linear-gradient(to right, red 0%, orange 100%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
+    position: absolute;
+}
+
+
+.profile_love {
+    background-size: cover;
+    background-position: center;
+}

@@ -1,0 +1,25 @@
+.footer8090background{
+    display: flex;
+    flex-direction: row;
+    justify-content: center; 
+    bottom: 0px;
+    position: absolute;
+    height: 50px;
+    width: 100%;
+    background-color: darkcyan;
+}
+
+.footer8090today{
+    background-color: darkcyan;
+    width: 9.9vw;
+    font-size: 24pt;
+    color: white;
+    font-family: 'DOSIyagiMedium';
+    text-align: center;
+}
+
+.footer8090todayline{
+    width: 5px;
+    height: 50px;
+    background-color: black;
+}

@@ -1,0 +1,22 @@
+[
+    {
+        "name":"n.SSign-SPICE",
+        "sound": "../../resource/bgm_test1.mp3"
+    },
+    {
+        "name":"MSG워너비-듣고 싶을까",
+        "sound": "../../resource/bgm_test2.mp3"
+    },
+    {
+        "name":"임영웅-다시 사랑한다면",
+        "sound": "../../resource/bgm_test3.mp3"
+    },
+    {
+        "name":"루시-21세기의 어떤 날",
+        "sound": "../../resource/bgm_test4.mp3"
+    },
+    {
+        "name":"김필-그대 떠나가도",
+        "sound": "../../resource/bgm_test5.mp3"
+    }
+]
