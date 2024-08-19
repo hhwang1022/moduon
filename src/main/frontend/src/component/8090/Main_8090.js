@@ -6,6 +6,7 @@ import Footer_8090 from './Footer_8090';
 import Mypage from '../Mypage';
 import Bgmbar from '../Bgmbar';
 import TopBanner from '../TopBanner';
+import Photolist from '../photo/Photolist';
 
 
 const Main_8090 = () => {
@@ -35,7 +36,7 @@ const Main_8090 = () => {
         }
         else if(currentindex === 1){
             return (
-                <Postlist generation={"8090"} />
+                <Photolist generation={"8090"} />
             );
         }
         else{

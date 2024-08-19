@@ -9,6 +9,7 @@ import balencesmallicon from '../../resource/9000balencesmallicon.png';
 import Bgmbar from '../Bgmbar';
 import Mypage from '../Mypage';
 import Postlist from '../post/Postlist';
+import Photolist from '../photo/Photolist';
 
 
 const Main_9000 = () => {
@@ -40,7 +41,7 @@ const Main_9000 = () => {
         }
         else if(currentindex === 1){
             return (
-                <Postlist generation={"9000"} />
+                <Photolist generation={"9000"} />
             );
         }
         else{

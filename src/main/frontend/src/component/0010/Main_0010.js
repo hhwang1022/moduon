@@ -5,14 +5,15 @@ import { useNavigate, useParams } from "react-router-dom";
 import Mypage from '../Mypage';
 import Bgmbar from '../Bgmbar';
 import Postlist from '../post/Postlist';
+import Photolist from '../photo/Photolist';
 import Balancegamelist from '../balancegame/Balancegamelist';
 
 const Main_0010 = () => {
-    const [motionposition, setmotionposition] = useState(100);
     const [currentindex, setcurrentindex] = useState(0);
 
     useEffect(() => {
-    }, [motionposition]);
+        console.log("currentindex : " + currentindex);
+    }, [currentindex]);
 
     const Page = () => {
         if(currentindex === 0){
@@ -22,7 +23,7 @@ const Main_0010 = () => {
         }
         else if(currentindex === 1){
             return (
-                <Postlist generation={"0010"} />
+                <Photolist generation={"0010"} />
             );
         }
         else{
@@ -55,7 +56,7 @@ const Main_0010 = () => {
                     }}>1020</button>
             </div>
             <div className='main0010dotbox'>
-                <Menubar_0010></Menubar_0010>
+                <Menubar_0010 onClickHandler={setcurrentindex}></Menubar_0010>
                 <div className='main0010inbox'>
                     <Bgmbar generation={"0010"}/>
                     <div className='main0010contentbox'>

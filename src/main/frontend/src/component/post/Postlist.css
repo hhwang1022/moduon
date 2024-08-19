@@ -221,12 +221,17 @@
 }
 
 .postlist1020margin{
-    margin: 15px;
     width: 750px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .postlist1020line{
-    border-bottom: 1px dashed #444444;
+    border-bottom: 2px solid black;
+    width: 600px;
+    height: 100px;
+    padding-top: 15px;
 }
 
 .postpagebtn1020{
@@ -244,7 +249,8 @@
 }
 
 .postlistselect1020{
-    width: 200px;
+    margin-left: 600px;
+    width: 100px;
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
     border-radius: 10px;

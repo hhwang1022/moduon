@@ -75,11 +75,9 @@ font-family: 'DungGeunMo';
 /*---------------------------------------------------------*/
 
 .postlist1020item{
-  height:40px;
-  border-bottom: 1px dashed rgb(145, 145, 145);
-  margin-left: 15px;
-  margin-right: 15px;
-  font-family: 'DungGeunMo';
+  display: flex;
+  flex-direction: row;
+  margin-left: 20px;
 }
 
 .postitem1020newtext{
@@ -95,4 +93,15 @@ font-family: 'DungGeunMo';
 
 .postlist1020text{
 font-family: 'DungGeunMo';
+}
+
+.postlist1020date{
+  font-family: 'DungGeunMo';
+  color: gray;
+}
+
+.postlist1020body{
+  display: flex;
+  flex-direction: column;
+  padding-left: 20px;
 }

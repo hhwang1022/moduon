@@ -4,6 +4,11 @@
     display: flex;
   }
 
+  .headermenu{
+    display: flex;
+    justify-content: center;
+  }
+
   .padding{
     margin: 5px;
   }

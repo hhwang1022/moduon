@@ -1,0 +1,314 @@
+.photosumnailbox8090{
+    /* width: 150px;
+    height: 100px;
+    border: 1px solid black; */
+}
+
+.photosumnailsize8090{
+    margin: 10px;
+    width: 130px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.photomainconent8090{
+    display: grid; 
+    grid-template-columns: 130px 150px 150px 150px;
+    column-gap: 20px;
+    gap: 10px;
+    padding: 10px;
+}
+
+.photolist8090mainbox{
+    margin-top: 50px;
+}
+
+.photopagewritebtn8090{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.photopagebtn8090{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.photolistselect8090{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.photolistselectitem8090{
+    margin-left: 370px;
+    width: 110px;
+    box-sizing: border-box;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
+    font-size: 8pt;
+    color: #747474;
+    border: 1.5px solid #747474;
+    border-radius: 5px;
+    background: linear-gradient(#ffffff, #d4d4d4);
+}
+
+
+/*--------------------------------------------*/
+
+.photosumnailsize9000{
+    margin: 10px;
+    width: 130px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.photomainconent9000{
+    display: grid; 
+    grid-template-columns: 150px 150px 150px 150px;
+    column-gap: 20px;
+    gap: 10px;
+}
+
+.photolist9000mainbox{
+    margin-top: 50px;
+}
+
+.photosumnailbox9000{
+    /* width: 150px;
+    height: 100px;
+    border: 1px solid black; */
+}
+
+.photopagewritebtn9000{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.photopagebtn9000{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.photolistselect9000{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.photolistselectitem9000{
+    margin-left: 370px;
+    width: 110px;
+    box-sizing: border-box;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
+    font-size: 8pt;
+    color: #747474;
+    border: 1.5px solid #747474;
+    border-radius: 5px;
+    background: linear-gradient(#ffffff, #d4d4d4);
+}
+
+/*--------------------------------------------*/
+
+.photosumnailsize0010{
+    margin: 10px;
+    width: 130px;
+    height: 80px;
+    object-fit: cover;
+}
+
+.photosumnailbox0010{
+    /* width: 150px;
+    height: 100px;
+    border: 1px solid black; */
+}
+
+.photomainconent0010{
+    display: grid; 
+    margin-top: 30px;
+    grid-template-columns: 130px 130px 130px 130px;
+    column-gap: 16px;
+    gap: 9px;
+    justify-content: center;
+}
+
+.photolist0010mainbox{
+    margin-top: 30px;
+}
+
+.photopagewritebtn0010{
+    margin-left: 10px;
+    font-size: 9pt;
+    width: 80px;
+    height: 30px;
+    color: #747474;
+    border: 1.5px solid #747474;
+    border-radius: 5px;
+    background: linear-gradient(#ffffff, #d4d4d4);
+}
+
+.photopagebtn0010{
+    margin-left: 10px;
+    font-size: 9pt;
+    width: 80px;
+    height: 30px;
+    color: #747474;
+    border: 1.5px solid #747474;
+    border-radius: 5px;
+    background: linear-gradient(#ffffff, #d4d4d4);
+}
+
+.photolistselect0010{
+    margin-left: 370px;
+    width: 110px;
+    box-sizing: border-box;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
+    font-size: 8pt;
+    color: #747474;
+    border: 1.5px solid #747474;
+    border-radius: 5px;
+    background: linear-gradient(#ffffff, #d4d4d4);
+}
+
+.photolistselectitem0010{
+    margin-left: 370px;
+    width: 110px;
+    box-sizing: border-box;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
+    font-size: 8pt;
+    color: #747474;
+    border: 1.5px solid #747474;
+    border-radius: 5px;
+    background: linear-gradient(#ffffff, #d4d4d4);
+}
+
+/*-------------------------------------------------------------------------------------*/
+
+.photosumnailsize1020{
+    width: 15vw;
+    height: 15vw;
+    object-fit: cover;
+}
+
+.photosumnailbox1020{
+    /* width: 150px;
+    height: 100px;
+    border: 1px solid black; */
+}
+
+.photomainconent1020{
+    display: grid; 
+    margin-top: 30px;
+    grid-template-columns: 15vw 15vw 15vw;
+    column-gap: 4px;
+    row-gap: 4px;
+    justify-content: center;
+}
+
+.photolist1020mainbox{
+    margin-top: 50px;
+}
+
+.photopagewritebtn1020{
+    margin-left: 10px;
+    font-size: 9pt;
+    width: 80px;
+    height: 30px;
+    color: #747474;
+    border: 1.5px solid #747474;
+    border-radius: 5px;
+    background: linear-gradient(#ffffff, #d4d4d4);
+}
+
+.photopagebtn1020{
+    margin-left: 10px;
+    font-size: 9pt;
+    width: 80px;
+    height: 30px;
+    color: #747474;
+    border: 1.5px solid #747474;
+    border-radius: 5px;
+    background: linear-gradient(#ffffff, #d4d4d4);
+}
+
+.photolistselect1020{
+    margin-left: 370px;
+    width: 110px;
+    box-sizing: border-box;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
+    font-size: 8pt;
+    color: #747474;
+    border: 1.5px solid #747474;
+    border-radius: 5px;
+    background: linear-gradient(#ffffff, #d4d4d4);
+}
+
+.photolistselectitem1020{
+    margin-left: 370px;
+    width: 110px;
+    box-sizing: border-box;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
+    font-size: 8pt;
+    color: #747474;
+    border: 1.5px solid #747474;
+    border-radius: 5px;
+    background: linear-gradient(#ffffff, #d4d4d4);
+}
+
+

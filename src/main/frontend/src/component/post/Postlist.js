@@ -89,6 +89,10 @@ const Postlist_0010 = ({ generation }) => {
             </select>
             <button className={"postpagewritebtn"+generation}>글쓰기</button>
         </div>
+        {generation === "1020" ? 
+        <div className={"postlist" + generation + "margin"}>{postlist.map((x, index) => {
+            return <PostlistItem post={x} generation={generation} />
+        })}</div> :
         <table className={'postlist' + generation + 'margin'}  >
             <tr className={'postlist' + generation + 'title'} >
                 <td width="50"></td>
@@ -104,6 +108,7 @@ const Postlist_0010 = ({ generation }) => {
                 })}
             </tbody>
         </table>
+        }
         <div className='postmiddle'>
             <div>
                 <button className={'pagebtn' + generation} onClick={() => {

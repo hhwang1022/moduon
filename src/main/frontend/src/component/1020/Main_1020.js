@@ -7,6 +7,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Header_1020 from './Header_1020';
 import Postlist from '../post/Postlist';
 import Photolist from '../photo/Photolist';
+import Balancegamelist from '../balancegame/Balancegamelist';
 
 const Main_1020 = () => {
 
@@ -33,7 +34,7 @@ const Main_1020 = () => {
     const Page = () => {
         if (currentindex === 0) {
             return (
-                <Postlist generation={"1020"} />
+                <Balancegamelist generation={"1020"} />
             );
         }
         else if (currentindex === 1) {
@@ -41,7 +42,7 @@ const Main_1020 = () => {
                 <Photolist generation={"1020"} />
             );
         }
-        else if (currentgameindex === 2) {
+        else if (currentindex === 2) {
             return (
                 <Postlist generation={"1020"} />
             );
@@ -53,7 +54,7 @@ const Main_1020 = () => {
                         <div className='main1020'>
                             <motion.span width={0} className='middlegame' initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionmiddlescale }}>
                                 <Main_1020_Game position={"middlegame"}
-                                    balancedata={balancedatas[currentindex]}>
+                                    balancedata={balancedatas[currentgameindex]}>
                                 </Main_1020_Game>
                             </motion.span>
                             <motion.span className='leftgame' initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionleftscale }}>
@@ -74,11 +75,11 @@ const Main_1020 = () => {
                                             setrightindex(rightindex - 1);
                                         }
 
-                                        if (currentindex <= 0) {
+                                        if (currentgameindex <= 0) {
                                             setcurrentgameindex(balancedatas.length - 1);
                                         }
                                         else {
-                                            setcurrentgameindex(currentindex - 1);
+                                            setcurrentgameindex(currentgameindex - 1);
                                         }
 
                                         setmotionleftscale(0.7);
@@ -183,7 +184,9 @@ const Main_1020 = () => {
 
     return (<div>
         <Header_1020 setcurrentindex={setcurrentindex}></Header_1020>
-        <Page />
+        <div className={'main1020' + (currentindex === 1 ? " main1020photo" : "")}>
+            <Page />
+        </div>
     </div>);
 };
 

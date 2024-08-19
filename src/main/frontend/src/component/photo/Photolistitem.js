@@ -6,14 +6,11 @@ const Photolistitem = ({ post, generation }) => {
     post.createsat = "10-22";
 
     return (
-        <tr className={'postlist' + generation + 'line'} height="34">
-            <td className={'postitem' + generation + 'newtext'}>new</td>
-            <td className={'postlist' + generation + 'text'}><button>{post.title}</button></td>
-            <td className={'postlist' + generation + 'text'}>{post.nickname}</td>
-            <td className={'postlist' + generation + 'text'}>{post.createsat}</td>
-            <td className={'postlist' + generation + 'text'}>{post.view}</td>
-            <td className={'postlist' + generation + 'text'}>{post.like}</td>
-        </tr>);
+        <div className={"photosumnailbox" + generation}>
+            <img className={'photosumnailsize' + generation} src={post.imgurl1}></img>
+            {generation != "1020" ? <div className={"photosumnailname"+generation}>{post.title}</div> : <></> }
+        </div>
+    );
 };
 
 export default Photolistitem;
