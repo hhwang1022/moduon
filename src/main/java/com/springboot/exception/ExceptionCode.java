@@ -10,7 +10,12 @@ public enum ExceptionCode {
     ORDER_NOT_FOUND(404, "Order not found"),
     CANNOT_CHANGE_ORDER(403, "Order can not change"),
     NOT_IMPLEMENTATION(501, "Not Implementation"),
-    INVALID_MEMBER_STATUS(400, "Invalid member status");
+    INVALID_MEMBER_STATUS(400, "Invalid member status"),
+    POST_NOT_FOUND(400, "Post not found"),
+    POST_REPLY_NOT_FOUND(404, "PostReply not found"),
+    PHOTO_NOT_FOUND(404, "Photo not found"),
+    PHOTO_REPLY_NOT_FOUND(404, "PhotoReply not found");
+
 
     @Getter
     private int status;
