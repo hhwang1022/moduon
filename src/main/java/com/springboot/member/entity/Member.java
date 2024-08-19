@@ -1,6 +1,12 @@
 package com.springboot.member.entity;
 
 import com.springboot.audit.Auditable;
+import com.springboot.board.photo.entity.Photo;
+import com.springboot.board.photo.entity.PhotoLike;
+import com.springboot.board.photo.entity.PhotoReply;
+import com.springboot.board.post.entity.Post;
+import com.springboot.board.post.entity.PostLike;
+import com.springboot.board.post.entity.PostReply;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -24,7 +30,7 @@ public class Member extends Auditable {
     @Column(nullable = false)
     private String password;
 
-    @Column(length = 100, nullable = false,  unique = true)
+    @Column(length = 100, nullable = false, unique = true)
     private String nickname;
 
     @Enumerated(value = EnumType.STRING)
@@ -62,6 +68,66 @@ public class Member extends Auditable {
 
         Generation(String generation) {
             this.generation = generation;
+        }
+    }
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.MERGE)
+    private List<Post> posts = new ArrayList<>();
+
+    public void setPosts(Post post) {
+        posts.add(post);
+        if (post.getMember() != this) {
+            post.setMember(this);
+        }
+    }
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.MERGE)
+    private List<PostLike> postLikes = new ArrayList<>();
+
+    public void setPostLikes(PostLike postLike) {
+        postLikes.add(postLike);
+        if (postLike.getMember() != this) {
+            postLike.setMember(this);
+        }
+    }
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.MERGE)
+    private List<PostReply> postReplies = new ArrayList<>();
+
+    public void setPostReplies(PostReply postReply) {
+        postReplies.add(postReply);
+        if (postReply.getMember() != this) {
+            postReply.setMember(this);
+        }
+    }
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.MERGE)
+    private List<Photo> photos = new ArrayList<>();
+
+    public void setPhotos(Photo photo) {
+        photos.add(photo);
+        if (photo.getMember() != this) {
+            photo.setMember(this);
+        }
+    }
+
+    @OneToMany(mappedBy = "member")
+    private List<PhotoLike> photoLikes = new ArrayList<>();
+
+    public void setPhotoLikes(PhotoLike photoLike) {
+        photoLikes.add(photoLike);
+        if (photoLike.getMember() != this) {
+            photoLike.setMember(this);
+        }
+    }
+
+    @OneToMany(mappedBy = "member")
+    private List<PhotoReply> photoReplies = new ArrayList<>();
+
+    public void setPostReplies(PhotoReply photoReply) {
+        photoReplies.add(photoReply);
+        if (photoReply.getMember() != this) {
+            photoReply.setMember(this);
         }
     }
 }
