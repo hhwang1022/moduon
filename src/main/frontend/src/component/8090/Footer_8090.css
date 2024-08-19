@@ -6,11 +6,11 @@
     position: absolute;
     height: 50px;
     width: 100%;
-    background-color: darkcyan;
+    background-color: #008080;
 }
 
 .footer8090today{
-    background-color: darkcyan;
+    background-color: #008080;
     width: 9.9vw;
     font-size: 24pt;
     color: white;
@@ -18,7 +18,13 @@
     text-align: center;
 }
 
-.footer8090todayline{
+.footer8090todayline1, .footer8090todayline3, .footer8090todayline5, .footer8090todayline7, .footer8090todayline8, .footer8090todayline9{
+    width: 5px;
+    height: 50px;
+    background-color: rgba(0,0,0,0.2);
+}
+
+.footer8090todayline2, .footer8090todayline4, .footer8090todayline6{
     width: 5px;
     height: 50px;
     background-color: black;

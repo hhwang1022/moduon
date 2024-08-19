@@ -208,9 +208,16 @@
     font-weight: 900;
 }
 
+.direction-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
 .main8090memberbutton{
     font-family: 'DungGeunMo';
     font-size: 8pt;
-    margin: 20pt;
+    margin: 2px;
     color: white;
 }
