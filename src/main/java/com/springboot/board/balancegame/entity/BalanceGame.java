@@ -46,6 +46,16 @@ public class BalanceGame extends Auditable {
 	@Column(name = "END_DATE")
 	private LocalDateTime endDate;
 
+	@OneToOne(mappedBy = "balanceGame", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
+	private BalanceGameReply balanceGameReply;
+
+	public void setBalanceGameReply(BalanceGameReply balanceGameReply) {
+		this.balanceGameReply = balanceGameReply;
+		if (balanceGameReply.getBalanceGame() != this) {
+			balanceGameReply.setBalanceGame(this);
+		}
+	}
+
 	@Enumerated(value = EnumType.STRING)
 	@Column(nullable = false)
 	private BalanceGameStatus balanceGameStatus = BalanceGameStatus.ACTIVE;
