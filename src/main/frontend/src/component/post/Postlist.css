@@ -12,17 +12,24 @@
 
 .postlist8090title{
     height: 40px;
-    margin: 15px;
 }
 
 .pagebtnselect8090{
     color: #ff7b00;
     margin: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ff7b00;
 }
 
 .pagebtn8090{
     color: white;
     margin: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid white;
 }
 
 .postlist8090margin{
@@ -38,6 +45,8 @@
     background-color: #b8b8b8;
     margin-left: 15px;
     color: white;
+    width: 80px;
+    height: 30px;
     padding: 1px 5px; 
     border: 2px solid #666666; 
     box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); 
@@ -48,6 +57,28 @@
     box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.5); 
     background-color: #7B7B7B; 
     transform: translateY(2px);
+    margin-left: 15px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postpagewritebtn8090{
+    color: white;
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postlistselect8090{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    padding: 5px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+
 }
 
 /*--------------------------------------------------------*/
@@ -83,7 +114,30 @@
 }
 
 .postpagebtn9000{
-    color: white;
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postpagewritebtn9000{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postlistselect9000{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
 }
 
 /*--------------------------------------------------------*/
@@ -118,7 +172,30 @@
 }
 
 .postpagebtn0010{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
 
+.postpagewritebtn0010{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postlistselect0010{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
 }
 
 /*--------------------------------------------------------*/
@@ -153,4 +230,28 @@
 }
 
 .postpagebtn1020{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postpagewritebtn1020{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postlistselect1020{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
 }

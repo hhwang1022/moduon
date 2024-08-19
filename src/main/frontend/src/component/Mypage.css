@@ -1,60 +1,96 @@
-.main1020memberbox{
-    width: 250px;
-    height: 520px;
-    background-color: rgb(223, 223, 223);
-    margin: 10px;
-    margin-left: 630px;
-    margin-top: 2px;
-    border-radius: 10px;
-    position: absolute;
-    border: 1px solid #000000;
-    z-index: 3;
-    top: 20px;
+.main8090memberbox{
+    margin-top: 100px;
 }
 
-.main1020memberinbox{
-    width: 230px;
-    height: 500px;
-    background-color: rgb(255, 255, 255);
-    margin: 10px;
-    border-radius: 10px;
-    position: absolute;
+.main8090memberinbox{
+
 }
 
-.main1020membertitle{
+.main8090membertitle{
     margin-top: 40px;
     text-align: center;
-    color: #ff7b00;
+    color: yellow;
     font-weight: 900;
     font-family: 'DungGeunMo';
 }
 
-.main1020membertitlegeneration{
+.main8090membertitlegeneration{
     text-align: center;
-    color: #ff7b00;
+    color: white;
     font-weight: 900;
     font-size: 8pt;
     font-family: 'DungGeunMo';
 }
 
-.main1020membercenter{
+.main8090membercenter{
     text-align: center;
     margin-top: 50pt;
     margin-bottom: 10pt;
     position: relative;
 }
 
-.main1020memberpoint{
+.main8090memberpoint{
     font-family: 'DungGeunMo';
     text-align: center;
-    color: #00c3ff;
+    color: white;
     font-weight: 900;
 }
 
-.main1020memberbutton{
+.main8090memberbutton{
     font-family: 'DungGeunMo';
     font-size: 8pt;
     margin: 20pt;
+    color: white;
+}
+
+/*---------------------------------------------------------------*/
+
+.main9000memberbox{
+    width: 250px;
+    height: 626px;
+    margin-left: 750px;
+    position: absolute;
+    border-left: 2px solid #000000;
+    z-index: 3;
+    font-family: 'DOSIyagiMedium';
+}
+
+.main9000memberinbox{
+
+}
+
+.main9000membertitle{
+    margin-top: 90px;
+    text-align: center;
+    font-weight: 900;
+    font-family: 'DungGeunMo';
+}
+
+.main9000membertitlegeneration{
+    text-align: center;
+    font-weight: 900;
+    font-size: 8pt;
+    font-family: 'DungGeunMo';
+}
+
+.main9000membercenter{
+    text-align: center;
+    margin-top: 50pt;
+    margin-bottom: 10pt;
+    position: relative;
+}
+
+.main9000memberpoint{
+    font-family: 'DungGeunMo';
+    text-align: center;
+    font-weight: 900;
+}
+
+.main9000memberbutton{
+    font-family: 'DungGeunMo';
+    font-size: 8pt;
+    margin-left: 30pt;
+    margin-bottom: 30pt;
 }
 
 /*---------------------------------------------------------------*/
@@ -120,91 +156,56 @@
 
 /*---------------------------------------------------------------*/
 
-.main9000memberbox{
+.main1020memberbox{
     width: 250px;
-    height: 626px;
-    margin-left: 750px;
+    height: 520px;
+    background-color: rgb(223, 223, 223);
+    margin: 10px;
+    margin-left: 630px;
+    margin-top: 2px;
+    border-radius: 10px;
     position: absolute;
-    border-left: 2px solid #000000;
+    border: 1px solid #000000;
     z-index: 3;
-    font-family: 'DOSIyagiMedium';
+    top: 20px;
 }
 
-.main9000memberinbox{
-
+.main1020memberinbox{
+    width: 230px;
+    height: 500px;
+    background-color: rgb(255, 255, 255);
+    margin: 10px;
+    border-radius: 10px;
+    position: absolute;
 }
 
-.main9000membertitle{
-    margin-top: 90px;
-    text-align: center;
-    font-weight: 900;
-    font-family: 'DungGeunMo';
-}
-
-.main9000membertitlegeneration{
-    text-align: center;
-    font-weight: 900;
-    font-size: 8pt;
-    font-family: 'DungGeunMo';
-}
-
-.main9000membercenter{
-    text-align: center;
-    margin-top: 50pt;
-    margin-bottom: 10pt;
-    position: relative;
-}
-
-.main9000memberpoint{
-    font-family: 'DungGeunMo';
-    text-align: center;
-    font-weight: 900;
-}
-
-.main9000memberbutton{
-    font-family: 'DungGeunMo';
-    font-size: 8pt;
-    margin-left: 30pt;
-    margin-bottom: 30pt;
-}
-
-/*---------------------------------------------------------------*/
-
-.main8090memberbox{
-    margin-top: 100px;
-}
-
-.main8090memberinbox{
-
-}
-
-.main8090membertitle{
+.main1020membertitle{
     margin-top: 40px;
     text-align: center;
-    color: yellow;
+    color: #ff7b00;
     font-weight: 900;
     font-family: 'DungGeunMo';
 }
 
-.main8090membertitlegeneration{
+.main1020membertitlegeneration{
     text-align: center;
-    color: white;
+    color: #ff7b00;
     font-weight: 900;
     font-size: 8pt;
     font-family: 'DungGeunMo';
 }
 
-.main8090membercenter{
+.main1020membercenter{
     text-align: center;
     margin-top: 50pt;
     margin-bottom: 10pt;
     position: relative;
 }
 
-.main8090memberpoint{
+.main1020memberpoint{
     font-family: 'DungGeunMo';
     text-align: center;
-    color: white;
+    color: #00c3ff;
     font-weight: 900;
 }
 
@@ -220,4 +221,5 @@
     font-size: 8pt;
     margin: 2px;
     color: white;
+
 }

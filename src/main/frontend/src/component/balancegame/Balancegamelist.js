@@ -1,6 +1,6 @@
 import './Balancegamelist.css';
 import React, { useState, useEffect } from 'react';
-import Balancegame from './BalaBalancegamencegamelist';
+import Balancegameitem from './Balancegameitem';
 
 const Balancegamelist = ({ generation }) => {
 
@@ -100,7 +100,7 @@ const Balancegamelist = ({ generation }) => {
             </tr>
             <tbody>
                 {postlist.map((x, index) => {
-                    return <Balancegame post={x} generation={generation} />
+                    return <Balancegameitem post={x} generation={generation} />
                 })}
             </tbody>
         </table>
