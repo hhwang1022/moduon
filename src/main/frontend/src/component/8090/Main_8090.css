@@ -14,8 +14,8 @@
 
 
 .main8090outwindow {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
@@ -29,12 +29,10 @@
     border-bottom: 2px solid black;
     border-right: 2px solid black;
     font-size: 17pt;
-
+    cursor: default;
     display: flex;
     flex-direction: column;
 }
-
-.main8090button {}
 
 .main8090topbanner {
     background-color: #E6E6E6;
@@ -96,26 +94,23 @@
 
 .main8090windowcontentbox {
     background-color: transparent;
-    width: 800px;
-    height: 100%;
-    z-index: 3;
-    overflow-x: hidden;
-    border-left: 4px solid darkcyan;
-    border-right: 4px solid darkcyan;
+    width: 1120px;
     display: flex;
+    align-items: center;
+    border-left: 4px solid #206061;
+    border-right: 4px solid #206061;
     flex-direction: column;
-}
-
-.main8090windowcontentinbox{
-    border-top: 4px solid darkcyan;
-    border-bottom: 4px solid darkcyan;
     flex-grow: 1;
 }
 
+.main8090windowcontentinbox{
+    width: 100%;
+    border-top: 4px solid #154041;
+    border-bottom: 4px solid #154041;
+}
+
 .main8090windowcontentboxline {
-    height: 50px;
-    border-top: 4px solid darkcyan;
-    border-bottom: 4px solid darkcyan;
+    height: 15px;
     background-color: black;
 }
 
@@ -123,11 +118,14 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    background-color: darkcyan;
+    background-color: #008381;
+}
+
+.main8090margin{
+    margin: 7%;
 }
 
 .main8090memberbox {
-    border-left: 2px solid #000000;
     z-index: 3;
     font-family: 'DOSIyagiMedium';
     margin: auto;
@@ -138,15 +136,16 @@
     font-family: 'DOSIyagiMedium';
     width: 200px;
     font-size: 24pt;
-    background-color: darkcyan;
-    border: 4px solid #ffffff;
-    border-bottom: 2px solid black;
-    border-right: 2px solid black;
-
+    background-color: #008381;
+    border: 2px solid #000000;
+    box-shadow: 2px 2px 5px #333333, -2px -2px 5px #000000;
 }
 
-.main8090cstegorytab {
-    position: absolute;
-    top: 150px;
-    left: 20px;
+.main8090categorybutton.pressed {
+    box-shadow: inset 2px 2px 5px #000000;
+    background-color: #005454; 
+    border-top: 2px solid #333333;
+    border-left: 2px solid #333333;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
 }
