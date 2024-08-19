@@ -12,17 +12,24 @@
 
 .postlist8090title{
     height: 40px;
-    margin: 15px;
 }
 
 .pagebtnselect8090{
     color: #ff7b00;
     margin: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid #ff7b00;
 }
 
 .pagebtn8090{
     color: white;
     margin: 5px;
+    width: 30px;
+    height: 30px;
+    text-align: center;
+    border: 1px solid white;
 }
 
 .postlist8090margin{
@@ -36,6 +43,27 @@
 
 .postpagebtn8090{
     color: white;
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postpagewritebtn8090{
+    color: white;
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postlistselect8090{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    padding: 5px;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
 }
 
 /*--------------------------------------------------------*/
@@ -71,7 +99,30 @@
 }
 
 .postpagebtn9000{
-    color: white;
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postpagewritebtn9000{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postlistselect9000{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
 }
 
 /*--------------------------------------------------------*/
@@ -106,7 +157,30 @@
 }
 
 .postpagebtn0010{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
 
+.postpagewritebtn0010{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postlistselect0010{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
 }
 
 /*--------------------------------------------------------*/
@@ -141,4 +215,28 @@
 }
 
 .postpagebtn1020{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postpagewritebtn1020{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px dashed #444444;
+}
+
+.postlistselect1020{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
 }

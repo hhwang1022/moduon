@@ -77,7 +77,7 @@ const Postlist_0010 = ({ generation }) => {
 
     return (<div className={'postlist' + generation + 'mainbox'}>
         <div className='right'>
-            <select onChange={(e) => {
+            <select className={'postlistselect' + generation} onChange={(e) => {
                 setsorttype(e.target.value);
             }}>
                 <option value="SORT_NEW">새글 순</option>
@@ -87,7 +87,7 @@ const Postlist_0010 = ({ generation }) => {
                 <option value="SORT_LIKE_MANY">좋아요 많은 순</option>
                 <option value="SORT_LIKE_MIN">좋아요 적은 순</option>
             </select>
-            <button>글쓰기</button>
+            <button className={"postpagewritebtn"+generation}>글쓰기</button>
         </div>
         <table className={'postlist' + generation + 'margin'}  >
             <tr className={'postlist' + generation + 'title'} >
