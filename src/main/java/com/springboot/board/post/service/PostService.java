@@ -8,9 +8,11 @@ import com.springboot.member.entity.Member;
 import com.springboot.member.service.MemberService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
+import javax.swing.plaf.PanelUI;
 import javax.transaction.Transactional;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -110,9 +112,18 @@ public class PostService {
                 Sort.by("postId").descending()));
     }
 
-    public Page<Post> findPostsSort(int page, int size, Sort sort, Post.Category category) {
+    public Page<Post> findPostsSort(int page, int size, Sort sort) {
         return postRepository.findAll(PageRequest.of(page, size, sort));
     }
+
+    public Page<Post> search(Pageable pageable, String keyword, Post.Category category) {
+        Page<Post> postsList = postRepository.searchByTitleOrBodyAndCategory(pageable, keyword, category);
+        return postsList;
+    }
+
+
+
+
     public void deletePost(long postId) {
         Post findPost = findVerifiedPost(postId);
         postRepository.delete(findPost);
