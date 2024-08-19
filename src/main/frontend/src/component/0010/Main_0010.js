@@ -5,6 +5,7 @@ import { useNavigate, useParams } from "react-router-dom";
 import Mypage from '../Mypage';
 import Bgmbar from '../Bgmbar';
 import Postlist from '../post/Postlist';
+import Balancegamelist from '../balancegame/Balancegamelist';
 
 const Main_0010 = () => {
     const [motionposition, setmotionposition] = useState(100);
@@ -26,7 +27,7 @@ const Main_0010 = () => {
         }
         else{
             return (
-                <Postlist generation={"0010"} />
+                <Balancegamelist generation={"0010"} />
             );
         }
       };

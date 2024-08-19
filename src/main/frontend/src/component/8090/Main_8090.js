@@ -5,6 +5,7 @@ import Postlist from '../post/Postlist';
 import Footer_8090 from './Footer_8090';
 import Mypage from '../Mypage';
 import Bgmbar from '../Bgmbar';
+import TopBanner from '../TopBanner';
 
 
 const Main_8090 = () => {
@@ -71,7 +72,9 @@ const Main_8090 = () => {
                         navigate('/main_1020');
                     }}>10-20</button>
             </div>
-            <div className='main8090topbanner'> 80년대로 여러분들을 초대합니다.</div>
+            <div className='main8090topbanner'> 80년대로 여러분들을 초대합니다.
+                <TopBanner generation={"8090"}/>
+            </div>
             <div className='main8090windowcontentoutbox'>
                 <div className='main8090memberbox' />
                 <div className='main8090windowcontentbox'>

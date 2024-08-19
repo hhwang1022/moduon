@@ -16,35 +16,60 @@ const Postlist_0010 = ({ generation }) => {
             "nickname": "닉네임",
             "createsat": "2020-10-22",
             "view": 10,
-            "like": 10
+            "like": 10,
+            "imgurl1":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl2":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl3":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl4":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl5":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
         },
         {
             "title": "n.SSign-SPICE",
             "nickname": "닉네임",
             "createsat": "2020-10-22",
             "view": 10,
-            "like": 10
+            "like": 10,
+            "imgurl1":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl2":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl3":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl4":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl5":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
         },
         {
             "title": "n.SSign-SPICE",
             "nickname": "닉네임",
             "createsat": "2020-10-22",
             "view": 10,
-            "like": 10
+            "like": 10,
+            "imgurl1":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl2":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl3":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl4":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl5":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
         },
         {
             "title": "n.SSign-SPICE",
             "nickname": "닉네임",
             "createsat": "2020-10-22",
             "view": 10,
-            "like": 10
+            "like": 10,
+            "imgurl1":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl2":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl3":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl4":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl5":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
         },
         {
             "title": "n.SSign-SPICE",
             "nickname": "닉네임",
             "createsat": "2020-10-22",
             "view": 10,
-            "like": 10
+            "like": 10,
+            "imgurl1":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl2":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl3":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl4":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl5":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
         }
         ,
         {
@@ -52,21 +77,36 @@ const Postlist_0010 = ({ generation }) => {
             "nickname": "닉네임",
             "createsat": "2020-10-22",
             "view": 10,
-            "like": 10
+            "like": 10,
+            "imgurl1":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl2":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl3":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl4":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl5":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
         },
         {
             "title": "n.SSign-SPICE",
             "nickname": "닉네임",
             "createsat": "2020-10-22",
             "view": 10,
-            "like": 10
+            "like": 10,
+            "imgurl1":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl2":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl3":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl4":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl5":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
         },
         {
             "title": "n.SSign-SPICEasdasdasdasdas",
             "nickname": "닉네임",
             "createsat": "2020-10-22",
             "view": 10,
-            "like": 10
+            "like": 10,
+            "imgurl1":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl2":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl3":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl4":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
+            "imgurl5":"https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
         }
     ]
 
