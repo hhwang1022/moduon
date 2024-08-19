@@ -84,8 +84,17 @@ public class PostService {
                 .ifPresent(isNotice -> findPost.setIsNotice(isNotice));
         Optional.ofNullable(post.getCategory())
                 .ifPresent(category -> findPost.setCategory(category));
-        Optional.ofNullable(post.getImage())
-                .ifPresent(image -> findPost.setImage(image));
+        Optional.ofNullable(post.getImage1())
+                .ifPresent(image1 -> findPost.setImage1(image1));
+        Optional.ofNullable(post.getImage2())
+                .ifPresent(image2 -> findPost.setImage2(image2));
+        Optional.ofNullable(post.getImage3())
+                .ifPresent(image3 -> findPost.setImage3(image3));
+        Optional.ofNullable(post.getImage4())
+                .ifPresent(image4 -> findPost.setImage4(image4));
+        Optional.ofNullable(post.getImage5())
+                .ifPresent(image5 -> findPost.setImage5(image5));
+
 
         return postRepository.save(findPost);
     }

@@ -27,7 +27,11 @@ public class PostDto  {
 
         private Category category;
 
-        private String image;
+        private String image1;
+        private String image2;
+        private String image3;
+        private String image4;
+        private String image5;
 
         public Member getMember(){
             Member member = new Member();
@@ -52,7 +56,11 @@ public class PostDto  {
 
         private Category category;
 
-        private String img;
+        private String image1;
+        private String image2;
+        private String image3;
+        private String image4;
+        private String image5;
         public void setPostId(long postId) {this.postId = postId;}
     }
 
@@ -70,7 +78,11 @@ public class PostDto  {
         private int likeCount;
         private LocalDateTime createdAt;
         private String category;
-        private String image;
+        private String image1;
+        private String image2;
+        private String image3;
+        private String image4;
+        private String image5;
 
     }
 }

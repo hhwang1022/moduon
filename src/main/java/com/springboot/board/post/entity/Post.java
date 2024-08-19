@@ -52,7 +52,11 @@ public class Post {
     @Column(nullable = false)
     private Category category;
 
-    private String image;
+    private String image1;
+    private String image2;
+    private String image3;
+    private String image4;
+    private String image5;
 
     public enum Category {
         CATEGORY_8090("8090세대"),
