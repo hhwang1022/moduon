@@ -1,5 +1,7 @@
 package com.springboot.board.balancegame.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.springboot.member.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -19,16 +21,10 @@ public class BalanceGameReply {
     @Column
     private String body;
 
-    @OneToOne
+    @ManyToOne
     @JoinColumn(name = "BALANCE_GAME_ID")
+    @JsonBackReference
     private BalanceGame balanceGame;
-
-    public void setBalanceGame(BalanceGame balanceGame) {
-        this.balanceGame = balanceGame;
-        if (!(balanceGame.getBalanceGameReply() == this)) {
-            balanceGame.setBalanceGameReply(this);
-        }
-    }
 
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
