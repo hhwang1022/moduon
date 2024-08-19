@@ -1,6 +1,7 @@
 package com.springboot.member.entity;
 
 import com.springboot.audit.Auditable;
+import com.springboot.board.balancegame.entity.BalanceGameReply;
 import com.springboot.board.photo.entity.Photo;
 import com.springboot.board.photo.entity.PhotoLike;
 import com.springboot.board.photo.entity.PhotoReply;
@@ -39,7 +40,7 @@ public class Member extends Auditable {
 
     @Enumerated(value = EnumType.STRING)
     @Column(length = 20, nullable = false)
-    private Generation memberGeneration = Generation.GENERATION_1020;
+    private Generation memberGeneration;
 
     @ElementCollection(fetch = FetchType.EAGER)
     private List<String> roles = new ArrayList<>();
@@ -98,6 +99,16 @@ public class Member extends Auditable {
         postReplies.add(postReply);
         if (postReply.getMember() != this) {
             postReply.setMember(this);
+        }
+    }
+
+    @OneToMany(mappedBy = "member", cascade = CascadeType.MERGE)
+    private List<BalanceGameReply> balanceGameReplies = new ArrayList<>();
+
+    public void setBalanceGameReplies(BalanceGameReply balanceGameReply) {
+        balanceGameReplies.add(balanceGameReply);
+        if (balanceGameReply.getMember() != this) {
+            balanceGameReply.setMember(this);
         }
     }
 
