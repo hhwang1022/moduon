@@ -1,7 +1,7 @@
 import './Menubar_0010.css';
 import React, { useState, useEffect } from 'react';
 
-const Menubar_0010 = () => {
+const Menubar_0010 = ({onClickHandler}) => {
   const [currentindex, setcurrentindex] = useState(0);
 
   let menu = ["게시판", "사진첩", "투표"];
@@ -15,6 +15,8 @@ const Menubar_0010 = () => {
       return <button className={(index === currentindex ? 'main0010menubtnactive' : 'main0010menubtn')}
         onClick={() => {
           setcurrentindex(index);
+          onClickHandler(index);
+          console.log("onClickHandler : " + onClickHandler);
         }}
       >{x}</button>
     })}

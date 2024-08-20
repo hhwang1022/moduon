@@ -1,0 +1,111 @@
+.photosumnailbox8090{
+    /* width: 150px;
+    height: 100px;
+    border: 1px solid black; */
+}
+
+.photosumnailsize8090{
+    margin: 10px;
+    width: 150px;
+    height: 160px;
+    object-fit: cover;
+    border: 2px solid white;
+}
+
+.photomainconent8090{
+    display: grid; 
+    grid-template-columns: 150px 150px 150px 150px;
+    column-gap: 20px;
+    gap: 20px;
+    padding: 10px;
+}
+
+.photolist8090mainbox{
+
+    margin: 50px;
+    margin-left: 100px;
+}
+
+/*--------------------------------------------*/
+
+.photosumnailsize9000{
+    margin: 10px;
+    width: 120px;
+    height: 140px;
+    object-fit: cover;
+    border: 1px solid #000000;
+}
+
+.photomainconent9000{
+    display: grid; 
+    grid-template-columns: 120px 120px 120px 120px;
+    gap: 30px;
+    row-gap: 10px;
+}
+
+.photolist9000mainbox{
+    margin-left: 70px;
+}
+
+.photosumnailbox9000{
+    /* width: 150px;
+    height: 100px;
+    border: 1px solid black; */
+}
+
+/*--------------------------------------------*/
+
+.photosumnailsize0010{
+    margin: 10px;
+    width: 130px;
+    height: 100px;
+    object-fit: cover;
+}
+
+.photosumnailbox0010{
+    /* width: 150px;
+    height: 100px;
+    border: 1px solid black; */
+}
+
+.photomainconent0010{
+    display: grid; 
+    margin-top: 10px;
+    grid-template-columns: 130px 130px 130px 130px;
+    column-gap: 16px;
+    gap: 9px;
+    justify-content: center;
+}
+
+.photolist0010mainbox{
+    margin-top: 20px;
+}
+
+/*-------------------------------------------------------------------------------------*/
+
+.photosumnailsize1020{
+    width: 200px;
+    height: 200px;
+    object-fit: cover;
+}
+
+.photosumnailbox1020{
+    /* width: 150px;
+    height: 100px;
+    border: 1px solid black; */
+}
+
+.photomainconent1020{
+    display: grid; 
+    margin-top: 30px;
+    /* grid-template-columns: 15vw 15vw 15vw; */
+    grid-template-columns: 200px 200px 200px;
+    column-gap: 4px;
+    row-gap: 6px;
+    margin-left: 5vw;
+    justify-content: center;
+}
+
+.photolist1020mainbox{
+    margin-top: 50px;
+}

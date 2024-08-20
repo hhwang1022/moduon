@@ -3,29 +3,37 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import Footer_9000 from './Footer_9000';
 
-import postsmallicon from '../../resource/9000_postsmallicon.png';
-import photosmallicon from '../../resource/9000_photosmallicon.png';
-import balencesmallicon from '../../resource/9000balencesmallicon.png';
 import Bgmbar from '../Bgmbar';
 import Mypage from '../Mypage';
 import Postlist from '../post/Postlist';
+import Photolist from '../photo/Photolist';
 
 
 const Main_9000 = () => {
 
-    const [currentindex, setcurrentindex] = useState(0);
+    const postsmallicon = require('../../resource/9000_postsmallicon.png');
+    const photosmallicon = require('../../resource/9000_photosmallicon.png');
+    const balencesmallicon = require('../../resource/9000balencesmallicon.png');
+    const postbigicon = require('../../resource/9000_postbigicon.png');
+    const photobigicon = require('../../resource/9000_photobigicon.png');
+    const balencebigicon = require('../../resource/9000balencebigicon.png');
+
+    const [currentindex, setcurrentindex] = useState(3);
 
     let categorys = [
         {
-            "src": postsmallicon,
+            "smallsrc": postsmallicon,
+            "bigsrc": postbigicon,
             "title": "게시판"
         },
         {
-            "src": photosmallicon,
+            "smallsrc": photosmallicon,
+            "bigsrc": photobigicon,
             "title": "사진첩"
         },
         {
-            "src": balencesmallicon,
+            "smallsrc": balencesmallicon,
+            "bigsrc": balencebigicon,
             "title": "투표"
         }
     ];
@@ -33,22 +41,33 @@ const Main_9000 = () => {
     const navigate = useNavigate();
 
     const Page = () => {
-        if(currentindex === 0){
+        if (currentindex === 0) {
             return (
                 <Postlist generation={"9000"} />
             );
         }
-        else if(currentindex === 1){
+        else if (currentindex === 1) {
+            return (
+                <Photolist generation={"9000"} />
+            );
+        }
+        else if (currentindex === 2) {
             return (
                 <Postlist generation={"9000"} />
             );
         }
-        else{
-            return (
-                <Postlist generation={"9000"} />
-            );
+        else {
+            return(
+                categorys.map((x, index) => {
+                    return <span><button
+                    onClick={() => {
+                        setcurrentindex(index);
+                    }}
+                    ><img src={x.bigsrc}/></button><span>{x.title}</span></span> ;
+                 })
+            );     
         }
-      };
+    };
 
     let balancedatas = [
         {
@@ -128,12 +147,15 @@ const Main_9000 = () => {
             </div>
             <div>
                 <div className='main9000windowcontentbox'>
-                    <Bgmbar generation={"9000"}/>
-                    <div className='main9000cstegorytab'><img src={categorys[currentindex].src} width={76} height={71} />{categorys[currentindex].title}</div>
+                    <Bgmbar generation={"9000"} />
+                    {currentindex !== 3 ?
+                        <div className='main9000cstegorytab'><img src={categorys[currentindex].smallsrc} width={76} height={71} />{categorys[currentindex].title}</div>
+                        : <></>
+                    }
                     <div className='main9000contentbox'>
-                    <Page/>
+                        <Page />
                     </div>
-                    <Mypage generation={"9000"}/>
+                    <Mypage generation={"9000"} />
                 </div>
             </div>
             <div className='main9000windowbottombarbackground'>PC통신에서 나눴던 첫 인터넷 채팅</div>

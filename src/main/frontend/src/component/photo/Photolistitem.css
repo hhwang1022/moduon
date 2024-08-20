@@ -1,0 +1,130 @@
+.photolist8090item{
+    height:40px;
+    border-bottom: 1px dashed rgb(145, 145, 145);
+    margin-left: 15px;
+    margin-right: 15px;
+    font-family: 'DungGeunMo';
+    color: white;
+}
+
+  .photoitem8090newtext{
+    font-weight: 900;
+    color: blue;
+    margin: 10px;
+  }
+
+  .photoitem8090hottext{
+    font-weight: 900;
+    color: tomato;
+  }
+
+ .photolist8090text{
+  font-family: 'DungGeunMo';
+  color: white;
+}
+
+.photosumnailname8090{
+    font-size: 12px;
+    text-align: center;
+    margin-top: -10px;
+    margin-left: 10px;
+    width: 150px;
+    height: 25px;
+    text-align: center;
+    object-fit: cover;
+    border: 2px solid white;
+    background-color: white;
+}
+
+/*---------------------------------------------------------*/
+
+.photolist9000item{
+  height:40px;
+  margin-left: 15px;
+  margin-right: 15px;
+  font-family: 'DOSIyagiMedium';
+}
+
+.photoitem9000newtext{
+  font-weight: 900;
+  color: rgb(0, 255, 98);
+  margin: 10px;
+}
+
+.photoitem9000hottext{
+  font-weight: 900;
+  color: tomato;
+}
+
+.photolist9000text{
+    font-family: 'DOSIyagiMedium';
+}
+
+.photosumnailname9000{
+    font-size: 12px;
+    text-align: center;
+    font-family: 'DOSIyagiMedium';
+}
+
+
+/*---------------------------------------------------------*/
+
+.photolist0010item{
+  height:40px;
+  border-bottom: 1px dashed rgb(145, 145, 145);
+  margin-left: 15px;
+  margin-right: 15px;
+  font-family: 'DungGeunMo';
+}
+
+.photoitem0010newtext{
+  font-weight: 900;
+  color: blue;
+  margin: 10px;
+}
+
+.photoitem0010hottext{
+  font-weight: 900;
+  color: tomato;
+}
+
+.photolist0010text{
+font-family: 'DungGeunMo';
+}
+
+.photosumnailname0010{
+    font-size: 12px;
+    text-align: center;
+}
+
+
+/*---------------------------------------------------------*/
+
+.photolist1020item{
+  height:40px;
+  border-bottom: 1px dashed rgb(145, 145, 145);
+  margin-left: 15px;
+  margin-right: 15px;
+  font-family: 'NotoSansKR';
+}
+
+.photoitem1020newtext{
+  font-weight: 900;
+  color: blue;
+  margin: 10px;
+}
+
+.photoitem1020hottext{
+  font-weight: 900;
+  color: tomato;
+}
+
+.photolist1020text{
+font-family: 'NotoSansKR';
+}
+
+.photosumnailname1020{
+    font-size: 12px;
+    text-align: center;
+}
+

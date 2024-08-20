@@ -1,17 +1,34 @@
-.hotpostlist1020title{
-    background-color: aqua;
+.hotpostlist8090title{
     font-size: 12pt;
     font-weight: 900;
     text-align: center;
-    font-family: 'DungGeunMo';
+    font-family: 'DOSIyagiMedium';
+    width: 100px;
+    margin: auto;
+    margin-bottom: 10pt;
+    color: red;
+}
+
+.hotpostlist8090item{
+    text-align: center;
+    font-family: 'DOSIyagiMedium';
+    margin: 7pt;
+    color: white;
+}
+
+.hotpostlist9000title{
+    font-size: 12pt;
+    font-weight: 900;
+    text-align: center;
+    font-family: 'DOSIyagiMedium';
     width: 100px;
     margin: auto;
     margin-bottom: 10pt;
 }
 
-.hotpostlist1020item{
+.hotpostlist9000item{
     text-align: center;
-    font-family: 'DungGeunMo';
+    font-family: 'DOSIyagiMedium';
     margin: 7pt;
 }
 
@@ -32,38 +49,20 @@
     margin: 7pt;
 }
 
-
-.hotpostlist9000title{
+.hotpostlist1020title{
     font-size: 12pt;
     font-weight: 900;
     text-align: center;
-    font-family: 'DOSIyagiMedium';
     width: 100px;
     margin: auto;
+    margin-top: 20px;
     margin-bottom: 10pt;
+    font-family: 'NotoSansKR';
 }
 
-.hotpostlist9000item{
+.hotpostlist1020item{
     text-align: center;
-    font-family: 'DOSIyagiMedium';
     margin: 7pt;
-}
-
-
-.hotpostlist8090title{
-    font-size: 12pt;
-    font-weight: 900;
-    text-align: center;
-    font-family: 'DOSIyagiMedium';
-    width: 100px;
-    margin: auto;
-    margin-bottom: 10pt;
-    color: red;
-}
-
-.hotpostlist8090item{
-    text-align: center;
-    font-family: 'DOSIyagiMedium';
-    margin: 7pt;
-    color: white;
+    font-family: 'NotoSansKR';
+    font-size: 10pt;
 }

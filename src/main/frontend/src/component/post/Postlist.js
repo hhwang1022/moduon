@@ -2,7 +2,7 @@ import './Postlist.css';
 import React, { useState, useEffect } from 'react';
 import PostlistItem from './PostlistItem';
 
-const Postlist_0010 = ({ generation }) => {
+const Postlist = ({ generation }) => {
 
     const [currentindex, setcurrentindex] = useState(0);
     const [searchkeyword, setsearchkeyword] = useState('');
@@ -80,15 +80,19 @@ const Postlist_0010 = ({ generation }) => {
             <select className={'postlistselect' + generation} onChange={(e) => {
                 setsorttype(e.target.value);
             }}>
-                <option value="SORT_NEW">새글 순</option>
-                <option value="SORT_OLD">오래된글 순</option>
-                <option value="SORT_VIEW_MAX">조회수 많은 순</option>
-                <option value="SORT_VIEW_MIN">조회수 적은 순</option>
-                <option value="SORT_LIKE_MANY">좋아요 많은 순</option>
-                <option value="SORT_LIKE_MIN">좋아요 적은 순</option>
+                <option className={"postlistselectitem" + generation} value="SORT_NEW">새글 순</option>
+                <option className={"postlistselectitem" + generation} value="SORT_OLD">오래된글 순</option>
+                <option className={"postlistselectitem" + generation} value="SORT_VIEW_MAX">조회수 많은 순</option>
+                <option className={"postlistselectitem" + generation} value="SORT_VIEW_MIN">조회수 적은 순</option>
+                <option className={"postlistselectitem" + generation} value="SORT_LIKE_MANY">좋아요 많은 순</option>
+                <option className={"postlistselectitem" + generation} value="SORT_LIKE_MIN">좋아요 적은 순</option>
             </select>
             <button className={"postpagewritebtn"+generation}>글쓰기</button>
         </div>
+        {generation === "1020" ? 
+        <div className={"postlist" + generation + "margin"}>{postlist.map((x, index) => {
+            return <PostlistItem post={x} generation={generation} />
+        })}</div> :
         <table className={'postlist' + generation + 'margin'}  >
             <tr className={'postlist' + generation + 'title'} >
                 <td width="50"></td>
@@ -104,6 +108,7 @@ const Postlist_0010 = ({ generation }) => {
                 })}
             </tbody>
         </table>
+        }
         <div className='postmiddle'>
             <div>
                 <button className={'pagebtn' + generation} onClick={() => {
@@ -132,4 +137,4 @@ const Postlist_0010 = ({ generation }) => {
     </div>);
 };
 
-export default Postlist_0010;
+export default Postlist;

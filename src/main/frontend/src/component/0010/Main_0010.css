@@ -5,17 +5,24 @@
     font-style: normal;
 }
 
-.main0010background{
+@font-face {
+    font-family: 'NotoSansKR';
+    font-style: normal;
+    font-weight: 400;
+    src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'), url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'), url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');
+}
+
+
+.main0010background {
     width: 100vw;
     height: 100vh;
 
     background:
-		linear-gradient(to bottom, transparent 38px, #ddd 38px) 0 0 / 100vw 40px repeat-y,
-		linear-gradient(to right, transparent 38px, #ddd 38px) 0 0 / 40px 100vh repeat-x
-	    rgb(141, 141, 141);
+        linear-gradient(to bottom, transparent 38px, #ddd 38px) 0 0 / 100vw 40px repeat-y,
+        linear-gradient(to right, transparent 38px, #ddd 38px) 0 0 / 40px 100vh repeat-x rgb(141, 141, 141);
 }
 
-.main0010outbox{
+.main0010outbox {
     background-color: #00c3ff;
     border-radius: 20px;
     border: 1px solid #000000;
@@ -26,7 +33,7 @@
     position: relative;
 }
 
-.main0010dotbox{
+.main0010dotbox {
     border: 2px dashed white;
     border-radius: 10px;
     left: 15px;
@@ -36,7 +43,7 @@
     position: absolute;
 }
 
-.main0010inbox{
+.main0010inbox {
     width: 905px;
     height: 560px;
     background-color: white;
@@ -47,7 +54,7 @@
     z-index: 3;
 }
 
-.main0010contentbox{
+.main0010contentbox {
     width: 600px;
     height: 470px;
     background-color: white;
@@ -60,25 +67,25 @@
     overflow-y: auto;
 }
 
-.main0010category{
+.main0010category {
     font-family: 'DungGeunMo';
     color: white;
     font-size: 20pt;
     margin-left: 20px;
 }
 
-.main1020categorybuttonarea{
+.main1020categorybuttonarea {
     margin-left: 120px;
 }
 
-.main1020categorybutton{
+.main1020categorybutton {
     font-size: 25pt;
     margin-left: 80px;
     top: -25px;
     position: relative;
 }
 
-.main0010footer{
+.main0010footer {
     top: 510px;
     left: 20px;
     margin: 15px;

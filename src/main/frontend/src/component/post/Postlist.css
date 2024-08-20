@@ -42,15 +42,14 @@
 }
 
 .postpagebtn8090 {
-    background-color: #b8b8b8;
-    margin-left: 15px;
-    color: white;
+    margin-left: 10px;
+    bottom: 100px;
     width: 80px;
     height: 30px;
-    padding: 1px 5px; 
-    border: 2px solid #666666; 
-    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); 
-    transition: all 0.3s ease; 
+    border: 2px solid #000000;
+    font-family: 'DOSIyagiMedium';
+    background-color: #008080;
+    color: white;
 }
 
 .postpagebtn8090:active {
@@ -64,11 +63,14 @@
 }
 
 .postpagewritebtn8090{
-    color: white;
     margin-left: 10px;
+    bottom: 100px;
     width: 80px;
     height: 30px;
-    border: 1px dashed #444444;
+    border: 2px solid #000000;
+    font-family: 'DOSIyagiMedium';
+    background-color: #008080;
+    color: white;
 }
 
 .postlistselect8090{
@@ -78,7 +80,18 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
+}
 
+.postlistselectitem8090{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
 }
 
 /*--------------------------------------------------------*/
@@ -97,11 +110,13 @@
 .pagebtnselect9000{
     color: #ff7b00;
     margin: 5px;
+    font-family: 'DOSIyagiMedium';
 }
 
 .pagebtn9000{
     color: black;
     margin: 5px;
+    font-family: 'DOSIyagiMedium';
 }
 
 .postlist9000margin{
@@ -113,25 +128,39 @@
 
 }
 
-.postpagebtn9000{
-    margin-left: 10px;
-    width: 80px;
-    height: 30px;
-    border: 1px dashed #444444;
-}
-
 .postpagewritebtn9000{
     margin-left: 10px;
     width: 80px;
     height: 30px;
-    border: 1px dashed #444444;
+    border: 2px solid #000000;
+    font-family: 'DOSIyagiMedium';
 }
+
+.postpagebtn9000{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 2px solid #000000;
+    font-family: 'DOSIyagiMedium';
+}
+
 
 .postlistselect9000{
     width: 200px;
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
-    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
+.postlistselectitem0010{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
     padding: 5px;
     font-family: 'Roboto';
     font-style: normal;
@@ -198,6 +227,19 @@
     line-height: 16px;
 }
 
+.postlistselectitem0010{
+    width: 200px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 10px;
+    padding: 5px;
+    font-family: 'Roboto';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+}
+
 /*--------------------------------------------------------*/
 
 .postlist1020mainbox{
@@ -212,46 +254,67 @@
 
 .pagebtnselect1020{
     color: #ff7b00;
+    font-family: 'NotoSansKR';
     margin: 5px;
 }
 
 .pagebtn1020{
     color: black;
+    font-family: 'NotoSansKR';
     margin: 5px;
 }
 
 .postlist1020margin{
-    margin: 15px;
     width: 750px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .postlist1020line{
-    border-bottom: 1px dashed #444444;
+    border-bottom: 2px solid black;
+    width: 600px;
+    height: 100px;
+    padding-top: 15px;
 }
 
 .postpagebtn1020{
     margin-left: 10px;
     width: 80px;
     height: 30px;
-    border: 1px dashed #444444;
+    border: 1px solid black;
+    font-family: 'NotoSansKR';
 }
 
 .postpagewritebtn1020{
     margin-left: 10px;
     width: 80px;
     height: 30px;
-    border: 1px dashed #444444;
+    border: 1px solid black;
+    font-family: 'NotoSansKR';
 }
 
 .postlistselect1020{
-    width: 200px;
+    margin-left: 600px;
+    width: 100px;
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
-    border-radius: 10px;
     padding: 5px;
-    font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
+    font-family: 'NotoSansKR';
+}
+
+.postlistselectitem1020{
+    width: 100px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    padding: 5px;
+    font-style: normal;
+    font-weight: 400;
+    font-size: 14px;
+    line-height: 16px;
+    font-family: 'NotoSansKR';
 }

@@ -26,7 +26,9 @@ const Login = () => {
       alert('로그인 성공!');
       if(response !== undefined)
       {
-
+        accessToken = response.headers.get("Authorization").replace('Bearer ', '');
+        localStorage.setItem('accessToken', accessToken);
+        console.log('accessToken : ' + accessToken);
       }
     } catch (error) {
       alert(JSON.stringify(error.message));

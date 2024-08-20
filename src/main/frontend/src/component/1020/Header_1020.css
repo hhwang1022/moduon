@@ -4,6 +4,11 @@
     display: flex;
   }
 
+  .headermenu{
+    display: flex;
+    justify-content: center;
+  }
+
   .padding{
     margin: 5px;
   }
@@ -35,4 +40,5 @@
 
   .title{
     font-weight: 900;
+    font-family: 'NotoSansKR';
   }

@@ -43,6 +43,14 @@
     color: white;
 }
 
+.main8090memberbutton{
+    font-family: 'DungGeunMo';
+    font-size: 8pt;
+    margin: 2px;
+    color: white;
+
+}
+
 /*---------------------------------------------------------------*/
 
 .main9000memberbox{
@@ -159,13 +167,11 @@
 .main1020memberbox{
     width: 250px;
     height: 520px;
-    background-color: rgb(223, 223, 223);
     margin: 10px;
-    margin-left: 630px;
-    margin-top: 2px;
+   right: 100px;
+    margin-top: 300px;
     border-radius: 10px;
     position: absolute;
-    border: 1px solid #000000;
     z-index: 3;
     top: 20px;
 }
@@ -173,7 +179,6 @@
 .main1020memberinbox{
     width: 230px;
     height: 500px;
-    background-color: rgb(255, 255, 255);
     margin: 10px;
     border-radius: 10px;
     position: absolute;
@@ -182,17 +187,17 @@
 .main1020membertitle{
     margin-top: 40px;
     text-align: center;
-    color: #ff7b00;
+    font-family: 'NotoSansKR';
     font-weight: 900;
-    font-family: 'DungGeunMo';
+
 }
 
 .main1020membertitlegeneration{
     text-align: center;
-    color: #ff7b00;
+    font-family: 'NotoSansKR';
     font-weight: 900;
     font-size: 8pt;
-    font-family: 'DungGeunMo';
+
 }
 
 .main1020membercenter{
@@ -203,9 +208,9 @@
 }
 
 .main1020memberpoint{
-    font-family: 'DungGeunMo';
+
     text-align: center;
-    color: #00c3ff;
+    font-family: 'NotoSansKR';
     font-weight: 900;
 }
 
@@ -214,12 +219,4 @@
     flex-direction: row;
     justify-content: center;
     align-items: center;
-}
-
-.main8090memberbutton{
-    font-family: 'DungGeunMo';
-    font-size: 8pt;
-    margin: 2px;
-    color: white;
-
 }
