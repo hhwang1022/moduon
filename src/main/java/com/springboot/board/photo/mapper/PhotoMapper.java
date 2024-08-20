@@ -7,7 +7,7 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {PhotoReplyMapper.class})
 public interface PhotoMapper {
 
     @Mapping(source = "memberId", target = "member.memberId")
@@ -16,6 +16,7 @@ public interface PhotoMapper {
     Photo photoPatchDtoToPhoto(PhotoDto.Patch requestBody);
 
     @Mapping(source = "member.memberId", target = "memberId")
+    @Mapping(target = "photoReplyList", qualifiedByName = "photoReplyToPhotoReplyResponse")
     PhotoDto.Response photoToPhotoResponseDto(Photo photo);
 
     List<PhotoDto.Response> photosToPhotoResponseDtos(List<Photo> photos);

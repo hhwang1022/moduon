@@ -1,6 +1,7 @@
 package com.springboot.board.post.dto;
 
 import com.springboot.board.post.entity.Post.Category;
+import com.springboot.board.post.entity.PostReply;
 import com.springboot.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,6 +10,7 @@ import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class PostDto  {
 
@@ -83,6 +85,7 @@ public class PostDto  {
         private String image3;
         private String image4;
         private String image5;
+        private List<PostReplyDto.Response> postReplyList;
 
     }
 }

@@ -8,6 +8,9 @@ import com.springboot.exception.BusinessLogicException;
 import com.springboot.exception.ExceptionCode;
 import com.springboot.member.entity.Member;
 import com.springboot.member.service.MemberService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -62,6 +65,10 @@ public class PhotoReplyService {
         Optional.ofNullable(photoReply.getBody())
                 .ifPresent(body -> photoReply.setBody(body));
         return photoReplyRepository.save(findPhotoReply);
+    }
+
+    public Page<PhotoReply> findPhotoReplies(int page, int size) {
+        return photoReplyRepository.findAll(PageRequest.of(page, size, Sort.by("photoReplyId").descending()));
     }
 
     public void deletePhotoReply(long photoReplyId) {

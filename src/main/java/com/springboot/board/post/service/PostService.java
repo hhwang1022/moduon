@@ -135,4 +135,9 @@ public class PostService {
                 new BusinessLogicException(ExceptionCode.POST_NOT_FOUND));
         return findPost;
     }
+
+    public Post findPostById(long postId) {
+        return postRepository.findById(postId)
+                .orElseThrow(() -> new IllegalArgumentException("Post not found for id : " + postId));
+    }
 }

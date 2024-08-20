@@ -5,6 +5,7 @@ import com.springboot.board.photo.dto.PhotoReplyDto;
 import com.springboot.board.photo.entity.PhotoReply;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 
 import java.util.List;
 
@@ -12,7 +13,6 @@ import java.util.List;
 public interface PhotoReplyMapper {
 
     @Mapping(source = "memberId", target = "member.memberId")
-    @Mapping(source = "photoId", target = "photo.photoId")
     PhotoReply photoReplyPostDtoToPhotoReply(PhotoReplyDto.Post requestBody);
 
     PhotoReply photoReplyPatchDtoToPhotoReply(PhotoReplyDto.Patch requestBody);
@@ -21,5 +21,6 @@ public interface PhotoReplyMapper {
     @Mapping(source = "photo.photoId", target = "photoId")
     PhotoReplyDto.Response photoReplyToPhotoReplyResponseDto(PhotoReply photoReply);
 
+    @Named("photoReplyToPhotoReplyResponse")
     List<PhotoReplyDto.Response> photoReplyToPhotoReplyResponseDtos(List<PhotoReply> photoReplies);
 }

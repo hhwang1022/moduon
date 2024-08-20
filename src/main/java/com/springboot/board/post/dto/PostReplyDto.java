@@ -14,8 +14,6 @@ public class PostReplyDto {
 
         private long memberId;
 
-        private long postId;
-
         @NotBlank
         private String body;
     }

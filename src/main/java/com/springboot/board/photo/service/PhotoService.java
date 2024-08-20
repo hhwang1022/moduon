@@ -110,6 +110,11 @@ public class PhotoService {
                 new BusinessLogicException(ExceptionCode.PHOTO_NOT_FOUND));
         return findPhoto;
     }
+
+    public Photo findPhotoById(long photoId) {
+        return photoRepository.findById(photoId)
+                .orElseThrow(() -> new IllegalArgumentException("Photo not found for id : " + photoId));
+    }
 }
 
 
