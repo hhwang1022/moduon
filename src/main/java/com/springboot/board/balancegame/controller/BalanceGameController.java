@@ -79,7 +79,6 @@ public class BalanceGameController {
 											 @RequestParam String generation) {
 		Page<BalanceGame> pageBalanceGames = balanceGameService.findBalanceGames(page - 1, size);
 		List<BalanceGame> balanceGames = pageBalanceGames.stream()
-				.filter(value -> value.getBalanceGameStatus() == BalanceGame.BalanceGameStatus.INACTIVE)
 				.filter(value -> value.getBalanceGameGeneration().getGeneration().contains(generation))
 				.toList();
 
@@ -88,12 +87,22 @@ public class BalanceGameController {
 				HttpStatus.OK);
 	}
 
-//	@GetMapping("/main")
-//	public ResponseEntity getBalanceGamesByGeneration(@Positive @RequestParam int page,
-//													  @Positive @RequestParam int size) {
-//		Page<BalanceGame> pageBalanceGames = balanceGameService.findBalanceGames(page - 1, size);
-//		List<BalanceGame> balanceGames =
-//	}
+	@GetMapping
+	public ResponseEntity getBalanceGamesByGeneration(@Positive @RequestParam int page,
+													  @Positive @RequestParam int size) {
+		Page<BalanceGame> pageBalanceGames = balanceGameService.findBalanceGames(page - 1, size);
+		List<BalanceGame> balanceGames = pageBalanceGames.stream()
+				.filter(value -> value.getBalanceGameStatus() == BalanceGame.BalanceGameStatus.ACTIVE)
+				.toList();
+
+		balanceGames.stream()
+				.forEach(value ->
+						value.setBalanceGameStatus(balanceGameService.compareToLocalDateTime(value.getEndDate())));
+
+		return new ResponseEntity<>(
+				new MultiResponseDto<>(mapper.balanceGameToBalanceGameDtoList(balanceGames), pageBalanceGames),
+				HttpStatus.OK);
+	}
 
 	@DeleteMapping("/{balance-game-id}")
 	public ResponseEntity deleteBalanceGame(@PathVariable("balance-game-id") Long balanceGameId) {
