@@ -9,6 +9,7 @@ import com.springboot.board.photo.entity.PhotoReply;
 import com.springboot.board.post.entity.Post;
 import com.springboot.board.post.entity.PostLike;
 import com.springboot.board.post.entity.PostReply;
+import com.springboot.share.entity.Share;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -153,4 +154,15 @@ public class Member extends Auditable {
             photoReply.setMember(this);
         }
     }
+
+    @OneToMany(mappedBy = "member")
+    private List<Share> shareList = new ArrayList<>();
+
+    public void setShareList(Share share) {
+        shareList.add(share);
+        if (share.getMember() != this) {
+            share.setMember(this);
+        }
+    }
+
 }
