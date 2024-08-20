@@ -12,6 +12,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
+
 @RestController
 @RequestMapping("/balancegame-replies")
 public class BalanceGameReplyController {
@@ -20,18 +22,19 @@ public class BalanceGameReplyController {
     private final BalanceGameReplyService replyService;
     private final MemberService memberService;
     private final BalanceGameService balanceGameService;
+    private final BalanceGameReplyService balanceGameReplyService;
 
     public BalanceGameReplyController(BalanceGameReplyMapper replyMapper, BalanceGameReplyService replyService,
-                                      MemberService memberService, BalanceGameService balanceGameService) {
+                                      MemberService memberService, BalanceGameService balanceGameService, BalanceGameReplyService balanceGameReplyService) {
         this.replyMapper = replyMapper;
         this.replyService = replyService;
         this.memberService = memberService;
         this.balanceGameService = balanceGameService;
+        this.balanceGameReplyService = balanceGameReplyService;
     }
 
     @PostMapping
     public ResponseEntity postBalanceGameReply(@RequestBody BalanceGameReplyDto.Post postDto) {
-
         BalanceGameReply findReply = replyMapper.balanceGameReplyPostToBalanceGameReply(postDto);
         findReply.setBalanceGame(balanceGameService.findVerifiedBalanceGame(postDto.getBalanceGameId()));
         findReply.setMember(memberService.findVerifiedMember(postDto.getMemberId()));
@@ -55,5 +58,13 @@ public class BalanceGameReplyController {
         return new ResponseEntity<>(
                 new SingleResponseDto<>(reply),
                 HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{balance-game-reply-id}")
+    public ResponseEntity deleteBalanceGameReply(@PathVariable("balance-game-reply-id") Long balanceGameReplyId,
+                                                 @Valid @RequestParam Long memberId) {
+        balanceGameReplyService.deleteBalanceGameReply(balanceGameReplyId, memberId);
+
+        return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

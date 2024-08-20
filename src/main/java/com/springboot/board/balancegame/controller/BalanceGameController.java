@@ -8,6 +8,7 @@ import com.springboot.dto.MultiResponseDto;
 import com.springboot.dto.SingleResponseDto;
 import com.springboot.exception.BusinessLogicException;
 import com.springboot.exception.ExceptionCode;
+import com.springboot.utils.UriCreator;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpHeaders;
@@ -25,6 +26,7 @@ import java.util.List;
 @Validated
 @Slf4j
 public class BalanceGameController {
+	private final static String BALANCEGAME_DEFAULT_URL = "/balancegames";
 	private final BalanceGameService balanceGameService;
 	private final BalanceGameMapper mapper;
 
@@ -40,8 +42,7 @@ public class BalanceGameController {
 
 		return new ResponseEntity<>(
 				new SingleResponseDto<>(createBalanceGame),
-				HttpStatus.OK
-		);
+				HttpStatus.OK);
 	}
 
 	@PatchMapping("/{balance-game-id}")
@@ -64,12 +65,13 @@ public class BalanceGameController {
 												  @RequestParam String generation) {
 		Page<BalanceGame> pageBalanceGames = balanceGameService.findBalanceGames(page - 1, size);
 		List<BalanceGame> balanceGames = pageBalanceGames.stream()
-				.filter(value -> value.getBalanceGameStatus() == BalanceGame.BalanceGameStatus.ACTIVE)
 				.filter(value -> value.getBalanceGameGeneration().getGeneration().contains(generation))
+				.filter(value -> balanceGameService.isAfterNow(value.getEndDate()))
 				.toList();
 
 		return new ResponseEntity<>(
-				new MultiResponseDto<>(balanceGames, pageBalanceGames),
+				new MultiResponseDto<>(mapper.balanceGameToBalanceGameDtoList(balanceGames),
+						pageBalanceGames),
 				HttpStatus.OK);
 	}
 
@@ -80,10 +82,12 @@ public class BalanceGameController {
 		Page<BalanceGame> pageBalanceGames = balanceGameService.findBalanceGames(page - 1, size);
 		List<BalanceGame> balanceGames = pageBalanceGames.stream()
 				.filter(value -> value.getBalanceGameGeneration().getGeneration().contains(generation))
+				.filter(value -> !balanceGameService.isAfterNow(value.getEndDate()))
 				.toList();
 
 		return new ResponseEntity<>(
-				new MultiResponseDto<>(balanceGames, pageBalanceGames),
+				new MultiResponseDto<>(mapper.balanceGameToBalanceGameDtoList(balanceGames),
+						pageBalanceGames),
 				HttpStatus.OK);
 	}
 
@@ -92,15 +96,12 @@ public class BalanceGameController {
 													  @Positive @RequestParam int size) {
 		Page<BalanceGame> pageBalanceGames = balanceGameService.findBalanceGames(page - 1, size);
 		List<BalanceGame> balanceGames = pageBalanceGames.stream()
-				.filter(value -> value.getBalanceGameStatus() == BalanceGame.BalanceGameStatus.ACTIVE)
+				.filter(value -> balanceGameService.isAfterNow(value.getEndDate()))
 				.toList();
 
-		balanceGames.stream()
-				.forEach(value ->
-						value.setBalanceGameStatus(balanceGameService.compareToLocalDateTime(value.getEndDate())));
-
 		return new ResponseEntity<>(
-				new MultiResponseDto<>(mapper.balanceGameToBalanceGameDtoList(balanceGames), pageBalanceGames),
+				new MultiResponseDto<>(balanceGames,
+						pageBalanceGames),
 				HttpStatus.OK);
 	}
 

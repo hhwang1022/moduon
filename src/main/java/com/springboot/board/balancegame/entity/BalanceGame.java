@@ -12,6 +12,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -96,15 +97,25 @@ public class BalanceGame extends Auditable {
 
 	@OneToMany(mappedBy = "balanceGame", cascade = {CascadeType.PERSIST})
 	@JsonManagedReference
-	private List<BalanceGameReply> balanceGameRepliList;
+	private List<BalanceGameReply> balanceGameReplesiList = new ArrayList<>();
+
+	public void setBalanceGameRepliesList(BalanceGameReply balanceGameReplies) {
+		balanceGameReplesiList.add(balanceGameReplies);
+		if (balanceGameReplies.getBalanceGame() != this) {
+			balanceGameReplies.setBalanceGame(this);
+		}
+	}
 
 	@OneToMany(mappedBy = "balanceGame", cascade = {CascadeType.PERSIST})
 	@JsonManagedReference
-	private List<Share> shareList;
+	private List<Share> shareList = new ArrayList<>();
 
 	@ManyToOne
 	@JoinColumn(name = "MEMBER_ID")
 	@JsonBackReference
 	private Member member;
 
+	@OneToMany(mappedBy = "balanceGame", cascade = {CascadeType.PERSIST})
+	@JsonManagedReference
+	private List<BalanceGameVote> balanceGameVoteList = new ArrayList<>();
 }

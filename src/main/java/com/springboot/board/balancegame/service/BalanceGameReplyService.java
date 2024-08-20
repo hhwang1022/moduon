@@ -37,6 +37,18 @@ public class BalanceGameReplyService {
         return balanceGameReplyRepository.save(findBalanceGameReply);
     }
 
+    public void deleteBalanceGameReply(Long balanceGameReplyId, Long memberId) {
+        balanceGameReplyRepository.findById(balanceGameReplyId).ifPresent(balanceGameReply -> {
+            if (balanceGameReply.getMember().getMemberId().equals(memberId)) {
+                balanceGameReply.setReplyStatus(BalanceGameReply.BalanceGameReplyStatus.DELETED);
+                balanceGameReplyRepository.save(balanceGameReply);
+            }
+            else {
+                throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND);
+            }
+        });
+    }
+
     public BalanceGameReply findVerifiedBalanceGameReply(long balanceGameReplyId) {
         Optional<BalanceGameReply> optionalBalanceGameReply =
                 balanceGameReplyRepository.findById(balanceGameReplyId);
