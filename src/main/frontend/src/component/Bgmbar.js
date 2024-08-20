@@ -9,7 +9,7 @@ import sound5 from '../resource/bgm_test5.mp3';
 const Bgmbar = ({ generation }) => {
 
     const [currentindex, setcurrentindex] = useState(0);
-    const bgm = useRef(new Audio());
+    const bgm = useRef(document.getElementById('bgmplayer'));
 
     const musiclist = [
         {

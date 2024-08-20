@@ -3,16 +3,16 @@ import './Header_1020.css';
 import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
 
-const Header_1020 = ({ title, setcurrentindex }) => {
+const Header_1020 = ({ title, setcurrentindex}) => {
   const [currenttitleindex, setcurrenttitleindex] = useState(0);
   const navigate = useNavigate();
 
-  const titles = ["투표", "갤러리", "게시판"];
+  const titles = ["투표", "갤러리", "게시판", "회원가입", "", "로그인"];
 
   return (
     <div>
       <div className="header">
-        <span>𝑴𝒐𝒅𝒖𝒐𝒏</span>
+        <span className="header1020maintitle">𝑴𝒐𝒅𝒖𝒐𝒏</span>
         <div className="right">
           <img className="padding" src="https://cdn-icons-png.flaticon.com/512/25/25424.png" width={30} height={30} />
           <img className="padding" src="https://cdn-icons-png.flaticon.com/512/109/109594.png" width={30} height={30} />
@@ -64,8 +64,11 @@ const Header_1020 = ({ title, setcurrentindex }) => {
       <div className="header title">
         {titles[currenttitleindex]}
         <div className="right">
-          <img className="padding" src="https://static-00.iconduck.com/assets.00/plus-icon-512x512-q1puivky.png" width={30} height={30} />
-          <img className="padding" src="https://w7.pngwing.com/pngs/968/90/png-transparent-computer-icons-bullet-list-miscellaneous-angle-text-thumbnail.png" width={30} height={30} />
+          <button onClick={() => {
+            setcurrentindex(3);
+            setcurrenttitleindex(3);
+          }}><img className="padding" src="https://static-00.iconduck.com/assets.00/plus-icon-512x512-q1puivky.png" width={30} height={30} /></button>
+          <button onClick={setcurrentindex}><img className="padding" src="https://w7.pngwing.com/pngs/968/90/png-transparent-computer-icons-bullet-list-miscellaneous-angle-text-thumbnail.png" width={30} height={30} /></button>
         </div>
       </div>
     </div>
