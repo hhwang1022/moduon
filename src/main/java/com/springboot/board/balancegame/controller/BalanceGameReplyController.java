@@ -9,10 +9,8 @@ import com.springboot.dto.SingleResponseDto;
 import com.springboot.member.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.validation.annotation.Validated;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/balancegame-replies")
@@ -33,11 +31,26 @@ public class BalanceGameReplyController {
 
     @PostMapping
     public ResponseEntity postBalanceGameReply(@RequestBody BalanceGameReplyDto.Post postDto) {
+
         BalanceGameReply findReply = replyMapper.balanceGameReplyPostToBalanceGameReply(postDto);
         findReply.setBalanceGame(balanceGameService.findVerifiedBalanceGame(postDto.getBalanceGameId()));
+        findReply.setMember(memberService.findVerifiedMember(postDto.getMemberId()));
         BalanceGameReply createReply = replyService.createBalanceGameReply(findReply);
 
         BalanceGameReplyDto.Response reply = replyMapper.balanceGameToBalanceGameResponse(createReply);
+
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(reply),
+                HttpStatus.OK);
+    }
+
+    @PatchMapping("/{balance-game-reply-id}")
+    public ResponseEntity patchBalanceGameReply(@PathVariable("balance-game-reply-id") Long balanceGameReplyId,
+                                                @Validated @RequestBody BalanceGameReplyDto.Patch patchDto) {
+        patchDto.setBalanceGameReplyId(balanceGameReplyId);
+
+        BalanceGameReply reply =
+                replyService.updateBalanceGameReply(replyMapper.balanceGameReplyPatchToBalanceGameReply(patchDto));
 
         return new ResponseEntity<>(
                 new SingleResponseDto<>(reply),

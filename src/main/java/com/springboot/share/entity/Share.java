@@ -1,5 +1,7 @@
 package com.springboot.share.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.springboot.board.balancegame.entity.BalanceGame;
 import com.springboot.member.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -26,4 +28,9 @@ public class Share {
             member.setShareList(this);
         }
     }
+
+    @ManyToOne
+    @JoinColumn(name = "BALNACE_GAME_ID")
+    @JsonBackReference
+    private BalanceGame balanceGame;
 }
