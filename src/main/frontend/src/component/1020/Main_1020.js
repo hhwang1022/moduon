@@ -9,6 +9,8 @@ import Postlist from '../post/Postlist';
 import Photolist from '../photo/Photolist';
 import Balancegamelist from '../balancegame/Balancegamelist';
 import Mypage from '../Mypage';
+import Join from '../Join';
+import Login from '../Login';
 
 const Main_1020 = () => {
 
@@ -46,6 +48,16 @@ const Main_1020 = () => {
         else if (currentindex === 2) {
             return (
                 <Postlist generation={"1020"} />
+            );
+        }
+        else if(currentindex === 3){
+            return (
+                <Join successhandler={setcurrentindex}/>
+            );
+        }
+        else if(currentindex === 5){
+            return (
+                <Login successhandler={setcurrentindex}/>
             );
         }
         else {
@@ -187,7 +199,7 @@ const Main_1020 = () => {
         <Header_1020 setcurrentindex={setcurrentindex}></Header_1020>
         <div className={'main1020' + (currentindex === 1 ? " main1020photo" : "")}>
             <Page />
-           {currentindex !== 3 ? <Mypage generation={"1020"}></Mypage> : <></> } 
+           {currentindex !== 4 ? <Mypage generation={"1020"}></Mypage> : <></> } 
         </div>
     </div>);
 };

@@ -82,7 +82,6 @@ public class BalanceGameController {
 				.filter(value -> value.getBalanceGameGeneration().getGeneration().contains(generation))
 				.toList();
 
-
 		return new ResponseEntity<>(
 				new MultiResponseDto<>(balanceGames, pageBalanceGames),
 				HttpStatus.OK);
