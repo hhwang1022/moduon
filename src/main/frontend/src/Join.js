@@ -19,7 +19,7 @@ const Join = () => {
 
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8080/v1/members/join',
+        'http://127.0.0.1:8080/members',
         {
             email : id,
             password : password,
