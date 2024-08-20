@@ -12,6 +12,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.time.LocalDateTime;
 import java.util.Optional;
 
 @Transactional
@@ -74,5 +75,12 @@ public class BalanceGameService {
 				);
 
 		return findBalanceGame;
+	}
+
+	public void compareToLocalDateTime(LocalDateTime StartTime, LocalDateTime EndTime) {
+//		switch(StartTime.compareTo(EndTime)) {
+//			case -1:
+//				throw new BusinessLogicException()
+//		}
 	}
 }

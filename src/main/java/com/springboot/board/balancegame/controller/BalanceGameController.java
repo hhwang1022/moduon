@@ -10,6 +10,7 @@ import com.springboot.exception.BusinessLogicException;
 import com.springboot.exception.ExceptionCode;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
@@ -35,8 +36,8 @@ public class BalanceGameController {
 	@PostMapping
 	public ResponseEntity postBalanceGame(@Validated @RequestBody BalanceGameDto.Post requestBody) {
 		BalanceGame balanceGame = mapper.balanceGamePostToBalanceGame(requestBody);
-
 		BalanceGame createBalanceGame = balanceGameService.createBalanceGame(balanceGame);
+
 
 		return new ResponseEntity<>(
 				new SingleResponseDto<>(createBalanceGame),
@@ -60,8 +61,8 @@ public class BalanceGameController {
 
 	@GetMapping("/this-week")
 	public ResponseEntity getThisWeekBalanceGames(@Positive @RequestParam int page,
-										  @Positive @RequestParam int size,
-										  @RequestParam String generation) {
+												  @Positive @RequestParam int size,
+												  @RequestParam String generation) {
 		Page<BalanceGame> pageBalanceGames = balanceGameService.findBalanceGames(page - 1, size);
 		List<BalanceGame> balanceGames = pageBalanceGames.stream()
 				.filter(value -> value.getBalanceGameStatus() == BalanceGame.BalanceGameStatus.ACTIVE)
