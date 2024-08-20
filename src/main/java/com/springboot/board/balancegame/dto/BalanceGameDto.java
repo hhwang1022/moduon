@@ -1,6 +1,6 @@
 package com.springboot.board.balancegame.dto;
 
-import com.springboot.board.balancegame.entity.BalanceGame;
+import com.springboot.board.balancegame.entity.BalanceGameReply;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -50,5 +50,21 @@ public class BalanceGameDto {
 		private List<Integer> endDateList;
 
 		private String generation;
+	}
+
+	@Getter
+	@AllArgsConstructor
+	public static class Response {
+		private long balanceGameId;
+		private String title;
+		private String voteItem1;
+		private String voteItem2;
+		private String voteImage1;
+		private String voteImage2;
+		private Long votePoint1;
+		private Long votePoint2;
+		private LocalDateTime createDate;
+		private LocalDateTime endDate;
+		private BalanceGameReply reply;
 	}
 }

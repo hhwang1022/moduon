@@ -1,5 +1,7 @@
 package com.springboot.board.balancegame.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.springboot.audit.Auditable;
 import com.springboot.member.entity.Member;
 import lombok.Getter;
@@ -9,6 +11,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import java.time.LocalDateTime;
 import java.util.Arrays;
+import java.util.List;
 
 @NoArgsConstructor
 @Getter
@@ -45,16 +48,6 @@ public class BalanceGame extends Auditable {
 
 	@Column(name = "END_DATE")
 	private LocalDateTime endDate;
-
-	@OneToOne(mappedBy = "balanceGame", cascade = {CascadeType.PERSIST, CascadeType.REMOVE})
-	private BalanceGameReply balanceGameReply;
-
-	public void setBalanceGameReply(BalanceGameReply balanceGameReply) {
-		this.balanceGameReply = balanceGameReply;
-		if (balanceGameReply.getBalanceGame() != this) {
-			balanceGameReply.setBalanceGame(this);
-		}
-	}
 
 	@Enumerated(value = EnumType.STRING)
 	@Column(nullable = false)
@@ -98,4 +91,8 @@ public class BalanceGame extends Auditable {
 					.orElse(null);
 		}
 	}
+
+	@OneToMany(mappedBy = "balanceGame", cascade = {CascadeType.PERSIST})
+	@JsonManagedReference
+	private List<BalanceGameReply> balanceGameReply;
 }
