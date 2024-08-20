@@ -8,6 +8,7 @@ import Header_1020 from './Header_1020';
 import Postlist from '../post/Postlist';
 import Photolist from '../photo/Photolist';
 import Balancegamelist from '../balancegame/Balancegamelist';
+import Mypage from '../Mypage';
 
 const Main_1020 = () => {
 
@@ -186,6 +187,7 @@ const Main_1020 = () => {
         <Header_1020 setcurrentindex={setcurrentindex}></Header_1020>
         <div className={'main1020' + (currentindex === 1 ? " main1020photo" : "")}>
             <Page />
+           {currentindex !== 3 ? <Mypage generation={"1020"}></Mypage> : <></> } 
         </div>
     </div>);
 };

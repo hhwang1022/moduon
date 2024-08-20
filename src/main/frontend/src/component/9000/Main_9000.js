@@ -102,15 +102,24 @@ const Main_9000 = () => {
 
     return (<div className='main9000background'>
         <div className='main9000lefticon'>
-            <img src={require("../../resource/9000_icon1.png")}></img>
+            <button
+            onClick={() => {
+                setcurrentindex(0);
+            }}><img src={require("../../resource/9000_icon1.png")}/></button>
             내 컴퓨터
-            <img src={require("../../resource/9000_icon2.png")}></img>
+            <button
+            onClick={() => {
+                setcurrentindex(1);
+            }}><img src={require("../../resource/9000_icon2.png")}/></button>
             네트워크 환경
-            <img src={require("../../resource/9000_icon3.png")}></img>
+            <button
+            onClick={() => {
+                setcurrentindex(2);
+            }}><img src={require("../../resource/9000_icon3.png")}/></button>
             인터넷
-            <img src={require("../../resource/9000_icon4.png")}></img>
+            <button><img src={require("../../resource/9000_icon4.png")}/></button>
             휴지통
-            <img src={require("../../resource/9000_icon5.png")}></img>
+            <button><img src={require("../../resource/9000_icon5.png")}/></button>
             받은 편지함
         </div>
         <div className='main9000righticon'>
