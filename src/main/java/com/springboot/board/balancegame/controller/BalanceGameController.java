@@ -38,7 +38,6 @@ public class BalanceGameController {
 		BalanceGame balanceGame = mapper.balanceGamePostToBalanceGame(requestBody);
 		BalanceGame createBalanceGame = balanceGameService.createBalanceGame(balanceGame);
 
-
 		return new ResponseEntity<>(
 				new SingleResponseDto<>(createBalanceGame),
 				HttpStatus.OK
@@ -88,6 +87,13 @@ public class BalanceGameController {
 				new MultiResponseDto<>(balanceGames, pageBalanceGames),
 				HttpStatus.OK);
 	}
+
+//	@GetMapping("/main")
+//	public ResponseEntity getBalanceGamesByGeneration(@Positive @RequestParam int page,
+//													  @Positive @RequestParam int size) {
+//		Page<BalanceGame> pageBalanceGames = balanceGameService.findBalanceGames(page - 1, size);
+//		List<BalanceGame> balanceGames =
+//	}
 
 	@DeleteMapping("/{balance-game-id}")
 	public ResponseEntity deleteBalanceGame(@PathVariable("balance-game-id") Long balanceGameId) {

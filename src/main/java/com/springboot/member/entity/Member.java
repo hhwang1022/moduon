@@ -1,5 +1,6 @@
 package com.springboot.member.entity;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.springboot.audit.Auditable;
 import com.springboot.board.balancegame.entity.BalanceGame;
 import com.springboot.board.balancegame.entity.BalanceGameReply;
@@ -164,5 +165,9 @@ public class Member extends Auditable {
             share.setMember(this);
         }
     }
+
+    @OneToMany(mappedBy = "member",  cascade = {CascadeType.PERSIST})
+    @JsonManagedReference
+    private List<BalanceGame> balanceGameList = new ArrayList<>();
 
 }

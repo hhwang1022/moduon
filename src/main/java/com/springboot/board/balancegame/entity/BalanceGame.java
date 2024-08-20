@@ -1,9 +1,11 @@
 package com.springboot.board.balancegame.entity;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.springboot.audit.Auditable;
 import com.springboot.member.entity.Member;
+import com.springboot.share.entity.Share;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
@@ -94,5 +96,15 @@ public class BalanceGame extends Auditable {
 
 	@OneToMany(mappedBy = "balanceGame", cascade = {CascadeType.PERSIST})
 	@JsonManagedReference
-	private List<BalanceGameReply> balanceGameReply;
+	private List<BalanceGameReply> balanceGameRepliList;
+
+	@OneToMany(mappedBy = "balanceGame", cascade = {CascadeType.PERSIST})
+	@JsonManagedReference
+	private List<Share> shareList;
+
+	@ManyToOne
+	@JoinColumn(name = "MEMBER_ID")
+	@JsonBackReference
+	private Member member;
+
 }
