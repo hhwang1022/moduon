@@ -13,6 +13,10 @@
     margin: 5px;
   }
 
+  .header1020maintitle{
+    font-size: 18pt;
+  }
+
   .right{
     margin-left:auto;
     padding-left: 10px;
@@ -41,4 +45,5 @@
   .title{
     font-weight: 900;
     font-family: 'NotoSansKR';
+    font-size: 18pt;
   }

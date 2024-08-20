@@ -1,0 +1,23 @@
+.bluebody{        
+    background-color: #008cff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;        
+    color:#fff;
+    height: 100vh;
+}    
+.container{
+    margin: 0 auto;
+    max-width: 800px;
+}
+.sad-face{
+    padding: 100px;
+    font-size: 120px;
+}    
+.upper{
+    font-size:40px;
+    color:#fff;
+}
+.lower{
+    padding: 30px;
+    font-size: 24px;
+    color:#fff;
+}
