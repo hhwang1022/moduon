@@ -10,6 +10,7 @@ import lombok.Setter;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotBlank;
 import java.time.LocalDateTime;
+import java.util.List;
 
 public class PhotoDto {
 
@@ -96,6 +97,7 @@ public class PhotoDto {
         private String image3;
         private String image4;
         private String image5;
+        private List<PhotoReplyDto.Response> photoReplyList;
 
     }
 }

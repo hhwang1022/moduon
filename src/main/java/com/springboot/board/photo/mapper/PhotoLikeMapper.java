@@ -10,7 +10,6 @@ import org.mapstruct.Mapping;
 public interface PhotoLikeMapper {
 
     @Mapping(source = "memberId", target = "member.memberId")
-    @Mapping(source = "photoId", target = "photo.photoId")
     PhotoLike photoLikePostDtoToPhotoLike(PhotoLikeDto.Post requestBody);
 
 }

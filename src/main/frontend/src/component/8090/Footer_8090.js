@@ -20,15 +20,14 @@ const Footer_8090 = () => {
       setminutes(now.getMinutes().toString().padStart(2, '0'));
       setseconds(now.getSeconds().toString().padStart(2, '0'));
 
-      setampms('AM');
-      setdisplayHours(hours);
+      
+      setdisplayHours(hours % 12);
 
       if (hours >= 12) {
         setampms('PM');
-        setdisplayHours(hours % 12);
-        if (displayHours === 0) {
-          setdisplayHours(12);
-        }
+      }
+      else {
+        setampms('AM');
       }
     }, 1000);
 
@@ -38,23 +37,23 @@ const Footer_8090 = () => {
 
   return (<div className='footer8090background'>
     <div className='footer8090today'>YEAR</div>
-    <div className='footer8090todayline' />
+    <div className='footer8090todayline1' />
     <div className='footer8090today'>{year}</div>
-    <div className='footer8090todayline' />
+    <div className='footer8090todayline2' />
     <div className='footer8090today'>MONTH</div>
-    <div className='footer8090todayline' />
+    <div className='footer8090todayline3' />
     <div className='footer8090today'>{month}</div>
-    <div className='footer8090todayline' />
+    <div className='footer8090todayline4' />
     <div className='footer8090today'>DAY</div>
-    <div className='footer8090todayline' />
+    <div className='footer8090todayline5' />
     <div className='footer8090today'>{day}</div>
-    <div className='footer8090todayline' />
+    <div className='footer8090todayline6' />
     <div className='footer8090today'>{ampm}</div>
-    <div className='footer8090todayline' />
+    <div className='footer8090todayline7' />
     <div className='footer8090today'>{displayHours}h</div>
-    <div className='footer8090todayline' />
+    <div className='footer8090todayline8' />
     <div className='footer8090today'>{minutes}m</div>
-    <div className='footer8090todayline' />
+    <div className='footer8090todayline9' />
     <div className='footer8090today'>{seconds}s</div>
   </div>);
 };

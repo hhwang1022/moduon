@@ -7,6 +7,9 @@ import com.springboot.exception.BusinessLogicException;
 import com.springboot.exception.ExceptionCode;
 import com.springboot.member.entity.Member;
 import com.springboot.member.service.MemberService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -82,6 +85,10 @@ public class PostReplyService {
         Optional.ofNullable(postReply.getBody())
                 .ifPresent(body -> findPostReply.setBody(body));
         return postReplyRepository.save(findPostReply);
+    }
+
+    public Page<PostReply> findPostReplies(int page, int size) {
+        return postReplyRepository.findAll(PageRequest.of(page, size, Sort.by("postReplyId").descending()));
     }
 
     public void deletePostReply(long postReplyId) {

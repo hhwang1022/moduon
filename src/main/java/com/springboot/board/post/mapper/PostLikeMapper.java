@@ -9,6 +9,5 @@ import org.mapstruct.Mapping;
 public interface PostLikeMapper {
 
     @Mapping(source = "memberId", target = "member.memberId")
-    @Mapping(source = "postId", target = "post.postId")
     PostLike postLikePostDtoToPostLike(PostLikeDto.Post requestBody);
 }

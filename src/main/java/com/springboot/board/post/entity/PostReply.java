@@ -25,10 +25,11 @@ public class PostReply {
 
     public void setPost(Post post){
         this.post = post;
-        if(!post.getPostReplies().contains(this)) {
+        if(!post.getPostReplyList().contains(this)) {
             post.setPostReplies(this);
         }
     }
+
 
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")

@@ -83,10 +83,10 @@ public class Post {
     }
 
     @OneToMany(mappedBy = "post", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<PostReply> postReplies = new ArrayList<>();
+    private List<PostReply> postReplyList = new ArrayList<>();
 
     public void setPostReplies(PostReply postReply){
-        postReplies.add(postReply);
+        postReplyList.add(postReply);
         if(postReply.getPost() != this){
             postReply.setPost(this);
         }

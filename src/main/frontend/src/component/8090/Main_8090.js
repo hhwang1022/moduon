@@ -55,7 +55,7 @@ const Main_8090 = () => {
                 </span>
             </div>
             <div className='main8090categorybar'>
-                <button className='main8090categorybutton'
+                <button className='main8090categorybutton pressed'
                     onClick={() => {
                         navigate('/main_8090');
                     }}>80-90</button>
@@ -72,24 +72,26 @@ const Main_8090 = () => {
                         navigate('/main_1020');
                     }}>10-20</button>
             </div>
+
             <div className='main8090topbanner'> 80년대로 여러분들을 초대합니다.
                 <TopBanner generation={"8090"}/>
             </div>
             <div className='main8090windowcontentoutbox'>
-                <div className='main8090memberbox' />
+                <div className='main8090margin'></div>
                 <div className='main8090windowcontentbox'>
-                    <div className='main8090windowcontentboxline'/>
+                    <div className='main8090windowcontentboxline'></div>
                     <div className='main8090windowcontentinbox'>
                         <Page/>
                     {/* <Postlist generation={"8090"}/> */}
                     </div>
-                    <div className='main8090windowcontentboxline'/>
-                </div>
+                    <div className='main8090windowcontentboxline'/></div>
                 <div className='main8090memberbox'>
                     <Bgmbar generation={"8090"}/>
                     <Mypage generation={"8090"}/>
                 </div>
+                <div className='main8090margin'></div>
             </div>
+
             <div className='main8090windowbottombarbackground'>{"* Tip) 매일 출석해서 투표권을 얻어보세요! *"}</div>
             <Footer_8090></Footer_8090>
         </div>

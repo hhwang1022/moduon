@@ -7,7 +7,7 @@ import org.mapstruct.Mapping;
 
 import java.util.List;
 
-@Mapper(componentModel = "spring")
+@Mapper(componentModel = "spring", uses = {PostReplyMapper.class})
 public interface PostMapper {
 
     @Mapping(source = "memberId", target = "member.memberId")
@@ -16,6 +16,7 @@ public interface PostMapper {
     Post postPatchDtoToPost(PostDto.Patch requestBody);
 
     @Mapping(source = "member.memberId", target = "memberId")
+    @Mapping(target = "postReplyList", qualifiedByName = "postReplyToPostReplyResponse")
     PostDto.Response postToPostResponseDto(Post post);
 
     List<PostDto.Response> postsToPostResponseDtos(List<Post> posts);

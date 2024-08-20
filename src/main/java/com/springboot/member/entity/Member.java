@@ -1,6 +1,7 @@
 package com.springboot.member.entity;
 
 import com.springboot.audit.Auditable;
+import com.springboot.board.balancegame.entity.BalanceGame;
 import com.springboot.board.balancegame.entity.BalanceGameReply;
 import com.springboot.board.photo.entity.Photo;
 import com.springboot.board.photo.entity.PhotoLike;
@@ -14,6 +15,7 @@ import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 @NoArgsConstructor
@@ -70,6 +72,16 @@ public class Member extends Auditable {
         Generation(String generation) {
             this.generation = generation;
         }
+
+//        public static Member.Generation valueOfGeneration(String generation) {
+//            if (generation == null) {
+//                return null;
+//            }
+//            return Arrays.stream(values())
+//                    .filter(value -> value.generation.contains(generation))
+//                    .findAny()
+//                    .orElse(null);
+//        }
     }
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.MERGE)

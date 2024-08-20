@@ -41,9 +41,23 @@
     border-bottom: 1px dashed #444444;
 }
 
-.postpagebtn8090{
+.postpagebtn8090 {
+    background-color: #b8b8b8;
+    margin-left: 15px;
     color: white;
-    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    padding: 1px 5px; 
+    border: 2px solid #666666; 
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.5); 
+    transition: all 0.3s ease; 
+}
+
+.postpagebtn8090:active {
+    box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.5); 
+    background-color: #7B7B7B; 
+    transform: translateY(2px);
+    margin-left: 15px;
     width: 80px;
     height: 30px;
     border: 1px dashed #444444;
@@ -64,6 +78,7 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
+
 }
 
 /*--------------------------------------------------------*/

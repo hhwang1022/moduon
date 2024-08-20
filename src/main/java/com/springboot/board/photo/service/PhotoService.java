@@ -8,6 +8,7 @@ import com.springboot.member.entity.Member;
 import com.springboot.member.service.MemberService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 
@@ -93,6 +94,11 @@ public class PhotoService {
         return photoRepository.findAll(PageRequest.of(page, size, sort));
     }
 
+    public Page<Photo> search(Pageable pageable, String keyword, Photo.Category category) {
+        Page<Photo> photosList = photoRepository.searchByTitleOrBodyAndCategory(pageable, keyword, category);
+        return photosList;
+    }
+
     public void deletePhoto(long photoId) {
         Photo findPhoto = findVerifiedPhoto(photoId);
         photoRepository.delete(findPhoto);
@@ -103,6 +109,11 @@ public class PhotoService {
         Photo findPhoto = optionalPhoto.orElseThrow(() ->
                 new BusinessLogicException(ExceptionCode.PHOTO_NOT_FOUND));
         return findPhoto;
+    }
+
+    public Photo findPhotoById(long photoId) {
+        return photoRepository.findById(photoId)
+                .orElseThrow(() -> new IllegalArgumentException("Photo not found for id : " + photoId));
     }
 }
 

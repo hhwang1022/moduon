@@ -37,8 +37,8 @@ public class PhotoLikeService {
         this.photoRepository = photoRepository;
     }
 
-    public void checkLike(PhotoLikeDto.Post likeDto) {
-        Photo photo = photoService.findVerifiedPhoto(likeDto.getPhotoId());
+    public void checkLike(PhotoLikeDto.Post likeDto, long photoId) {
+        Photo photo = photoService.findVerifiedPhoto(photoId);
         Member member = memberService.findVerifiedMember(likeDto.getMemberId());
         Optional<PhotoLike> optionalPhotoLike = photoLikeRepository.findAllByMemberAndPhoto(member, photo);
 
@@ -47,7 +47,9 @@ public class PhotoLikeService {
             photoLikeRepository.deleteById(existLike.getPhotoLikeId());
             photo.setLikeCount(photo.getLikeCount() - 1);
         } else {
-            PhotoLike photoLike = photoLikeMapper.photoLikePostDtoToPhotoLike(likeDto);
+            PhotoLike photoLike = new PhotoLike();
+            photoLike.setPhoto(photo);
+            photoLike.setMember(member);
             photoLikeRepository.save(photoLike);
             photo.setLikeCount(photo.getLikeCount() + 1);
         }
