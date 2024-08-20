@@ -84,19 +84,21 @@ font-family: 'DungGeunMo';
   font-weight: 900;
   color: blue;
   margin: 10px;
+  font-family: 'NotoSansKR';
 }
 
 .postitem1020hottext{
   font-weight: 900;
   color: tomato;
+  font-family: 'NotoSansKR';
 }
 
 .postlist1020text{
-font-family: 'DungGeunMo';
+font-family: 'NotoSansKR';
 }
 
 .postlist1020date{
-  font-family: 'DungGeunMo';
+  font-family: 'NotoSansKR';
   color: gray;
 }
 

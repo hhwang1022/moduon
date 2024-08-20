@@ -80,7 +80,11 @@ const Main_8090 = () => {
             <div className='main8090windowcontentoutbox'>
                 <div className='main8090margin'></div>
                 <div className='main8090windowcontentbox'>
-                    <div className='main8090windowcontentboxline'></div>
+                    <div className='main8090windowcontentboxline'>
+                        {categorys.map((x, index) => {
+                           return <button onClick={() => setcurrentindex(index)}>{"\u00a0\u00a0\u00a0\u00a0" + x.title}</button>;
+                        })}
+                    </div>
                     <div className='main8090windowcontentinbox'>
                         <Page/>
                     {/* <Postlist generation={"8090"}/> */}

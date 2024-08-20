@@ -26,6 +26,14 @@
 .photosumnailname8090{
     font-size: 12px;
     text-align: center;
+    margin-top: -10px;
+    margin-left: 10px;
+    width: 150px;
+    height: 25px;
+    text-align: center;
+    object-fit: cover;
+    border: 2px solid white;
+    background-color: white;
 }
 
 /*---------------------------------------------------------*/
@@ -34,7 +42,7 @@
   height:40px;
   margin-left: 15px;
   margin-right: 15px;
-  font-family: 'DungGeunMo';
+  font-family: 'DOSIyagiMedium';
 }
 
 .photoitem9000newtext{
@@ -49,12 +57,13 @@
 }
 
 .photolist9000text{
-font-family: 'DungGeunMo';
+    font-family: 'DOSIyagiMedium';
 }
 
 .photosumnailname9000{
     font-size: 12px;
     text-align: center;
+    font-family: 'DOSIyagiMedium';
 }
 
 
@@ -96,7 +105,7 @@ font-family: 'DungGeunMo';
   border-bottom: 1px dashed rgb(145, 145, 145);
   margin-left: 15px;
   margin-right: 15px;
-  font-family: 'DungGeunMo';
+  font-family: 'NotoSansKR';
 }
 
 .photoitem1020newtext{
@@ -111,7 +120,7 @@ font-family: 'DungGeunMo';
 }
 
 .photolist1020text{
-font-family: 'DungGeunMo';
+font-family: 'NotoSansKR';
 }
 
 .photosumnailname1020{

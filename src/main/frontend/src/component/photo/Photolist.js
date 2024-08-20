@@ -134,17 +134,17 @@ const Photolist = ({ generation }) => {
 
     return (<div className={'photolist' + generation + 'mainbox'}>
         <div className='right'>
-            <select className={"photolistselect" + generation} onChange={(e) => {
+            <select className={"postlistselect" + generation} onChange={(e) => {
                 setsorttype(e.target.value);
             }}>
-                <option className={"photolistselectitem" + generation} value="SORT_NEW">새글 순</option>
-                <option className={"photolistselectitem" + generation} value="SORT_OLD">오래된글 순</option>
-                <option className={"photolistselectitem" + generation} value="SORT_VIEW_MAX">조회수 많은 순</option>
-                <option className={"photolistselectitem" + generation} value="SORT_VIEW_MIN">조회수 적은 순</option>
-                <option className={"photolistselectitem" + generation} value="SORT_LIKE_MANY">좋아요 많은 순</option>
-                <option className={"photolistselectitem" + generation} value="SORT_LIKE_MIN">좋아요 적은 순</option>
+                <option className={"postlistselectitem" + generation} value="SORT_NEW">새글 순</option>
+                <option className={"postlistselectitem" + generation} value="SORT_OLD">오래된글 순</option>
+                <option className={"postlistselectitem" + generation} value="SORT_VIEW_MAX">조회수 많은 순</option>
+                <option className={"postlistselectitem" + generation} value="SORT_VIEW_MIN">조회수 적은 순</option>
+                <option className={"postlistselectitem" + generation} value="SORT_LIKE_MANY">좋아요 많은 순</option>
+                <option className={"postlistselectitem" + generation} value="SORT_LIKE_MIN">좋아요 적은 순</option>
             </select>
-            <button className={"photopagewritebtn" + generation}>글쓰기</button>
+            <button className={"postpagewritebtn" + generation}>글쓰기</button>
         </div>
         <div className={"photomainconent" + generation}>
             {photolist.map((x, index) => {
@@ -171,7 +171,7 @@ const Photolist = ({ generation }) => {
             </div>
             <div>
                 <input className='qnasearchbodyinput' type="text" value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)} />
-                <button className={'photopagebtn' + generation} onClick={() => {
+                <button className={'postpagebtn' + generation} onClick={() => {
 
                 }}>검색</button>
             </div>
