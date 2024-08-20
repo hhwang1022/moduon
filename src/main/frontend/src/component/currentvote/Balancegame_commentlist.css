@@ -1,0 +1,8 @@
+.balancegame-comments8090box {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    overflow-y: auto;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
