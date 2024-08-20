@@ -4,6 +4,7 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.springboot.audit.Auditable;
 import com.springboot.board.balancegame.entity.BalanceGame;
 import com.springboot.board.balancegame.entity.BalanceGameReply;
+import com.springboot.board.balancegame.entity.BalanceGameVote;
 import com.springboot.board.photo.entity.Photo;
 import com.springboot.board.photo.entity.PhotoLike;
 import com.springboot.board.photo.entity.PhotoReply;
@@ -74,16 +75,6 @@ public class Member extends Auditable {
         Generation(String generation) {
             this.generation = generation;
         }
-
-//        public static Member.Generation valueOfGeneration(String generation) {
-//            if (generation == null) {
-//                return null;
-//            }
-//            return Arrays.stream(values())
-//                    .filter(value -> value.generation.contains(generation))
-//                    .findAny()
-//                    .orElse(null);
-//        }
     }
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.MERGE)
@@ -117,6 +108,7 @@ public class Member extends Auditable {
     }
 
     @OneToMany(mappedBy = "member", cascade = CascadeType.MERGE)
+    @JsonManagedReference
     private List<BalanceGameReply> balanceGameReplies = new ArrayList<>();
 
     public void setBalanceGameReplies(BalanceGameReply balanceGameReply) {
@@ -170,4 +162,7 @@ public class Member extends Auditable {
     @JsonManagedReference
     private List<BalanceGame> balanceGameList = new ArrayList<>();
 
+    @OneToMany(mappedBy = "member", cascade = {CascadeType.PERSIST})
+    @JsonManagedReference
+    private List<BalanceGameVote> balanceGameVoteList = new ArrayList<>();
 }
