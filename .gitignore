@@ -322,4 +322,7 @@ gradle-app.setting
 # yml
 *.yml
 
+# idea
+.idea
+
 # End of https://www.toptal.com/developers/gitignore/api/java,intellij,node,react,gradle
