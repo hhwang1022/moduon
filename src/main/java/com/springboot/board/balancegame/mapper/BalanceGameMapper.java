@@ -47,6 +47,8 @@ public interface BalanceGameMapper {
 		return balanceGame;
 	}
 
+	List<BalanceGameDto.Response> balanceGameToBalanceGameDtoList(List<BalanceGame> balanceGames);
+
 	private LocalDateTime createLocalDateTime(List<Integer> dateList) {
 		if (dateList == null || dateList.isEmpty()) {
 			return null;

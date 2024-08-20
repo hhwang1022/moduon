@@ -77,10 +77,17 @@ public class BalanceGameService {
 		return findBalanceGame;
 	}
 
-	public void compareToLocalDateTime(LocalDateTime StartTime, LocalDateTime EndTime) {
-//		switch(StartTime.compareTo(EndTime)) {
-//			case -1:
-//				throw new BusinessLogicException()
-//		}
+	public BalanceGame.BalanceGameStatus compareToLocalDateTime(LocalDateTime EndTime) {
+		switch(LocalDateTime.now().compareTo(EndTime)) {
+			// 지금이 endTime보다 뒤일경우
+			case 1:
+				return BalanceGame.BalanceGameStatus.INACTIVE;
+			// 지금이 endTime과 같거나 앞에 있을경우
+			case 0:
+				return BalanceGame.BalanceGameStatus.ACTIVE;
+			case -1:
+				return BalanceGame.BalanceGameStatus.ACTIVE;
+        }
+		return BalanceGame.BalanceGameStatus.ACTIVE;
 	}
 }
