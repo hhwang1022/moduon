@@ -9,7 +9,7 @@ import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
 public interface PhotoRepository extends JpaRepository<Photo, Long> {
-
+    Page<Photo> findByCategory(Pageable pageable, Photo.Category category);
     @Query("SELECT ph FROM Photo ph WHERE (ph.title LIKE %:keyword% OR ph.body LIKE %:keyword%) AND ph.category = :category")
     Page<Photo> searchByTitleOrBodyAndCategory(Pageable pageable, @Param("keyword") String keyword, @Param("category")Photo.Category category);
 

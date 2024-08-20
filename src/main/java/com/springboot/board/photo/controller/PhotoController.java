@@ -62,13 +62,21 @@ public class PhotoController {
     @GetMapping
     public ResponseEntity getPhotos(@Positive @RequestParam int page,
                                     @Positive @RequestParam int size,
-                                    @RequestParam String sort) {
+                                    @RequestParam String sort,
+                                    @RequestParam String category) {
         Sort sortOrder = Sort.by(sort.split("_")[0]).ascending();
         if (sort.split("_")[1].equalsIgnoreCase("desc")) {
             sortOrder = sortOrder.descending();
         }
 
-        Page<Photo> pagePhoto = photoService.findPhotosSort(page - 1, size, sortOrder);
+        Photo.Category photoCategory;
+        try {
+            photoCategory = Photo.Category.valueOf(category);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity("유효하지 않은 카테고리입니다.", HttpStatus.BAD_REQUEST);
+        }
+
+        Page<Photo> pagePhoto = photoService.findPhotosSort(page - 1, size, sortOrder, photoCategory);
         List<Photo> photos = pagePhoto.getContent();
         return new ResponseEntity<>(
                 new MultiResponseDto<>(mapper.photosToPhotoResponseDtos(photos), pagePhoto), HttpStatus.OK);

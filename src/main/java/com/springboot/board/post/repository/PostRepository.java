@@ -14,7 +14,8 @@ import java.util.Optional;
 public interface PostRepository extends JpaRepository<Post, Long> {
    // Page<Post> findByTitleContainingOrBodyContainingAndCategory(Pageable pageable, String titleKeyword, String bodyKeyword, Post.Category category);
 
-//    Optional<PostLike> findAllByMemberAndPost(Member member, Post post);
+    //    Optional<PostLike> findAllByMemberAndPost(Member member, Post post);
+    Page<Post> findByCategory(Pageable pageable, Post.Category category);
 
     @Query("SELECT p FROM Post p WHERE (p.title LIKE %:keyword% OR p.body LIKE %:keyword%) AND p.category = :category")
     Page<Post> searchByTitleOrBodyAndCategory(Pageable pageable, @Param("keyword") String keyword, @Param("category") Post.Category category);
