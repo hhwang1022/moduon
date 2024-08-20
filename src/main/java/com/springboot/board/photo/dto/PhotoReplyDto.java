@@ -14,8 +14,6 @@ public class PhotoReplyDto {
     public static class Post {
         private long memberId;
 
-        private long photoId;
-
         @NotBlank
         private String body;
     }

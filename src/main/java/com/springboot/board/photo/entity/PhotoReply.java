@@ -32,7 +32,7 @@ public class PhotoReply {
 
     public void setPhoto(Photo photo) {
         this.photo = photo;
-        if (!photo.getPhotoReplies().contains(this)) {
+        if (!photo.getPhotoReplyList().contains(this)) {
             photo.setPhotoReplies(this);
         }
     }

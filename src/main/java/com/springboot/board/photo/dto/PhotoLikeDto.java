@@ -10,6 +10,5 @@ public class PhotoLikeDto {
     @NoArgsConstructor
     public static class Post {
         private long memberId;
-        private long photoId;
     }
 }

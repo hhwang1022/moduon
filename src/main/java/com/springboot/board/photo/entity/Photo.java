@@ -84,10 +84,10 @@ public class Photo {
     }
 
     @OneToMany(mappedBy = "photo", cascade = CascadeType.REMOVE, orphanRemoval = true)
-    private List<PhotoReply> photoReplies = new ArrayList<>();
+    private List<PhotoReply> photoReplyList = new ArrayList<>();
 
     public void setPhotoReplies(PhotoReply photoReply) {
-        photoReplies.add(photoReply);
+        photoReplyList.add(photoReply);
         if (photoReply.getPhoto() != this) {
             photoReply.setPhoto(this);
 

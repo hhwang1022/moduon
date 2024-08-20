@@ -33,21 +33,32 @@ public class PostLikeService {
     }
 
 
-    public void checkLike(PostLikeDto.Post likeDto) {
-        Post post = postService.findVerifiedPost(likeDto.getPostId());
+    public void checkLike(PostLikeDto.Post likeDto, long postId) {
+        Post post = postService.findVerifiedPost(postId);
         Member member = memberService.findVerifiedMember(likeDto.getMemberId());
         Optional<PostLike> optionalPostLike = postLikeRepository.findAllByMemberAndPost(member, post);
 
+//        if (optionalPostLike.isPresent()) {
+//            PostLike existLike = optionalPostLike.get();
+//            postLikeRepository.deleteById(existLike.getPostLikeId());
+//            post.setLikeCount(post.getLikeCount() -1);
+//        }
+//
+//        else {
+//            PostLike postLike = postLikeMapper.postLikePostDtoToPostLike(likeDto);
+//            postLikeRepository.save(postLike);
+//            post.setLikeCount(post.getLikeCount() +1);
+//        }
         if (optionalPostLike.isPresent()) {
             PostLike existLike = optionalPostLike.get();
             postLikeRepository.deleteById(existLike.getPostLikeId());
-            post.setLikeCount(post.getLikeCount() -1);
-        }
-
-        else {
-            PostLike postLike = postLikeMapper.postLikePostDtoToPostLike(likeDto);
+            post.setLikeCount(post.getLikeCount() - 1);
+        } else {
+            PostLike postLike = new PostLike();
+            postLike.setPost(post);
+            postLike.setMember(member);
             postLikeRepository.save(postLike);
-            post.setLikeCount(post.getLikeCount() +1);
+            post.setLikeCount(post.getLikeCount() + 1);
         }
         postRepository.save(post);
     }

@@ -1,16 +1,16 @@
 package com.springboot.board.post.controller;
 
+import com.springboot.board.photo.dto.PhotoReplyDto;
 import com.springboot.board.post.dto.PostLikeDto;
 import com.springboot.board.post.entity.PostLike;
 import com.springboot.board.post.mapper.PostLikeMapper;
 import com.springboot.board.post.service.PostLikeService;
+import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 
 @RestController
 @RequestMapping("/posts/{post-id}/like")
@@ -26,9 +26,11 @@ public class PostLikeController {
     }
 
     @PostMapping
-    public void PostLike(@Valid @RequestBody PostLikeDto.Post requestBody) {
-        PostLike postLike = mapper.postLikePostDtoToPostLike(requestBody);
-        postLikeService.checkLike(requestBody);
+    public ResponseEntity PostLike(@PathVariable("post-id") @Positive long postId,
+                                   @Valid @RequestBody PostLikeDto.Post requestBody) {
+//        PostLike postLike = mapper.postLikePostDtoToPostLike(requestBody);
+        postLikeService.checkLike(requestBody, postId);
+        return ResponseEntity.ok().build();
 
     }
 }

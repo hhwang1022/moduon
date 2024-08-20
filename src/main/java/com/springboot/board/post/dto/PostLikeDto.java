@@ -8,8 +8,8 @@ import lombok.Setter;
 public class PostLikeDto {
     @Getter
     @AllArgsConstructor
+    @NoArgsConstructor
     public static class Post{
         private long memberId;
-        private long postId;
     }
 }
