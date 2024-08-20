@@ -1,0 +1,17 @@
+.balancegame-commentlist8090box {
+    border: 1px solid rgb(190, 190, 190);
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.balancegame-commentlist8090nickname {
+    width: 7%;
+    font-size: 15px;
+}
+
+.balancegame-commentlist8090content {
+    width: 93%;
+    font-family: 10px;
+}
