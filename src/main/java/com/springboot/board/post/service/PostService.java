@@ -112,8 +112,9 @@ public class PostService {
                 Sort.by("postId").descending()));
     }
 
-    public Page<Post> findPostsSort(int page, int size, Sort sort) {
-        return postRepository.findAll(PageRequest.of(page, size, sort));
+    public Page<Post> findPostsSort(int page, int size, Sort sort, Post.Category category) {
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return postRepository.findByCategory(pageable, category);
     }
 
     public Page<Post> search(Pageable pageable, String keyword, Post.Category category) {

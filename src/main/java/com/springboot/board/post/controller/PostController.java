@@ -62,13 +62,21 @@ public class PostController {
 
     @GetMapping
     public ResponseEntity getPosts(@Positive @RequestParam int page, @Positive @RequestParam int size,
-                                   @RequestParam String sort) {
+                                   @RequestParam String sort,
+                                   @RequestParam String category) {
         Sort sortOrder = Sort.by(sort.split("_")[0]).ascending();
         if (sort.split("_")[1].equalsIgnoreCase("desc")) {
             sortOrder = sortOrder.descending();
         }
 
-        Page<Post> pagePost = postService.findPostsSort(page - 1, size, sortOrder);
+        Post.Category postCategory;
+        try {
+            postCategory = Post.Category.valueOf(category);
+        } catch (IllegalArgumentException e) {
+            return new ResponseEntity(" 유효하지 않은 카테고리입니다.", HttpStatus.BAD_REQUEST);
+        }
+
+        Page<Post> pagePost = postService.findPostsSort(page - 1, size, sortOrder, postCategory);
         List<Post> posts = pagePost.getContent();
         return new ResponseEntity<>(
                 new MultiResponseDto<>(mapper.postsToPostResponseDtos(posts), pagePost), HttpStatus.OK);

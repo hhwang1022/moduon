@@ -90,8 +90,9 @@ public class PhotoService {
                 Sort.by("photoId").descending()));
     }
 
-    public Page<Photo> findPhotosSort(int page, int size, Sort sort) {
-        return photoRepository.findAll(PageRequest.of(page, size, sort));
+    public Page<Photo> findPhotosSort(int page, int size, Sort sort, Photo.Category photoCategory) {
+        Pageable pageable = PageRequest.of(page, size, sort);
+        return photoRepository.findByCategory(pageable, photoCategory);
     }
 
     public Page<Photo> search(Pageable pageable, String keyword, Photo.Category category) {
