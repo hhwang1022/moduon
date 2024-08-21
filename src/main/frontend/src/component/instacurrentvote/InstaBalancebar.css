@@ -1,10 +1,9 @@
-.vote-container {
+.insta-vote-container {
   position: relative;
-  display: flex;
-  width: 300px;
+  width: 600px;
 }
 
-.vote-bar {
+.insta-vote-bar {
   display: flex;
   height: 30px;
   width: 100%;
@@ -13,15 +12,15 @@
   appearance: none;
 }
 
-.vote-bar::-webkit-progress-value {
+.insta-vote-bar::-webkit-progress-value {
   background-color: red;
 }
 
-.vote-bar::-webkit-progress-bar {
+.insta-vote-bar::-webkit-progress-bar {
   background-color: blue;
 }
 
-.vote-labels {
+.insta-vote-labels {
   position: absolute;
   top: 0;
   left: 0;

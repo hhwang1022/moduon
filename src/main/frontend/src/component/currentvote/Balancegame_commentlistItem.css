@@ -4,18 +4,61 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 20px;
     margin-right: 20px;
 }
 
 .balancegame-commentlist8090nickname {
     display: flex;
     font-size: 15px;
+    cursor: text;
 }
 
 .balancegame-commentlist8090content {
     margin-left: 5px;
-    font-family: 10px;
+    font-size: 15px;
+    cursor: text;
+}
+
+.balancegame-commentlist9000box {
+    border: 1px solid rgb(190, 190, 190);
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.balancegame-commentlist9000nickname {
+    display: flex;
+    font-size: 15px;
+    cursor: text;
+}
+
+.balancegame-commentlist9000content {
+    margin-left: 5px;
+    font-size: 15px;
+    cursor: text;
+}
+
+.balancegame-commentlist0010box {
+    border: 1px solid rgb(190, 190, 190);
+    background-color: white;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.balancegame-commentlist0010nickname {
+    display: flex;
+    font-size: 15px;
+    cursor: text;
+}
+
+.balancegame-commentlist0010content {
+    margin-left: 5px;
+    font-size: 15px;
+    cursor: text;
 }
 
 .balancegame-commentlist1020box {
@@ -23,15 +66,16 @@
     display: flex;
     justify-content: flex-start;
     align-items: center;
-    margin-left: 20px;
-    margin-right: 20px;
+    margin-right: 10px;
 }
 
 .balancegame-commentlist1020nickname {
     font-size: 15px;
+    cursor: text;
 }
 
 .balancegame-commentlist1020content {
     margin-left: 5px;
-    font-family: 10px;
+    font-size: 15px;
+    cursor: text;
 }

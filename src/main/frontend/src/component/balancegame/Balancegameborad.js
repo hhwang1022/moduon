@@ -1,5 +1,5 @@
 import Currentvote_board from '../currentvote/Currentvote_board';
-import InstaCurrentvote_board from '../currentvote/InstaCurrentvote_board';
+import InstaCurrentvote_board from '../instacurrentvote/InstaCurrentvote_board';
 import Balancegamelist from './Balancegamelist';
 import Balancegamewrite from './Balancegamewrite';
 import React, { useState, useEffect } from 'react';

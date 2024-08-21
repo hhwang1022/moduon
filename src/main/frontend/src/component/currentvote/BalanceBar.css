@@ -1,17 +1,47 @@
+.vote-container8090 {
+  position: relative;
+  display: flex;
+  width: 400px;
+}
+
+.vote-container9000 {
+  position: relative;
+  display: flex;
+  width: 240px;
+}
+
+.vote-container0010 {
+  position: relative;
+  display: flex;
+  width: 200px;
+}
+
 .vote-bar {
   display: flex;
-  appearance: none;
+  height: 30px;
   width: 100%;
+  background-color: transparent;
+  border: none;
+  appearance: none;
 }
-#progress::-webkit-progress-bar {
-  width: 80%;
-  background:#ff00dd;
-  border-radius:10px;
-  box-shadow: inset 3px 3px 10px #950092;
+
+.vote-bar::-webkit-progress-value {
+  background-color: red;
 }
-#progress::-webkit-progress-value {
-  border-radius:10px;
-  background: #1d7497;
-  background: -webkit-linear-gradient(to right, #328bff, #1367af);
-  background: linear-gradient(to right, #2dc0ff, #1d6e97);
+
+.vote-bar::-webkit-progress-bar {
+  background-color: blue;
+}
+
+.vote-labels {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 18px;
+  color: white;
 }
