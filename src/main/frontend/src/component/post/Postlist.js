@@ -1,6 +1,7 @@
 import './Postlist.css';
 import React, { useState, useEffect } from 'react';
 import PostlistItem from './PostlistItem';
+import Postwrite from './Postwrite';
 
 const Postlist = ({ generation }) => {
 
@@ -87,7 +88,12 @@ const Postlist = ({ generation }) => {
                 <option className={"postlistselectitem" + generation} value="SORT_LIKE_MANY">좋아요 많은 순</option>
                 <option className={"postlistselectitem" + generation} value="SORT_LIKE_MIN">좋아요 적은 순</option>
             </select>
-            <button className={"postpagewritebtn"+generation}>글쓰기</button>
+            <button className={"postpagewritebtn"+generation}
+            onClick={() => {
+                console.log("글쓰기");
+                return (<Postwrite/>);
+            }
+            }>글쓰기</button>
         </div>
         {generation === "1020" ? 
         <div className={"postlist" + generation + "margin"}>{postlist.map((x, index) => {

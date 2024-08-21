@@ -7,6 +7,8 @@ import Mypage from '../Mypage';
 import Bgmbar from '../Bgmbar';
 import TopBanner from '../TopBanner';
 import Photolist from '../photo/Photolist';
+import Balancegamelist from '../balancegame/Balancegamelist';
+import Currentvote_board from '../currentvote/Currentvote_board';
 
 
 const Main_8090 = () => {
@@ -41,7 +43,7 @@ const Main_8090 = () => {
         }
         else{
             return (
-                <Postlist generation={"8090"} />
+                <Currentvote_board generation={"8090"} />
             );
         }
       };
