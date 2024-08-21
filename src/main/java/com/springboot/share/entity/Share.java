@@ -20,6 +20,7 @@ public class Share {
 
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
+    @JsonBackReference
     private Member member;
 
     public void setMember(Member member) {
@@ -33,4 +34,7 @@ public class Share {
     @JoinColumn(name = "BALNACE_GAME_ID")
     @JsonBackReference
     private BalanceGame balanceGame;
+
+    @Column
+    private String shareType;
 }
