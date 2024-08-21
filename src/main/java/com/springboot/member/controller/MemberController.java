@@ -54,7 +54,7 @@ public class MemberController {
         Member member = memberService.findVerifiedMember(principal.toString());
 
         return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.memberToMemberResponseDto(member)), HttpStatus.OK
+                new SingleResponseDto<>(mapper.memberToMemberInfoResponse(member)), HttpStatus.OK
         );
     }
 
