@@ -19,12 +19,12 @@ import Balancegame_commentlist from './Balancegame_commentlist';
         </div>
         <div className='vote-box'>
           <div class="vote-item">
-            <img className='vote-image1' src={voteImage1}></img>
+            <img className='vote-image' src={voteImage1}></img>
             <button className='vote-name'>소녀시대</button>
           </div>
           <div className='votebar'><BalanceBar vote1={200} vote2={100} /></div>
           <div class="vote-item">
-            <img className='vote-image1' src={voteImage2}></img>
+            <img className='vote-image' src={voteImage2}></img>
             <button className='vote-name'>원더걸스</button>
           </div>
         </div>
