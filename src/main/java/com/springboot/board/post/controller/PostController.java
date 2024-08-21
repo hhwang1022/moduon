@@ -83,7 +83,8 @@ public class PostController {
     }
 
     @GetMapping("/popular")
-    public ResponseEntity getPopularPosts(@Positive @RequestParam int page, @Positive @RequestParam int size) {
+    public ResponseEntity getPopularPosts(@Positive @RequestParam int page,
+                                          @Positive @RequestParam int size) {
         Page<Post> pagePost = postService.findPopularPosts(page - 1, size);
         List<Post> posts = pagePost.getContent();
         return new ResponseEntity<>(
