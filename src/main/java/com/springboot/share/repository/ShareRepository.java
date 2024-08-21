@@ -1,4 +1,7 @@
 package com.springboot.share.repository;
 
-public interface ShareRepository {
+import com.springboot.share.entity.Share;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface ShareRepository extends JpaRepository<Share, Long> {
 }

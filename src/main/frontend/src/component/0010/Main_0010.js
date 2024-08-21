@@ -4,9 +4,9 @@ import Menubar_0010 from './Menubar_0010';
 import { useNavigate, useParams } from "react-router-dom";
 import Mypage from '../Mypage';
 import Bgmbar from '../Bgmbar';
-import Currentvote_board from '../currentvote/Currentvote_board';
 import Postboard from '../post/Postboard';
 import Photoboard from '../photo/Photoboard';
+import Balancegameborad from '../balancegame/Balancegameborad';
 
 const Main_0010 = () => {
     const [currentindex, setcurrentindex] = useState(0);
@@ -28,7 +28,7 @@ const Main_0010 = () => {
         }
         else{
             return (
-                <Currentvote_board generation={"0010"} />
+                <Balancegameborad generation={"0010"} />
             );
         }
       };

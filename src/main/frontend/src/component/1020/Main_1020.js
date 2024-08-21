@@ -11,6 +11,7 @@ import Login from '../Login';
 import InstaCurrentvote_board from '../currentvote/InstaCurrentvote_board';
 import Postboard from '../post/Postboard';
 import Photoboard from '../photo/Photoboard';
+import Balancegameborad from '../balancegame/Balancegameborad';
 
 const Main_1020 = () => {
 
@@ -38,7 +39,7 @@ const Main_1020 = () => {
     const Page = () => {
         if (currentindex === 0) {
             return (
-                <InstaCurrentvote_board generation={"1020"} />
+                <Balancegameborad generation={"1020"} />
             );
         }
         else if (currentindex === 1) {

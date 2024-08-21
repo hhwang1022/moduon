@@ -1,11 +1,12 @@
 .vote-container {
   position: relative;
-  width: 680px;
+  display: flex;
+  width: 300px;
 }
 
 .vote-bar {
   display: flex;
-  height: 50px;
+  height: 30px;
   width: 100%;
   background-color: transparent;
   border: none;
@@ -32,4 +33,3 @@
   font-size: 18px;
   color: white;
 }
-

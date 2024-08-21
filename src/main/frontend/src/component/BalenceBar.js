@@ -16,7 +16,7 @@ const BalenceBar = ({ left, right }) => {
         }, 10 * x);
       })(i);
     }
-
+    
   }, [left]);
 
   return (<progress
