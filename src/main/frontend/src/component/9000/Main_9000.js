@@ -8,6 +8,7 @@ import Mypage from '../Mypage';
 import Currentvote_board from '../currentvote/Currentvote_board';
 import Postboard from '../post/Postboard';
 import Photoboard from '../photo/Photoboard';
+import Balancegameborad from '../balancegame/Balancegameborad';
 
 
 const Main_9000 = () => {
@@ -54,7 +55,7 @@ const Main_9000 = () => {
         }
         else if (currentindex === 2) {
             return (
-                <Currentvote_board generation={"9000"} />
+                <Balancegameborad generation={"9000"} />
             );
         }
         else {

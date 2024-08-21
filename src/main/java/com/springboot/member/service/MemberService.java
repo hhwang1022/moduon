@@ -96,4 +96,11 @@ public class MemberService {
             throw new BusinessLogicException(ExceptionCode.NICKNAME_EXISTS);
         }
     }
+
+    public Member findVerifiedMember(String email) {
+        Optional<Member> optionalMember = memberRepository.findByEmail(email);
+        Member findMember = optionalMember.orElseThrow(()
+                -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
+        return findMember;
+    }
 }
