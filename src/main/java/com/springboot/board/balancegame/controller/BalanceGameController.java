@@ -59,6 +59,16 @@ public class BalanceGameController {
 		);
 	}
 
+	@GetMapping("/{balance-game-id}")
+	public ResponseEntity getBalanceGame(@PathVariable("balance-game-id") @Positive Long balanceGameId) {
+		BalanceGame balanceGame = balanceGameService.findVerifiedBalanceGame(balanceGameId);
+
+		return new ResponseEntity<>(
+				new SingleResponseDto<>(balanceGame),
+				HttpStatus.OK
+		);
+	}
+
 	@GetMapping("/this-week")
 	public ResponseEntity getThisWeekBalanceGames(@Positive @RequestParam int page,
 												  @Positive @RequestParam int size,
