@@ -11,6 +11,7 @@ import Balancegamelist from '../balancegame/Balancegamelist';
 import Mypage from '../Mypage';
 import Join from '../Join';
 import Login from '../Login';
+import InstaCurrentvote_board from '../currentvote/InstaCurrentvote_board';
 
 const Main_1020 = () => {
 
@@ -23,7 +24,8 @@ const Main_1020 = () => {
     const [motionleftscale, setmotionleftscale] = useState(0.5);
     const [motionrightscale, setmotionrightscale] = useState(0.5);
 
-    const [currentindex, setcurrentindex] = useState(3);
+    const [currentindex, setcurrentindex] = useState(4);
+    const [titleindex, settitleindex] = useState(4);
 
     useEffect(() => {
         setTimeout(function () {
@@ -37,7 +39,7 @@ const Main_1020 = () => {
     const Page = () => {
         if (currentindex === 0) {
             return (
-                <Balancegamelist generation={"1020"} />
+                <InstaCurrentvote_board generation={"1020"} />
             );
         }
         else if (currentindex === 1) {
@@ -196,7 +198,7 @@ const Main_1020 = () => {
     ]
 
     return (<div>
-        <Header_1020 setcurrentindex={setcurrentindex}></Header_1020>
+        <Header_1020 setcurrentindex={setcurrentindex} titleindex={titleindex}></Header_1020>
         <div className={'main1020' + (currentindex === 1 ? " main1020photo" : "")}>
             <Page />
            {currentindex !== 4 ? <Mypage generation={"1020"}></Mypage> : <></> } 
