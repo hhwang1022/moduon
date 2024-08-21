@@ -5,14 +5,12 @@ import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 import { useNavigate, useParams } from "react-router-dom";
 import Header_1020 from './Header_1020';
-import Postlist from '../post/Postlist';
-import Photolist from '../photo/Photolist';
-import Balancegamelist from '../balancegame/Balancegamelist';
 import Mypage from '../Mypage';
 import Join from '../Join';
 import Login from '../Login';
 import InstaCurrentvote_board from '../currentvote/InstaCurrentvote_board';
 import Postboard from '../post/Postboard';
+import Photoboard from '../photo/Photoboard';
 
 const Main_1020 = () => {
 
@@ -45,7 +43,7 @@ const Main_1020 = () => {
         }
         else if (currentindex === 1) {
             return (
-                <Photolist generation={"1020"} />
+                <Photoboard generation={"1020"} />
             );
         }
         else if (currentindex === 2) {

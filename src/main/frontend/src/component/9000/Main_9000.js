@@ -5,11 +5,9 @@ import Footer_9000 from './Footer_9000';
 
 import Bgmbar from '../Bgmbar';
 import Mypage from '../Mypage';
-import Postlist from '../post/Postlist';
-import Photolist from '../photo/Photolist';
-import Balancegamelist from '../balancegame/Balancegamelist';
 import Currentvote_board from '../currentvote/Currentvote_board';
 import Postboard from '../post/Postboard';
+import Photoboard from '../photo/Photoboard';
 
 
 const Main_9000 = () => {
@@ -51,7 +49,7 @@ const Main_9000 = () => {
         }
         else if (currentindex === 1) {
             return (
-                <Photolist generation={"9000"} />
+                <Photoboard generation={"9000"} />
             );
         }
         else if (currentindex === 2) {
