@@ -4,11 +4,9 @@ import Menubar_0010 from './Menubar_0010';
 import { useNavigate, useParams } from "react-router-dom";
 import Mypage from '../Mypage';
 import Bgmbar from '../Bgmbar';
-import Postlist from '../post/Postlist';
-import Photolist from '../photo/Photolist';
-import Balancegamelist from '../balancegame/Balancegamelist';
 import Currentvote_board from '../currentvote/Currentvote_board';
 import Postboard from '../post/Postboard';
+import Photoboard from '../photo/Photoboard';
 
 const Main_0010 = () => {
     const [currentindex, setcurrentindex] = useState(0);
@@ -25,7 +23,7 @@ const Main_0010 = () => {
         }
         else if(currentindex === 1){
             return (
-                <Photolist generation={"0010"} />
+                <Photoboard generation={"0010"} />
             );
         }
         else{

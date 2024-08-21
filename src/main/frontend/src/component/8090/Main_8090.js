@@ -1,15 +1,13 @@
 import './Main_8090.css';
 import React, { useState, useEffect } from 'react';
 import {BrowserRouter, Routes, Route,  useNavigate, useParams } from "react-router-dom";
-import Postlist from '../post/Postlist';
 import Footer_8090 from './Footer_8090';
 import Mypage from '../Mypage';
 import Bgmbar from '../Bgmbar';
 import TopBanner from '../TopBanner';
-import Photolist from '../photo/Photolist';
-import Balancegamelist from '../balancegame/Balancegamelist';
 import Currentvote_board from '../currentvote/Currentvote_board';
 import Postboard from '../post/Postboard';
+import Photoboard from '../photo/Photoboard';
 
 
 const Main_8090 = () => {
@@ -39,7 +37,7 @@ const Main_8090 = () => {
         }
         else if(currentindex === 1){
             return (
-                <Photolist generation={"8090"} />
+                <Photoboard generation={"8090"} />
             );
         }
         else{
