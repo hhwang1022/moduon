@@ -24,7 +24,7 @@ const PostlistItem = ({ post, generation }) => {
                         <div>
                             <td className={'postlist' + generation + 'text'}>{post.nickname + "\u00a0"}</td>
                             <td className={'postlist' + generation + 'date'}>{simpleday(post.createdAt) + "\u00a0"}</td>
-                            {post.like >= 10 ? <td className={'postitem' + generation + 'hottext'}>hot</td> : (
+                            {post.likeCount >= 10 ? <td className={'postitem' + generation + 'hottext'}>hot</td> : (
                                 getDayDiffDay(post.createsat) <= 2.0 ? <td className={'postitem' + generation + 'newtext'}>new</td> : <td></td>
                             )}
                         </div>
@@ -38,7 +38,7 @@ const PostlistItem = ({ post, generation }) => {
                 </div>
             </div>
             : <tr className={'postlist' + generation + 'line'} height="34">
-                {post.like >= 10 ? <td className={'postitem' + generation + 'hottext'}>hot</td> : (
+                {post.likeCount >= 10 ? <td className={'postitem' + generation + 'hottext'}>hot</td> : (
                     getDayDiffDay(post.createsat) <= 2.0 ? <td className={'postitem' + generation + 'newtext'}>new</td> : <td></td>
                 )}
                 <td className={'postlist' + generation + 'text'}><button>{post.title}</button></td>
