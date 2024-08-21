@@ -22,4 +22,13 @@ public interface BalanceGameVoteMapper {
         balanceGameVote.setVoteItem(requestBody.getVoteItem());
         return balanceGameVote;
     }
+
+    default BalanceGameVoteDto.Response balanceGameVoteToBalanceGameVoteResponse(BalanceGameVote balanceGameVote) {
+        BalanceGameVoteDto.Response response = new BalanceGameVoteDto.Response(
+                balanceGameVote.getMember().getMemberId(),
+                balanceGameVote.getBalanceGame().getBalanceGameId(),
+                balanceGameVote.getVoteItem()
+        );
+        return response;
+    }
 }
