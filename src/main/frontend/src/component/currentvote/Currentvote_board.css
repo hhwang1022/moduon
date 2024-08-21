@@ -17,6 +17,7 @@
     height: 40px;
     font-size: 20px;
     box-shadow:1px 1px 1px #959595;
+    cursor: pointer;
   }
   
   .vote-header {
@@ -42,6 +43,7 @@
     margin-right: 30px;
     margin-left: 30px;
     box-shadow:1px 1px 1px #959595;
+    cursor: pointer;
   }
   
   .vote-box {
@@ -58,7 +60,7 @@
     text-align: center;
   }
   
-  .vote-image1, .vote-image2 {
+  .vote-image {
     width: 200px;
     height: 250px;
     margin-bottom: 10px; 
@@ -76,6 +78,7 @@
     margin: 0; 
     font-size: 20px;
     font-weight: bold;
+    cursor: pointer;
   }
   
   .comments-box {
@@ -119,4 +122,5 @@
     height: 100px;
     margin-left: 5px;
     margin-right: 20px;
+    cursor: pointer;
   }

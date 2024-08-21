@@ -1,0 +1,128 @@
+.vote-creation-form {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    background-color: #f9f9f9;
+}
+  
+.vote-creation-form div {
+    margin-bottom: 20px;
+}
+
+.vote-creation-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.vote-creation-title {
+    display: flex;
+    align-items: center;
+}
+
+.vote-creation-title label {
+    width: 60px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.vote-creation-title input {
+    width: 700px;
+    height: 30px;
+    font-size: 20px;
+    background-color: white;
+}
+
+.vote-creation-category {
+    display: flex;
+    align-items: center;
+}
+
+.vote-creation-category label {
+    width: 100px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.vote-creation-category select {
+    width: 80px;
+    height: 25px;
+    font-size: 20px;
+    font-weight: bold;
+    color: #808080;
+    background-color: white;
+}
+
+.image-upload {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+.image{
+    display: flex;
+    flex-direction: column;
+}
+
+.image label {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.image input{
+    width: 393px;
+    height: 25px;
+    margin-bottom: 10px;
+    font-size: 15px;
+}
+
+.image img {
+    width: 400px;
+    height: 100%;
+    box-sizing: border-box;
+    margin-bottom: 10px;
+}
+
+.image-name {
+    font-size: 20px !important;
+}
+
+.date-setting {
+    margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.date-setting label {
+    margin-left: 30px;
+    width: 55px;
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.date-setting input {
+    font-size: 15px;
+    margin-left: 10px;
+    margin-right: 10px;
+    font-size: 20px;
+}
+
+.vote-creation-footer {
+    display: flex;
+    flex-direction: row;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.vote-creation-form button {
+    font-size: 25px;
+    margin-left: 5px;
+    cursor: pointer;
+}
