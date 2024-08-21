@@ -32,7 +32,7 @@ public class BalanceGameReply {
         }
     }
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "MEMBER_ID")
     @JsonBackReference
     private Member member;

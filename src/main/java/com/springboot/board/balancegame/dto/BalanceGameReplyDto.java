@@ -1,5 +1,6 @@
 package com.springboot.board.balancegame.dto;
 
+import com.springboot.member.entity.Member;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.Setter;
@@ -10,8 +11,8 @@ public class BalanceGameReplyDto {
     @Getter
     @AllArgsConstructor
     public static class Post {
-        @NotBlank
-        private Long memberId;
+        @Setter
+        private String memberEmail;
 
         @Setter
         private Long balanceGameId;
@@ -23,17 +24,22 @@ public class BalanceGameReplyDto {
     @Getter
     @AllArgsConstructor
     public static class Patch {
-        private Long memberId;
+        @Setter
+        private String memberEmail;
         @Setter
         private Long balanceGameReplyId;
+
+        @Setter
+        private Long balanceGameId;
+
         private String body;
     }
 
     @Getter
     @AllArgsConstructor
     public static class Response {
-        private Long memberId;
-        private Long balanceGameReplyId;
+        private long memberId;
+        private long balanceGameReplyId;
         private String body;
     }
 }
