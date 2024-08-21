@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import './Voteboard_posting.css';
+import './Balancegamewrite.css';
 
 
-function Voteboard_posting() {
+function Balancegamewrite() {
     const generations = ['80-90', '90-00', '00-10', '10-20'];
   
     const [selectedGeneration, setSelectedGeneration] = useState(generations[0]);
@@ -115,4 +115,4 @@ function Voteboard_posting() {
       );
   }
 
-export default Voteboard_posting;
+export default Balancegamewrite;
