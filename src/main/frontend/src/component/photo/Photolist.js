@@ -1,135 +1,57 @@
 import './Photolist.css';
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Photolistitem from './Photolistitem';
 
 const Photolist = ({ generation }) => {
 
+    const [photolist, setPhotolist] = useState([]);
     const [currentindex, setcurrentindex] = useState(0);
     const [searchkeyword, setsearchkeyword] = useState('');
     const [totalpage, settotalpage] = useState(10);
     const [curruntpage, setcurruntpage] = useState(1);
-    const [sorttype, setsorttype] = useState('SORT_NEW');
+    const [sorttype, setsorttype] = useState('photoId_desc');
     /*1020일 땐 보이는 갯수 9개 아닐 땐 9개*/
     let size = generation === "1020" ? 9 : 8;
 
-    let photolist = [
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10,
-            "imgurl1": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl2": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl3": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl4": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl5": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
-        },
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10,
-            "imgurl1": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl2": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl3": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl4": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl5": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
-        },
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10,
-            "imgurl1": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl2": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl3": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl4": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl5": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
-        },
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10,
-            "imgurl1": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl2": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl3": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl4": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl5": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
-        },
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10,
-            "imgurl1": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl2": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl3": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl4": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl5": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
-        }
-        ,
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10,
-            "imgurl1": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl2": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl3": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl4": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl5": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
-        },
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10,
-            "imgurl1": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl2": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl3": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl4": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl5": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
-        },
-        {
-            "title": "n.SSign-SPICEasdasdasdasdas",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10,
-            "imgurl1": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl2": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl3": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl4": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl5": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
-        }
-    ]
+    let accessToken = window.localStorage.getItem('accessToken');
 
-    if (generation === "1020") {
-        photolist.push({
-            "title": "n.SSign-SPICEasdasdasdasdas",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10,
-            "imgurl1": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl2": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl3": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl4": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg",
-            "imgurl5": "https://www.animals.or.kr/api/files/thumbnails/51386-02422bb9-0420-4d99-b33e-24f541c3b269.jpg"
-        })
-    }
+    const getCategoryByGeneration = (generation) => {
+            switch (generation) {
+                case "8090":
+                    return "CATEGORY_8090";
+                case "9000":
+                    return "CATEGORY_9000";
+                case "0010":
+                    return "CATEGORY_0010";
+                case "1020":
+                    return "CATEGORY_1020";
+                default:
+                    return "CATEGORY_1020";  // 기본값 설정
+            }
+        };
+
+        const fetchPhotos = async () => {
+            try {
+                const category = getCategoryByGeneration(generation);
+                const response = await axios.get('http://127.0.0.1:8080/photos?'
+                + 'page=' + curruntpage + '&size=' + size + '&sort=' + sorttype + '&category=' + category, {
+                headers: { Authorization: `Bearer ${accessToken}` }
+                }).then (function (response) {
+                            if (response !== undefined) {
+                                    setPhotolist(response.data.data);
+                                    settotalpage(response.data.pageInfo.totalPages);
+                            }
+                });
+
+            } catch (error) {
+                console.error("Error fetching photos", error);
+            }
+        };
 
     useEffect(() => {
-
-    }, [curruntpage]);
+        fetchPhotos();
+    }, [sorttype, curruntpage, generation]);
 
 
     return (<div className={'photolist' + generation + 'mainbox'}>
@@ -137,12 +59,12 @@ const Photolist = ({ generation }) => {
             <select className={"postlistselect" + generation} onChange={(e) => {
                 setsorttype(e.target.value);
             }}>
-                <option className={"postlistselectitem" + generation} value="SORT_NEW">새글 순</option>
-                <option className={"postlistselectitem" + generation} value="SORT_OLD">오래된글 순</option>
-                <option className={"postlistselectitem" + generation} value="SORT_VIEW_MAX">조회수 많은 순</option>
-                <option className={"postlistselectitem" + generation} value="SORT_VIEW_MIN">조회수 적은 순</option>
-                <option className={"postlistselectitem" + generation} value="SORT_LIKE_MANY">좋아요 많은 순</option>
-                <option className={"postlistselectitem" + generation} value="SORT_LIKE_MIN">좋아요 적은 순</option>
+                <option className={"postlistselectitem" + generation} value="photoId_desc">새글 순</option>
+                <option className={"postlistselectitem" + generation} value="photoId_asc">오래된글 순</option>
+                <option className={"postlistselectitem" + generation} value="view_desc">조회수 많은 순</option>
+                <option className={"postlistselectitem" + generation} value="vies_asc">조회수 적은 순</option>
+                <option className={"postlistselectitem" + generation} value="likeCount_desc">좋아요 많은 순</option>
+                <option className={"postlistselectitem" + generation} value="likeCount_asc">좋아요 적은 순</option>
             </select>
             <button className={"postpagewritebtn" + generation}>글쓰기</button>
         </div>
