@@ -7,11 +7,29 @@
 }
 
 .balancegame-commentlist8090nickname {
-    width: 7%;
+    width: 10%;
     font-size: 15px;
 }
 
 .balancegame-commentlist8090content {
-    width: 93%;
+    width: 90%;
+    font-family: 10px;
+}
+
+.balancegame-commentlist1020box {
+    border: 1px solid rgb(190, 190, 190);
+    display: flex;
+    justify-content: space-between;
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.balancegame-commentlist1020nickname {
+    width: 12%;
+    font-size: 15px;
+}
+
+.balancegame-commentlist1020content {
+    width: 88%;
     font-family: 10px;
 }
