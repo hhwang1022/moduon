@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 @Transactional
@@ -55,7 +56,7 @@ public class BalanceGameService {
 
 	public Page<BalanceGame> findBalanceGames(int page, int size) {
 		return balanceGameRepository.findAll(PageRequest.of(page, size,
-				Sort.by("balanceGameId").descending())
+				Sort.by("votePoints").descending())
 		);
 	}
 
@@ -82,5 +83,25 @@ public class BalanceGameService {
 			return true;
 		}
 		return false;
+	}
+
+	public List<BalanceGame> setVotePoints(List<BalanceGame> balanceGames) {
+		// 각 BalanceGame의 votePoint 업데이트
+		balanceGames.forEach(balanceGame -> {
+			// votePoint1과 votePoint2를 직접 대입
+			balanceGame.setVotePoint1(balanceGame.getBalanceGameVoteList().stream()
+					.filter(vote -> vote.getVoteItem().equals("point1")) // "point1"로 필터링
+					.count()); // 개수 세기
+
+			balanceGame.setVotePoint2(balanceGame.getBalanceGameVoteList().stream()
+					.filter(vote -> vote.getVoteItem().equals("point2")) // "point2"로 필터링
+					.count()); // 개수 세기
+
+			balanceGame.setVotePoints(balanceGame.getBalanceGameVoteList().stream()
+					.filter(vote -> vote.getVoteItem().equals("point1") || vote.getVoteItem().equals("point2"))
+					.count());
+		});
+
+		return balanceGames;
 	}
 }

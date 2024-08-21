@@ -64,13 +64,15 @@ public class BalanceGameController {
 												  @Positive @RequestParam int size,
 												  @RequestParam String generation) {
 		Page<BalanceGame> pageBalanceGames = balanceGameService.findBalanceGames(page - 1, size);
-		List<BalanceGame> balanceGames = pageBalanceGames.stream()
+		List<BalanceGame> findBalanceGames = pageBalanceGames.stream()
 				.filter(value -> value.getBalanceGameGeneration().getGeneration().contains(generation))
 				.filter(value -> balanceGameService.isAfterNow(value.getEndDate()))
 				.toList();
 
+		List<BalanceGame> balanceGames = balanceGameService.setVotePoints(findBalanceGames);
+
 		return new ResponseEntity<>(
-				new MultiResponseDto<>(mapper.balanceGameToBalanceGameDtoList(balanceGames),
+				new MultiResponseDto<>(balanceGames,
 						pageBalanceGames),
 				HttpStatus.OK);
 	}
@@ -80,13 +82,15 @@ public class BalanceGameController {
 											 @Positive @RequestParam int size,
 											 @RequestParam String generation) {
 		Page<BalanceGame> pageBalanceGames = balanceGameService.findBalanceGames(page - 1, size);
-		List<BalanceGame> balanceGames = pageBalanceGames.stream()
+		List<BalanceGame> findBalanceGames = pageBalanceGames.stream()
 				.filter(value -> value.getBalanceGameGeneration().getGeneration().contains(generation))
 				.filter(value -> !balanceGameService.isAfterNow(value.getEndDate()))
 				.toList();
 
+		List<BalanceGame> balanceGames = balanceGameService.setVotePoints(findBalanceGames);
+
 		return new ResponseEntity<>(
-				new MultiResponseDto<>(mapper.balanceGameToBalanceGameDtoList(balanceGames),
+				new MultiResponseDto<>(balanceGames,
 						pageBalanceGames),
 				HttpStatus.OK);
 	}
@@ -95,9 +99,11 @@ public class BalanceGameController {
 	public ResponseEntity getBalanceGamesByGeneration(@Positive @RequestParam int page,
 													  @Positive @RequestParam int size) {
 		Page<BalanceGame> pageBalanceGames = balanceGameService.findBalanceGames(page - 1, size);
-		List<BalanceGame> balanceGames = pageBalanceGames.stream()
+		List<BalanceGame> findBalanceGames = pageBalanceGames.stream()
 				.filter(value -> balanceGameService.isAfterNow(value.getEndDate()))
 				.toList();
+
+		List<BalanceGame> balanceGames = balanceGameService.setVotePoints(findBalanceGames);
 
 		return new ResponseEntity<>(
 				new MultiResponseDto<>(balanceGames,

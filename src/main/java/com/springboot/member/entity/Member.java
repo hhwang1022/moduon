@@ -162,7 +162,21 @@ public class Member extends Auditable {
     @JsonManagedReference
     private List<BalanceGame> balanceGameList = new ArrayList<>();
 
+    public void setBalanceGameList(BalanceGame balanceGame) {
+        balanceGameList.add(balanceGame);
+        if (balanceGame.getMember() != this) {
+            balanceGame.setMember(this);
+        }
+    }
+
     @OneToMany(mappedBy = "member", cascade = {CascadeType.PERSIST})
     @JsonManagedReference
     private List<BalanceGameVote> balanceGameVoteList = new ArrayList<>();
+
+    public void setBalanceGameVoteList(BalanceGameVote balanceGameVote) {
+        balanceGameVoteList.add(balanceGameVote);
+        if (balanceGameVote.getMember() != this) {
+            balanceGameVote.setMember(this);
+        }
+    }
 }

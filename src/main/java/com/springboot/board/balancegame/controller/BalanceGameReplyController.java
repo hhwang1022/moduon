@@ -43,7 +43,7 @@ public class BalanceGameReplyController {
         BalanceGameReplyDto.Response reply = replyMapper.balanceGameToBalanceGameResponse(createReply);
 
         return new ResponseEntity<>(
-                new SingleResponseDto<>(reply),
+                new SingleResponseDto<>(createReply),
                 HttpStatus.OK);
     }
 

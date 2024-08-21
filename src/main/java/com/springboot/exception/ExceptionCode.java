@@ -19,7 +19,8 @@ public enum ExceptionCode {
     POST_REPLY_NOT_FOUND(404, "PostReply not found"),
     PHOTO_NOT_FOUND(404, "Photo not found"),
     PHOTO_REPLY_NOT_FOUND(404, "PhotoReply not found"),
-    BALANCEGAMEREPLY_NOT_FOUND(404, "balanceGameReply not found");
+    BALANCEGAMEREPLY_NOT_FOUND(404, "balanceGameReply not found"),
+    BALANCEGAME_VOTEITEM_NOT_FOUND(404, "voteItem not found");
 
     @Getter
     private int status;
