@@ -107,9 +107,9 @@ public class PostService {
         return findPost;
     }
 
-    public Page<Post> findPosts(int page, int size) {
+    public Page<Post> findPopularPosts(int page, int size) {
         return postRepository.findAll(PageRequest.of(page, size,
-                Sort.by("postId").descending()));
+                Sort.by("likeCount").descending()));
     }
 
     public Page<Post> findPostsSort(int page, int size, Sort sort, Post.Category category) {
