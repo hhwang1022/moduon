@@ -1,79 +1,60 @@
-import './Postlist.css';
+import './Postlist.css'
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import PostlistItem from './PostlistItem';
 import Postwrite from './Postwrite';
 
 const Postlist = ({ generation }) => {
 
+    const [postlist, setPostlist] = useState([]);
     const [currentindex, setcurrentindex] = useState(0);
     const [searchkeyword, setsearchkeyword] = useState('');
     const [totalpage, settotalpage] = useState(10);
     const [curruntpage, setcurruntpage] = useState(1);
-    const [sorttype, setsorttype] = useState('SORT_NEW');
+    const [sorttype, setsorttype] = useState('postId_desc');
 
-    let postlist = [
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        },
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        },
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        },
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        },
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        }
-        ,
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        },
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        },
-        {
-            "title": "n.SSign-SPICEasdasdasdasdas",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        }
-    ]
+      let accessToken = window.localStorage.getItem('accessToken');
+
+    const getCategoryByGeneration = (generation) => {
+            switch (generation) {
+                case "8090":
+                    return "CATEGORY_8090";
+                case "9000":
+                    return "CATEGORY_9000";
+                case "0010":
+                    return "CATEGORY_0010";
+                case "1020":
+                    return "CATEGORY_1020";
+                default:
+                    return "CATEGORY_1020";  // 기본값 설정
+            }
+        };
+
+    const fetchPosts = async () => {
+        try {
+            const category = getCategoryByGeneration(generation);
+            const response = await axios.get('http://127.0.0.1:8080/posts?'
+            + 'page= ' + curruntpage + '&size='  + 10 + '&sort=' + sorttype + '&category='  +category, {
+            headers: { Authorization: `Bearer ${accessToken}` }
+            }).then(function (response) {
+                      if (response !== undefined) {
+                                            setPostlist(response.data.data);
+                                            settotalpage(response.data.pageInfo.totalPages);
+                      }
+                    });
+            //            {
+////                params: {sort: sorttype, page: curruntpage, size: 10, category: 'category'}
+//                });
+//                console.log('Response date : ', response.data);
+
+            } catch (error) {
+                console.error("Error fetching posts: ", error);
+            }
+        };
 
     useEffect(() => {
-
-    }, [curruntpage]);
+        fetchPosts();
+    }, [sorttype, curruntpage, generation]);
 
 
     return (<div className={'postlist' + generation + 'mainbox'}>
@@ -81,12 +62,12 @@ const Postlist = ({ generation }) => {
             <select className={'postlistselect' + generation} onChange={(e) => {
                 setsorttype(e.target.value);
             }}>
-                <option className={"postlistselectitem" + generation} value="SORT_NEW">새글 순</option>
-                <option className={"postlistselectitem" + generation} value="SORT_OLD">오래된글 순</option>
-                <option className={"postlistselectitem" + generation} value="SORT_VIEW_MAX">조회수 많은 순</option>
-                <option className={"postlistselectitem" + generation} value="SORT_VIEW_MIN">조회수 적은 순</option>
-                <option className={"postlistselectitem" + generation} value="SORT_LIKE_MANY">좋아요 많은 순</option>
-                <option className={"postlistselectitem" + generation} value="SORT_LIKE_MIN">좋아요 적은 순</option>
+                <option className={"postlistselectitem" + generation} value="postId_desc">새글 순</option>
+                <option className={"postlistselectitem" + generation} value="postId_asc">오래된글 순</option>
+                <option className={"postlistselectitem" + generation} value="view_desc">조회수 많은 순</option>
+                <option className={"postlistselectitem" + generation} value="view_asc">조회수 적은 순</option>
+                <option className={"postlistselectitem" + generation} value="likeCount_desc">좋아요 많은 순</option>
+                <option className={"postlistselectitem" + generation} value="likeCount_asc">좋아요 적은 순</option>
             </select>
             <button className={"postpagewritebtn"+generation}
             onClick={() => {
@@ -95,7 +76,7 @@ const Postlist = ({ generation }) => {
             }
             }>글쓰기</button>
         </div>
-        {generation === "1020" ? 
+        {generation === "1020" ?
         <div className={"postlist" + generation + "margin"}>{postlist.map((x, index) => {
             return <PostlistItem post={x} generation={generation} />
         })}</div> :

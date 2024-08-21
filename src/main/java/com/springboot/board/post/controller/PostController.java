@@ -82,6 +82,17 @@ public class PostController {
                 new MultiResponseDto<>(mapper.postsToPostResponseDtos(posts), pagePost), HttpStatus.OK);
     }
 
+    @GetMapping("/popular")
+    public ResponseEntity getPopularPosts(@Positive @RequestParam int page,
+                                          @Positive @RequestParam int size) {
+        Page<Post> pagePost = postService.findPopularPosts(page - 1, size);
+        List<Post> posts = pagePost.getContent();
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(mapper.postsToPostResponseDtos(posts), pagePost), HttpStatus.OK
+        );
+    }
+
+
     @GetMapping("/search")
     public ResponseEntity search (@RequestParam String keyword,
                           Model model,
