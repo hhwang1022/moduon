@@ -9,6 +9,7 @@ import TopBanner from '../TopBanner';
 import Photolist from '../photo/Photolist';
 import Balancegamelist from '../balancegame/Balancegamelist';
 import Currentvote_board from '../currentvote/Currentvote_board';
+import Postboard from '../post/Postboard';
 
 
 const Main_8090 = () => {
@@ -33,7 +34,7 @@ const Main_8090 = () => {
     const Page = () => {
         if(currentindex === 0){
             return (
-                <Postlist generation={"8090"} />
+                <Postboard generation={"8090"} />
             );
         }
         else if(currentindex === 1){
@@ -96,7 +97,6 @@ const Main_8090 = () => {
                     <Bgmbar generation={"8090"}/>
                     <Mypage generation={"8090"}/>
                 </div>
-                <div className='main8090margin'></div>
             </div>
 
             <div className='main8090windowbottombarbackground'>{"* Tip) 매일 출석해서 투표권을 얻어보세요! *"}</div>

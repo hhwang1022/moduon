@@ -12,6 +12,7 @@ import Mypage from '../Mypage';
 import Join from '../Join';
 import Login from '../Login';
 import InstaCurrentvote_board from '../currentvote/InstaCurrentvote_board';
+import Postboard from '../post/Postboard';
 
 const Main_1020 = () => {
 
@@ -49,7 +50,7 @@ const Main_1020 = () => {
         }
         else if (currentindex === 2) {
             return (
-                <Postlist generation={"1020"} />
+                <Postboard generation={"1020"} />
             );
         }
         else if(currentindex === 3){
