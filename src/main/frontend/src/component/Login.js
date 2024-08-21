@@ -37,8 +37,6 @@ const Login = ({successhandler}) => {
           refreshToken = response.headers['refresh'];
           localStorage.setItem('accessToken', accessToken);
           localStorage.setItem('refresh', refreshToken);
-          console.log('accessToken : ' + accessToken);
-          console.log('refreshToken : ' + refreshToken);
         }
       });
     } catch (error) {
