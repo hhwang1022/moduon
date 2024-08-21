@@ -8,6 +8,7 @@ import TopBanner from '../TopBanner';
 import Currentvote_board from '../currentvote/Currentvote_board';
 import Postboard from '../post/Postboard';
 import Photoboard from '../photo/Photoboard';
+import Balancegameborad from '../balancegame/Balancegameborad';
 
 
 const Main_8090 = () => {
@@ -42,7 +43,7 @@ const Main_8090 = () => {
         }
         else{
             return (
-                <Currentvote_board generation={"8090"} />
+                <Balancegameborad generation={"8090"} />
             );
         }
       };
