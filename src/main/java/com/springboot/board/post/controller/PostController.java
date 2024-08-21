@@ -8,6 +8,7 @@ import com.springboot.dto.MultiResponseDto;
 import com.springboot.dto.SingleResponseDto;
 import com.springboot.utils.UriCreator;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -94,10 +95,10 @@ public class PostController {
 
 
     @GetMapping("/search")
-    public ResponseEntity search (@RequestParam String keyword,
-                          Model model,
-                          @PageableDefault(sort = "id", direction = Sort.Direction.DESC) Pageable pageable,
-                          @RequestParam String category) {
+    public ResponseEntity search (@RequestParam("keyword") String keyword,
+                          @PageableDefault(sort = "postId", direction = Sort.Direction.DESC) Pageable pageable,
+                          @RequestParam("category") String category) {
+
         // 카테고리를 enum으로 변환
         Post.Category postCategory;
         try {
@@ -105,6 +106,10 @@ public class PostController {
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>("Invalid category provided", HttpStatus.BAD_REQUEST);
         }
+
+        int page = pageable.getPageNumber() > 0? pageable.getPageNumber() - 1 : 0;
+        pageable = PageRequest.of(page, pageable.getPageSize(), pageable.getSort());
+
         Page<Post> searchList = postService.search(pageable, keyword, postCategory);
         List<PostDto.Response> responsesList = searchList.stream()
                 .map(mapper::postToPostResponseDto)
