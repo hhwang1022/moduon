@@ -149,6 +149,7 @@ public class Member extends Auditable {
     }
 
     @OneToMany(mappedBy = "member")
+    @JsonManagedReference
     private List<Share> shareList = new ArrayList<>();
 
     public void setShareList(Share share) {
