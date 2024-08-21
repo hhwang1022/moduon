@@ -11,6 +11,8 @@ const Photolist = ({ generation, onClickwirtebtn }) => {
     const [totalpage, settotalpage] = useState(10);
     const [curruntpage, setcurruntpage] = useState(1);
     const [sorttype, setsorttype] = useState('photoId_desc');
+    const [isSearching, setIsSearching] = useState(false);
+
     /*1020일 땐 보이는 갯수 9개 아닐 땐 9개*/
     let size = generation === "1020" ? 9 : 8;
 
@@ -49,9 +51,45 @@ const Photolist = ({ generation, onClickwirtebtn }) => {
             }
         };
 
+        const searchPhotos = async () => {
+            try {
+                const category = getCategoryByGeneration(generation);
+                const response = await axios.get('http://127.0.0.1:8080/photos/search?'
+                + 'page=' + curruntpage + '&size=' + 10 + '&category=' + category + '&keyword=' + searchkeyword, {
+                headers: { Authorization: `Bearer ${accessToken}` }
+                }).then (function (response) {
+                            if (response !== undefined) {
+                                    setPhotolist(response.data.data);
+                                    settotalpage(response.data.pageInfo.totalPages);
+                            }
+                });
+            } catch (error) {
+                console.error ("Error searching photos with keyword: ", error );
+            } finally {
+                setIsSearching(false);
+            }
+        };
+
     useEffect(() => {
+        if (isSearching) {
+            searchPhotos();
+        } else {
         fetchPhotos();
-    }, [sorttype, curruntpage, generation]);
+        }
+    }, [sorttype, curruntpage, generation, searchkeyword]);
+
+    const handlesSearchClick = () => {
+        searchPhotos();
+    }
+
+    const handlePageChange = (pageNumber) => {
+        setcurruntpage(pageNumber);
+        if (isSearching) {
+            searchPhotos();
+        } else {
+            fetchPhotos();
+        }
+    };
 
 
     return (<div className={'photolist' + generation + 'mainbox'}>
@@ -94,9 +132,7 @@ const Photolist = ({ generation, onClickwirtebtn }) => {
             </div>
             <div>
                 <input className='qnasearchbodyinput' type="text" value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)} />
-                <button className={'postpagebtn' + generation} onClick={() => {
-
-                }}>검색</button>
+                <button className={'postpagebtn' + generation} onClick={handlesSearchClick}>검색</button>
             </div>
         </div>
     </div>);

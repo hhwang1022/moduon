@@ -8,6 +8,7 @@ import com.springboot.dto.MultiResponseDto;
 import com.springboot.dto.SingleResponseDto;
 import com.springboot.utils.UriCreator;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
@@ -94,6 +95,10 @@ public class PhotoController {
         } catch (IllegalArgumentException e) {
             return new ResponseEntity<>("Invalid category provided", HttpStatus.BAD_REQUEST);
         }
+
+        int page = pageable.getPageNumber() > 0? pageable.getPageNumber() -1 : 0;
+        pageable = PageRequest.of(page, pageable.getPageSize(), pageable.getSort());
+
         Page<Photo> searchList = photoService.search(pageable, keyword, photoCategory);
         List<PhotoDto.Response> responsesList = searchList.stream()
                 .map(mapper::photoToPhotoResponseDto)
