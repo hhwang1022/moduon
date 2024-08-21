@@ -1,35 +1,37 @@
 .balancegame-commentlist8090box {
     border: 1px solid rgb(190, 190, 190);
+    background-color: white;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: center;
     margin-left: 20px;
     margin-right: 20px;
 }
 
 .balancegame-commentlist8090nickname {
-    width: 10%;
+    display: flex;
     font-size: 15px;
 }
 
 .balancegame-commentlist8090content {
-    width: 90%;
+    margin-left: 5px;
     font-family: 10px;
 }
 
 .balancegame-commentlist1020box {
     border: 1px solid rgb(190, 190, 190);
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
+    align-items: center;
     margin-left: 20px;
     margin-right: 20px;
 }
 
 .balancegame-commentlist1020nickname {
-    width: 12%;
     font-size: 15px;
 }
 
 .balancegame-commentlist1020content {
-    width: 88%;
+    margin-left: 5px;
     font-family: 10px;
 }

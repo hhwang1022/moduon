@@ -1,9 +1,10 @@
-#progress {
+.vote-bar {
+  display: flex;
   appearance: none;
-  width: 500px;
+  width: 100%;
 }
 #progress::-webkit-progress-bar {
-  width: 500px;
+  width: 80%;
   background:#ff00dd;
   border-radius:10px;
   box-shadow: inset 3px 3px 10px #950092;
@@ -13,5 +14,4 @@
   background: #1d7497;
   background: -webkit-linear-gradient(to right, #328bff, #1367af);
   background: linear-gradient(to right, #2dc0ff, #1d6e97);
-
 }
