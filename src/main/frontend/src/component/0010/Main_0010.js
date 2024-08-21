@@ -27,44 +27,9 @@ const Main_0010 = () => {
                 <Photolist generation={"0010"} />
             );
         }
-        else if(currentindex === 2){
-            return (
-                <Currentvote_board generation={"0010"} />
-            );
-        }
-        else if(currentindex === 3){
-            return (
-                <Photolist generation={"0010"} />
-            );
-        }
-        else if(currentindex === 4){
-            return (
-                <Photolist generation={"0010"} />
-            );
-        }
-        else if(currentindex === 5){
-            return (
-                <Photolist generation={"0010"} />
-            );
-        }
-        else if(currentindex === 6){
-            return (
-                <Photolist generation={"0010"} />
-            );
-        }
-        else if(currentindex === 7){
-            return (
-                <Photolist generation={"0010"} />
-            );
-        }
-        else if(currentindex === 8){
-            return (
-                <Photolist generation={"0010"} />
-            );
-        }
         else{
             return (
-                <Balancegamelist generation={"0010"} />
+                <Currentvote_board generation={"0010"} />
             );
         }
       };
