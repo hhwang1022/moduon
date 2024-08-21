@@ -13,7 +13,7 @@ public class BalanceGameReplyDto {
         @NotBlank
         private Long memberId;
 
-        @NotBlank
+        @Setter
         private Long balanceGameId;
 
         @NotBlank

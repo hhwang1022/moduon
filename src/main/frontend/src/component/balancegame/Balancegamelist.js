@@ -1,4 +1,5 @@
 import './Balancegamelist.css';
+import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Balancegameitem from './Balancegameitem';
 
