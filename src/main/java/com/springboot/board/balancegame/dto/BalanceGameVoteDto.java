@@ -15,4 +15,12 @@ public class BalanceGameVoteDto {
 
         private String voteItem;
     }
+
+    @Getter
+    @AllArgsConstructor
+    public static class Response {
+        private Long memberId;
+        private Long balanceGameId;
+        private String voteItem;
+    }
 }

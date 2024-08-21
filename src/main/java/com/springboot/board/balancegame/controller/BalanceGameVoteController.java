@@ -30,8 +30,9 @@ public class BalanceGameVoteController {
         BalanceGameVote balanceGameVote = voteMapper.balanceGameVotePostToBalanceGameVote(requestBody);
         BalanceGameVote createVote = voteService.createBalanceGameVote(balanceGameVote);
 
+
         return new ResponseEntity<>(
-                new SingleResponseDto<>(createVote),
+                new SingleResponseDto<>(voteMapper.balanceGameVoteToBalanceGameVoteResponse(createVote)),
                 HttpStatus.OK);
     }
 }
