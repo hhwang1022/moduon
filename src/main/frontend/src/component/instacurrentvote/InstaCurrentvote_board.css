@@ -1,50 +1,28 @@
-.balancegame-box {
-    margin: 20px;
+.insta-balancegame-box {
     width: 720px;
-    height: 1000px;
     display: flex;
     flex-direction: column;
     border-top: 2px solid black;
+    overflow:hidden;
+    margin-bottom: 20px;
 }
 
-.balancegame-header {
-    display: flex;
-    justify-content: space-between;
-    border-left: 10px solid #FFE5E5;
-    border-right: 10px solid #FFE5E5;
-}
-
-.voteboard {
-    padding: 5px 10px;
-    font-weight: bold;
-}
-
-.icon {
-    display: flex;
-    justify-content: right;
-}
-
-.plus-image, .menu-image {
-    width: 20px;
-    height: 20px;
-    padding: 5px 10px;
-}
-
-.past-votes {
+.insta-past-votes {
     display: flex;
     justify-content: flex-end;
     margin: 20px;
 }
   
-.past-votes-button {
+.insta-past-votes-button {
     width: 120px;
     height: 40px;
     font-size: 20px;
     box-shadow:1px 1px 1px #959595;
+    border: 1px solid black;
     cursor: pointer;
 }
 
-.vote-header {
+.insta-insta-vote-header {
     display: flex;
     align-items: center;
     margin-left: 20px;
@@ -53,22 +31,26 @@
     border: 1px solid #DFDFDF;
 }
   
-.voting-topic {
+.insta-voting-topic {
     flex-grow: 1;
     text-align: center;
     font-size: 30px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+    margin-left: 20px;
+    margin-right: 20px;
+    background-color: #F2F2F2;
+    border: 1px solid #DFDFDF;
 }
 
-.share-box {
+.insta-share-box {
     display: flex;
     justify-content: right;
     margin-top: 10px;
 }
 
-.share-box button{
+.insta-share-box button{
     width: 100px;
     height: 30px;
     font-size: 15px;
@@ -76,22 +58,28 @@
     margin-left: 30px;
     box-shadow:1px 1px 1px #959595;
     cursor: pointer;
+    border: 1px solid black;
 }
 
-.vote-item {
+.insta-vote-item {
     display: flex;
-    justify-content: space-between;
-    position: relative;
+    flex-direction: row;
+    
 }
 
-.vote1, .vote2 {
-    position: relative;
+.insta-vote-frame1, .insta-vote-frame2 {
     width: 480px;
+    margin-left: -80px;
+}
+
+.insta-vote1, .insta-vote2 {
+    position: relative;
+    width: 360px;
     height: 480px;
     overflow: hidden;
 }
 
-.vote1 button {
+.insta-vote1 button {
     position: absolute;
     top: 87%;
     left: 45.5%;
@@ -107,13 +95,8 @@
     background-color: #e2e2e2;
 }
 
-.vote-frame1, .vote-frame2 {
-    width: 480px;
-    height: auto;
-    margin-left: -80px;
-}
 
-.vote-image1, .vote-image2 {
+.insta-vote-image1, .insta-vote-image2 {
     position: absolute;
     top: 50%;
     left: 50%;
@@ -124,7 +107,7 @@
     border-radius: 2%;
 }
 
-.vote-name1 {
+.insta-vote-name1 {
     position: absolute;
     top: 7%;
     left: 58%;
@@ -137,7 +120,7 @@
     text-align: center;
 }
 
-.vote-name2 {
+.insta-vote-name2 {
     position: absolute;
     top: 7%;
     left: 58%;
@@ -150,7 +133,7 @@
     text-align: center;
 }
 
-.vote2 button {
+.insta-vote2 button {
     position: absolute;
     top: 87%;
     left: 45.5%;
@@ -166,13 +149,14 @@
     background-color: #e2e2e2;
 }
 
-.votebar {
-    margin-left: 20px;
+.insta-votebar {
+    display: flex;
+    justify-content: center;
     margin-right: 20px;
     margin-bottom: 20px;
 }
 
-.comments-box {
+.insta-comments-box {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -180,13 +164,13 @@
     margin-bottom: 10px;
 }
 
-.comment {
+.insta-comment {
   margin-left: 20px;
   margin-right: 20px;
   
 }
   
-.comment-form {
+.insta-comment-form {
     height: 100px;
     display: flex;
     flex-direction: row;
@@ -194,8 +178,8 @@
     margin-bottom: 10px;
 }
   
-.comment-box {
-    width: 95%;
+.insta-comment-box {
+    width: 90%;
     height: 100px;
     margin-left: 20px;
     box-sizing: border-box;
@@ -206,9 +190,13 @@
     padding-top: 0;  
     text-align: left; 
     vertical-align: top;
+    border: 1px solid black;
+    padding: 3px;
   }
   
-.comment-submit {
+.insta-comment-submit {
+    background-color: white;
+    border: 1px solid black;
     width: 5%;
     height: 100px;
     margin-left: 5px;
