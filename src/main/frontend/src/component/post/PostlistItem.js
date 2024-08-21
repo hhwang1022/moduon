@@ -10,10 +10,10 @@ const PostlistItem = ({ post, generation }) => {
     const simpleday = (day) =>
     (
         // yyyy-mm-dd
-        `${new Date(day).getFullYear()}-
-          ${(new Date(day).getMonth() + 1).toString().padStart(2, '0')}-
-          ${new Date(day).getDate().toString().padStart(2, '0')}`
+        `${(new Date(day).getMonth() + 1).toString().padStart(2, '0')}-${new Date(day).getDate().toString().padStart(2, '0')}`
     );
+
+    console.log("post : " + Object.keys(post));
 
     return (
         (generation === "1020" ?
@@ -23,9 +23,10 @@ const PostlistItem = ({ post, generation }) => {
                     <div className={'postlist' + generation + 'body'}>
                         <div>
                             <td className={'postlist' + generation + 'text'}>{post.nickname + "\u00a0"}</td>
-                            <td className={'postlist' + generation + 'date'}>{simpleday(post.createsat) + "\u00a0"}</td>
-                            {getDayDiffDay(post.createsat) <= 2.0 ? <td className={'postitem' + generation + 'newtext'}>new</td> : <></>}
-                            {post.like >= 10 ? <td className={'postitem' + generation + 'hottext'}>hot</td> : <></>}
+                            <td className={'postlist' + generation + 'date'}>{simpleday(post.createdAt) + "\u00a0"}</td>
+                            {post.like >= 10 ? <td className={'postitem' + generation + 'hottext'}>hot</td> : (
+                                getDayDiffDay(post.createsat) <= 2.0 ? <td className={'postitem' + generation + 'newtext'}>new</td> : <td></td>
+                            )}
                         </div>
                         <td className={'postlist' + generation + 'text'}><button>{post.title}</button></td>
                         <div>
@@ -37,11 +38,12 @@ const PostlistItem = ({ post, generation }) => {
                 </div>
             </div>
             : <tr className={'postlist' + generation + 'line'} height="34">
-                {getDayDiffDay(post.createsat) <= 2.0 ? <td className={'postitem' + generation + 'newtext'}>new</td> : <></>}
-                {post.like >= 10 ? <td className={'postitem' + generation + 'hottext'}>hot</td> : <></>}
+                {post.like >= 10 ? <td className={'postitem' + generation + 'hottext'}>hot</td> : (
+                    getDayDiffDay(post.createsat) <= 2.0 ? <td className={'postitem' + generation + 'newtext'}>new</td> : <td></td>
+                )}
                 <td className={'postlist' + generation + 'text'}><button>{post.title}</button></td>
                 <td className={'postlist' + generation + 'text'}>{post.nickname}</td>
-                <td className={'postlist' + generation + 'text'}>{post.createsat}</td>
+                <td className={'postlist' + generation + 'text'}>{simpleday(post.createdAt)}</td>
                 <td className={'postlist' + generation + 'text'}>{post.view}</td>
                 <td className={'postlist' + generation + 'text'}>{post.likeCount}</td>
             </tr>

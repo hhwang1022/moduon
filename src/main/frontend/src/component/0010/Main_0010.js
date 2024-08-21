@@ -8,6 +8,7 @@ import Postlist from '../post/Postlist';
 import Photolist from '../photo/Photolist';
 import Balancegamelist from '../balancegame/Balancegamelist';
 import Currentvote_board from '../currentvote/Currentvote_board';
+import Postboard from '../post/Postboard';
 
 const Main_0010 = () => {
     const [currentindex, setcurrentindex] = useState(0);
@@ -19,7 +20,7 @@ const Main_0010 = () => {
     const Page = () => {
         if(currentindex === 0){
             return (
-                <Postlist generation={"0010"} />
+                <Postboard generation={"0010"} />
             );
         }
         else if(currentindex === 1){
