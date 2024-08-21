@@ -13,11 +13,12 @@ import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import javax.validation.constraints.Positive;
 
 @RestController
-@RequestMapping("/balancegame-replies")
+@RequestMapping("/balancegames/{balance-game-id}/reply")
 public class BalanceGameReplyController {
-    private final static String BALANCE_GAME_REPLIER_URL = "/balancegame-replies/";
+    private final static String BALANCE_GAME_REPLIER_URL = "/balancegames/{balance-game-id}/reply";
     private final BalanceGameReplyMapper replyMapper;
     private final BalanceGameReplyService replyService;
     private final MemberService memberService;
@@ -34,11 +35,14 @@ public class BalanceGameReplyController {
     }
 
     @PostMapping
-    public ResponseEntity postBalanceGameReply(@RequestBody BalanceGameReplyDto.Post postDto) {
+    public ResponseEntity postBalanceGameReply(@PathVariable("balance-game-id") @Positive long balanceGameId,
+                                               @RequestBody BalanceGameReplyDto.Post postDto) {
+        postDto.setBalanceGameId(balanceGameId);
         BalanceGameReply findReply = replyMapper.balanceGameReplyPostToBalanceGameReply(postDto);
-        findReply.setBalanceGame(balanceGameService.findVerifiedBalanceGame(postDto.getBalanceGameId()));
+        findReply.setBalanceGame(balanceGameService.findVerifiedBalanceGame(balanceGameId));
         findReply.setMember(memberService.findVerifiedMember(postDto.getMemberId()));
         BalanceGameReply createReply = replyService.createBalanceGameReply(findReply);
+
 
         BalanceGameReplyDto.Response reply = replyMapper.balanceGameToBalanceGameResponse(createReply);
 
@@ -59,6 +63,7 @@ public class BalanceGameReplyController {
                 new SingleResponseDto<>(reply),
                 HttpStatus.OK);
     }
+
 
     @DeleteMapping("/{balance-game-reply-id}")
     public ResponseEntity deleteBalanceGameReply(@PathVariable("balance-game-reply-id") Long balanceGameReplyId,
