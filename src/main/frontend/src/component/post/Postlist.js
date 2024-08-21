@@ -13,7 +13,6 @@ const Postlist = ({ generation , onClickwirtebtn }) => {
     const [curruntpage, setcurruntpage] = useState(1);
     const [sorttype, setsorttype] = useState('postId_desc');
     const [isSearching, setIsSearching] = useState(false);
-    const [searchLists, setSearchLists] = useState([]);
 
       let accessToken = window.localStorage.getItem('accessToken');
 
@@ -65,7 +64,7 @@ const Postlist = ({ generation , onClickwirtebtn }) => {
                             }
                 });
             } catch (error) {
-                console.error("Error fetching posts: ", error);
+                console.error("Error searching posts with keyword: ", error);
             } finally {
                 setIsSearching(false);
             }
@@ -93,7 +92,7 @@ const Postlist = ({ generation , onClickwirtebtn }) => {
         }
     };
 
-     const renderedPosts = isSearching ? searchLists : postlist;
+
 
 
     return (<div className={'postlist' + generation + 'mainbox'}>
