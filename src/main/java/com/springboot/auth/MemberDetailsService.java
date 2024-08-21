@@ -10,6 +10,8 @@ import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
 
+import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.Collection;
 import java.util.Optional;
 
@@ -28,6 +30,19 @@ public class MemberDetailsService implements UserDetailsService {
         System.out.println(username);
         Optional<Member> optionalMember = memberRepository.findByEmail(username);
         Member findMember = optionalMember.orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
+
+        if (findMember.getLoginDate() == null) {
+            findMember.setVotingRights(findMember.getVotingRights() + 1);
+            findMember.setLoginDate(LocalDate.now());
+        }
+
+        if (findMember.getLoginDate() != null && findMember.getLoginDate().isAfter(LocalDate.now())) {
+            findMember.setVotingRights(findMember.getVotingRights() + 1);
+            findMember.setLoginDate(LocalDate.now());
+        } else {
+            findMember.setLoginDate(LocalDate.now());
+        }
+        memberRepository.save(findMember);
         return new MemberDetail(findMember);
     }
 
