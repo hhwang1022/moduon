@@ -17,6 +17,9 @@ public class BalanceGameVote {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private long BalanceGameVoteId;
 
+    @Column
+    private String voteItem;
+
     @ManyToOne
     @JoinColumn(name = "BALANCE_GAME_ID")
     @JsonBackReference

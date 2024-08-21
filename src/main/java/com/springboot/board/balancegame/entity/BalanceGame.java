@@ -118,4 +118,7 @@ public class BalanceGame extends Auditable {
 	@OneToMany(mappedBy = "balanceGame", cascade = {CascadeType.PERSIST})
 	@JsonManagedReference
 	private List<BalanceGameVote> balanceGameVoteList = new ArrayList<>();
+
+	@Column
+	private Long votePoints = 0L;
 }
