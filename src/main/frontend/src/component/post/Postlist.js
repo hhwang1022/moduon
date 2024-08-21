@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import PostlistItem from './PostlistItem';
 import Postwrite from './Postwrite';
 
-const Postlist = ({ generation }) => {
+const Postlist = ({ generation , onClickwirtebtn }) => {
 
     const [postlist, setPostlist] = useState([]);
     const [currentindex, setcurrentindex] = useState(0);
@@ -70,11 +70,7 @@ const Postlist = ({ generation }) => {
                 <option className={"postlistselectitem" + generation} value="likeCount_asc">좋아요 적은 순</option>
             </select>
             <button className={"postpagewritebtn"+generation}
-            onClick={() => {
-                console.log("글쓰기");
-                return (<Postwrite/>);
-            }
-            }>글쓰기</button>
+            onClick={onClickwirtebtn}>글쓰기</button>
         </div>
         {generation === "1020" ?
         <div className={"postlist" + generation + "margin"}>{postlist.map((x, index) => {

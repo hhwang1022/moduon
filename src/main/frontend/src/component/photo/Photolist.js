@@ -3,7 +3,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Photolistitem from './Photolistitem';
 
-const Photolist = ({ generation }) => {
+const Photolist = ({ generation, onClickwirtebtn }) => {
 
     const [photolist, setPhotolist] = useState([]);
     const [currentindex, setcurrentindex] = useState(0);
@@ -66,7 +66,8 @@ const Photolist = ({ generation }) => {
                 <option className={"postlistselectitem" + generation} value="likeCount_desc">좋아요 많은 순</option>
                 <option className={"postlistselectitem" + generation} value="likeCount_asc">좋아요 적은 순</option>
             </select>
-            <button className={"postpagewritebtn" + generation}>글쓰기</button>
+            <button className={"postpagewritebtn" + generation}
+            onClick={onClickwirtebtn}>글쓰기</button>
         </div>
         <div className={"photomainconent" + generation}>
             {photolist.map((x, index) => {

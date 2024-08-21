@@ -16,6 +16,7 @@ public interface PostMapper {
     Post postPatchDtoToPost(PostDto.Patch requestBody);
 
     @Mapping(source = "member.memberId", target = "memberId")
+    @Mapping(source = "member.nickname", target = "nickname")
     @Mapping(target = "postReplyList", qualifiedByName = "postReplyToPostReplyResponse")
     PostDto.Response postToPostResponseDto(Post post);
 

@@ -86,6 +86,7 @@ public class PostDto  {
         private String image4;
         private String image5;
         private List<PostReplyDto.Response> postReplyList;
+        private String nickname;
 
     }
 }

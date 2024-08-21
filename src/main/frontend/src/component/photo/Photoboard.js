@@ -1,29 +1,28 @@
-import Postlist from './Postlist';
-import './PostlistItem.css';
 import React, { useState, useEffect } from 'react';
-import Postwrite from './Postwrite';
-import Postview from './Postview';
+import Photolist from './Photolist';
+import Photowrite from './Photowrite';
+import Photoview from './Photoview';
 
-const Postboard = ({ generation }) => {
+const Photoboard = ({ generation }) => {
 
     const[currentindex, setcurrentindex] = useState(0);
 
     const Page = ({currentindex}) => {
         if(currentindex === 0){
             return (
-                <Postlist generation={generation} onClickwirtebtn={() => {
+                <Photolist generation={generation} onClickwirtebtn={() => {
                     setcurrentindex(1);
                 }} />
             );
         }
         else if(currentindex === 1){
             return (
-                <Postwrite generation={generation} />
+                <Photowrite generation={generation} />
             );
         }
         else{
             return (
-                <Postview generation={generation} />
+                <Photoview generation={generation} />
             );
         }
       };
@@ -33,4 +32,4 @@ const Postboard = ({ generation }) => {
     );
 };
 
-export default Postboard;
+export default Photoboard;

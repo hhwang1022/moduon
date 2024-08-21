@@ -1,9 +1,9 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
-import './Postwrite.css';
+import './Photowrite.css';
 
-const Postwrite = ({ generation, successhandler }) => {
+const Photowrite = ({ generation, successhandler }) => {
   const [postTitle, setpostTitle] = useState('');
   const [postBody, setpostBody] = useState('');
   const [isLock, setIsLock] = useState(false);
@@ -34,7 +34,7 @@ const Postwrite = ({ generation, successhandler }) => {
   const handlePostpost = async () => {
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8080/posts',
+        'http://127.0.0.1:8080/photos',
         {
           title: postTitle,
           body: postBody,
@@ -99,4 +99,4 @@ const Postwrite = ({ generation, successhandler }) => {
   </div>);
 };
 
-export default Postwrite;
+export default Photowrite;
