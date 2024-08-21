@@ -17,6 +17,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -180,4 +181,16 @@ public class Member extends Auditable {
             balanceGameVote.setMember(this);
         }
     }
+
+    @Column
+    private Long votingRights = 0L;
+
+    @Column
+    private LocalDate loginDate;
+
+    @Column
+    private LocalDate shareDate;
+
+    @Column
+    private Long shareCount = 0L;
 }
