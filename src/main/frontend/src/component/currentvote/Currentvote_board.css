@@ -1,0 +1,122 @@
+.vote-mainbox {
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    border: 3px solid #AAAAAA;
+    border-radius: 10px;
+  }
+  
+  .past-votes {
+    display: flex;
+    justify-content: flex-end;
+    margin: 20px;
+  }
+  
+  .past-votes-button {
+    width: 120px;
+    height: 40px;
+    font-size: 20px;
+    box-shadow:1px 1px 1px #959595;
+  }
+  
+  .vote-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 20px;
+    margin-top: 0px;
+    background-color: #F2F2F2;
+    border: 1px solid #DFDFDF;
+  }
+  
+  .voting-topic {
+    flex-grow: 1;
+    text-align: center;
+    font-size: 30px;
+  }
+  
+  .vote-header button{
+    width: 100px;
+    height: 30px;
+    font-size: 15px;
+    margin-right: 30px;
+    margin-left: 30px;
+    box-shadow:1px 1px 1px #959595;
+  }
+  
+  .vote-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px;
+  }
+  
+  .vote-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
+  .vote-image1, .vote-image2 {
+    width: 200px;
+    height: 250px;
+    margin-bottom: 10px; 
+  }
+  
+  .votebar {
+    display: flex;
+    align-items: center;
+  }
+  
+  .vote-name {
+    background: none;  
+    border: none;      
+    padding: 0;        
+    margin: 0; 
+    font-size: 20px;
+    font-weight: bold;
+  }
+  
+  .comments-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 200px;
+    margin-bottom: 10px;
+  }
+  
+  .comment {
+    margin-left: 20px;
+    margin-right: 20px;
+    
+  }
+
+  .comment-form {
+    height: 100px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-bottom: 10px;
+  }
+  
+  .comment-box {
+    width: 95%;
+    height: 100px;
+    margin-left: 20px;
+    box-sizing: border-box;
+    line-height: 1.5;
+    resize: none; 
+    overflow-wrap: break-word;
+    word-break: break-word;
+    padding-top: 0;  
+    text-align: left; 
+    vertical-align: top;
+  }
+  
+  .comment-submit {
+    width: 5%;
+    height: 100px;
+    margin-left: 5px;
+    margin-right: 20px;
+  }
