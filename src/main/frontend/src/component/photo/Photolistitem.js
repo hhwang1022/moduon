@@ -7,7 +7,7 @@ const Photolistitem = ({ post, generation }) => {
 
     return (
         <div className={"photosumnailbox" + generation}>
-            <img className={'photosumnailsize' + generation} src={post.imgurl1}></img>
+            <img className={'photosumnailsize' + generation} src={post.image1}></img>
             {generation != "1020" ? <div className={"photosumnailname"+generation}>{post.title}</div> : <></> }
         </div>
     );

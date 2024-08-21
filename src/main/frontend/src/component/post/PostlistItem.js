@@ -20,7 +20,7 @@ const PostlistItem = ({ post, generation }) => {
                         <td className={'postlist' + generation + 'text'}><button>{post.title}</button></td>
                         <div>
                             <td className={'postlist' + generation + 'text'}><img src='https://cdn-icons-png.flaticon.com/512/1077/1077057.png' height={16} width={16}/>{post.view}</td>
-                            <td className={'postlist' + generation + 'text'}><img src='https://cdn-icons-png.flaticon.com/512/6611/6611465.png' height={16} width={16}/>{post.like}</td>
+                            <td className={'postlist' + generation + 'text'}><img src='https://cdn-icons-png.flaticon.com/512/6611/6611465.png' height={16} width={16}/>{post.likeCount}</td>
                         </div>
                     </div>
                 </div>
@@ -31,7 +31,7 @@ const PostlistItem = ({ post, generation }) => {
                 <td className={'postlist' + generation + 'text'}>{post.nickname}</td>
                 <td className={'postlist' + generation + 'text'}>{post.createsat}</td>
                 <td className={'postlist' + generation + 'text'}>{post.view}</td>
-                <td className={'postlist' + generation + 'text'}>{post.like}</td>
+                <td className={'postlist' + generation + 'text'}>{post.likeCount}</td>
             </tr>
         )
 
