@@ -2,6 +2,7 @@ package com.springboot.board.balancegame.dto;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.Setter;
 
 import javax.validation.constraints.NotBlank;
 
@@ -9,8 +10,9 @@ public class BalanceGameVoteDto {
     @Getter
     @AllArgsConstructor
     public static class Post {
-        private Long memberId;
-
+        @Setter
+        private String memberEmail;
+        @Setter
         private Long balanceGameId;
 
         private String voteItem;
@@ -19,7 +21,7 @@ public class BalanceGameVoteDto {
     @Getter
     @AllArgsConstructor
     public static class Response {
-        private Long memberId;
+        private String memberNickname;
         private Long balanceGameId;
         private String voteItem;
     }

@@ -5,30 +5,16 @@ import com.springboot.board.balancegame.entity.BalanceGame;
 import com.springboot.board.balancegame.entity.BalanceGameVote;
 import com.springboot.member.entity.Member;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring", unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface BalanceGameVoteMapper {
-    default BalanceGameVote balanceGameVotePostToBalanceGameVote(BalanceGameVoteDto.Post requestBody) {
-        Member member = new Member();
-        member.setMemberId(requestBody.getMemberId());
+    @Mapping(source = "memberEmail", target = "member.email")
+    @Mapping(source = "balanceGameId", target = "balanceGame.balanceGameId")
+    BalanceGameVote balanceGameVotePostToBalanceGameVote(BalanceGameVoteDto.Post requestBody);
 
-        BalanceGame balanceGame = new BalanceGame();
-        balanceGame.setBalanceGameId(requestBody.getBalanceGameId());
-
-        BalanceGameVote balanceGameVote = new BalanceGameVote();
-        balanceGameVote.setMember(member);
-        balanceGameVote.setBalanceGame(balanceGame);
-        balanceGameVote.setVoteItem(requestBody.getVoteItem());
-        return balanceGameVote;
-    }
-
-    default BalanceGameVoteDto.Response balanceGameVoteToBalanceGameVoteResponse(BalanceGameVote balanceGameVote) {
-        BalanceGameVoteDto.Response response = new BalanceGameVoteDto.Response(
-                balanceGameVote.getMember().getMemberId(),
-                balanceGameVote.getBalanceGame().getBalanceGameId(),
-                balanceGameVote.getVoteItem()
-        );
-        return response;
-    }
+    @Mapping(source = "member.nickname", target = "memberNickname")
+    @Mapping(source = "balanceGame.balanceGameId", target = "balanceGameId")
+    BalanceGameVoteDto.Response balanceGameVoteToBalanceGameVoteResponse(BalanceGameVote balanceGameVote);
 }

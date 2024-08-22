@@ -21,7 +21,8 @@ public enum ExceptionCode {
     PHOTO_REPLY_NOT_FOUND(404, "PhotoReply not found"),
     BALANCEGAMEREPLY_NOT_FOUND(404, "balanceGameReply not found"),
     BALANCEGAME_VOTEITEM_NOT_FOUND(404, "voteItem not found"),
-    BALANCEGAME_VOTE_ERROR(500, "balanceGameVote make error");
+    BALANCEGAME_VOTE_ERROR(500, "balanceGameVote make error"),
+    BALANCEGAMEREPLY_ERROR(500, "balanceGameReply make error");
 
 
     @Getter
