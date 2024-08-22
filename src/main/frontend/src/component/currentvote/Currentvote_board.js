@@ -4,7 +4,7 @@ import BalanceBar from './BalanceBar'
 import React, { useState, useEffect } from 'react';
 import Balancegame_commentlist from './Balancegame_commentlist';
 
-  const Currentvote_board= ({generation}) => {
+  const Currentvote_board= ({generation, onclicklistbtn}) => {
 
    // const [generation, setGeneration] = useState('');
     const [voteTitle, setVoteTitle] = useState('');
@@ -49,7 +49,7 @@ import Balancegame_commentlist from './Balancegame_commentlist';
     return (
       <div className='vote-mainbox'>
         <div className='past-votes'>
-          <button className={'past-votes-button' + generation}>지난 투표</button>
+          <button className={'past-votes-button' + generation} onClick={onclicklistbtn}>지난 투표</button>
         </div>
         <div className='vote-header'>
           <div className='voting-topic'>이번 주 투표 - {voteTitle}</div>

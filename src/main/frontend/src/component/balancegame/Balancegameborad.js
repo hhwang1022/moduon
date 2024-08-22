@@ -18,13 +18,17 @@ const Balancegameborad = ({ generation }) => {
         }
         else if (currentindex === 1) {
             return (
-                <Balancegamewrite generation={generation} />
+                <Balancegamewrite onClickcanclebtn={() => {
+                    setcurrentindex(0);
+                }} />
             );
         }
         else {
             if (generation !== "1020") {
                 return (
-                    <Currentvote_board generation={generation} />
+                    <Currentvote_board generation={generation} onclicklistbtn={() => {
+                        setcurrentindex(0);
+                    }}/>
                 );
             } else {
                 return (

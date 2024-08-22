@@ -1,95 +1,68 @@
-import './Balancegamelist.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import Balancegameitem from './Balancegameitem';
+import PostlistItem from '../post/PostlistItem';
 
-const Balancegamelist = ({ generation }) => {
+const Balancegamelist = ({ generation , onClickwirtebtn }) => {
 
+    const [postlist, setPostlist] = useState([]);
     const [currentindex, setcurrentindex] = useState(0);
-    const [searchkeyword, setsearchkeyword] = useState('');
     const [totalpage, settotalpage] = useState(10);
     const [curruntpage, setcurruntpage] = useState(1);
-    const [sorttype, setsorttype] = useState('SORT_NEW');
+    const [sorttype, setsorttype] = useState('postId_desc');
 
-    let postlist = [
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        },
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        },
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        },
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        },
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        }
-        ,
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        },
-        {
-            "title": "n.SSign-SPICE",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        },
-        {
-            "title": "n.SSign-SPICEasdasdasdasdas",
-            "nickname": "닉네임",
-            "createsat": "2020-10-22",
-            "view": 10,
-            "like": 10
-        }
-    ]
+      let accessToken = window.localStorage.getItem('accessToken');
 
-    useEffect(() => {
+    const fetchPosts = async () => {
+        try {
+            console.log(generation);
+            const response = await axios.get('http://127.0.0.1:8080/balancegames/end?'
+            + 'page=' + curruntpage + '&size='  + 10 + '&generation=' + generation, 
+            {
+                headers: { Authorization: `Bearer ${accessToken}` }
+            }).then(function (response) {
+                      if (response !== undefined) {
+                        console.log("Response Data:", response.data);
+                                            setPostlist(response.data.data);
+                                            settotalpage(response.data.pageInfo.totalPages);
+                      }
+                    });
 
-    }, [curruntpage]);
+            } catch (error) {
+                console.error("Error fetching posts: ", error);
+            }
+        };
+
+        useEffect(() => {
+            fetchPosts();
+         }, [sorttype, curruntpage, generation]);
+
+    const handlePageChange = (pageNumber) => {
+        setcurruntpage(pageNumber);
+        fetchPosts();
+    };
+
+
 
 
     return (<div className={'postlist' + generation + 'mainbox'}>
         <div className='right'>
-            <select onChange={(e) => {
+            <select className={'postlistselect' + generation} onChange={(e) => {
                 setsorttype(e.target.value);
             }}>
-                <option value="SORT_NEW">새글 순</option>
-                <option value="SORT_OLD">오래된글 순</option>
-                <option value="SORT_VIEW_MAX">조회수 많은 순</option>
-                <option value="SORT_VIEW_MIN">조회수 적은 순</option>
-                <option value="SORT_LIKE_MANY">좋아요 많은 순</option>
-                <option value="SORT_LIKE_MIN">좋아요 적은 순</option>
+                <option className={"postlistselectitem" + generation} value="postId_desc">새글 순</option>
+                <option className={"postlistselectitem" + generation} value="postId_asc">오래된글 순</option>
+                <option className={"postlistselectitem" + generation} value="view_desc">조회수 많은 순</option>
+                <option className={"postlistselectitem" + generation} value="view_asc">조회수 적은 순</option>
+                <option className={"postlistselectitem" + generation} value="likeCount_desc">좋아요 많은 순</option>
+                <option className={"postlistselectitem" + generation} value="likeCount_asc">좋아요 적은 순</option>
             </select>
-            <button>글쓰기</button>
+            <button className={"postpagewritebtn"+generation}
+            onClick={onClickwirtebtn}>글쓰기</button>
         </div>
+        {generation === "1020" ?
+        <div className={"postlist" + generation + "margin"}>{postlist.map((x, index) => {
+            return <PostlistItem post={x} generation={generation} />
+        })}</div> :
         <table className={'postlist' + generation + 'margin'}  >
             <tr className={'postlist' + generation + 'title'} >
                 <td width="50"></td>
@@ -101,10 +74,11 @@ const Balancegamelist = ({ generation }) => {
             </tr>
             <tbody>
                 {postlist.map((x, index) => {
-                    return <Balancegameitem post={x} generation={generation} />
+                    return <PostlistItem post={x} generation={generation} />
                 })}
             </tbody>
         </table>
+        }
         <div className='postmiddle'>
             <div>
                 <button className={'pagebtn' + generation} onClick={() => {
@@ -123,12 +97,7 @@ const Balancegamelist = ({ generation }) => {
                     ▷
                 </button>
             </div>
-            <div>
-                <input className='qnasearchbodyinput' type="text" value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)} />
-                <button className={'postpagebtn' + generation} onClick={() => {
-
-                }}>검색</button>
-            </div>
+            
         </div>
     </div>);
 };
