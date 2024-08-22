@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import './component/ShareBar.css';
 
 const KakaoButton = ({url, title, description, imageUrl}) => {
 
@@ -43,7 +44,7 @@ const KakaoButton = ({url, title, description, imageUrl}) => {
         }
   };
 
-  return <button onClick={() => shareKakao(url, title, description, imageUrl)} className="likebtn">
+  return <button onClick={() => shareKakao(url, title, description, imageUrl)} className="sharebtn">
            <img src={"https://i.imgur.com/QaKbG3n.png"} referrerpolicy="no-referrer" />
          </button>;
 };

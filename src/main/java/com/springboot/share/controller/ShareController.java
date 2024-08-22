@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.constraints.Positive;
 
 @RestController
-@RequestMapping
+@RequestMapping("/balancegames/{balance-game-id}/share")
 public class ShareController {
     private final ShareService shareService;
     private final ShareMapper shareMapper;
@@ -23,7 +23,7 @@ public class ShareController {
         this.shareMapper = shareMapper;
     }
 
-    @PostMapping("/balancegames/{balance-game-id}/share")
+    @PostMapping
     public ResponseEntity postShare(@PathVariable("balance-game-id") @Positive Long balanceGameId,
                                     @Validated @RequestBody ShareDto.Post requestBody) {
         requestBody.setBalanceGameId(balanceGameId);

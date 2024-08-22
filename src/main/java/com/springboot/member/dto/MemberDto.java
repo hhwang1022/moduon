@@ -50,9 +50,19 @@ public class MemberDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Response {
-        private long memberId;
+        private Long memberId;
         private String email;
         private String nickname;
         private Member.Generation memberGeneration;
+    }
+
+    @Getter
+    @Setter
+    @NoArgsConstructor
+    @AllArgsConstructor
+    public static class InfoResponse {
+        private String nickname;
+        private Member.Generation memberGeneration;
+        private Long votingRights;
     }
 }

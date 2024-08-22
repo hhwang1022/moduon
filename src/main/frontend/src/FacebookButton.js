@@ -5,7 +5,7 @@ const FacebookButton = ({url}) => {
         window.open("http://www.facebook.com/sharer/sharer.php?u=" + url);
   };
 
-  return <button onClick={() => shareFacebook(url)} className="likebtn">
+  return <button onClick={() => shareFacebook(url)} className="sharebtn">
            <img className="w-12 h-12" src={"https://i.imgur.com/gtRnCB0.png"} referrerpolicy="no-referrer" />
          </button>;
 };

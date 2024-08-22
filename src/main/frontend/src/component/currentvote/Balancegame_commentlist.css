@@ -6,3 +6,30 @@
     gap: 10px;
     margin-bottom: 10px;
   }
+
+  .balancegame-comments9000box {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    overflow-y: auto;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .balancegame-comments0010box {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    overflow-y: auto;
+    gap: 10px;
+    margin-bottom: 10px;
+  }
+
+  .balancegame-comments1020box {
+    display: flex;
+    flex-direction: column;
+    height: 100px;
+    overflow-y: auto;
+    gap: 10px;
+    margin-bottom: 10px;
+  }

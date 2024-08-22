@@ -5,31 +5,18 @@ import React, { useState, useEffect } from 'react';
 import Balancegame_commentlist from './Balancegame_commentlist';
 
   const Currentvote_board= ({generation}) => {
+
    // const [generation, setGeneration] = useState('');
     const [voteTitle, setVoteTitle] = useState('');
     const [voteImage1, setVoteImage1] = useState('');
     const [voteImage2, setVoteImage2] = useState('');
     const [voteItem1, setVoteItem1] = useState('');
     const [voteItem2, setVoteItem2] = useState('');
+
     const [searchkeyword, setsearchkeyword] = useState('');
 
 
     let accessToken = window.localStorage.getItem('accessToken');
-
-//  const getCategoryByGeneration = (generation) => {
-//            switch (generation) {
-//                case "8090":
-//                    return "CATEGORY_8090";
-//                case "9000":
-//                    return "CATEGORY_9000";
-//                case "0010":
-//                    return "CATEGORY_0010";
-//                case "1020":
-//                    return "CATEGORY_1020";
-//                default:
-//                    return "CATEGORY_1020";  // 기본값 설정
-//            }
-//        };
 
   useEffect(() => {
     const fetchData = async () => {
@@ -62,7 +49,7 @@ import Balancegame_commentlist from './Balancegame_commentlist';
     return (
       <div className='vote-mainbox'>
         <div className='past-votes'>
-          <button className='past-votes-button'>지난 투표</button>
+          <button className={'past-votes-button' + generation}>지난 투표</button>
         </div>
         <div className='vote-header'>
           <div className='voting-topic'>이번 주 투표 - {voteTitle}</div>
@@ -71,16 +58,16 @@ import Balancegame_commentlist from './Balancegame_commentlist';
         <div className='vote-box'>
           <div class="vote-item">
             <img className='vote-image' src={voteImage1}></img>
-            <button className='vote-name'>{voteItem1}</button>
+            <button className={'vote-name' + generation}>{voteItem1}</button>
           </div>
-          <div className='votebar'><BalanceBar vote1={200} vote2={100} /></div>
+          <div className='votebar'><BalanceBar vote1={200} vote2={100} generation={generation} /></div>
           <div class="vote-item">
             <img className='vote-image' src={voteImage2}></img>
-            <button className='vote-name'>{voteItem2}</button>
+            <button className={'vote-name' + generation}>{voteItem2}</button>
           </div>
         </div>
         <div className='comments-box'>
-          <div className='comment'><Balancegame_commentlist generation={"8090"}/></div>
+          <div className='comment'><Balancegame_commentlist generation={generation}/></div>
           <div className='comment-form'>
             <textarea className='comment-box' value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
             <button className='comment-submit' onClick={() => {}}>등록</button>
