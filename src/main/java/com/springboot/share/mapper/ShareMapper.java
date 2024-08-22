@@ -11,7 +11,7 @@ import org.mapstruct.ReportingPolicy;
 public interface ShareMapper {
     default Share sharePostToShare(ShareDto.Post requestBody) {
         Member member = new Member();
-        member.setMemberId(requestBody.getMemberId());
+        member.setEmail(requestBody.getMemberEmail());
 
         BalanceGame balanceGame = new BalanceGame();
         balanceGame.setBalanceGameId(requestBody.getBalanceGameId());

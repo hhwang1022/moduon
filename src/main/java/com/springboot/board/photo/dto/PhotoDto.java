@@ -37,19 +37,14 @@ public class PhotoDto {
         private String image5;
 
         private Category category;
-
-        private long memberId;
-
-        public Member getMember() {
-            Member member = new Member();
-            member.setMemberId(memberId);
-            return member;
-        }
+        @Setter
+        private String memberEmail;
     }
 
     @Getter
     @AllArgsConstructor
     public static class Patch {
+        @Setter
         private long photoId;
 
         @NotBlank
@@ -60,7 +55,6 @@ public class PhotoDto {
 
         private String isNotice;
 
-        @NotBlank
         private String image1;
 
         private String image2;
@@ -72,10 +66,8 @@ public class PhotoDto {
         private String image5;
 
         private Category category;
-
-        public void setPhotoId(long photoId) {
-            this.photoId = photoId;
-        }
+        @Setter
+        private String memberEmail;
     }
 
     @Getter
@@ -87,10 +79,10 @@ public class PhotoDto {
         private long memberId;
         private String title;
         private String body;
-        private String inNotice;
+        private String isNotice;
         private int view;
         private int likeCount;
-        private LocalDateTime createAt;
+        private LocalDateTime createdAt;
         private String category;
         private String image1;
         private String image2;
@@ -98,6 +90,5 @@ public class PhotoDto {
         private String image4;
         private String image5;
         private List<PhotoReplyDto.Response> photoReplyList;
-
     }
 }

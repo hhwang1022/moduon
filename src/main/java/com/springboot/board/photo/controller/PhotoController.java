@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +38,9 @@ public class PhotoController {
     }
 
     @PostMapping
-    public ResponseEntity postPhoto(@Valid @RequestBody PhotoDto.Post requestBody) throws IllegalAccessException {
+    public ResponseEntity postPhoto(@AuthenticationPrincipal Object principal,
+                                    @Valid @RequestBody PhotoDto.Post requestBody) throws IllegalAccessException {
+        requestBody.setMemberEmail(principal.toString());
         Photo photo = mapper.photoPostDtoToPhoto(requestBody);
         Photo createPhoto = photoService.createPhoto(photo);
         URI location = UriCreator.createUri(PHOTO_DEFAULT_URL, createPhoto.getPhotoId());
@@ -46,8 +49,11 @@ public class PhotoController {
 
     @PatchMapping("/{photo-id}")
     public ResponseEntity patchPhoto(@PathVariable("photo-id") @Positive long photoId,
+                                     @AuthenticationPrincipal Object principal,
                                      @Valid @RequestBody PhotoDto.Patch requestBody) {
         requestBody.setPhotoId(photoId);
+        requestBody.setMemberEmail(principal.toString());
+
         Photo photo = photoService.updatePhoto(mapper.photoPatchDtoToPhoto(requestBody));
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.photoToPhotoResponseDto(photo)), HttpStatus.OK);

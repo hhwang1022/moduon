@@ -34,26 +34,9 @@ public class PostService {
 
 
     public Post createPost(Post post) throws IllegalAccessException {
-       Member member = memberService.findVerifiedMember(post.getMember().getMemberId());
-//        if (member.getMemberGeneration() == Member.Generation.GENERATION_8090) {
-//            if (post.getCategory() != Post.Category.CATEGORY_8090 &&
-//                    post.getCategory() != Post.Category.CATEGORY_9000) {
-//                throw new IllegalAccessException("8090세대 회원은 8090 또는 9000세대만 글쓰기가 가능합니다.");
-//            }
-//        } else if (member.getMemberGeneration() == Member.Generation.GENERATION_9000) {
-//            if (post.getCategory() == Post.Category.CATEGORY_1020) {
-//                throw new IllegalAccessException("9000세대는 8090,9000,0010세대만 글쓰기가 가능합니다.");
-//            }
-//        } else if (member.getMemberGeneration() == Member.Generation.GENERATION_0010) {
-//            if (post.getCategory() == Post.Category.CATEGORY_8090) {
-//                throw new IllegalAccessException("0010세대는 9000,0010,1020세대만 글쓰기가 가능합니다.");
-//            }
-//        } else {
-//            if (post.getCategory() != Post.Category.CATEGORY_0010 &&
-//                    post.getCategory() != Post.Category.CATEGORY_1020) {
-//                throw new IllegalAccessException("1020세대는 0010 또는 1020세대만 글쓰기가 가능합니다.");
-//            }
-//        }
+       Member member = memberService.findVerifiedMember(post.getMember().getEmail());
+       post.setMember(member);
+
         Map<Member.Generation, List<Post.Category>> allowCategoriesMap = Map.of(
                 Member.Generation.GENERATION_8090, List.of(Post.Category.CATEGORY_8090, Post.Category.CATEGORY_9000),
                 Member.Generation.GENERATION_9000, List.of(Post.Category.CATEGORY_8090, Post.Category.CATEGORY_9000, Post.Category.CATEGORY_0010),
@@ -71,12 +54,12 @@ public class PostService {
                                     .collect(Collectors.joining(",")))
             );
         }
-
         return postRepository.save(post);
     }
 
     public Post updatePost(Post post) {
         Post findPost = findVerifiedPost(post.getPostId());
+        memberService.findVerifiedMember(post.getMember().getEmail());
 
         Optional.ofNullable(post.getTitle())
                 .ifPresent(title -> findPost.setTitle(title));
@@ -121,9 +104,6 @@ public class PostService {
         Page<Post> postsList = postRepository.searchByTitleOrBodyAndCategory(pageable, keyword, category);
         return postsList;
     }
-
-
-
 
     public void deletePost(long postId) {
         Post findPost = findVerifiedPost(postId);

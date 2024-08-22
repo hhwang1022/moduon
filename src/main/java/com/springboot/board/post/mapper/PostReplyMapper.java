@@ -12,13 +12,15 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface PostReplyMapper {
 
-    @Mapping(source = "memberId", target = "member.memberId")
+    @Mapping(source = "memberEmail", target = "member.email")
     PostReply postReplyPostDtoToPostReply(PostReplyDto.Post requestBody);
 
+    @Mapping(source = "memberEmail", target = "member.email")
     PostReply postReplyPatchDtoToPostReply(PostReplyDto.Patch requestBody);
 
     @Mapping(source = "member.memberId", target = "memberId")
     @Mapping(source = "post.postId", target = "postId")
+    @Mapping(source = "member.nickname", target = "memberNickname")
     PostReplyDto.Response postReplyToPostReplyResponseDto(PostReply postReply);
 
     @Named("postReplyToPostReplyResponse")

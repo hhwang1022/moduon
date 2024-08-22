@@ -10,9 +10,10 @@ import java.util.List;
 @Mapper(componentModel = "spring", uses = {PostReplyMapper.class})
 public interface PostMapper {
 
-    @Mapping(source = "memberId", target = "member.memberId")
+    @Mapping(source = "memberEmail", target = "member.email")
     Post postPostDtoToPost(PostDto.Post requestBody);
 
+    @Mapping(source = "memberEmail", target = "member.email")
     Post postPatchDtoToPost(PostDto.Patch requestBody);
 
     @Mapping(source = "member.memberId", target = "memberId")

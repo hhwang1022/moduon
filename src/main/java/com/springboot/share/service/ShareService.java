@@ -28,7 +28,7 @@ public class ShareService {
     }
 
     public Share createShare(Share share) {
-        Member member = memberService.findVerifiedMember(share.getMember().getMemberId());
+        Member member = memberService.findVerifiedMember(share.getMember().getEmail());
         if (member.getShareDate() == null) {
             member.setShareDate(LocalDate.now());
         }

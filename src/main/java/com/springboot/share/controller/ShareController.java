@@ -7,6 +7,7 @@ import com.springboot.share.repository.ShareRepository;
 import com.springboot.share.service.ShareService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -25,7 +26,9 @@ public class ShareController {
 
     @PostMapping
     public ResponseEntity postShare(@PathVariable("balance-game-id") @Positive Long balanceGameId,
+                                    @AuthenticationPrincipal Object principal,
                                     @Validated @RequestBody ShareDto.Post requestBody) {
+        requestBody.setMemberEmail(principal.toString());
         requestBody.setBalanceGameId(balanceGameId);
         Share share = shareMapper.sharePostToShare(requestBody);
         Share createShare = shareService.createShare(share);

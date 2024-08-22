@@ -13,6 +13,7 @@ import com.springboot.utils.UriCreator;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.parameters.P;
 import org.springframework.web.bind.annotation.*;
 
@@ -41,7 +42,9 @@ public class PhotoReplyController {
 
     @PostMapping
     public ResponseEntity postPhotoReply(@PathVariable("photo-id") @Positive long photoId,
+                                         @AuthenticationPrincipal Object principal,
                                          @Valid @RequestBody PhotoReplyDto.Post requestBody) throws IllegalAccessException {
+        requestBody.setMemberEmail(principal.toString());
         PhotoReply photoReply = mapper.photoReplyPostDtoToPhotoReply(requestBody);
 
         Photo photo = photoService.findPhotoById(photoId);
