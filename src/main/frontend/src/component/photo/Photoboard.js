@@ -6,12 +6,20 @@ import Photoview from './Photoview';
 const Photoboard = ({ generation }) => {
 
     const[currentindex, setcurrentindex] = useState(0);
+    const[currentphotoid, setcurrentphotoid] = useState(1);
+
+    useEffect(() => {
+        console.log("currentpostid : " + currentphotoid);
+      }, [currentphotoid]);
 
     const Page = ({currentindex}) => {
         if(currentindex === 0){
             return (
                 <Photolist generation={generation} onClickwirtebtn={() => {
                     setcurrentindex(1);
+                }} onClickreadbtn={(id) => {
+                    setcurrentindex(2);
+                    setcurrentphotoid(id);
                 }} />
             );
         }
@@ -22,7 +30,7 @@ const Photoboard = ({ generation }) => {
         }
         else{
             return (
-                <Photoview generation={generation} />
+                <Photoview generation={generation} photoid={currentphotoid} />
             );
         }
       };

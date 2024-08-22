@@ -3,7 +3,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Photolistitem from './Photolistitem';
 
-const Photolist = ({ generation, onClickwirtebtn }) => {
+const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
 
     const [photolist, setPhotolist] = useState([]);
     const [currentindex, setcurrentindex] = useState(0);
@@ -109,7 +109,7 @@ const Photolist = ({ generation, onClickwirtebtn }) => {
         </div>
         <div className={"photomainconent" + generation}>
             {photolist.map((x, index) => {
-                return <Photolistitem post={x} generation={generation} />
+                return <Photolistitem post={x} generation={generation} onclickhandler={onClickreadbtn} />
             })}
         </div>
         <div className='postmiddle'>
