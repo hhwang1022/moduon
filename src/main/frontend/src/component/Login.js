@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import memberInfo from '../MemberInfo';
 
-const Login = ({ successhandler }) => {
+const Login = ({ successhandler, issmall }) => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
 
@@ -65,22 +65,29 @@ const Login = ({ successhandler }) => {
         admin: updateinfo.roles,
         login: true,
       });
-      successhandler(4);
+
+      if(!issmall){
+        successhandler(4);
+      }
+      else{
+        successhandler();
+      }
+        
     } catch (error) {
       alert(error.message);
       //navigate('/error/' + error.message);
     }
   };
 
-  return (<div className='joinmainbox'>
+  return (<div className={'joinmainbox' + (issmall ? '_' : '')}>
     <div>
-      <input className='joininput' type="text" placeholder='Email' value={id} onChange={(e) => setId(e.target.value)} />
+      <input className={'joininput' + (issmall ? '_' : '')} type="text" placeholder='Email' value={id} onChange={(e) => setId(e.target.value)} />
     </div>
     <div>
-      <input className='joininput' type="password" placeholder='비밀번호' value={password} onChange={(e) => setPassword(e.target.value)} />
+      <input className={'joininput' + (issmall ? '_' : '')} type="password" placeholder='비밀번호' value={password} onChange={(e) => setPassword(e.target.value)} />
     </div>
     <div>
-      <button className="joinbutton gradient" onClick={handleLogin}>로그인</button>
+      <button className={'joinbutton' +  (issmall ? '_ gradient' : 'gradient') } onClick={handleLogin}>로그인</button>
     </div>
   </div>);
 };
