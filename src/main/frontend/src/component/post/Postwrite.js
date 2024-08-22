@@ -39,7 +39,6 @@ const Postwrite = ({ generation, successhandler }) => {
           title: postTitle,
           body: postBody,
           isNotice: isLock ? 1 : 0,
-          memberId: 1,
           image1: "",
           image2: "",
           image3: "",

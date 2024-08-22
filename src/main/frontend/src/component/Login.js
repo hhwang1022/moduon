@@ -3,7 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import memberInfo from '../MemberInfo';
 
-const Login = ({ successhandler, issmall }) => {
+const Login = ({ successhandler, issmall, generation }) => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
 
@@ -66,13 +66,13 @@ const Login = ({ successhandler, issmall }) => {
         login: true,
       });
 
-      if(!issmall){
+      if (!issmall) {
         successhandler(4);
       }
-      else{
+      else {
         successhandler();
       }
-        
+
     } catch (error) {
       alert(error.message);
       //navigate('/error/' + error.message);
@@ -81,13 +81,13 @@ const Login = ({ successhandler, issmall }) => {
 
   return (<div className={'joinmainbox' + (issmall ? '_' : '')}>
     <div>
-      <input className={'joininput' + (issmall ? '_' : '')} type="text" placeholder='Email' value={id} onChange={(e) => setId(e.target.value)} />
+      <input className={'joininput' + (issmall ? '_' + generation : '')} type="text" placeholder='Email' value={id} onChange={(e) => setId(e.target.value)} />
     </div>
     <div>
-      <input className={'joininput' + (issmall ? '_' : '')} type="password" placeholder='비밀번호' value={password} onChange={(e) => setPassword(e.target.value)} />
+      <input className={'joininput' + (issmall ? '_' + generation : '')} type="password" placeholder='비밀번호' value={password} onChange={(e) => setPassword(e.target.value)} />
     </div>
     <div>
-      <button className={'joinbutton' +  (issmall ? '_ gradient' : 'gradient') } onClick={handleLogin}>로그인</button>
+      <button className={'joinbutton' + (issmall ? '_' + generation + (generation == '1020' ? ' gradient' : '') : 'gradient')} onClick={handleLogin}>로그인</button>
     </div>
   </div>);
 };
