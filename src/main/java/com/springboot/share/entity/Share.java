@@ -1,6 +1,7 @@
 package com.springboot.share.entity;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.springboot.audit.Auditable;
 import com.springboot.board.balancegame.entity.BalanceGame;
 import com.springboot.member.entity.Member;
 import lombok.Getter;
@@ -13,7 +14,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor
-public class Share {
+public class Share extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long shareId;

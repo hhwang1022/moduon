@@ -19,7 +19,6 @@ public class PostDto  {
     public static class Post {
         @NotBlank
         private String title;
-
         @NotBlank
         private String body;
 
