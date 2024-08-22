@@ -40,7 +40,7 @@ const Photowrite = ({ generation, successhandler }) => {
           body: postBody,
           isNotice: isLock ? 1 : 0,
           memberId: 1,
-          image1: "",
+          image1: "1",
           image2: "",
           image3: "",
           image4: "",
