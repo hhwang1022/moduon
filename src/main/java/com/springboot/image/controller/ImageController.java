@@ -1,6 +1,7 @@
 package com.springboot.image.controller;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.springboot.dto.SingleResponseDto;
 import com.springboot.image.dto.ImageDto;
 import com.springboot.image.service.ImageService;
 import org.springframework.http.HttpStatus;
@@ -31,13 +32,14 @@ public class ImageController {
 
     @PostMapping
     public ResponseEntity<?> uploadImage(
-            @RequestParam("imageDto") String imageDto,
             @RequestParam("multipartFile") MultipartFile multipartFile) throws JsonProcessingException {
-        ObjectMapper objectMapper = new ObjectMapper();
-        ImageDto dto = objectMapper.readValue(imageDto, ImageDto.class);
+//        ObjectMapper objectMapper = new ObjectMapper();
+//        ImageDto dto = objectMapper.readValue(imageDto, ImageDto.class);
 
         String uri = imageService.store(multipartFile);
 
-        return ResponseEntity.ok(uri);
+        return new ResponseEntity<>(
+                uri,
+                HttpStatus.OK);
     }
 }
