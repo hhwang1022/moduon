@@ -1,9 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import './Balancegamewrite.css';
+import axios from 'axios';
+import { useNavigate, useParams } from "react-router-dom";
 
-
-function Balancegamewrite() {
-    const generations = ['80-90', '90-00', '00-10', '10-20'];
+function Balancegamewrite({onClickcanclebtn, successhandler}) {
+    const generations = ['8090', '9000', '0010', '1020'];
   
     const [selectedGeneration, setSelectedGeneration] = useState(generations[0]);
     const [title, setTitle] = useState('');
@@ -13,23 +14,48 @@ function Balancegamewrite() {
     const [image2name, setImage2name] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
-  
-    const handleSubmit = (e) => {
-        e.preventDefault();
-    
-        const voteData = {
-          generation: selectedGeneration,
-          title,
-          image1,
-          image2,
-          image1name,
-          image2name,
-          startDate,
-          endDate
-        };
-    };
 
-    // 바인딩 구현 하는 곳
+    const navigate = useNavigate();
+    let accessToken = window.localStorage.getItem('accessToken');
+
+    
+    const handleSubmit = async (e) => {
+      e.preventDefault();   
+
+        const parseDateToList = (dateString) => {
+          const [year, month, day] = dateString.split('-').map(Number);
+          return [year, month, day, 0, 0];
+        };
+
+        const voteData = {
+          title: title,
+          voteItem1: image1name,
+          voteItem2: image2name,
+          voteImage1: image1,
+          voteImage2: image2,
+          createDateList: parseDateToList(startDate),
+          endDateList: parseDateToList(endDate),
+          generation: selectedGeneration
+        };
+      
+        try {
+          const response = await axios.post('http://127.0.0.1:8080/balancegames', voteData, {
+              headers: {
+                  'Content-Type': 'application/json',
+                  Authorization: `Bearer ${accessToken}`,
+              },
+          }).then(function (response) {
+            if (successhandler !== undefined)
+              successhandler(5);
+            alert('투표 작성 성공!');
+            if (response !== undefined)
+              navigate('./');
+          });
+      } catch (error) {
+          alert(JSON.stringify(error.message));
+      }
+
+    };
   
     return (
         <form className="vote-creation-form" onSubmit={handleSubmit}>
@@ -108,7 +134,7 @@ function Balancegamewrite() {
             />
           </div>
           <div className='vote-creation-footer'>
-            <button type="cancle">취소</button>
+            <button type="cancle" onClick={onClickcanclebtn}>취소</button>
             <button type="submit">업로드</button>
           </div>
         </form>

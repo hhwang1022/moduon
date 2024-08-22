@@ -58,7 +58,7 @@ const Postwrite = ({ generation, successhandler }) => {
           successhandler(5);
         alert('게시글 남기기 성공!');
         if (response !== undefined)
-          navigate('/');
+          navigate('../main_' + generation);
       });
     } catch (error) {
       alert(JSON.stringify(error.message));
@@ -89,7 +89,7 @@ const Postwrite = ({ generation, successhandler }) => {
           successhandler(5);
         alert('게시글 남기기 성공!');
         if (response !== undefined)
-          navigate('/');
+          navigate('../main_'+ generation);
       });
     } catch (error) {
       alert(JSON.stringify(error.message));
