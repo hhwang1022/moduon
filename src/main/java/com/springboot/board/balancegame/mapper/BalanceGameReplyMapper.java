@@ -14,7 +14,7 @@ public interface BalanceGameReplyMapper {
     @Mapping(source = "balanceGameId", target = "balanceGame.balanceGameId")
     BalanceGameReply balanceGameReplyPostToBalanceGameReply(BalanceGameReplyDto.Post requestBody);
 
-    @Mapping(source = "member.memberId", target = "memberId")
+    @Mapping(source = "member.nickname", target = "memberNickname")
     BalanceGameReplyDto.Response balanceGameToBalanceGameResponse(BalanceGameReply balanceGameReply);
 
     @Mapping(source = "memberEmail", target = "member.email")

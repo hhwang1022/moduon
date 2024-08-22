@@ -38,7 +38,7 @@ public class BalanceGameReplyDto {
     @Getter
     @AllArgsConstructor
     public static class Response {
-        private long memberId;
+        private String memberNickname;
         private long balanceGameReplyId;
         private String body;
     }
