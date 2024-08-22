@@ -5,23 +5,19 @@ import com.springboot.board.balancegame.entity.BalanceGame;
 import com.springboot.board.balancegame.entity.BalanceGameReply;
 import com.springboot.member.entity.Member;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
 @Mapper(componentModel = "spring", unmappedSourcePolicy = ReportingPolicy.IGNORE)
 public interface BalanceGameReplyMapper {
-    default BalanceGameReply balanceGameReplyPostToBalanceGameReply(BalanceGameReplyDto.Post requestBody) {
-        Member member = new Member();
-        member.setMemberId(requestBody.getMemberId());
-        BalanceGame balanceGame = new BalanceGame();
-        balanceGame.setBalanceGameId(requestBody.getBalanceGameId());
+    @Mapping(source = "memberEmail", target = "member.email")
+    @Mapping(source = "balanceGameId", target = "balanceGame.balanceGameId")
+    BalanceGameReply balanceGameReplyPostToBalanceGameReply(BalanceGameReplyDto.Post requestBody);
 
-        BalanceGameReply balanceGameReply = new BalanceGameReply();
-        balanceGameReply.setMember(member);
-        balanceGameReply.setBalanceGame(balanceGame);
-        balanceGameReply.setBody(requestBody.getBody());
-
-        return balanceGameReply;
-    }
+    @Mapping(source = "member.memberId", target = "memberId")
     BalanceGameReplyDto.Response balanceGameToBalanceGameResponse(BalanceGameReply balanceGameReply);
+
+    @Mapping(source = "memberEmail", target = "member.email")
+    @Mapping(source = "balanceGameId", target = "balanceGame.balanceGameId")
     BalanceGameReply balanceGameReplyPatchToBalanceGameReply(BalanceGameReplyDto.Patch requestBody);
 }

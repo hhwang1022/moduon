@@ -6,9 +6,11 @@ import com.springboot.board.balancegame.mapper.BalanceGameReplyMapper;
 import com.springboot.board.balancegame.service.BalanceGameReplyService;
 import com.springboot.board.balancegame.service.BalanceGameService;
 import com.springboot.dto.SingleResponseDto;
+import com.springboot.member.entity.Member;
 import com.springboot.member.service.MemberService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -36,25 +38,27 @@ public class BalanceGameReplyController {
 
     @PostMapping
     public ResponseEntity postBalanceGameReply(@PathVariable("balance-game-id") @Positive long balanceGameId,
-                                               @RequestBody BalanceGameReplyDto.Post postDto) {
+                                               @AuthenticationPrincipal Object principal,
+                                               @Validated @RequestBody BalanceGameReplyDto.Post postDto) {
         postDto.setBalanceGameId(balanceGameId);
-        BalanceGameReply findReply = replyMapper.balanceGameReplyPostToBalanceGameReply(postDto);
-        findReply.setBalanceGame(balanceGameService.findVerifiedBalanceGame(balanceGameId));
-        findReply.setMember(memberService.findVerifiedMember(postDto.getMemberId()));
-        BalanceGameReply createReply = replyService.createBalanceGameReply(findReply);
-
-
-        BalanceGameReplyDto.Response reply = replyMapper.balanceGameToBalanceGameResponse(createReply);
+        postDto.setMemberEmail(principal.toString());
+        BalanceGameReply balanceGameReply = replyMapper.balanceGameReplyPostToBalanceGameReply(postDto);
+        BalanceGameReply createReply = replyService.createBalanceGameReply(balanceGameReply);
+        BalanceGameReplyDto.Response response = replyMapper.balanceGameToBalanceGameResponse(createReply);
 
         return new ResponseEntity<>(
-                new SingleResponseDto<>(createReply),
+                new SingleResponseDto<>(response),
                 HttpStatus.OK);
     }
 
     @PatchMapping("/{balance-game-reply-id}")
     public ResponseEntity patchBalanceGameReply(@PathVariable("balance-game-reply-id") Long balanceGameReplyId,
+                                                @PathVariable("balance-game-id") Long balanceGameId,
+                                                @AuthenticationPrincipal Object principal,
                                                 @Validated @RequestBody BalanceGameReplyDto.Patch patchDto) {
         patchDto.setBalanceGameReplyId(balanceGameReplyId);
+        patchDto.setBalanceGameId(balanceGameId);
+        patchDto.setMemberEmail(principal.toString());
 
         BalanceGameReply reply =
                 replyService.updateBalanceGameReply(replyMapper.balanceGameReplyPatchToBalanceGameReply(patchDto));
@@ -67,8 +71,8 @@ public class BalanceGameReplyController {
 
     @DeleteMapping("/{balance-game-reply-id}")
     public ResponseEntity deleteBalanceGameReply(@PathVariable("balance-game-reply-id") Long balanceGameReplyId,
-                                                 @Valid @RequestParam Long memberId) {
-        balanceGameReplyService.deleteBalanceGameReply(balanceGameReplyId, memberId);
+                                                 @AuthenticationPrincipal Object principal) {
+        balanceGameReplyService.deleteBalanceGameReply(balanceGameReplyId, principal.toString());
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
