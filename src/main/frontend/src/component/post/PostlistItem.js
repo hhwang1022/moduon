@@ -2,7 +2,7 @@ import InstarIcon from '../1020/InstarIcon';
 import './PostlistItem.css';
 import React, { useState, useEffect } from 'react';
 
-const PostlistItem = ({ post, generation }) => {
+const PostlistItem = ({ post, generation, onclickhandler }) => {
 
     let getDayDiffDay = (createsat) =>
         (new Date() - new Date(createsat)) / (1000 * 3600);
@@ -12,8 +12,6 @@ const PostlistItem = ({ post, generation }) => {
         // yyyy-mm-dd
         `${(new Date(day).getMonth() + 1).toString().padStart(2, '0')}-${new Date(day).getDate().toString().padStart(2, '0')}`
     );
-
-    console.log("post : " + Object.keys(post));
 
     return (
         (generation === "1020" ?
@@ -28,7 +26,9 @@ const PostlistItem = ({ post, generation }) => {
                                 getDayDiffDay(post.createsat) <= 2.0 ? <td className={'postitem' + generation + 'newtext'}>new</td> : <td></td>
                             )}
                         </div>
-                        <td className={'postlist' + generation + 'text'}><button>{post.title}</button></td>
+                        <td className={'postlist' + generation + 'text'}><button onClick={() => {
+                            onclickhandler(post.postid);
+                        }}>{post.title}</button></td>
                         <div>
                             <td className={'postlist' + generation + 'text'}><img src='https://cdn-icons-png.flaticon.com/512/1077/1077057.png' height={16} width={16}/>{post.view}</td>
                             <td className={'postlist' + generation + 'text'}><img src='https://cdn-icons-png.flaticon.com/512/6611/6611465.png' height={16} width={16}/>{post.likeCount}</td>
@@ -41,7 +41,9 @@ const PostlistItem = ({ post, generation }) => {
                 {post.likeCount >= 10 ? <td className={'postitem' + generation + 'hottext'}>hot</td> : (
                     getDayDiffDay(post.createsat) <= 2.0 ? <td className={'postitem' + generation + 'newtext'}>new</td> : <td></td>
                 )}
-                <td className={'postlist' + generation + 'text'}><button>{post.title}</button></td>
+                <td className={'postlist' + generation + 'text'}><button onClick={() => {
+                    onclickhandler(post.postid);
+                }}>{post.title}</button></td>
                 <td className={'postlist' + generation + 'text'}>{post.nickname}</td>
                 <td className={'postlist' + generation + 'text'}>{simpleday(post.createdAt)}</td>
                 <td className={'postlist' + generation + 'text'}>{post.view}</td>

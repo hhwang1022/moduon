@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react';
 import PostlistItem from './PostlistItem';
 import Postwrite from './Postwrite';
 
-const Postlist = ({ generation , onClickwirtebtn }) => {
+const Postlist = ({ generation , onClickwirtebtn , onClickreadbtn}) => {
 
     const [postlist, setPostlist] = useState([]);
     const [currentindex, setcurrentindex] = useState(0);
@@ -12,7 +12,6 @@ const Postlist = ({ generation , onClickwirtebtn }) => {
     const [totalpage, settotalpage] = useState(10);
     const [curruntpage, setcurruntpage] = useState(1);
     const [sorttype, setsorttype] = useState('postId_desc');
-    const [isSearching, setIsSearching] = useState(false);
 
       let accessToken = window.localStorage.getItem('accessToken');
 
@@ -35,7 +34,7 @@ const Postlist = ({ generation , onClickwirtebtn }) => {
         try {
             const category = getCategoryByGeneration(generation);
             const response = await axios.get('http://127.0.0.1:8080/posts?'
-            + 'page=' + curruntpage + '&size='  + 10 + '&sort=' + sorttype + '&category='  +category, {
+            + 'page= ' + curruntpage + '&size='  + 10 + '&sort=' + sorttype + '&category='  +category, {
             headers: { Authorization: `Bearer ${accessToken}` }
             }).then(function (response) {
                       if (response !== undefined) {
@@ -43,56 +42,19 @@ const Postlist = ({ generation , onClickwirtebtn }) => {
                                             settotalpage(response.data.pageInfo.totalPages);
                       }
                     });
+            //            {
+////                params: {sort: sorttype, page: curruntpage, size: 10, category: 'category'}
+//                });
+//                console.log('Response date : ', response.data);
 
             } catch (error) {
                 console.error("Error fetching posts: ", error);
             }
         };
 
-        const searchPosts = async () => {
-            try {
-                const category = getCategoryByGeneration(generation);
-                console.log("Searching with keyword: ",  searchkeyword);
-                const response = await axios.get('http://127.0.0.1:8080/posts/search?'
-                +'page=' + curruntpage + '&size=' + 10 + '&category=' + category
-                + '&keyword=' + searchkeyword, {
-                headers: { Authorization: `Bearer ${accessToken}` }
-                }).then(function (response) {
-                        if (response !== undefined) {
-                            setPostlist(response.data.data);
-                            settotalpage(response.data.pageInfo.totalPages);
-                            }
-                });
-            } catch (error) {
-                console.error("Error searching posts with keyword: ", error);
-            } finally {
-                setIsSearching(false);
-            }
-        };
-
     useEffect(() => {
-       if (isSearching) {
-            searchPosts();
-       } else {
-            fetchPosts();
-       }
-    }, [sorttype, curruntpage, generation, searchkeyword]);
-
-
-    const handleSearchClick = () => {
-        searchPosts();
-    };
-
-    const handlePageChange = (pageNumber) => {
-        setcurruntpage(pageNumber);
-        if (isSearching) {
-            searchPosts();
-        } else {
-            fetchPosts();
-        }
-    };
-
-
+        fetchPosts();
+    }, [sorttype, curruntpage, generation]);
 
 
     return (<div className={'postlist' + generation + 'mainbox'}>
@@ -112,7 +74,7 @@ const Postlist = ({ generation , onClickwirtebtn }) => {
         </div>
         {generation === "1020" ?
         <div className={"postlist" + generation + "margin"}>{postlist.map((x, index) => {
-            return <PostlistItem post={x} generation={generation} />
+            return <PostlistItem post={x} generation={generation}  onclickhandler={onClickreadbtn} />
         })}</div> :
         <table className={'postlist' + generation + 'margin'}  >
             <tr className={'postlist' + generation + 'title'} >
@@ -125,7 +87,7 @@ const Postlist = ({ generation , onClickwirtebtn }) => {
             </tr>
             <tbody>
                 {postlist.map((x, index) => {
-                    return <PostlistItem post={x} generation={generation} />
+                    return <PostlistItem post={x} generation={generation}  onclickhandler={onClickreadbtn} />
                 })}
             </tbody>
         </table>
@@ -150,7 +112,9 @@ const Postlist = ({ generation , onClickwirtebtn }) => {
             </div>
             <div>
                 <input className='qnasearchbodyinput' type="text" value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)} />
-                <button className={'postpagebtn' + generation} onClick={handleSearchClick}>검색</button>
+                <button className={'postpagebtn' + generation} onClick={() => {
+
+                }}>검색</button>
             </div>
         </div>
     </div>);

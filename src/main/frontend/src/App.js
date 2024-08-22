@@ -67,7 +67,7 @@ const App = () => {
   return (
     <Memberinfo.Provider value={memberinfocontext}>
       <div>
-        <audio id="bgmplayer"></audio>
+        <audio id="bgmplayer" loop></audio>
         <body>
           <Router>
           </Router>

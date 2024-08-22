@@ -8,7 +8,6 @@ import Header_1020 from './Header_1020';
 import Mypage from '../Mypage';
 import Join from '../Join';
 import Login from '../Login';
-import InstaCurrentvote_board from '../currentvote/InstaCurrentvote_board';
 import Postboard from '../post/Postboard';
 import Photoboard from '../photo/Photoboard';
 import Balancegameborad from '../balancegame/Balancegameborad';
