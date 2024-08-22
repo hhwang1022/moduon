@@ -1,8 +1,9 @@
 import React, { useEffect, useRef } from 'react';
+import axios from 'axios';
 import './Balancegame_commentlist.css';
 import Balancegame_commentlistItem from './Balancegame_commentlistItem';
 
-const Balancegame_commentlist = ({ generation }) => {
+const Balancegame_commentlist = ({ generation, onClickwirtebtn }) => {
     const scrollableDivRef = useRef(null);
 
     let commentlist = [
