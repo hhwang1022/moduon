@@ -32,7 +32,9 @@ const Balancegameborad = ({ generation }) => {
                 );
             } else {
                 return (
-                    <InstaCurrentvote_board />
+                    <InstaCurrentvote_board onclicklistbtn={() => {
+                        setcurrentindex(0);
+                    }} />
                 );
             }
         }

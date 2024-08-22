@@ -4,7 +4,7 @@ import './InstaCurrentvote_board.css';
 import InstaBalancebar from './InstaBalancebar';
 import Balancegame_commentlist from '../currentvote/Balancegame_commentlist';
 
-const InstaCurrentvote_board = () => {
+const InstaCurrentvote_board = ({onclicklistbtn}) => {
 
     const [voteTitle, setVoteTitle] = useState('');
     const [voteImage1, setVoteImage1] = useState('');
@@ -44,7 +44,7 @@ const InstaCurrentvote_board = () => {
     return  (
         <div className='insta-balancegame-box'>
             <div className='insta-past-votes'>
-                <button className='insta-past-votes-button'>지난 투표</button>
+                <button className='insta-past-votes-button' onClick={onclicklistbtn}>지난 투표</button>
             </div>
             <div className='insta-vote-header'>
                 <div className='insta-voting-topic'>{voteTitle}</div>

@@ -49,7 +49,7 @@ function Balancegamewrite({onClickcanclebtn, successhandler}) {
               successhandler(5);
             alert('투표 작성 성공!');
             if (response !== undefined)
-              navigate('./');
+              navigate('/');
           });
       } catch (error) {
           alert(JSON.stringify(error.message));
