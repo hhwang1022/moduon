@@ -12,8 +12,9 @@ import Balancegame_commentlist from './Balancegame_commentlist';
     const [voteImage2, setVoteImage2] = useState('');
     const [voteItem1, setVoteItem1] = useState('');
     const [voteItem2, setVoteItem2] = useState('');
-
     const [searchkeyword, setsearchkeyword] = useState('');
+    const [commentList, setCommentList] = useState([]);
+    const [balanceGameId, setBlanceGameId] = useState(null);
 
 
     let accessToken = window.localStorage.getItem('accessToken');
@@ -35,6 +36,7 @@ import Balancegame_commentlist from './Balancegame_commentlist';
                     setVoteImage2(voteData.voteImage2);
                     setVoteItem1(voteData.voteItem1);
                     setVoteItem2(voteData.voteItem2);
+                    setBlanceGameId(voteData.balanceGameId);
                 }
 
         } catch (error) {
@@ -44,6 +46,25 @@ import Balancegame_commentlist from './Balancegame_commentlist';
 
     fetchData();
   }, [accessToken, generation]);
+
+  const handlePostReply = async () => {
+    try {
+        const response = await axios.post(
+        'http://127.0.0.1:8080/balancegames/' + balanceGameId + '/reply',
+        {
+            body:searchkeyword,
+        },
+        {
+            headers: { Authorization: `Bearer ${accessToken}`,
+             },
+
+        });
+        setsearchkeyword('');
+
+        } catch (error) {
+            alert(JSON.stringify(error.message));
+    }
+  };
 
 
     return (
@@ -70,7 +91,7 @@ import Balancegame_commentlist from './Balancegame_commentlist';
           <div className='comment'><Balancegame_commentlist generation={generation}/></div>
           <div className='comment-form'>
             <textarea className='comment-box' value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
-            <button className='comment-submit' onClick={() => {}}>등록</button>
+            <button className='comment-submit' onClick={handlePostReply}>등록</button>
           </div>
         </div>
       </div>
@@ -79,6 +100,3 @@ import Balancegame_commentlist from './Balancegame_commentlist';
 
 
 export default Currentvote_board;
-
-
-
