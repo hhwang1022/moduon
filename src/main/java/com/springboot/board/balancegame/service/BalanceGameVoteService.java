@@ -37,7 +37,7 @@ public class BalanceGameVoteService {
 
     public BalanceGameVote createBalanceGameVote(BalanceGameVote balanceGameVote) {
         BalanceGame balanceGame = balanceGameService.findVerifiedBalanceGame(balanceGameVote.getBalanceGame().getBalanceGameId());
-        Member member = memberService.findVerifiedMember(balanceGameVote.getMember().getMemberId());
+        Member member = memberService.findVerifiedMember(balanceGameVote.getMember().getEmail());
         balanceGameVote.setBalanceGame(balanceGame);
         balanceGameVote.setMember(member);
 

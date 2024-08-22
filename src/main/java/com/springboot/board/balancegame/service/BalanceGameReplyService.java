@@ -11,6 +11,8 @@ import com.springboot.member.service.MemberService;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 
 @Transactional
@@ -30,12 +32,24 @@ public class BalanceGameReplyService {
     }
 
     public BalanceGameReply createBalanceGameReply(BalanceGameReply balanceGameReply) {
-        balanceGameReply.setMember(memberService.findVerifiedMember(balanceGameReply.getMember().getEmail()));
+        Member member = memberService.findVerifiedMember(balanceGameReply.getMember().getEmail());
+        balanceGameReply.setMember(member);
         balanceGameReply.setBalanceGame(balanceGameService.findVerifiedBalanceGame(balanceGameReply.getBalanceGame().getBalanceGameId()));
 
-        BalanceGameReply savedBalanceGameReply = balanceGameReplyRepository.save(balanceGameReply);
+        Map<Member.Generation, List<BalanceGame.Generation>> allowGenerationMap = Map.of(
+                Member.Generation.GENERATION_8090, List.of(BalanceGame.Generation.GENERATION_8090, BalanceGame.Generation.GENERATION_9000),
+                Member.Generation.GENERATION_9000, List.of(BalanceGame.Generation.GENERATION_8090, BalanceGame.Generation.GENERATION_9000, BalanceGame.Generation.GENERATION_0010),
+                Member.Generation.GENERATION_0010, List.of(BalanceGame.Generation.GENERATION_9000, BalanceGame.Generation.GENERATION_0010, BalanceGame.Generation.GENERATION_1020),
+                Member.Generation.GENERATION_1020, List.of(BalanceGame.Generation.GENERATION_0010, BalanceGame.Generation.GENERATION_1020)
+        );
 
-        return savedBalanceGameReply;
+        List<BalanceGame.Generation> allowGenerations = allowGenerationMap.get(member.getMemberGeneration());
+
+        if (allowGenerations.contains(balanceGameReply.getBalanceGame().getBalanceGameGeneration())) {
+            return balanceGameReplyRepository.save(balanceGameReply);
+        } else {
+            throw new BusinessLogicException(ExceptionCode.BALANCEGAMEREPLY_ERROR);
+        }
     }
 
     public BalanceGameReply updateBalanceGameReply(BalanceGameReply balanceGameReply) {
