@@ -6,9 +6,12 @@ import com.springboot.board.balancegame.entity.BalanceGameReply;
 import com.springboot.member.entity.Member;
 import org.mapstruct.Mapper;
 import org.mapstruct.Mapping;
+import org.mapstruct.Named;
 import org.mapstruct.ReportingPolicy;
 
-@Mapper(componentModel = "spring", unmappedSourcePolicy = ReportingPolicy.IGNORE)
+import java.util.List;
+
+@Mapper(componentModel = "spring")
 public interface BalanceGameReplyMapper {
     @Mapping(source = "memberEmail", target = "member.email")
     @Mapping(source = "balanceGameId", target = "balanceGame.balanceGameId")
@@ -20,4 +23,7 @@ public interface BalanceGameReplyMapper {
     @Mapping(source = "memberEmail", target = "member.email")
     @Mapping(source = "balanceGameId", target = "balanceGame.balanceGameId")
     BalanceGameReply balanceGameReplyPatchToBalanceGameReply(BalanceGameReplyDto.Patch requestBody);
+
+    @Named("balanceGameToBalanceGameResponse")
+    List<BalanceGameReplyDto.Response> balanceGamesToBalanceGameResponseDtos(List<BalanceGameReply> balanceGameReplies);
 }

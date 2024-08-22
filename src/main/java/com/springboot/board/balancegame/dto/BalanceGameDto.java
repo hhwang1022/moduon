@@ -65,6 +65,6 @@ public class BalanceGameDto {
 		private Long votePoint2;
 		private LocalDateTime createDate;
 		private LocalDateTime endDate;
-		private BalanceGameReply reply;
+		private List<BalanceGameReplyDto.Response> balanceGameReplesiList;
 	}
 }
