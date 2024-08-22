@@ -24,7 +24,7 @@ const Mypage = ({ generation }) => {
                         <div className={'main' + generation + 'memberpoint'}>투표권 {info.balancegameticket}장</div>
                         <div className='direction-row'><button className={'main' + generation + 'memberbutton'}>[마이페이지]</button>
                             <button className={'main' + generation + 'memberbutton'} onClick={updateInfo}>[로그아웃]</button></div></div>)
-                    : <Login issmall={true} successhandler={() => setlogin(true)}/>}
+                    : <Login issmall={true} successhandler={() => setlogin(true)} generation={generation}/>}
 
                 <HotPostList generation={generation} />
             </div>
