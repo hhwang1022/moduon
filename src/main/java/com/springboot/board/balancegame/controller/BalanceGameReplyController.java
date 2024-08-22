@@ -5,9 +5,11 @@ import com.springboot.board.balancegame.entity.BalanceGameReply;
 import com.springboot.board.balancegame.mapper.BalanceGameReplyMapper;
 import com.springboot.board.balancegame.service.BalanceGameReplyService;
 import com.springboot.board.balancegame.service.BalanceGameService;
+import com.springboot.dto.MultiResponseDto;
 import com.springboot.dto.SingleResponseDto;
 import com.springboot.member.entity.Member;
 import com.springboot.member.service.MemberService;
+import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -16,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
 import javax.validation.constraints.Positive;
+import java.util.List;
 
 @RestController
 @RequestMapping("/balancegames/{balance-game-id}/reply")
@@ -75,5 +78,16 @@ public class BalanceGameReplyController {
         balanceGameReplyService.deleteBalanceGameReply(balanceGameReplyId, principal.toString());
 
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
+    }
+
+    @GetMapping
+    public ResponseEntity getBalanceGameReplies(@Positive @RequestParam int page,
+                                                @Positive @RequestParam int size) {
+        Page<BalanceGameReply> pageBalanceGameReplies = balanceGameReplyService.findBalanceGames(page - 1, size);
+        List<BalanceGameReply> balanceGameReplyList = pageBalanceGameReplies.getContent();
+        return new ResponseEntity<>(
+                new MultiResponseDto<>(replyMapper.balanceGamesToBalanceGameResponseDtos(balanceGameReplyList), pageBalanceGameReplies),
+                HttpStatus.OK
+        );
     }
 }

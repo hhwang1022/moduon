@@ -3,12 +3,13 @@ package com.springboot.board.balancegame.mapper;
 import com.springboot.board.balancegame.dto.BalanceGameDto;
 import com.springboot.board.balancegame.entity.BalanceGame;
 import org.mapstruct.Mapper;
+import org.mapstruct.Mapping;
 import org.mapstruct.ReportingPolicy;
 
 import java.time.LocalDateTime;
 import java.util.List;
 
-@Mapper(componentModel = "spring", unmappedSourcePolicy = ReportingPolicy.IGNORE)
+@Mapper(componentModel = "spring", unmappedSourcePolicy = ReportingPolicy.IGNORE, uses = {BalanceGameReplyMapper.class})
 public interface BalanceGameMapper {
 	default BalanceGame balanceGamePostToBalanceGame(BalanceGameDto.Post requestBody) {
 		BalanceGame balanceGame = new BalanceGame();
@@ -61,4 +62,8 @@ public interface BalanceGameMapper {
 				dateList.get(4)
 		);
 	}
+
+
+	@Mapping(target = "balanceGameReplesiList", qualifiedByName = "balanceGameToBalanceGameResponse")
+	BalanceGameDto.Response balanceGameToBalanceGameResponseDto(BalanceGame balanceGame);
 }

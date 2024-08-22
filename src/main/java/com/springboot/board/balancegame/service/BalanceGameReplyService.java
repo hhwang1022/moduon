@@ -8,6 +8,9 @@ import com.springboot.exception.BusinessLogicException;
 import com.springboot.exception.ExceptionCode;
 import com.springboot.member.entity.Member;
 import com.springboot.member.service.MemberService;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Sort;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -82,4 +85,8 @@ public class BalanceGameReplyService {
         return findBalnaceGameReply;
     }
 
+
+    public Page<BalanceGameReply> findBalanceGames(int page, int size) {
+        return balanceGameReplyRepository.findAll(PageRequest.of(page, size, Sort.by("balanceGameReplyId").descending()));
+    }
 }

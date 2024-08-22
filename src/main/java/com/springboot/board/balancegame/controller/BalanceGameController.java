@@ -64,7 +64,7 @@ public class BalanceGameController {
 		BalanceGame balanceGame = balanceGameService.findVerifiedBalanceGame(balanceGameId);
 
 		return new ResponseEntity<>(
-				new SingleResponseDto<>(balanceGame),
+				new SingleResponseDto<>(mapper.balanceGameToBalanceGameResponseDto(balanceGame)),
 				HttpStatus.OK
 		);
 	}
@@ -121,10 +121,12 @@ public class BalanceGameController {
 				HttpStatus.OK);
 	}
 
+
 	@DeleteMapping("/{balance-game-id}")
 	public ResponseEntity deleteBalanceGame(@PathVariable("balance-game-id") Long balanceGameId) {
 		balanceGameService.deleteBalanceGame(balanceGameId);
 
 		return new ResponseEntity<>(HttpStatus.NO_CONTENT);
 	}
+
 }
