@@ -55,8 +55,6 @@ const Balancegamelist = ({ generation , onClickwirtebtn }) => {
                 <option className={"postlistselectitem" + generation} value="likeCount_desc">좋아요 많은 순</option>
                 <option className={"postlistselectitem" + generation} value="likeCount_asc">좋아요 적은 순</option>
             </select>
-            <button className={"postpagewritebtn"+generation}
-            onClick={onClickwirtebtn}>글쓰기</button>
         </div>
         {generation === "1020" ?
         <div className={"postlist" + generation + "margin"}>{postlist.map((x, index) => {
