@@ -110,7 +110,7 @@ import memberInfo from '../../MemberInfo';
     return (
       <div className='vote-mainbox'>
         <div className='past-votes'>
-          <button className={'past-votes-button' + generation} onClick={onclicklistbtn}>지난 투표</button>
+          <button className={'past-votes-button' + generation} onClick={() => onclicklistbtn}>지난 투표</button>
         </div>
         <div className='vote-header'>
           <div className='voting-topic'>이번 주 투표 - {voteTitle}</div>
