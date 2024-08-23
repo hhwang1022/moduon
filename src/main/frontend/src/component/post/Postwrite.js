@@ -34,7 +34,6 @@ const Postwrite = ({ generation, successhandler }) => {
   };
 
   const handleButtonUploadClick = () => {
-    // 해당 인덱스에 해당하는 input 필드를 클릭합니다.
     fileInput.current.click();
   };
 
@@ -64,9 +63,12 @@ const Postwrite = ({ generation, successhandler }) => {
       ).then(function (response) {
         if (successhandler !== undefined)
           successhandler(5);
+        
         alert('게시글 남기기 성공!');
+
         setFile([]);
         setimgurllist([]);
+
         if (response !== undefined)
           navigate('../main_' + generation);
       });
@@ -122,10 +124,8 @@ const Postwrite = ({ generation, successhandler }) => {
       {uplodfile.map((x, index) => (
 
         <span key={index}>
-          <button
-          // onClick={() => handlePostimg(index)}
-          >
-            <img height={50} width={50} src={URL.createObjectURL(uplodfile[index])} />
+          <button>
+            <img height={50} width={50} src={URL.createObjectURL(uplodfile[index]) } className='postuploadsumnailicon'/>
           </button>
         </span>
 
