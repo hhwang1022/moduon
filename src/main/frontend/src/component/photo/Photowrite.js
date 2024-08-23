@@ -69,7 +69,7 @@ const Photowrite = ({ generation, successhandler }) => {
 
         setFile([]);
         setimgurllist([]);
-        navigate('main_' + generation + '/post');
+        navigate('/main_' + generation + '/photo');
       });
     } catch (error) {
       alert(JSON.stringify(error.message));

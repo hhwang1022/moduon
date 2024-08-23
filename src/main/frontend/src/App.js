@@ -40,10 +40,6 @@ const App = () => {
     return (
       <BrowserRouter>
         <Routes>
-          <Route path="/qnas" element={<QnaList />} />
-          <Route path='/qna/:qnaId' element={<Qna />} />
-          <Route path="/write" element={<Write />} />
-          <Route path="/modify/:qnaId" element={<Modify />} />
           <Route path='/' element={<Main_1020 />} />
           <Route path="/" element={<Navigate to="/main_1020" />} />
         <Route path="/main_0010/*" element={<Main_0010 />} />

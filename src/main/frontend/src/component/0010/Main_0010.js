@@ -58,8 +58,8 @@ const Main_0010 = () => {
             <div className='main0010contentbox'>
               <Routes>
                 <Route path="post/*" element={<Postboard generation={"0010"} />} />
-                <Route path="photo" element={<Photoboard generation={"0010"} />} />
-                <Route path="balance" element={<Balancegameborad generation={"0010"} />} />
+                <Route path="photo/*" element={<Photoboard generation={"0010"} />} />
+                <Route path="balance/*" element={<Balancegameborad generation={"0010"} />} />
               </Routes>
             </div>
             <Mypage generation={"0010"} />
