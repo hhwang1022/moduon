@@ -36,7 +36,7 @@ public class MemberDetailsService implements UserDetailsService {
         }
 
         if (findMember.getLoginDate() == null) {
-            findMember.setVotingRights(findMember.getVotingRights() + 1);
+            findMember.setVotingRights(findMember.getVotingRights() + 100);
             findMember.setLoginDate(LocalDate.now());
         }
 

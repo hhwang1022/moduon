@@ -18,17 +18,19 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
         if (!balanceGameId) return;
 
         try {
-              const response = await axios.get('http://127.0.0.1:8080/balancegames/' + balanceGameId + '/reply?'
-              + 'page=' + 1 + '&size=' + 100, {
+              const response = await axios.get('http://127.0.0.1:8080/balancegames/this-week?'
+              + 'page=' + 1 + '&size=' + 100 + '&generation=' + generation, {
              headers: { Authorization: `Bearer ${accessToken}` }
              });
 
-             const data = response.data.data;
-             if(Array.isArray(data)) {
-                setCommentList(data);
-             } else {
-                setCommentList([]);
-             }
+             const data = response.data.data[0];
+             console.log(data);
+             // if(Array.isArray(data.balanceGameReplesiList)) {
+                setCommentList(data.balanceGameReplesiList);
+                console.log(commentList);
+             // } else {
+             //    setCommentList([]);
+             // }
          } catch (error) {
              console.error("Error fetching Reply: ", error);
              setCommentList([]);
