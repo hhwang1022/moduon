@@ -31,7 +31,7 @@ const Mypage = ({ generation }) => {
                     (<div><div className={'main' + generation + 'membertitle'}><span>{info.name}</span>
                         <span className={'main' + generation + 'membertitlegeneration'}>[1020]</span></div>
                         <div className={'main' + generation + 'memberpoint'}>투표권 {info.balancegameticket}장</div>
-                        <div className='direction-row'><button className={'main' + generation + 'memberbutton'} onClick={onclickMypProfile}>[마이페이지]</button>
+                        <div className='direction-row'><button className={'main' + generation + 'memberbutton'}>[마이페이지]</button>
                             <button className={'main' + generation + 'memberbutton'} onClick={updateInfo}>[로그아웃]</button></div></div>)
                     : <Login issmall={true} successhandler={() => setlogin(true)} generation={generation}/>}
 
