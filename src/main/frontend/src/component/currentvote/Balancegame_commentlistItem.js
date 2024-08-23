@@ -5,8 +5,8 @@ const Balancegame_commentlistItem = ({comment, generation}) => {
 
     return (
         <div className={'balancegame-commentlist' + generation + 'box'}>
-            <div className={'balancegame-commentlist' + generation + 'nickname'}>{comment.nickname + ' :'}</div>
-            <div className={'balancegame-commentlist' + generation + 'content'}>{comment.content}</div>
+            <div className={'balancegame-commentlist' + generation + 'nickname'}>{comment.memberNickname + ' :'}</div>
+            <div className={'balancegame-commentlist' + generation + 'content'}>{comment.body}</div>
         </div>
     );
 

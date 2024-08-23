@@ -3,53 +3,41 @@ import axios from 'axios';
 import './Balancegame_commentlist.css';
 import Balancegame_commentlistItem from './Balancegame_commentlistItem';
 
-const Balancegame_commentlist = ({ generation, onClickwirtebtn }) => {
+const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated, setCommentListUpdated }) => {
     const scrollableDivRef = useRef(null);
-
-    const [nickname, setNickname] = useState('');
-    const [content, setContent] = useState('');
-    const [isCreate, setIsCreate] = useState(false);
     const [commentList, setCommentList] = useState([]);
+
+//    const [nickname, setNickname] = useState('');
+//    const [content, setContent] = useState('');
+//    const [isCreate, setIsCreate] = useState(false);
+//
 
      let accessToken = window.localStorage.getItem('accessToken');
 
-      const getCategoryByGeneration = (generation) => {
-                 switch (generation) {
-                     case "8090":
-                         return "CATEGORY_8090";
-                     case "9000":
-                         return "CATEGORY_9000";
-                     case "0010":
-                         return "CATEGORY_0010";
-                     case "1020":
-                         return "CATEGORY_1020";
-                     default:
-                         return "CATEGORY_1020";  // 기본값 설정
-                 }
-             };
-
-    useEffect(() => {
      const fetchReply = async () => {
+        if (!balanceGameId) return;
+
         try {
-            const response = await axios.get('http://127.0.0.1:8080/balancegames/this-week?'
-             + 'page=' + 1 + '&size=' + 10 + '&generation=' + generation, {
+              const response = await axios.get('http://127.0.0.1:8080/balancegames/' + balanceGameId + '/reply?'
+              + 'page=' + 1 + '&size=' + 100, {
              headers: { Authorization: `Bearer ${accessToken}` }
              });
 
              const data = response.data.data;
-             if(data && data.length > 0) {
-                    const voteData = data[1];
-                    setNickname(voteData.nickname);
-                    setContent(voteData.body);
+             if(Array.isArray(data)) {
+                setCommentList(data);
+             } else {
+                setCommentList([]);
              }
          } catch (error) {
              console.error("Error fetching Reply: ", error);
+             setCommentList([]);
         }
      };
 
-     fetchReply();
-    }, [accessToken, isCreate]);
-
+    useEffect(() => {
+        fetchReply();
+    }, [balanceGameId, commentListUpdated]);
 
     useEffect(() => {
         const scrollableDiv = scrollableDivRef.current;
@@ -57,6 +45,12 @@ const Balancegame_commentlist = ({ generation, onClickwirtebtn }) => {
             scrollableDiv.scrollTop = scrollableDiv.scrollHeight;
         }
     }, [commentList]);
+
+    useEffect(() => {
+        if(commentListUpdated) {
+            setCommentListUpdated(false);
+        }
+    }, [commentListUpdated, setCommentListUpdated])
 
     return (
         <div>

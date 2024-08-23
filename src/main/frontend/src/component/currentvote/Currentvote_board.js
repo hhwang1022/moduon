@@ -3,6 +3,9 @@ import axios from 'axios';
 import BalanceBar from './BalanceBar'
 import React, { useState, useEffect } from 'react';
 import Balancegame_commentlist from './Balancegame_commentlist';
+import memberInfo from '../../MemberInfo';
+
+  const info = memberInfo.getMemberInfo();
 
   const Currentvote_board= ({generation, onclicklistbtn}) => {
 
@@ -14,7 +17,8 @@ import Balancegame_commentlist from './Balancegame_commentlist';
     const [voteItem2, setVoteItem2] = useState('');
     const [searchkeyword, setsearchkeyword] = useState('');
     const [commentList, setCommentList] = useState([]);
-    const [balanceGameId, setBlanceGameId] = useState(null);
+    const [balanceGameId, setBalanceGameId] = useState(null);
+    const [commentListUpdated, setCommentListUpdated] = useState(false);
 
 
     let accessToken = window.localStorage.getItem('accessToken');
@@ -22,7 +26,6 @@ import Balancegame_commentlist from './Balancegame_commentlist';
   useEffect(() => {
     const fetchData = async () => {
         try {
-           //const category = getCategoryByGeneration(generation);
             const response = await axios.get('http://127.0.0.1:8080/balancegames/this-week?'
             + 'page=' + 1 + '&size=' + 10 + '&generation=' + generation, {
             headers: { Authorization: `Bearer ${accessToken}` }
@@ -36,7 +39,7 @@ import Balancegame_commentlist from './Balancegame_commentlist';
                     setVoteImage2(voteData.voteImage2);
                     setVoteItem1(voteData.voteItem1);
                     setVoteItem2(voteData.voteItem2);
-                    setBlanceGameId(voteData.balanceGameId);
+                    setBalanceGameId(voteData.balanceGameId);
                 }
 
         } catch (error) {
@@ -54,12 +57,13 @@ import Balancegame_commentlist from './Balancegame_commentlist';
         {
             body:searchkeyword,
         },
-        {
+        {   'Content-Type': 'application/json',
             headers: { Authorization: `Bearer ${accessToken}`,
              },
 
         });
         setsearchkeyword('');
+        setCommentListUpdated(true);
 
         } catch (error) {
             alert(JSON.stringify(error.message));
@@ -88,7 +92,8 @@ import Balancegame_commentlist from './Balancegame_commentlist';
           </div>
         </div>
         <div className='comments-box'>
-          <div className='comment'><Balancegame_commentlist generation={generation}/></div>
+          <div className='comment'><Balancegame_commentlist generation={generation} balanceGameId={balanceGameId}
+          commentListUpdated={commentListUpdated} setCommentListUpdated={setCommentListUpdated}/></div>
           <div className='comment-form'>
             <textarea className='comment-box' value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
             <button className='comment-submit' onClick={handlePostReply}>등록</button>

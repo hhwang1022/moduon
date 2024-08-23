@@ -20,7 +20,6 @@ const ShareButton = ({ sharetype, url, title, description, imageUrl }) => {
             const response = await axios.post(
                 'http://127.0.0.1:8080/members//balancegames/' + 1 + '/share',
                 {
-                    memberId: 1,
                     balanceGameId: 1,
                     shareType: { sharetype }
                 },

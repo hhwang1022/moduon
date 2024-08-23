@@ -168,7 +168,7 @@ const Main_1020 = () => {
     let balancedatas = [
         {
             title1: "고양이",
-            img1: "https://i.pinimg.com/236x/d8/a6/cb/d8a6cbb02bc2c5c27ae238db2e89425d.jpg",
+            img1: "https://modooon.s3.ap-northeast-2.amazonaws.com/imageserver/86a38d41-d521-4225-97bf-a3a25258ee50KakaoTalk_20240616_222752602_02.png",
             title2: "강아지",
             img2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxxNnf17cG-3BXPCxIUSrh9n0rUAF29gVV0ZkOlmePnl5zteaLIPwS_4eeU5km2egE_h4&usqp=CAU",
             category: "7080"
