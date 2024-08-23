@@ -22,7 +22,7 @@
     font-family: 'NotoSansKR';  /* 글꼴 설정 */
     font-size: 16pt;             /* 글꼴 크기 설정 */
     font-weight: bold;           /* 글자 굵게 설정 */
-    color: black;                /* 글자 색상 검정색으로 설정 */
+    color: #666666 !important;              /* 진한 회색으로 글자 색상 설정 */
     margin: 0;                   /* 여백 제거 */
     text-align: left;            /* 텍스트 왼쪽 정렬 */
     background: transparent;     /* 배경 색상 투명으로 설정 */
@@ -33,7 +33,7 @@
     justify-content: flex-start; /* 수평 왼쪽 정렬 */
 }
 
-.MyProfile{
+.MyProfile {
     width: 500px;
     height: 50px;
     border-radius: 5px;
@@ -41,8 +41,11 @@
     margin: 5px;
     border: 1px solid black;
     font-family: 'NotoSansKR';
-    font-size: 16pt;
-  }
+    font-size: 18pt;
+    display: flex;               /* Flexbox 사용 */
+    align-items: center;         /* 수직 가운데 정렬 */
+    justify-content: center;     /* 수평 가운데 정렬 */
+}
 
 /*  .MyProfileinput_8090{
     width: 200px;

@@ -3,14 +3,16 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import memberInfo from '../MemberInfo';
+import updateProfile from './UpdateProfile';
 
-const MyProfile = ({ onclicklistbtn }) => {
+const MyProfile = ({ onclicklUpdateProfile }) => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [balanceGameTicket, setBalanceGameTicket] = useState('');
 
   const accessToken = window.localStorage.getItem('accessToken');
 
+useEffect(() => {
   const fetchProfile = async () => {
     try {
       const response = await axios.get(
@@ -23,20 +25,18 @@ const MyProfile = ({ onclicklistbtn }) => {
         }
       );
 
-      // Assuming response.data contains the user info
-      const data = response.data;
-      setName(data.name);
+      const data = response.data.data;
+      console.log(data);
+      setName(data.nickname);
       setEmail(data.email);
-      setBalanceGameTicket(data.balancegameticket);
+      setBalanceGameTicket(data.votingRights);
 
     } catch (error) {
       alert(error.message);
     }
   };
-
-  useEffect(() => {
-    fetchProfile();
-  }, []);
+  fetchProfile();
+  }, [accessToken]);
 
   return (
     <div>
@@ -46,7 +46,7 @@ const MyProfile = ({ onclicklistbtn }) => {
 
       <div className='MyProfilemainbox'>
         {/* 회원정보 수정 버튼 */}
-        <button className="UpdateProfile" onClick={fetchProfile}>회원 정보 수정</button>
+        <button className="UpdateProfile" onClick={onclicklUpdateProfile}>회원 정보 수정</button>
         <div className='SpacingBetween'></div>
 
         {/* 닉네임 필드 */}

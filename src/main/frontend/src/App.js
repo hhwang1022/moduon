@@ -51,7 +51,7 @@ const App = () => {
           <Route path='/main_8090' element={<Main_8090 />} />
           <Route path='/error/:errorcode' element={<Errorpage />} />
           <Route path="/*" element={<Errorpage />} />
-          <Route path="/myprofile" element={<MyProfile />} />
+          <Route path="/myprofile" element={<MyProfile onClickMyProfile={() => {}} />} />} />
         </Routes>
       </BrowserRouter>
     );
