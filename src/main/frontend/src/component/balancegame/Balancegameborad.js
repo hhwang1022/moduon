@@ -1,53 +1,19 @@
-import React, { useEffect } from 'react';
-import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
-import Balancegamelist from './Balancegamelist';
-import Balancegamewrite from './Balancegamewrite';
+import { BrowserRouter as Router, Route, Routes, Link, useNavigate } from 'react-router-dom';
 import Currentvote_board from '../currentvote/Currentvote_board';
 import InstaCurrentvote_board from '../instacurrentvote/InstaCurrentvote_board';
+import Balancegamelist from './Balancegamelist';
+import Balancegamewrite from './Balancegamewrite';
+import React from 'react';
 
-const Balancegameborad = ({ generation }) => {
+const Balancegameboard = ({ generation }) => {
     const navigate = useNavigate();
-    const { voteType } = useParams();  // URL에서 voteType을 가져옴
-
-    useEffect(() => {
-        console.log("current vote type : " + voteType);
-    }, [voteType]);
-
     return (
         <Routes>
-            <Route 
-                path="/" 
-                element={
-                    <Balancegamelist 
-                        generation={generation} 
-                        onClickwirtebtn={() => navigate('write')} 
-                    />
-                } 
-            />
-            <Route 
-                path="write" 
-                element={
-                    <Balancegamewrite 
-                        onClickcanclebtn={() => navigate('/balance')}
-                    />
-                } 
-            />
-            <Route 
-                path="current" 
-                element={
-                    generation !== "1020" ? 
-                    <Currentvote_board 
-                        generation={generation} 
-                        onclicklistbtn={() => navigate('/balance')} 
-                    /> 
-                    : 
-                    <InstaCurrentvote_board 
-                        onclicklistbtn={() => navigate('/balance')} 
-                    />
-                } 
-            />
+            <Route path="list" element={<Balancegamelist generation={generation} />} />
+            <Route path="write" element={<Balancegamewrite />} />
+            <Route path="/" element={generation !== "1020" ? <Currentvote_board generation={generation} onclicklistbtn={() => () => navigate('list')} /> : <InstaCurrentvote_board />} />
         </Routes>
     );
 };
 
-export default Balancegameborad;
+export default Balancegameboard;
