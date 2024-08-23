@@ -4,6 +4,10 @@
     align-items: center;
 }
 
+.postuploadsumnailicon{
+    object-fit: cover;
+}
+
 /*--------------------------------------------------------*/
 
 .postlist8090mainbox{
