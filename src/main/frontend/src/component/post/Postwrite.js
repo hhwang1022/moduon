@@ -70,7 +70,7 @@ const Postwrite = ({ generation, successhandler }) => {
         setimgurllist([]);
 
         if (response !== undefined)
-          navigate('../main_' + generation);
+          navigate('/main_' + generation + '/post');
       });
     } catch (error) {
       alert(JSON.stringify(error.message));
