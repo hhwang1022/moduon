@@ -85,8 +85,8 @@ const Main_8090 = () => {
                     <div className='main8090windowcontentinbox'>
                         <Routes>
                             <Route path="post/*" element={<Postboard generation={"8090"} />} />
-                            <Route path="photo" element={<Photoboard generation={"8090"} />} />
-                            <Route path="balance" element={<Balancegameborad generation={"8090"} />} />
+                            <Route path="photo/*" element={<Photoboard generation={"8090"} />} />
+                            <Route path="balance/*" element={<Balancegameborad generation={"8090"} />} />
                         </Routes>
                     </div>
                     <div className='main8090windowcontentboxline' /></div>

@@ -1,47 +1,52 @@
-import Currentvote_board from '../currentvote/Currentvote_board';
-import InstaCurrentvote_board from '../instacurrentvote/InstaCurrentvote_board';
+import React, { useEffect } from 'react';
+import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import Balancegamelist from './Balancegamelist';
 import Balancegamewrite from './Balancegamewrite';
-import React, { useState, useEffect } from 'react';
+import Currentvote_board from '../currentvote/Currentvote_board';
+import InstaCurrentvote_board from '../instacurrentvote/InstaCurrentvote_board';
 
 const Balancegameborad = ({ generation }) => {
+    const navigate = useNavigate();
+    const { voteType } = useParams();  // URL에서 voteType을 가져옴
 
-    const [currentindex, setcurrentindex] = useState(2);
-
-    const Page = ({ currentindex }) => {
-        if (currentindex === 0) {
-            return (
-                <Balancegamelist generation={generation} onClickwirtebtn={() => {
-                    setcurrentindex(1);
-                }} />
-            );
-        }
-        else if (currentindex === 1) {
-            return (
-                <Balancegamewrite onClickcanclebtn={() => {
-                    setcurrentindex(0);
-                }} />
-            );
-        }
-        else {
-            if (generation !== "1020") {
-                return (
-                    <Currentvote_board generation={generation} onclicklistbtn={() => {
-                        setcurrentindex(0);
-                    }}/>
-                );
-            } else {
-                return (
-                    <InstaCurrentvote_board onclicklistbtn={() => {
-                        setcurrentindex(0);
-                    }} />
-                );
-            }
-        }
-    };
+    useEffect(() => {
+        console.log("current vote type : " + voteType);
+    }, [voteType]);
 
     return (
-        <Page currentindex={currentindex} />
+        <Routes>
+            <Route 
+                path="/" 
+                element={
+                    <Balancegamelist 
+                        generation={generation} 
+                        onClickwirtebtn={() => navigate('write')} 
+                    />
+                } 
+            />
+            <Route 
+                path="write" 
+                element={
+                    <Balancegamewrite 
+                        onClickcanclebtn={() => navigate('/balance')}
+                    />
+                } 
+            />
+            <Route 
+                path="current" 
+                element={
+                    generation !== "1020" ? 
+                    <Currentvote_board 
+                        generation={generation} 
+                        onclicklistbtn={() => navigate('/balance')} 
+                    /> 
+                    : 
+                    <InstaCurrentvote_board 
+                        onclicklistbtn={() => navigate('/balance')} 
+                    />
+                } 
+            />
+        </Routes>
     );
 };
 

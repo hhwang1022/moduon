@@ -152,8 +152,8 @@ const Main_9000 = () => {
                     <div className='main9000contentbox'>
                     <Routes>
                             <Route path="post/*" element={<Postboard generation={"9000"} />} />
-                            <Route path="photo" element={<Photoboard generation={"9000"} />} />
-                            <Route path="balance" element={<Balancegameborad generation={"9000"} />} />
+                            <Route path="photo/*" element={<Photoboard generation={"9000"} />} />
+                            <Route path="balance/*" element={<Balancegameborad generation={"9000"} />} />
                         </Routes>
                     </div>
                     <Mypage generation={"9000"} />
