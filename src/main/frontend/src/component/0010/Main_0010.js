@@ -22,10 +22,10 @@ const Main_0010 = () => {
         navigate('/main_0010/photo');
         break;
       case 2:
-        navigate('/main_0010/balance');
+        navigate('/main_0010/balance/view');
         break;
       default:
-        navigate('/main_0010/balance');
+        navigate('/main_0010/balance/view');
     }
   };
 
@@ -35,15 +35,15 @@ const Main_0010 = () => {
         <div className='main0010category'>MODUON</div>
         <div className='main1020categorybuttonarea'>
           <button className='main1020categorybutton main0010category'
-            onClick={() => navigate('/main_8090/balance')}>
+            onClick={() => navigate('/main_8090/balance/view')}>
             8090
           </button>
           <button className='main1020categorybutton main0010category'
-            onClick={() => navigate('/main_9000/balance')}>
+            onClick={() => navigate('/main_9000/balance/view')}>
             9000
           </button>
           <button className='main1020categorybutton main0010category'
-            onClick={() => navigate('/main_0010/balance')}>
+            onClick={() => navigate('/main_0010/balance/view')}>
             0010
           </button>
           <button className='main1020categorybutton main0010category'

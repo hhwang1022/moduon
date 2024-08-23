@@ -4,6 +4,9 @@ import BalanceBar from './BalanceBar'
 import React, { useState, useEffect } from 'react';
 import Balancegame_commentlist from './Balancegame_commentlist';
 import memberInfo from '../../MemberInfo';
+import KakaoButton from '../KakaoButton';
+import FacebookButton from '../FacebookButton';
+import TwitterButton from '../TwitterButton';
 
   const info = memberInfo.getMemberInfo();
   const Currentvote_board= ({generation, onclicklistbtn}) => {
@@ -78,6 +81,33 @@ import memberInfo from '../../MemberInfo';
       }
     };
 
+    //공유하기
+    const handlePostShare = async (sharetype) => {
+      try {
+        const response = await axios.post(
+          'http://127.0.0.1:8080/balancegames/' + balanceGameId + '/share',
+          {
+            "sharetype": sharetype,
+          },
+          {
+            'Content-Type': 'application/json',
+            headers: {
+              Authorization: `Bearer ${accessToken}`,
+            },
+
+          });
+
+          console.log(response.data.data);
+
+          memberInfo.updateMemberInfo({ 
+            //여기에 바뀌어야하는 값을 넣는다//회원정보 수정, 공유할 때 등,...
+            balancegameticket : response.data.data });
+
+      } catch (error) {
+        alert(JSON.stringify(error.message));
+      }
+    };
+
       const vote1 = (() => {
         const vote11 = "point1"
         handlePostVote(vote11);
@@ -110,11 +140,18 @@ import memberInfo from '../../MemberInfo';
     return (
       <div className='vote-mainbox'>
         <div className='past-votes'>
-          <button className={'past-votes-button' + generation} onClick={() => onclicklistbtn}>지난 투표</button>
+          <button className={'past-votes-button' + generation} onClick={onclicklistbtn}>지난 투표</button>
         </div>
         <div className='vote-header'>
           <div className='voting-topic'>이번 주 투표 - {voteTitle}</div>
-          <button>공유 하기</button>
+        </div>
+        <div className='sharebox'>
+        <KakaoButton url={window.location.href} title={voteTitle} description={"당신의 선택은?"} imageUrl=""
+        onclickhandler={() => handlePostShare("kakao")}/>
+        <TwitterButton url={window.location.href} title={voteTitle} description={"당신의 선택은?"}
+        onclickhandler={() => handlePostShare("twitter")}/>
+        <FacebookButton url={window.location.href} 
+        onclickhandler={() => handlePostShare("facebook")}/>
         </div>
         <div className='vote-box'>
           <div class="vote-item">

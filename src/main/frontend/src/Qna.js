@@ -3,9 +3,9 @@ import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Qna.css';
 import Reply from './Reply';
-import KakaoButton from './KakaoButton';
-import TwitterButton from './TwitterButton';
-import FacebookButton from './FacebookButton';
+import KakaoButton from './component/KakaoButton';
+import TwitterButton from './component/TwitterButton';
+import FacebookButton from './component/FacebookButton';
 
 const Qna = () => {
 

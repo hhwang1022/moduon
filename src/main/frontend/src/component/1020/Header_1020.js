@@ -22,17 +22,17 @@ const Header_1020 = ({ title, setcurrentindex, titleindex}) => {
       <div className="headermenu">
         <InstarIcon imgurl={"https://image.dongascience.com/Photo/2019/12/fb4f7da04758d289a466f81478f5f488.jpg"} name={"80-90"}
           onClickHandler={() => {
-            navigate('/main_8090/balance');
+            navigate('/main_8090/balance/view');
           }}
         ></InstarIcon>
         <InstarIcon imgurl={"https://image.dongascience.com/Photo/2019/12/fb4f7da04758d289a466f81478f5f488.jpg"} name={"90-00"}
           onClickHandler={() => {
-            navigate('/main_9000/balance');
+            navigate('/main_9000/balance/view');
           }}
         ></InstarIcon>
         <InstarIcon imgurl={"https://image.dongascience.com/Photo/2019/12/fb4f7da04758d289a466f81478f5f488.jpg"} name={"00-10"}
           onClickHandler={() => {
-            navigate('/main_0010/balance');
+            navigate('/main_0010/balance/view');
           }}
         ></InstarIcon>
         <InstarIcon imgurl={"https://image.dongascience.com/Photo/2019/12/fb4f7da04758d289a466f81478f5f488.jpg"} name={"10-20"}

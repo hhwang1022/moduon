@@ -81,10 +81,10 @@ const Main_9000 = () => {
                 navigate('/main_9000/photo');
                 break;
             case 2:
-                navigate('/main_9000/balance');
+                navigate('/main_9000/balance/view');
                 break;
             default:
-                navigate('/main_9000/balance');
+                navigate('/main_9000/balance/view');
         }
     };
 
@@ -127,15 +127,15 @@ const Main_9000 = () => {
             <div className='main9000categorybar'>
                 <button className='main9000categorybutton'
                     onClick={() => {
-                        navigate('/main_8090/balance');
+                        navigate('/main_8090/balance/view');
                     }}>80-90</button>
                 <button className='main9000categorybutton'
                     onClick={() => {
-                        navigate('/main_9000/balance');
+                        navigate('/main_9000/balance/view');
                     }}>90-00</button>
                 <button className='main9000categorybutton'
                     onClick={() => {
-                        navigate('/main_0010/balance');
+                        navigate('/main_0010/balance/view');
                     }}>00-10</button>
                 <button className='main9000categorybutton'
                     onClick={() => {
