@@ -12,6 +12,8 @@ const InstaCurrentvote_board = ({onclicklistbtn}) => {
     const [voteItem1, setVoteItem1] = useState('');
     const [voteItem2, setVoteItem2] = useState('');
     const [searchkeyword, setsearchkeyword] = useState('');
+    const [balanceGameId, setBalanceGameId] = useState(null);
+    const [commentListUpdated, setCommentListUpdated] = useState(false);
 
     let accessToken = window.localStorage.getItem('accessToken');
 
@@ -68,7 +70,8 @@ const InstaCurrentvote_board = ({onclicklistbtn}) => {
             </div>
             <div className='insta-votebar'><InstaBalancebar vote1={200} vote2={100} /></div>
             <div className='insta-comments-box'>
-                <div className='insta-comment'><Balancegame_commentlist generation={"1020"}/></div>
+                <div className='insta-comment'><Balancegame_commentlist generation={"1020"} balanceGameId={balanceGameId}
+          commentListUpdated={commentListUpdated} setCommentListUpdated={setCommentListUpdated}/></div>
                 <div className='insta-comment-form'>
                     <textarea className='insta-comment-box'  value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
                     <button className='insta-comment-submit' onClick={() => {}}>등록</button>

@@ -1,4 +1,4 @@
-.postbox {
+/* .postbox {
     display: flex;
     list-style: none;
     padding: 0.5rem 1rem;
@@ -98,4 +98,151 @@
     height: 150px;
     margin: 10px;
   }
+   */
+
+.post-view-container {
+  display: flex;
+  flex-direction: column;
+  color: white;
+  margin: 20px;
+  overflow: auto;
+}
+
+.post-view-header {
+  display: flex;
+  justify-content: right;
+}
+
+.post-view-header button {
+  margin-right: 10px;
+  margin-top: 10px;
+  background-color: rgb(158, 158, 158);
+  color: black;
+  width: 50px;
+  cursor: pointer;
+  border: 1px solid black;
+}
+ 
+.post-title {
+  margin-top: 30px;
+  cursor: text;
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+}
+
+.post-info {
+  display: flex;
+  justify-content: space-between;
+  cursor: text;
+  padding: 0 50px;
+  margin-top: 20px;
+}
+
+.post-nickname-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.post-nickname-word {
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.post-nickname {
+  font-size: 20px;
+  color: rgb(189, 189, 189);
+}
+
+.post-created-at-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.post-created-at-word {
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.post-created-at {
+  font-size: 20px;
+  color: rgb(189, 189, 189);
+}
+
+.post-likes-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.post-likes-word {
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.post-likes {
+  font-size: 20px;
+  color: rgb(189, 189, 189);
+}
+
+.post-contents {
+  margin: 50px 20px;
+  padding: 0 2px;
+  font-size: 18px;
+  overflow: auto;
+}
+
+.post-comments-box {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  justify-content: center;
+  height: 200px;
+  margin-bottom: 10px;
+}
+
+.post-comment {
+  margin-left: 20px;
+  margin-right: 20px;
   
+}
+
+.post-comment-form {
+  height: 100px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+
+.post-comment-box {
+  width: 90%;
+  height: 100px;
+  margin-left: 20px;
+  box-sizing: border-box;
+  line-height: 1.5;
+  resize: none; 
+  overflow-wrap: break-word;
+  word-break: break-word;
+  padding-top: 0;  
+  text-align: left; 
+  vertical-align: top;
+  border: 1px solid black;
+  padding: 3px;
+}
+
+.post-comment-submit {
+  background-color: white;
+  color: black;
+  border: 1px solid black;
+  width: 5%;
+  height: 100px;
+  margin-left: 5px;
+  margin-right: 20px;
+  cursor: pointer;
+}
