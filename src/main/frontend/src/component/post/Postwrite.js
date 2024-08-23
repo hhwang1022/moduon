@@ -1,37 +1,46 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from "react-router-dom";
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from "react-router-dom";
 import './Postwrite.css';
 
 const Postwrite = ({ generation, successhandler }) => {
   const [postTitle, setpostTitle] = useState('');
   const [postBody, setpostBody] = useState('');
   const [isLock, setIsLock] = useState(false);
-  const [uplodfile, setFile] = useState(null);
+  const [uplodfile, setFile] = useState([]);
+  const [imgurllist, setimgurllist] = useState([]);
+  const fileInput = React.useRef(null);
+  const maximgcount = 5;
 
   let accessToken = window.localStorage.getItem('accessToken');
+  let formData = new FormData();
 
   const navigate = useNavigate();
 
-  const fileInput = React.useRef(null);
-
-  useEffect(() => {
-    if (uplodfile !== null) {
-
-    }
-  }, [uplodfile]);
-
   const handleUpload = (e) => {
-    // 선택한 파일 정보를 콘솔에 출력
-    console.log(e.target.files[0]);
-    setFile(e.target.files[0]);
+    if (uplodfile.length < maximgcount) {
+      const newfile = [...uplodfile, e.target.files[0]];
+      setFile(newfile);
+
+      formData = new FormData();
+
+      formData.append('multipartFile', e.target.files[0]);
+
+      handlePostimg(uplodfile.length);
+    }
+    else {
+      alert("사진은 " + maximgcount + "장까지 올릴 수 있습니다!");
+    }
   };
 
-  const handleButtonUploadClick = (e) => {
+  const handleButtonUploadClick = () => {
+    // 해당 인덱스에 해당하는 input 필드를 클릭합니다.
     fileInput.current.click();
   };
 
   const handlePostpost = async () => {
+    console.log(imgurllist);
+
     try {
       const response = await axios.post(
         'http://127.0.0.1:8080/posts',
@@ -39,11 +48,11 @@ const Postwrite = ({ generation, successhandler }) => {
           title: postTitle,
           body: postBody,
           isNotice: isLock ? 1 : 0,
-          image1: "",
-          image2: "",
-          image3: "",
-          image4: "",
-          image5: "",
+          image1: imgurllist[0] ? imgurllist[0].toString() : "",
+          image2: imgurllist[1] ? imgurllist[1].toString() : "",
+          image3: imgurllist[2] ? imgurllist[2].toString() : "",
+          image4: imgurllist[3] ? imgurllist[3].toString() : "",
+          image5: imgurllist[4] ? imgurllist[4].toString() : "",
           category: "CATEGORY_" + generation,
         },
         {
@@ -56,6 +65,8 @@ const Postwrite = ({ generation, successhandler }) => {
         if (successhandler !== undefined)
           successhandler(5);
         alert('게시글 남기기 성공!');
+        setFile([]);
+        setimgurllist([]);
         if (response !== undefined)
           navigate('../main_' + generation);
       });
@@ -64,16 +75,10 @@ const Postwrite = ({ generation, successhandler }) => {
     }
   };
 
-  const formData = new FormData();
-  formData.append('imageDto', JSON.stringify({
-    id: 1,
-    category: "1020",
-    boardtype: "hpoto"
-  }));
+  //이미지를 등록하는 함수
+  const handlePostimg = async (index) => {
+    accessToken = window.localStorage.getItem('accessToken');
 
-  formData.append('multipartFile', uplodfile);
-
-  const handlePostimg = async () => {
     try {
       const response = await axios.post(
         'http://127.0.0.1:8080/images', formData,
@@ -84,11 +89,9 @@ const Postwrite = ({ generation, successhandler }) => {
           },
         }
       ).then(function (response) {
-        if (successhandler !== undefined)
-          successhandler(5);
-        alert('게시글 남기기 성공!');
-        if (response !== undefined)
-          navigate('../main_'+ generation);
+        const newimgurllist = [...imgurllist, response.data];
+        setimgurllist(newimgurllist);
+        console.log(newimgurllist);
       });
     } catch (error) {
       alert(JSON.stringify(error.message));
@@ -104,22 +107,29 @@ const Postwrite = ({ generation, successhandler }) => {
     </div>
     <div>
       <label className={'posttitle' + generation} htmlFor="postTitle">첨부파일</label>
-      {
-        uplodfile !== null ? <span>{uplodfile.name}<button className={'postuploadbtn' + generation} onClick={handlePostimg
-
-
-          // () => {
-          //   setFile(null);
-          // }
-
-        }>파일 삭제</button></span> : (<span><button className={'postuploadbtn' + generation} onClick={handleButtonUploadClick}>파일 업로드</button>
+      {uplodfile.length < maximgcount ?
+        <span >
+          <button onClick={() => handleButtonUploadClick()}>
+            <img height={50} width={50} src={"https://cdn.iconscout.com/icon/free/png-256/free-plus-button-6544256-5479387.png?f=webp"} />
+          </button>
           <input
             type="file"
             ref={fileInput}
-            onChange={handleUpload}
+            onChange={(e) => handleUpload(e)}
             style={{ display: "none" }}
-          /></span>)
-      }
+          />
+        </span> : <span></span>}
+      {uplodfile.map((x, index) => (
+
+        <span key={index}>
+          <button
+          // onClick={() => handlePostimg(index)}
+          >
+            <img height={50} width={50} src={URL.createObjectURL(uplodfile[index])} />
+          </button>
+        </span>
+
+      ))}
 
     </div>
     <div>
