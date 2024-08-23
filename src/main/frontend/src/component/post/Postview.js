@@ -13,6 +13,8 @@ import Balancegame_commentlist from '../currentvote/Balancegame_commentlist';
 
 
     useEffect(() => {
+
+      console.log("Postview : " + postId);
         const fetchPost = async () => {
             try {
                let accessToken = window.localStorage.getItem('accessToken');

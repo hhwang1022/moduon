@@ -65,16 +65,11 @@ const Photowrite = ({ generation, successhandler }) => {
           },
         }
       ).then(function (response) {
-        if (successhandler !== undefined)
-          successhandler(5);
-
         alert('게시글 남기기 성공!');
 
         setFile([]);
         setimgurllist([]);
-
-        if (response !== undefined)
-          navigate('/');
+        navigate('main_' + generation + '/post');
       });
     } catch (error) {
       alert(JSON.stringify(error.message));
