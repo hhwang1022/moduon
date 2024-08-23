@@ -33,17 +33,14 @@ public class MemberDto {
     @Getter
     @AllArgsConstructor
     public static class Patch {
-        private long memberId;
+        @Setter
+        private String email;
 
 
         private String password;
 
 
         private String nickname;
-
-        public void setMemberId(long memberId) {
-            this.memberId = memberId;
-        }
     }
 
     @Getter

@@ -39,11 +39,10 @@ public class MemberController {
         return ResponseEntity.created(location).build();
     }
 
-    @PatchMapping("/{member-id}")
-    public ResponseEntity patchMember(@PathVariable("member-id") @Positive long memberId,
+    @PatchMapping
+    public ResponseEntity patchMember(@AuthenticationPrincipal Object principal,
                                       @Valid @RequestBody MemberDto.Patch requestBody) {
-
-        requestBody.setMemberId(memberId);
+        requestBody.setEmail(principal.toString());
         Member member = memberService.updateMember(mapper.memberPatchToMember(requestBody));
         return new ResponseEntity<>(
                 new SingleResponseDto<>(mapper.memberToMemberResponseDto(member)), HttpStatus.OK);
@@ -69,9 +68,9 @@ public class MemberController {
         );
     }
 
-    @DeleteMapping("/{member-id}")
-    public ResponseEntity deleteMember(@PathVariable("member-id") @Positive long memberId) {
-        memberService.deleteMember(memberId);
+    @DeleteMapping
+    public ResponseEntity deleteMember(@AuthenticationPrincipal Object principal) {
+        memberService.deleteMember(principal.toString());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
