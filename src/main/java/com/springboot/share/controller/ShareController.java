@@ -1,5 +1,6 @@
 package com.springboot.share.controller;
 
+import com.springboot.dto.SingleResponseDto;
 import com.springboot.share.dto.ShareDto;
 import com.springboot.share.entity.Share;
 import com.springboot.share.mapper.ShareMapper;
@@ -33,6 +34,7 @@ public class ShareController {
         Share share = shareMapper.sharePostToShare(requestBody);
         Share createShare = shareService.createShare(share);
 
-        return new ResponseEntity<>(HttpStatus.OK);
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(createShare.getMember().getVotingRights()), HttpStatus.OK);
     }
 }
