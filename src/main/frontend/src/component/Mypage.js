@@ -4,6 +4,7 @@ import React, { useState, useEffect, useContext } from 'react';
 //회원정보를 싱글톤으로 사용
 import memberInfo from '../MemberInfo';
 import Login from './Login';
+import MyProfile from './MyProfile'
 
 const Mypage = ({ generation }) => {
     //info
@@ -20,6 +21,7 @@ const Mypage = ({ generation }) => {
         localStorage.setItem('accessToken', "");
         localStorage.setItem('refresh', "");
     };
+
 
     return (
         <div className={'main' + generation + 'memberbox'}>

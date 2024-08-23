@@ -1,0 +1,234 @@
+.MyProfilemainbox{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: auto;
+    margin-left: 50px;
+    text-align: center;
+}
+
+.MyProfilemainbox_{
+  display: flex;
+  flex-direction: column;
+  margin: auto;
+  margin-top: 40px;
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+.MyProfileDetails {
+    width: 500px;                /* 너비를 MyProfileinput과 동일하게 설정 */
+    height: 50px;                /* 높이를 MyProfileinput과 동일하게 설정 */
+    font-family: 'NotoSansKR';  /* 글꼴 설정 */
+    font-size: 16pt;             /* 글꼴 크기 설정 */
+    font-weight: bold;           /* 글자 굵게 설정 */
+    color: black;                /* 글자 색상 검정색으로 설정 */
+    margin: 0;                   /* 여백 제거 */
+    text-align: left;            /* 텍스트 왼쪽 정렬 */
+    background: transparent;     /* 배경 색상 투명으로 설정 */
+    border: none;                /* 테두리 제거 */
+    padding: 0;                  /* 안쪽 여백 제거 */
+    display: flex;               /* 플렉스 박스 사용 */
+    align-items: center;         /* 수직 가운데 정렬 */
+    justify-content: flex-start; /* 수평 왼쪽 정렬 */
+}
+
+.MyProfileinput{
+    width: 500px;
+    height: 50px;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 5px;
+    border: 1px solid black;
+    font-family: 'NotoSansKR';
+    font-size: 16pt;
+  }
+
+  .MyProfileinput_8090{
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 5px;
+    border: 1px solid black;
+    font-family: 'DungGeunMo';
+    font-size: 12pt;
+  }
+
+  .MyProfileinput_9000{
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 5px;
+    border: 1px solid black;
+    font-family: 'DungGeunMo';
+    font-size: 12pt;
+  }
+
+  .MyProfileinput_0010{
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 5px;
+    border: 1px solid black;
+    font-family: 'Roboto';
+    font-size: 12pt;
+  }
+
+  .MyProfileinput_1020{
+    width: 200px;
+    height: 30px;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 5px;
+    border: 1px solid black;
+    font-family: 'NotoSansKR';
+    font-size: 12pt;
+  }
+
+  /*.MyProfilegenerationselect{
+    width: 500px;
+    height: 50px;
+    border-radius: 5px;
+    padding-left: 15px;
+    border: 1px solid black;
+    font-family: 'NotoSansKR';
+    font-size: 16pt;
+    color: gray;
+  }*/
+
+  /*.MyProfilegenerationselectoption{
+    width: 500px;
+    height: 50px;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 5px;
+    border: 1px solid black;
+    font-family: 'NotoSansKR';
+    font-size: 16pt;
+    color: black;
+  }*/
+
+  .MyProfilebutton{
+    width: 400px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-family: 'NotoSansKR';
+    color: white;
+    font-size: 16pt;
+    margin-top: 20px;
+  }
+
+ /* .MyProfilebutton_8090{
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    border: 2px solid #000000;
+    font-family: 'DOSIyagiMedium';
+    background-color: #008080;
+    color: white;
+    font-size: 12pt;
+    margin-top: 20px;
+  }
+
+  .MyProfilebutton_9000{
+    width: 200px;
+    height: 40px;
+    border: 2px solid #000000;
+    font-family: 'DOSIyagiMedium';
+    font-size: 12pt;
+    margin-top: 20px;
+  }
+
+  .MyProfileutton_0010{
+    width: 200px;
+    height: 40px;
+    border: 1px solid #444444;
+    border-radius: 5px;
+    background-image: linear-gradient(#fff, #b8b8b8);
+    font-family: 'Roboto';
+    font-size: 12pt;
+    margin-top: 20px;
+  }
+
+  .MyProfilebutton_1020{
+    width: 200px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-family: 'NotoSansKR';
+    color: white;
+    font-size: 12pt;
+    margin-top: 20px;
+  }*/
+
+.DeleteAccount {
+    width: 200px;         /* 버튼 너비를 200px로 설정 */
+    height: 40px;         /* 버튼 높이를 40px로 설정 */
+    border-radius: 5px;  /* 버튼 모서리를 둥글게 설정 */
+    border: 1px solid black; /* 버튼 테두리 색상 설정 */
+    font-family: 'NotoSansKR'; /* 글꼴 설정 */
+    font-size: 14pt;      /* 글꼴 크기를 14pt로 설정 */
+    color: white;         /* 글자 색상을 흰색으로 설정 */
+    background: linear-gradient(
+      to right,
+      #833ab4, #fd1d1d, #fcb045
+    ); /* 배경 색상 및 그라데이션 설정 */
+    margin-top: 20px;    /* 위쪽 여백 설정 */
+    text-align: center;  /* 텍스트를 가운데 정렬 */
+    display: flex;       /* 플렉스 박스 사용 */
+    align-items: center; /* 수직 가운데 정렬 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    margin-left: auto;
+}
+
+  .MyProfileline {
+    border-top : medium  solid #000000;
+    width: 200px;
+    height : 2px;
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+
+  .MyProfilebar{
+    display: flex;
+    justify-content: center;
+    margin: auto;
+    font-family: 'NotoSansKR';
+    padding-top: 20px;
+    font-size: 20pt;
+    color: gray;
+  }
+
+
+.UpdateProfile {
+    width: 200px;         /* 버튼 너비를 200px로 설정 */
+    height: 40px;         /* 버튼 높이를 40px로 설정 */
+    border-radius: 5px;  /* 버튼 모서리를 둥글게 설정 */
+    border: 1px solid black; /* 버튼 테두리 색상 설정 */
+    font-family: 'NotoSansKR'; /* 글꼴 설정 */
+    font-size: 14pt;      /* 글꼴 크기를 14pt로 설정 */
+    color: white;         /* 글자 색상을 흰색으로 설정 */
+    background: linear-gradient(
+      to right,
+      #833ab4, #fd1d1d, #fcb045
+    ); /* 배경 색상 및 그라데이션 설정 */
+    margin-top: 20px;    /* 위쪽 여백 설정 */
+    text-align: center;  /* 텍스트를 가운데 정렬 */
+    display: flex;       /* 플렉스 박스 사용 */
+    align-items: center; /* 수직 가운데 정렬 */
+    justify-content: center; /* 수평 가운데 정렬 */
+    margin-left: auto;
+}
+
+.SpacingBetweenFields {
+    height: 30px; /* 원하는 간격 */
+}
+
+.SpacingBetween {
+    height: 15px; /* 원하는 간격 */
+}

@@ -12,6 +12,7 @@ import Main_8090 from './component/8090/Main_8090';
 import Main_9000 from './component/9000/Main_9000';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Errorpage from './component/Errorpage';
+import MyProfile from './component/MyProfile'
 
 const App = () => {
   const [accessToken, setAccessToken] = useState('');
@@ -50,6 +51,7 @@ const App = () => {
           <Route path='/main_8090' element={<Main_8090 />} />
           <Route path='/error/:errorcode' element={<Errorpage />} />
           <Route path="/*" element={<Errorpage />} />
+          <Route path="/myprofile" element={<MyProfile />} />
         </Routes>
       </BrowserRouter>
     );
