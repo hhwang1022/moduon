@@ -5,12 +5,15 @@ import React, { useState, useEffect, useContext } from 'react';
 import memberInfo from '../MemberInfo';
 import Login from './Login';
 import MyProfile from './MyProfile'
+import { useNavigate } from 'react-router-dom';
 
 const Mypage = ({ generation }) => {
     //info
     const info = memberInfo.getMemberInfo();
     //로그인 상태를 넣어서 로그인창을 보여줄지 정보를 보여줄지를 결정함
     const [login, setlogin] = useState(info.login);
+
+    const navigate = useNavigate();
 
     //회원정보 업데이트가 필요할 때 사용
     const updateInfo = () => {
@@ -22,6 +25,10 @@ const Mypage = ({ generation }) => {
         localStorage.setItem('refresh', "");
     };
 
+    const onClickMyProfile = () => {
+            navigate('/myprofile');
+    };
+
 
     return (
         <div className={'main' + generation + 'memberbox'}>
@@ -31,7 +38,7 @@ const Mypage = ({ generation }) => {
                     (<div><div className={'main' + generation + 'membertitle'}><span>{info.name}</span>
                         <span className={'main' + generation + 'membertitlegeneration'}>[1020]</span></div>
                         <div className={'main' + generation + 'memberpoint'}>투표권 {info.balancegameticket}장</div>
-                        <div className='direction-row'><button className={'main' + generation + 'memberbutton'}>[마이페이지]</button>
+                        <div className='direction-row'><button className={'main' + generation + 'memberbutton'}onClick={onClickMyProfile}>[마이페이지]</button>
                             <button className={'main' + generation + 'memberbutton'} onClick={updateInfo}>[로그아웃]</button></div></div>)
                     : <Login issmall={true} successhandler={() => setlogin(true)} generation={generation}/>}
 

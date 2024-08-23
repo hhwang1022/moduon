@@ -1,9 +1,9 @@
+import './UpdateProfile.css'
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
-import './MyProfile.css';
-import Errorpage from './Errorpage';
-import Login from './Login';
+import memberInfo from '../MemberInfo';
+
 
 const MyProfile = ({ successhandler }) => {
   const [id, setId] = useState('');
