@@ -5,31 +5,57 @@ import { useNavigate, useParams } from "react-router-dom";
 import memberInfo from '../MemberInfo';
 
 
-const MyProfile = ({ successhandler }) => {
-  const [id, setId] = useState('');
+const UpdateProfile = ({ successhandler = () => {} }) => {
+  const [nickname, setnickname] = useState('');
   const [password, setPassword] = useState('');
-  const [passwordconfrim, setPasswordconfrim] = useState('');
-  const [genertion, seGenertion] = useState('');
-  const [nickname, setNickname] = useState('');
+  const [passwordconfrim, setPasswordaconfrim] = useState('');
+  const [memberId, setmemberId] = useState('');
+  const [profile, setProfile] = useState(null);
 
-  const accessToken = "";
+ const accessToken = window.localStorage.getItem('accessToken');
+ const navigate = useNavigate();
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    const fetchProfile = async () => {
+      try {
+        const response = await axios.get(
+          'http://127.0.0.1:8080/members/info',
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`,
+            },
+          }
+        );
+      const data = response.data.data;
+      console.log(response);
+      setmemberId(data.memberId);
+      setnickname(nickname);
+      setPassword(password);
+      setPasswordaconfrim(passwordconfrim);
 
-  const handleMyProfile = async () => {
+
+      } catch (error) {
+         alert(error.message);
+        }
+      };
+        fetchProfile();
+      }, [accessToken]);
+
+    const updateMember = async () => {
     if (password != passwordconfrim) {
-      alert('비밀번호가 틀립니다fff!');
-      return;
-    }
+             alert('비밀번호가 틀립니다!');
+             return;
+     };
 
     try {
-      const response = await axios.post(
-        'http://127.0.0.1:8080/members',
+      const response = await axios.patch(
+        'http://127.0.0.1:8080/members/',
         {
-          email: id,
-          password: password,
-          nickname: nickname,
-          generation: genertion
+        memberId: memberId,
+         nickname: nickname,
+         password: password,
+
         },
         {
           headers: {
@@ -37,72 +63,53 @@ const MyProfile = ({ successhandler }) => {
             Authorization: `Bearer ${accessToken}`,
           },
         }
-      ).then(function (response) {
+      );
+      console.log('successhandler:', successhandler);
+
+
+      if (response.status === 200) {
         successhandler(5);
-        if (response !== undefined) {
+        alert('회원정보가 변경되었습니다.');
+         }
 
-        }
-      });
-    } catch (error) {
-      //navigate('/error/' + error.message);
-      alert(error.message);
-    }
-  };
-
-  /*const [id, setId] = useState(""); // REPLACE with RESPONSE value
-  const [nickname, setNickname] = useState(""); // REPLACE with RESPONSE value
-  const [password, setPassword] = useState(""); // REPLACE with RESPONSE value
-
-  // Handle RESPONSE here and set states accordingly
-  useEffect(() => {
-    // Example of setting values based on RESPONSE
-    // Replace these with actual RESPONSE handling logic
-    const response = {
-      id: "sampleId",
-      nickname: "sampleNickname",
-      password: "samplePassword",
+      } catch (error) {
+            console.error("Error updating profile: ", error);
+            alert('회원정보 변경에 실패했습니다.' + error.message);
+      }
     };
-    setId(response.id);
-    setNickname(response.nickname);
-    setPassword(response.password);
-  }, []); // or add dependencies if needed
-*/
 
- return (
-   <div>
-     <div className='MyProfilebar'>
-       <div className='MyProfileline' />마이페이지<div className='MyProfileline' />
-     </div>
+  return (
+    <div>
+      <div className='UpdateProfilebar'>
+        <div className='UpdateProfileline' />회원정보 수정<div className='UpdateProfileline' />
+      </div>
 
-     <div className='MyProfilemainbox'>
+      <div className='UpdateProfilemainbox'>
 
-       {/* 회원정보 수정 버튼 */}
-       <button className="UpdateProfile" onClick={handleMyProfile}>회원 정보 수정</button>
-       <div className='SpacingBetween'></div>
-       {/* 닉네임 필드 */}
-       <div className='MyProfileDetails'>닉네임</div>
-       <div>
-         <input className='MyProfileinput' type="text" placeholder='닉네임' value={id} readOnly />
+        {/* 닉네임 필드 */}
+        <div className='UpdateProfileDetails'>닉네임</div>
+        <input className='UpdateProfileinput' type="text" placeholder='닉네임' value={nickname} onChange={(e) => setnickname(e.target.value)} />
+        <div className='SpacingBetweenFields'></div>
+
+        {/* password 필드 */}
+        <div className='UpdateProfileDetails'>비밀번호</div>
+        <input className='UpdateProfileinput' type="text" placeholder='비밀번호' value={password} onChange={(e) => setPassword(e.target.value)} />
+        <div className='SpacingBetweenFields'></div>
+
+       {/* passwordconfrim 필드 */}
+            <div className='UpdateProfileDetails'>비밀번호 확인</div>
+            <input className='UpdateProfileinput' type="text" placeholder='비밀번호 확인' value={passwordconfrim} onChange={(e) => setPasswordaconfrim(e.target.value)} />
+            <div className='SpacingBetweenFields'></div>
+
+
+        {/* 취소, 수정 버튼 */}
+       <div className='button-container'>
+            <button className="cancellation" onClick={() => navigate('/')}>취소</button>
+            <button className="Update" onClick={updateMember}>수정</button></div>
        </div>
-       <div className='SpacingBetweenFields'></div>
-       {/* Email 필드 */}
-       <div className='MyProfileDetails'>Email</div>
-       <div>
-         <input className='MyProfileinput' type="text" placeholder='Email' value={nickname} readOnly />
-       </div>
-       <div className='SpacingBetweenFields'></div>
-       {/* 보유 투표권 필드 */}
-       <div className='MyProfileDetails'>보유 투표권</div>
-       <div>
-         <input className='MyProfileinput' type="text" placeholder='보유 투표권' value={password} readOnly />
-       </div>
-       <div className='SpacingBetween'></div>
-       {/* 회원탈퇴 버튼 */}
-       <button className="DeleteAccount" onClick={handleMyProfile}>회원 탈퇴</button>
-     </div>
-   </div>
- );
- };
+    </div>
+  );
+};
 
 
-export default MyProfile;
+export default UpdateProfile;
