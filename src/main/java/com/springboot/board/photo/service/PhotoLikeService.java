@@ -37,9 +37,9 @@ public class PhotoLikeService {
         this.photoRepository = photoRepository;
     }
 
-    public void checkLike(PhotoLikeDto.Post likeDto, long photoId) {
+    public void checkLike(String memberEmail, long photoId) {
         Photo photo = photoService.findVerifiedPhoto(photoId);
-        Member member = memberService.findVerifiedMember(likeDto.getMemberId());
+        Member member = memberService.findVerifiedMember(memberEmail);
         Optional<PhotoLike> optionalPhotoLike = photoLikeRepository.findAllByMemberAndPhoto(member, photo);
 
         if (optionalPhotoLike.isPresent()) {

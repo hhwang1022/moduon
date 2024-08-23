@@ -8,7 +8,8 @@ public class ShareDto {
     @Getter
     @AllArgsConstructor
     public static class Post {
-        private Long memberId;
+        @Setter
+        private String memberEmail;
         @Setter
         private Long balanceGameId;
         private String shareType;

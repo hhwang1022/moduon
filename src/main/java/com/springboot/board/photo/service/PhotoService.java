@@ -32,7 +32,8 @@ public class PhotoService {
     }
 
     public Photo createPhoto(Photo photo) throws IllegalAccessException {
-       Member member = memberService.findVerifiedMember(photo.getMember().getMemberId());
+       Member member = memberService.findVerifiedMember(photo.getMember().getEmail());
+       photo.setMember(member);
 
         Map<Member.Generation, List<Photo.Category>> allowCategoriesMap = Map.of(
                 Member.Generation.GENERATION_8090, List.of(Photo.Category.CATEGORY_8090, Photo.Category.CATEGORY_9000),

@@ -1,5 +1,6 @@
 package com.springboot.board.photo.entity;
 
+import com.springboot.audit.Auditable;
 import com.springboot.member.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +15,7 @@ import java.util.List;
 @Setter
 @Entity
 @NoArgsConstructor
-public class Photo {
+public class Photo extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long photoId;
@@ -33,9 +34,6 @@ public class Photo {
 
     @Column(nullable = false)
     private int likeCount = 0;
-
-    @Column(nullable = false)
-    private LocalDateTime createdAt = LocalDateTime.now();
 
     @Column(nullable = false)
     private String image1;

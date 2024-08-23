@@ -1,5 +1,6 @@
 package com.springboot.board.photo.entity;
 
+import com.springboot.audit.Auditable;
 import com.springboot.member.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor
-public class PhotoReply {
+public class PhotoReply extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long photoReplyId;

@@ -11,8 +11,8 @@ public class PostReplyDto {
     @Getter
     @AllArgsConstructor
     public static class Post {
-
-        private long memberId;
+        @Setter
+        private String memberEmail;
 
         @NotBlank
         private String body;
@@ -23,14 +23,14 @@ public class PostReplyDto {
     @Setter
     @AllArgsConstructor
     public static class Patch {
+        @Setter
         private long postReplyId;
 
         @NotBlank
         private String body;
 
-        public void setPostReply(long postReplyId) {
-            this.postReplyId = postReplyId;
-        }
+        @Setter
+        private String memberEmail;
     }
 
     @Getter
@@ -42,5 +42,6 @@ public class PostReplyDto {
         private long postId;
         private long memberId;
         private String body;
+        private String memberNickname;
     }
 }

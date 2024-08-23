@@ -12,7 +12,8 @@ public class PhotoReplyDto {
     @Getter
     @AllArgsConstructor
     public static class Post {
-        private long memberId;
+        @Setter
+        private String memberEmail;
 
         @NotBlank
         private String body;
@@ -38,7 +39,7 @@ public class PhotoReplyDto {
     @NoArgsConstructor
     public static class Response {
         private long photoReplyId;
-        private long memberId;
+        private String memberNickname;
         private long photoId;
         private String body;
     }

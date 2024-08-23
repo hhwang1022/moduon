@@ -37,6 +37,4 @@ public class PostLike {
             member.setPostLikes(this);
         }
     }
-
-
 }

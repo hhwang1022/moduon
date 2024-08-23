@@ -6,6 +6,7 @@ import com.springboot.board.post.entity.PostLike;
 import com.springboot.board.post.mapper.PostLikeMapper;
 import com.springboot.board.post.service.PostLikeService;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -27,9 +28,9 @@ public class PostLikeController {
 
     @PostMapping
     public ResponseEntity PostLike(@PathVariable("post-id") @Positive long postId,
-                                   @Valid @RequestBody PostLikeDto.Post requestBody) {
-//        PostLike postLike = mapper.postLikePostDtoToPostLike(requestBody);
-        postLikeService.checkLike(requestBody, postId);
+                                   @AuthenticationPrincipal Object principal) {
+
+        postLikeService.checkLike(principal.toString(), postId);
         return ResponseEntity.ok().build();
 
     }

@@ -14,6 +14,7 @@ import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
@@ -37,7 +38,9 @@ public class PostController {
     }
 
     @PostMapping
-    public ResponseEntity postPost(@Valid @RequestBody PostDto.Post requestBody) throws IllegalAccessException {
+    public ResponseEntity postPost(@AuthenticationPrincipal Object principal,
+                                   @Valid @RequestBody PostDto.Post requestBody) throws IllegalAccessException {
+        requestBody.setMemberEmail(principal.toString());
         Post post = mapper.postPostDtoToPost(requestBody);
         Post creatPost = postService.createPost(post);
         URI location = UriCreator.createUri(POST_DEFAULT_URL, creatPost.getPostId());
@@ -46,8 +49,9 @@ public class PostController {
 
     @PatchMapping("/{post-id}")
     public ResponseEntity patchPost(@PathVariable("post-id") @Positive long postId,
+                                    @AuthenticationPrincipal Object principal,
                                     @Valid @RequestBody PostDto.Patch requestBody) {
-
+        requestBody.setMemberEmail(principal.toString());
         requestBody.setPostId(postId);
         Post post = postService.updatePost(mapper.postPatchDtoToPost(requestBody));
         return new ResponseEntity<>(
