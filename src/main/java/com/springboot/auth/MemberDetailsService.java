@@ -31,6 +31,10 @@ public class MemberDetailsService implements UserDetailsService {
         Optional<Member> optionalMember = memberRepository.findByEmail(username);
         Member findMember = optionalMember.orElseThrow(() -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
 
+        if (findMember.getMemberStatus().equals(Member.MemberStatus.MEMBER_QUIT)) {
+            throw new BusinessLogicException(ExceptionCode.MEMBER_DELETED);
+        }
+
         if (findMember.getLoginDate() == null) {
             findMember.setVotingRights(findMember.getVotingRights() + 1);
             findMember.setLoginDate(LocalDate.now());

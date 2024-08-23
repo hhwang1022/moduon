@@ -22,7 +22,8 @@ public enum ExceptionCode {
     BALANCEGAMEREPLY_NOT_FOUND(404, "balanceGameReply not found"),
     BALANCEGAME_VOTEITEM_NOT_FOUND(404, "voteItem not found"),
     BALANCEGAME_VOTE_ERROR(500, "balanceGameVote make error"),
-    BALANCEGAMEREPLY_ERROR(500, "balanceGameReply make error");
+    BALANCEGAMEREPLY_ERROR(500, "balanceGameReply make error"),
+    MEMBER_DELETED(500, "member Deleted");
 
 
     @Getter

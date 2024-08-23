@@ -51,7 +51,7 @@ public class MemberService {
     }
 
     public Member updateMember(Member member) {
-        Member findMember = findVerifiedMember(member.getMemberId());
+        Member findMember = findVerifiedMember(member.getEmail());
 
         Optional.ofNullable(member.getNickname())
                 .ifPresent(nickname -> findMember.setNickname(nickname));
@@ -70,8 +70,8 @@ public class MemberService {
                 Sort.by("memberId").descending()));
     }
 
-    public void deleteMember(long memberId) {
-        Member member = findVerifiedMember(memberId);
+    public void deleteMember(String memberEmail) {
+        Member member = findVerifiedMember(memberEmail);
         member.setMemberStatus(Member.MemberStatus.MEMBER_QUIT);
         memberRepository.save(member);
     }
