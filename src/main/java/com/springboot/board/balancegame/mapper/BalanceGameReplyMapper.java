@@ -24,6 +24,6 @@ public interface BalanceGameReplyMapper {
     @Mapping(source = "balanceGameId", target = "balanceGame.balanceGameId")
     BalanceGameReply balanceGameReplyPatchToBalanceGameReply(BalanceGameReplyDto.Patch requestBody);
 
-    @Named("balanceGameToBalanceGameResponse")
+    @Named("balanceGameToBalanceGameResponseDtos")
     List<BalanceGameReplyDto.Response> balanceGamesToBalanceGameResponseDtos(List<BalanceGameReply> balanceGameReplies);
 }
