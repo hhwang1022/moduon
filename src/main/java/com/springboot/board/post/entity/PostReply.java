@@ -1,5 +1,6 @@
 package com.springboot.board.post.entity;
 
+import com.springboot.audit.Auditable;
 import com.springboot.member.entity.Member;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Setter
 @Entity
 @NoArgsConstructor
-public class PostReply {
+public class PostReply extends Auditable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postReplyId;
@@ -30,7 +31,6 @@ public class PostReply {
         }
     }
 
-
     @ManyToOne
     @JoinColumn(name = "MEMBER_ID")
     private Member member;
@@ -41,7 +41,4 @@ public class PostReply {
             member.setPostReplies(this);
         }
     }
-
-
-
 }

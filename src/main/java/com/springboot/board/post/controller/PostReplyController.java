@@ -12,6 +12,7 @@ import com.springboot.utils.UriCreator;
 import org.springframework.data.domain.Page;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 import javax.print.DocFlavor;
@@ -38,7 +39,9 @@ public class PostReplyController {
 
     @PostMapping
     public ResponseEntity postPostReply(@PathVariable("post-id") @Positive long postId,
+                                        @AuthenticationPrincipal Object principal,
                                         @Valid @RequestBody PostReplyDto.Post requestBody) throws IllegalAccessException {
+        requestBody.setMemberEmail(principal.toString());
         PostReply postReply = mapper.postReplyPostDtoToPostReply(requestBody);
 
         Post post = postService.findPostById(postId);
@@ -52,8 +55,10 @@ public class PostReplyController {
 
     @PatchMapping("/{reply-id}")
     public ResponseEntity patchPostReply(@PathVariable("reply-id") @Positive long postReplyId,
+                                         @AuthenticationPrincipal Object principal,
                                          @Valid @RequestBody PostReplyDto.Patch requestBody) {
-        requestBody.setPostReply(postReplyId);
+        requestBody.setMemberEmail(principal.toString());
+        requestBody.setPostReplyId(postReplyId);
         PostReply updatePostReply = mapper.postReplyPatchDtoToPostReply(requestBody);
         PostReply postReply = postReplyService.updatePostReply(updatePostReply);
         return new ResponseEntity<>(

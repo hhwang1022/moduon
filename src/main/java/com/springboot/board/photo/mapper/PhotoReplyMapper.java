@@ -12,12 +12,12 @@ import java.util.List;
 @Mapper(componentModel = "spring")
 public interface PhotoReplyMapper {
 
-    @Mapping(source = "memberId", target = "member.memberId")
+    @Mapping(source = "memberEmail", target = "member.email")
     PhotoReply photoReplyPostDtoToPhotoReply(PhotoReplyDto.Post requestBody);
 
     PhotoReply photoReplyPatchDtoToPhotoReply(PhotoReplyDto.Patch requestBody);
 
-    @Mapping(source = "member.memberId", target = "memberId")
+    @Mapping(source = "member.nickname", target = "memberNickname")
     @Mapping(source = "photo.photoId", target = "photoId")
     PhotoReplyDto.Response photoReplyToPhotoReplyResponseDto(PhotoReply photoReply);
 

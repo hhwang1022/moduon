@@ -10,9 +10,10 @@ import java.util.List;
 @Mapper(componentModel = "spring", uses = {PhotoReplyMapper.class})
 public interface PhotoMapper {
 
-    @Mapping(source = "memberId", target = "member.memberId")
+    @Mapping(source = "memberEmail", target = "member.email")
     Photo photoPostDtoToPhoto(PhotoDto.Post requestBody);
 
+    @Mapping(source = "memberEmail", target = "member.email")
     Photo photoPatchDtoToPhoto(PhotoDto.Patch requestBody);
 
     @Mapping(source = "member.memberId", target = "memberId")

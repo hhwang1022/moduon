@@ -82,6 +82,7 @@ public class PostReplyService {
 
     public PostReply updatePostReply(PostReply postReply) {
         PostReply findPostReply = findVerifiedPostReply(postReply.getPostReplyId());
+        memberService.findVerifiedMember(postReply.getMember().getEmail());
         Optional.ofNullable(postReply.getBody())
                 .ifPresent(body -> findPostReply.setBody(body));
         return postReplyRepository.save(findPostReply);

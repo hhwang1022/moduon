@@ -19,13 +19,10 @@ public class PostDto  {
     public static class Post {
         @NotBlank
         private String title;
-
         @NotBlank
         private String body;
 
         private String isNotice;
-
-        private long memberId;
 
         private Category category;
 
@@ -34,18 +31,14 @@ public class PostDto  {
         private String image3;
         private String image4;
         private String image5;
-
-        public Member getMember(){
-            Member member = new Member();
-            member.setMemberId(memberId);
-            return member;
-        }
-
+        @Setter
+        private String memberEmail;
     }
 
     @Getter
     @AllArgsConstructor
     public static class Patch{
+        @Setter
         private long postId;
 
         @NotBlank
@@ -63,7 +56,8 @@ public class PostDto  {
         private String image3;
         private String image4;
         private String image5;
-        public void setPostId(long postId) {this.postId = postId;}
+        @Setter
+        private String memberEmail;
     }
 
     @Getter
@@ -87,6 +81,5 @@ public class PostDto  {
         private String image5;
         private List<PostReplyDto.Response> postReplyList;
         private String nickname;
-
     }
 }
