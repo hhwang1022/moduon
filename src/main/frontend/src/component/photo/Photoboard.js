@@ -9,7 +9,7 @@ const Photoboard = ({ generation }) => {
     const[currentphotoid, setcurrentphotoid] = useState(1);
 
     useEffect(() => {
-        console.log("currentpostid : " + currentphotoid);
+        //console.log("currentpostid : " + currentphotoid);
       }, [currentphotoid]);
 
     const Page = ({currentindex}) => {

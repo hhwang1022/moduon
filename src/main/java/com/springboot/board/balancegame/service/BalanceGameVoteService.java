@@ -50,6 +50,9 @@ public class BalanceGameVoteService {
 
         List<BalanceGame.Generation> allowGenerations = allowGenerationMap.get(member.getMemberGeneration());
 
+        System.out.println(balanceGameVote.getVoteItem());
+        System.out.println(balanceGameVote.getMember().getVotingRights());
+
         if ((balanceGameVote.getVoteItem().equals("point1") || balanceGameVote.getVoteItem().equals("point2"))
                 && balanceGameVote.getMember().getVotingRights() > 0
                 && allowGenerations.contains(balanceGameVote.getBalanceGame().getBalanceGameGeneration())) {

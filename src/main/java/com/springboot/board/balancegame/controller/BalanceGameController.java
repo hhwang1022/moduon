@@ -78,7 +78,7 @@ public class BalanceGameController {
 		List<BalanceGame> balanceGames = balanceGameService.setVotePoints(findBalanceGames);
 
 		return new ResponseEntity<>(
-				new MultiResponseDto<>(balanceGames,
+				new MultiResponseDto<>(mapper.balanceGameToBalanceGameDtoList(balanceGames),
 						pageBalanceGames),
 				HttpStatus.OK);
 	}
