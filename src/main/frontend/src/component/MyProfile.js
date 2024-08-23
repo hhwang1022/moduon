@@ -5,10 +5,11 @@ import { useNavigate } from "react-router-dom";
 import memberInfo from '../MemberInfo';
 import updateProfile from './UpdateProfile';
 
-const MyProfile = ({ onclicklUpdateProfile }) => {
+const MyProfile = () => {
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [balanceGameTicket, setBalanceGameTicket] = useState('');
+  const navigate = useNavigate();
 
   const accessToken = window.localStorage.getItem('accessToken');
 
@@ -38,6 +39,10 @@ useEffect(() => {
   fetchProfile();
   }, [accessToken]);
 
+  const handleUpdateProfileClick = () => {
+      navigate('/updateprofile');
+    };
+
   return (
     <div>
       <div className='MyProfilebar'>
@@ -46,7 +51,7 @@ useEffect(() => {
 
       <div className='MyProfilemainbox'>
         {/* 회원정보 수정 버튼 */}
-        <button className="UpdateProfile" onClick={onclicklUpdateProfile}>회원 정보 수정</button>
+        <button className="UpdateProfile" onClick={handleUpdateProfileClick}>회원 정보 수정</button>
         <div className='SpacingBetween'></div>
 
         {/* 닉네임 필드 */}
