@@ -60,6 +60,7 @@ public class MemberDto {
     @AllArgsConstructor
     public static class InfoResponse {
         private String nickname;
+        private String email;
         private Member.Generation memberGeneration;
         private Long votingRights;
         private List<String> roles;
