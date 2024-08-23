@@ -1,18 +1,16 @@
 import './Main_8090.css';
-import React, { useState, useEffect } from 'react';
-import {BrowserRouter, Routes, Route,  useNavigate, useParams } from "react-router-dom";
+import React, { useState } from 'react';
+import { Routes, Route, useNavigate } from "react-router-dom";
 import Footer_8090 from './Footer_8090';
 import Mypage from '../Mypage';
 import Bgmbar from '../Bgmbar';
 import TopBanner from '../TopBanner';
-import Currentvote_board from '../currentvote/Currentvote_board';
 import Postboard from '../post/Postboard';
 import Photoboard from '../photo/Photoboard';
 import Balancegameborad from '../balancegame/Balancegameborad';
 
-
 const Main_8090 = () => {
-
+    const navigate = useNavigate();
     const [currentindex, setcurrentindex] = useState(0);
 
 
@@ -28,25 +26,22 @@ const Main_8090 = () => {
         }
     ];
 
-    const navigate = useNavigate();
-
-    const Page = () => {
-        if(currentindex === 0){
-            return (
-                <Postboard generation={"8090"} />
-            );
+    const handleMenuClick = (index) => {
+        setcurrentindex(index);
+        switch (index) {
+            case 0:
+                navigate('/main_8090/post');
+                break;
+            case 1:
+                navigate('/main_8090/photo');
+                break;
+            case 2:
+                navigate('/main_8090/balance');
+                break;
+            default:
+                navigate('/main_8090/balance');
         }
-        else if(currentindex === 1){
-            return (
-                <Photoboard generation={"8090"} />
-            );
-        }
-        else{
-            return (
-                <Balancegameborad generation={"8090"} />
-            );
-        }
-      };
+    };
 
     return (
         <div className='main8090outwindow main8090dafaultwindow'>
@@ -60,15 +55,15 @@ const Main_8090 = () => {
             <div className='main8090categorybar'>
                 <button className='main8090categorybutton pressed'
                     onClick={() => {
-                        navigate('/main_8090');
+                        navigate('/main_8090/balance');
                     }}>80-90</button>
                 <button className='main8090categorybutton'
                     onClick={() => {
-                        navigate('/main_9000');
+                        navigate('/main_9000/balance');
                     }}>90-00</button>
                 <button className='main8090categorybutton'
                     onClick={() => {
-                        navigate('/main_0010');
+                        navigate('/main_0010/balance');
                     }}>00-10</button>
                 <button className='main8090categorybutton'
                     onClick={() => {
@@ -77,24 +72,27 @@ const Main_8090 = () => {
             </div>
 
             <div className='main8090topbanner'> 80년대로 여러분들을 초대합니다.
-                <TopBanner generation={"8090"}/>
+                <TopBanner generation={"8090"} />
             </div>
             <div className='main8090windowcontentoutbox'>
                 <div className='main8090margin'></div>
                 <div className='main8090windowcontentbox'>
                     <div className='main8090windowcontentboxline'>
                         {categorys.map((x, index) => {
-                           return <button onClick={() => setcurrentindex(index)}>{"\u00a0\u00a0\u00a0\u00a0" + x.title}</button>;
+                            return <button onClick={() => handleMenuClick(index)}>{"\u00a0\u00a0\u00a0\u00a0" + x.title}</button>;
                         })}
                     </div>
                     <div className='main8090windowcontentinbox'>
-                        <Page/>
-                    {/* <Postlist generation={"8090"}/> */}
+                        <Routes>
+                            <Route path="post/*" element={<Postboard generation={"8090"} />} />
+                            <Route path="photo" element={<Photoboard generation={"8090"} />} />
+                            <Route path="balance" element={<Balancegameborad generation={"8090"} />} />
+                        </Routes>
                     </div>
-                    <div className='main8090windowcontentboxline'/></div>
+                    <div className='main8090windowcontentboxline' /></div>
                 <div className='main8090memberbox'>
-                    <Bgmbar generation={"8090"}/>
-                    <Mypage generation={"8090"}/>
+                    <Bgmbar generation={"8090"} />
+                    <Mypage generation={"8090"} />
                 </div>
             </div>
 
