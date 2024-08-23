@@ -93,12 +93,12 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
 
         {/* password 필드 */}
         <div className='UpdateProfileDetails'>비밀번호</div>
-        <input className='UpdateProfileinput' type="text" placeholder='비밀번호' value={password} onChange={(e) => setPassword(e.target.value)} />
+        <input className='UpdateProfileinput' type="password" placeholder='비밀번호' value={password} onChange={(e) => setPassword(e.target.value)} />
         <div className='SpacingBetweenFields'></div>
 
        {/* passwordconfrim 필드 */}
             <div className='UpdateProfileDetails'>비밀번호 확인</div>
-            <input className='UpdateProfileinput' type="text" placeholder='비밀번호 확인' value={passwordconfrim} onChange={(e) => setPasswordaconfrim(e.target.value)} />
+            <input className='UpdateProfileinput' type="password" placeholder='비밀번호 확인' value={passwordconfrim} onChange={(e) => setPasswordaconfrim(e.target.value)} />
             <div className='SpacingBetweenFields'></div>
 
 
