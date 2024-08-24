@@ -54,6 +54,7 @@ import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistI
   
     useEffect(() => {
       fetchPostData();
+      fetchPostLike();
     }, [accessToken, generation]);
 
   const handlePostReply = async () => {
@@ -90,9 +91,8 @@ import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistI
             'Content-Type': 'application/json',
              Authorization: `Bearer ${accessToken}`,
              },
-
         });
-          setIsLike(!isLike);
+        setIsLike(!isLike);
         } catch (error) {
             alert(JSON.stringify(error.message));
     }
@@ -117,16 +117,34 @@ import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistI
       }
   }, [commentListUpdated])
 
+  const fetchPostLike = async () => {
+    try {
+      const response = await axios.get('http://127.0.0.1:8080/posts/' + postid + '/like', {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      });
+    
+      if(response.data.data.isLike){
+        setIsLike(true);
+      }
+      else{
+        setIsLike(false);
+      }
+
+    } catch (error) {
+      console.error("Error fetching data: ", error);
+    }
+  };
+
   return (
-    <div className='post-view-container'>
-      <div className='post-view-header'>
+    <div className={'post-view-container' + generation}>
+      <div className={'post-view-header' + generation}>
       <button className='post-like' onClick={handlePostLike}>{isLike ? '추천취소' : '추천하기'}</button>
         <button className='post-update'>수정</button>
         <button className='post-delete'>삭제</button>
       </div>
       <div className='post-info-box'>
         <div className='post-title'>{title}</div>
-        <div className='post-info'>
+        <div className={'post-info' + generation}>
           <div className='post-nickname-box'>
             <div className='post-nickname-word'>닉네임: </div>
             <div className='post-nickname'>{nickname}</div>
