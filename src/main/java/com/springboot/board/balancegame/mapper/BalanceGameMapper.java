@@ -48,6 +48,7 @@ public interface BalanceGameMapper {
 		return balanceGame;
 	}
 
+	@Mapping(target = "balanceGameReplesiList", qualifiedByName = "balanceGameToBalanceGameResponseDtos")
 	List<BalanceGameDto.Response> balanceGameToBalanceGameDtoList(List<BalanceGame> balanceGames);
 
 	private LocalDateTime createLocalDateTime(List<Integer> dateList) {
@@ -64,6 +65,6 @@ public interface BalanceGameMapper {
 	}
 
 
-	@Mapping(target = "balanceGameReplesiList", qualifiedByName = "balanceGameToBalanceGameResponse")
+	@Mapping(target = "balanceGameReplesiList", qualifiedByName = "balanceGameToBalanceGameResponseDtos")
 	BalanceGameDto.Response balanceGameToBalanceGameResponseDto(BalanceGame balanceGame);
 }

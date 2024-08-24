@@ -43,7 +43,6 @@ const Postlist = ({ generation , onClickwirtebtn, onClickreadbtn}) => {
                                             settotalpage(response.data.pageInfo.totalPages);
                       }
                     });
-
             } catch (error) {
                 console.error("Error fetching posts: ", error);
             }
@@ -112,7 +111,8 @@ const Postlist = ({ generation , onClickwirtebtn, onClickreadbtn}) => {
         </div>
         {generation === "1020" ?
         <div className={"postlist" + generation + "margin"}>{postlist.map((x, index) => {
-            return <PostlistItem post={x} generation={generation} onclickhandler={onClickreadbtn}/>
+            console.log("onClickreadbtn : " + x);
+            return <PostlistItem post={x} generation={generation}  onclickhandler={() => {onClickreadbtn(x)}} />
         })}</div> :
         <table className={'postlist' + generation + 'margin'}  >
             <tr className={'postlist' + generation + 'title'} >
@@ -125,7 +125,8 @@ const Postlist = ({ generation , onClickwirtebtn, onClickreadbtn}) => {
             </tr>
             <tbody>
                 {postlist.map((x, index) => {
-                    return <PostlistItem post={x} generation={generation} onclickhandler={onClickreadbtn}/>
+                    console.log(x.postId);
+                    return <PostlistItem post={x} generation={generation}  onclickhandler={() => {onClickreadbtn(x.postId)}} />
                 })}
             </tbody>
         </table>

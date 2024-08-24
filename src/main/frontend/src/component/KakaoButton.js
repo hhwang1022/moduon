@@ -1,7 +1,6 @@
 import React, { useEffect } from 'react';
-import './component/ShareBar.css';
 
-const KakaoButton = ({url, title, description, imageUrl}) => {
+const KakaoButton = ({url, title, description, imageUrl, onclickhandler}) => {
 
     useEffect(() => {
         const script = document.createElement("script");
@@ -17,7 +16,8 @@ const KakaoButton = ({url, title, description, imageUrl}) => {
         if (window.Kakao) {
           const kakao = window.Kakao;
           if (!kakao.isInitialized()) {
-            kakao.init("");
+            console.log(process.env.REACT_APP_KAKAO_API_KEY);
+            kakao.init(process.env.REACT_APP_KAKAO_API_KEY);
           }
       
           kakao.Link.sendDefault({
@@ -42,6 +42,8 @@ const KakaoButton = ({url, title, description, imageUrl}) => {
             ]
           });
         }
+
+        onclickhandler();
   };
 
   return <button onClick={() => shareKakao(url, title, description, imageUrl)} className="sharebtn">

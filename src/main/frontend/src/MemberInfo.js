@@ -2,6 +2,7 @@ class MemberInfo {
     constructor() {
         if (!MemberInfo.instance) {
             this.name = "홍길동";
+            this.email = "hgd@gmail.com"
             this.memberid = 1;
             this.balancegameticket = 1;
             this.generation = "1020";
@@ -21,6 +22,7 @@ class MemberInfo {
         console.log(this.admin);
         return {
             name: this.name,
+            email: this.email,
             memberid: this.memberid,
             balancegameticket: this.balancegameticket,
             generation: this.generation.includes('_') ? this.generation.split('_')[1] : this.generation,

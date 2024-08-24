@@ -1,0 +1,86 @@
+.UpdateProfilemainbox {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    margin: auto;
+    margin-left: 50px;
+    text-align: center;
+}
+
+
+.UpdateProfileDetails {
+    width: 500px;                /* 너비를 MyProfileinput과 동일하게 설정 */
+    height: 50px;                /* 높이를 MyProfileinput과 동일하게 설정 */
+    font-family: 'NotoSansKR';  /* 글꼴 설정 */
+    font-size: 16pt;             /* 글꼴 크기 설정 */
+    font-weight: bold;           /* 글자 굵게 설정 */
+    color: black;                /* 글자 색상 검정색으로 설정 */
+    margin: 0;                   /* 여백 제거 */
+    text-align: left;            /* 텍스트 왼쪽 정렬 */
+    background: transparent;     /* 배경 색상 투명으로 설정 */
+    border: none;                /* 테두리 제거 */
+    padding: 0;                  /* 안쪽 여백 제거 */
+    display: flex;               /* 플렉스 박스 사용 */
+    align-items: center;         /* 수직 가운데 정렬 */
+    justify-content: flex-start; /* 수평 왼쪽 정렬 */
+}
+
+.UpdateProfileinput {
+    width: 500px;
+    height: 50px;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 5px;
+    border: 1px solid black;
+    font-family: 'NotoSansKR';
+    font-size: 16pt;
+}
+
+.button-container {
+  display: flex;
+  justify-content: center; /* 버튼을 수평 중앙 정렬 */
+  gap: 10px; /* 버튼 간 간격 */
+  margin-top: 20px; /* 버튼 상단 여백 */
+  width: 100%; /* 버튼 컨테이너 너비를 전체로 설정 */
+}
+
+.cancellation, .Update {
+  width: 200px; /* 버튼 너비 */
+  height: 40px; /* 버튼 높이 */
+  border-radius: 5px; /* 버튼 모서리 둥글게 */
+  border: 1px solid black; /* 버튼 테두리 색상 */
+  font-family: 'NotoSansKR'; /* 글꼴 설정 */
+  font-size: 14pt; /* 글꼴 크기 */
+  color: white; /* 텍스트 색상 */
+  background: linear-gradient(
+    to right,
+    #833ab4, #fd1d1d, #fcb045
+  ); /* 배경 색상 및 그라데이션 */
+  display: flex; /* 플렉스 박스 사용 */
+  align-items: center; /* 수직 가운데 정렬 */
+  justify-content: center; /* 수평 가운데 정렬 */
+  cursor: pointer; /* 커서 모양 변경 */
+}
+
+.UpdateProfileline {
+  border-top: medium solid #000000;
+  width: 200px;
+  height: 2px;
+  margin-top: 20px;
+  margin-left: 20px;
+  margin-right: 20px;
+}
+
+.UpdateProfilebar {
+  display: flex;
+  justify-content: center; /* 수평 중앙 정렬 */
+  margin: auto;
+  font-family: 'NotoSansKR';
+  padding-top: 20px;
+  font-size: 20pt;
+  color: gray;
+}
+
+.SpacingBetweenFields {
+    height: 30px; /* 원하는 간격 */
+}

@@ -31,6 +31,8 @@ const Login = ({ successhandler, issmall, generation }) => {
         if (response.headers['authorization'] !== undefined) {
           accessToken = response.headers['authorization'].replace('Bearer ', '');
           refreshToken = response.headers['refresh'];
+          localStorage.removeItem('accessToken');
+          localStorage.removeItem('refreshToken');
           localStorage.setItem('accessToken', accessToken);
           localStorage.setItem('refresh', refreshToken);
 

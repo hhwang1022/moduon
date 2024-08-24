@@ -6,92 +6,28 @@ import Reply from './Postreply';
 import Balancegame_commentlist from '../currentvote/Balancegame_commentlist';
 import Postreply from './Postreply';
 
-// const Postview = ({postid}) => {
 
-//   const [qnalike, setqnalike] = useState(0);
-//   const [qnaislike, setqnaislike] = useState(0);
-//   const [qnalock, setqnalock] = useState(0);
-//   const [qnareplyBody, setQnareplyBody] = useState('');
-//   const [qnareply, setQnareply] = useState('');
-//   const [qna, setQna] = useState('');
+//   const Postview = ({generation}) => {
+//     const [post, setPost] = useState(null);
+//     const [searchkeyword, setsearchkeyword] = useState('');
+//     const { postId } = useParams();
 
-//   let accessToken = window.localStorage.getItem('accessToken');
-//   const qnaId = useParams().qnaId;
-//   const navigate = useNavigate();
 
-//   const handleGetPost = async () => {
+//     useEffect(() => {
 
-//   };
+//       console.log("Postview : " + postId);
+//         const fetchPost = async () => {
+//             try {
+//                let accessToken = window.localStorage.getItem('accessToken');
+//                const response = await axios.get('http://127.0.0.1:8080/posts/' + postId, {
+//                      headers: { Authorization: `Bearer ${accessToken}` }
+//                });
 
-//   useEffect(() => {
-//     handleGetPost();
-//   }, []);
-
-//   useEffect(() => {
-//     if(qna !== undefined){
-//       setqnalike(qna.like ? qna.like : 0);
-//       setqnaislike(qna.isLike ? qna.isLike : 0);
-//       setqnalock(qna.lock ? qna.lock : 0);
-//     }
-//   }, [qna]);
-
-//   const parsedDate = (day) =>
-//     (
-//       new Date(qna.createdAt).toLocaleDateString('ko-kr')
-//     );
-
-//   const handleLikeQna = async () => {
-//     accessToken = window.localStorage.getItem('accessToken');
-//     try {
-//       const response = await axios.post(
-//         `http://127.0.0.1:8080/v11/board/qna/like/` + qna.qnaId,
-//         {
-          
-//         },
-//         {
-//           headers: {
-//             Authorization: `Bearer ${accessToken}`,
-//           },
+//                setPost(response.data);
+//             } catch (error) {
+//                 console.error("Error fetching post: ", error);
+//             }
 //         }
-//       );
-//       if(qna.isLike === 1){
-//         qna.isLike = 0;
-//         qna.like -= 1;
-//         setqnaislike(0);
-//         setqnalike(qnaislike - 1);
-//       }
-//       else{
-//         qna.isLike = 1;
-//         qna.like += 1;
-//         setqnaislike(1);
-//         setqnalike(qnaislike + 1);
-//       }
-//     } catch (error) {
-//       alert(JSON.stringify(error.message));
-//     }
-//   };
-
-//   const handleReply = async () => {
-//     accessToken = window.localStorage.getItem('accessToken');
-//     try {
-//       const response = await axios.post(
-//         `http://127.0.0.1:8080/v11/board/qna/reply/` + qna.qnaId,
-//         {
-//           "body":qnareplyBody
-//         },
-//         {
-//           headers: {
-//             'Content-Type': 'application/json',
-//             Authorization: `Bearer ${accessToken}`,
-//           },
-//         }
-//       );
-//       qna.reply = qnareplyBody;
-//       setQnareply(qnareplyBody);
-//     } catch (error) {
-//       alert(JSON.stringify(error.message));
-//     }
-//   };
 
 //   return qna !== undefined ? <div className="postbox" id={qna.lock}>
 //       <div className="title boldtext">{'title ' + qna.title}{qnalock === 1 ? '🔒' : ''}</div><br/>

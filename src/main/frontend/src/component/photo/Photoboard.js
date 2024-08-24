@@ -1,43 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { Routes, Route, useNavigate, useParams } from 'react-router-dom';
 import Photolist from './Photolist';
 import Photowrite from './Photowrite';
 import Photoview from './Photoview';
 
 const Photoboard = ({ generation }) => {
+  const navigate = useNavigate();
+  const { photoId } = useParams();
+  const currentphotoid = parseInt(photoId) || 1;
 
-    const[currentindex, setcurrentindex] = useState(0);
-    const[currentphotoid, setcurrentphotoid] = useState(1);
+  useEffect(() => {
+    console.log("currentphotoid : " + currentphotoid);
+  }, [currentphotoid]);
 
-    useEffect(() => {
-        //console.log("currentpostid : " + currentphotoid);
-      }, [currentphotoid]);
-
-    const Page = ({currentindex}) => {
-        if(currentindex === 0){
-            return (
-                <Photolist generation={generation} onClickwirtebtn={() => {
-                    setcurrentindex(1);
-                }} onClickreadbtn={(id) => {
-                    setcurrentindex(2);
-                    setcurrentphotoid(id);
-                }} />
-            );
-        }
-        else if(currentindex === 1){
-            return (
-                <Photowrite generation={generation} />
-            );
-        }
-        else{
-            return (
-                <Photoview generation={generation} photoid={currentphotoid} />
-            );
-        }
-      };
-
-    return (
-        <Page currentindex={currentindex}/>
-    );
+  return (
+    <Routes>
+      <Route path="/" element={<Photolist generation={generation} onClickwirtebtn={() => navigate('write')} onClickreadbtn={(id) => navigate(`view/${id}`)} />} />
+      <Route path="write" element={<Photowrite generation={generation} />} />
+      <Route path="view/:photoId" element={<Photoview generation={generation} photoid={currentphotoid} />} />
+    </Routes>
+  );
 };
 
 export default Photoboard;
