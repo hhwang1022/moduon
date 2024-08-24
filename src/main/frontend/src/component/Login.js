@@ -29,20 +29,20 @@ const Login = ({ successhandler, issmall, generation }) => {
         {
           withCredentials: true
         }
-      ).then(response => {
-        if (response.headers['authorization'] !== undefined) {
-          accessToken = response.headers['authorization'].replace('Bearer ', '');
-          refreshToken = response.headers['refresh'];
-          localStorage.removeItem('accessToken');
-          localStorage.removeItem('refreshToken');
-          localStorage.setItem('accessToken', accessToken);
-          localStorage.setItem('refresh', refreshToken);
+      );
+      if (response.headers['authorization'] !== undefined) {
+        accessToken = response.headers['authorization'].replace('Bearer ', '');
+        refreshToken = response.headers['refresh'];
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+        localStorage.setItem('accessToken', accessToken);
+        localStorage.setItem('refresh', refreshToken);
 
-          handleInfo();
-        }
+        handleInfo();
+      }
 
-      });
     } catch (error) {
+      console.log(error);
       alert(error.message);
       //navigate('/error/' + error.message);
     }

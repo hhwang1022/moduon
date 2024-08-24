@@ -37,12 +37,11 @@ const Postlist = ({ generation , onClickwirtebtn, onClickreadbtn}) => {
             const response = await axios.get('http://127.0.0.1:8080/posts?'
             + 'page=' + curruntpage + '&size='  + 10 + '&sort=' + sorttype + '&category='  +category, {
             headers: { Authorization: `Bearer ${accessToken}` }
-            }).then(function (response) {
-                      if (response !== undefined) {
-                                            setPostlist(response.data.data);
-                                            settotalpage(response.data.pageInfo.totalPages);
-                      }
-                    });
+            });
+            if (response !== undefined) {
+                setPostlist(response.data.data);
+                settotalpage(response.data.pageInfo.totalPages);
+}
             } catch (error) {
                 console.error("Error fetching posts: ", error);
             }
@@ -56,12 +55,12 @@ const Postlist = ({ generation , onClickwirtebtn, onClickreadbtn}) => {
                 +'page=' + curruntpage + '&size=' + 10 + '&category=' + category
                 + '&keyword=' + searchkeyword, {
                 headers: { Authorization: `Bearer ${accessToken}` }
-                }).then(function (response) {
-                        if (response !== undefined) {
-                            setPostlist(response.data.data);
-                            settotalpage(response.data.pageInfo.totalPages);
-                            }
                 });
+
+                if (response !== undefined) {
+                    setPostlist(response.data.data);
+                    settotalpage(response.data.pageInfo.totalPages);
+                    }
             } catch (error) {
                 console.error("Error searching posts with keyword: ", error);
             } finally {

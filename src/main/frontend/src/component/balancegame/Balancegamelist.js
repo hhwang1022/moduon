@@ -18,14 +18,12 @@ const Balancegamelist = ({ generation , onClickwirtebtn }) => {
             + 'page=' + curruntpage + '&size='  + 10 + '&generation=' + generation, 
             {
                 headers: { Authorization: `Bearer ${accessToken}` }
-            }).then(function (response) {
-                      if (response !== undefined) {
-                        console.log("Response Data:", response.data);
-                                            setPostlist(response.data.data);
-                                            settotalpage(response.data.pageInfo.totalPages);
-                      }
-                    });
-
+            });
+            if (response !== undefined) {
+                console.log("Response Data:", response.data);
+                                    setPostlist(response.data.data);
+                                    settotalpage(response.data.pageInfo.totalPages);
+              }
             } catch (error) {
                 console.error("Error fetching posts: ", error);
             }

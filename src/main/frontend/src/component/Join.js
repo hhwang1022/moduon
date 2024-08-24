@@ -37,13 +37,12 @@ const Join = ({ successhandler }) => {
             Authorization: `Bearer ${accessToken}`,
           },
         }
-      ).then(function (response) {
-        navigate('/main_1020/login');
+      );
+      navigate('/main_1020/login');
         successhandler(5);
         if (response !== undefined) {
 
         }
-      });
     } catch (error) {
       //navigate('/error/' + error.message);
       alert(error.message);

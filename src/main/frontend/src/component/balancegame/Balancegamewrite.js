@@ -61,13 +61,12 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${accessToken}`,
         },
-      }).then(function (response) {
-        if (successhandler !== undefined)
-          successhandler(5);
-        alert('투표 작성 성공!');
-        if (response !== undefined)
-          navigate('/');
       });
+      if (successhandler !== undefined)
+        successhandler(5);
+      alert('투표 작성 성공!');
+      if (response !== undefined)
+        navigate('/');
     } catch (error) {
       alert(JSON.stringify(error.message));
     }
@@ -87,8 +86,8 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
             Authorization: `Bearer ${accessToken}`,
           },
         }
-      ).then(function (response) {
-        console.log(response.data);
+      );
+      console.log(response.data);
         console.log(index);
         if (index === 0) {
           setImage1(response.data);
@@ -96,7 +95,6 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
         else {
           setImage2(response.data);
         }
-      });
     } catch (error) {
       alert(JSON.stringify(error.message));
     }
