@@ -45,7 +45,9 @@ const Main_8090 = () => {
 
     return (
         <div className='main8090outwindow main8090dafaultwindow'>
-            <div className='main8090windowtopbarbackground'>MODOO-ON
+            <div className='main8090windowtopbarbackground'><button onClick={() => {
+                        navigate('/main_1020');
+                    }}>MODOO-ON</button>
                 <span className='main8090windowtopbarbuttonarea'>
                     <span className='main8090windowtopbarbutton main8090dafaultwindow'>_</span>
                     <span className='main8090windowtopbarbutton main8090dafaultwindow'>□</span>
