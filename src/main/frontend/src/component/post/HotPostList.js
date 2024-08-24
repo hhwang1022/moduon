@@ -22,11 +22,10 @@ const HotPostList = ({generation}) => {
             try {
                 const response = await axios.get('http://127.0.0.1:8080/posts/popular?' + 'page=' + 1 + '&size=' + 10, {
                  headers: { Authorization: `Bearer ${accessToken}` }
-                }).then(function (response) {
-                        if(response && response.data && response.data.data) {
-                            setpostlist(response.data.data);
-                        }
                 });
+                if(response && response.data && response.data.data) {
+                    setpostlist(response.data.data);
+                }
             } catch (error) {
                 console.error("Error fetching hotPosts: ", error);
             }

@@ -39,13 +39,11 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
                 const response = await axios.get('http://127.0.0.1:8080/photos?'
                 + 'page=' + curruntpage + '&size=' + size + '&sort=' + sorttype + '&category=' + category, {
                 headers: { Authorization: `Bearer ${accessToken}` }
-                }).then (function (response) {
-                            if (response !== undefined) {
-                                    setPhotolist(response.data.data);
-                                    settotalpage(response.data.pageInfo.totalPages);
-                            }
                 });
-
+                if (response !== undefined) {
+                    setPhotolist(response.data.data);
+                    settotalpage(response.data.pageInfo.totalPages);
+            }
             } catch (error) {
                 console.error("Error fetching photos", error);
             }
@@ -57,12 +55,11 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
                 const response = await axios.get('http://127.0.0.1:8080/photos/search?'
                 + 'page=' + curruntpage + '&size=' + 10 + '&category=' + category + '&keyword=' + searchkeyword, {
                 headers: { Authorization: `Bearer ${accessToken}` }
-                }).then (function (response) {
-                            if (response !== undefined) {
-                                    setPhotolist(response.data.data);
-                                    settotalpage(response.data.pageInfo.totalPages);
-                            }
                 });
+                if (response !== undefined) {
+                    setPhotolist(response.data.data);
+                    settotalpage(response.data.pageInfo.totalPages);
+            }
             } catch (error) {
                 console.error ("Error searching photos with keyword: ", error );
             } finally {

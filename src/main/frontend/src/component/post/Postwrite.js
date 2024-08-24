@@ -60,18 +60,18 @@ const Postwrite = ({ generation, successhandler }) => {
             Authorization: `Bearer ${accessToken}`,
           },
         }
-      ).then(function (response) {
-        if (successhandler !== undefined)
-          successhandler(5);
-        
-        alert('게시글 남기기 성공!');
+      );
 
-        setFile([]);
-        setimgurllist([]);
+      if (successhandler !== undefined)
+        successhandler(5);
+      
+      alert('게시글 남기기 성공!');
 
-        if (response !== undefined)
-          navigate('/main_' + generation + '/post');
-      });
+      setFile([]);
+      setimgurllist([]);
+
+      if (response !== undefined)
+        navigate('/main_' + generation + '/post');
     } catch (error) {
       alert(JSON.stringify(error.message));
     }
@@ -90,11 +90,11 @@ const Postwrite = ({ generation, successhandler }) => {
             Authorization: `Bearer ${accessToken}`,
           },
         }
-      ).then(function (response) {
-        const newimgurllist = [...imgurllist, response.data];
-        setimgurllist(newimgurllist);
-        console.log(newimgurllist);
-      });
+      );
+
+      const newimgurllist = [...imgurllist, response.data];
+      setimgurllist(newimgurllist);
+      console.log(newimgurllist);
     } catch (error) {
       alert(JSON.stringify(error.message));
     }

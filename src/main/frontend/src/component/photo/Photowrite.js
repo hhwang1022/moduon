@@ -64,13 +64,12 @@ const Photowrite = ({ generation, successhandler }) => {
             Authorization: `Bearer ${accessToken}`,
           },
         }
-      ).then(function (response) {
-        alert('게시글 남기기 성공!');
+      );
+      alert('게시글 남기기 성공!');
 
         setFile([]);
         setimgurllist([]);
         navigate('/main_' + generation + '/photo');
-      });
     } catch (error) {
       alert(JSON.stringify(error.message));
     }
@@ -89,11 +88,10 @@ const Photowrite = ({ generation, successhandler }) => {
             Authorization: `Bearer ${accessToken}`,
           },
         }
-      ).then(function (response) {
-        const newimgurllist = [...imgurllist, response.data];
+      );
+      const newimgurllist = [...imgurllist, response.data];
         setimgurllist(newimgurllist);
         console.log(newimgurllist);
-      });
     } catch (error) {
       alert(JSON.stringify(error.message));
     }

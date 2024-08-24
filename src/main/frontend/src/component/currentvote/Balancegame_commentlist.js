@@ -24,7 +24,7 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
              });
 
              const data = response.data.data[0];
-             console.log(data);
+             //console.log(data);
              // if(Array.isArray(data.balanceGameReplesiList)) {
                 setCommentList(data.balanceGameReplesiList);
                 console.log(commentList);
