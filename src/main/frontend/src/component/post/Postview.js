@@ -1,66 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import './Postview.css';
 import Reply from './Postreply';
 import Balancegame_commentlist from '../currentvote/Balancegame_commentlist';
 import Postreply from './Postreply';
+import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistItem';
 
 
-//   const Postview = ({generation}) => {
-//     const [post, setPost] = useState(null);
-//     const [searchkeyword, setsearchkeyword] = useState('');
-//     const { postId } = useParams();
-
-
-//     useEffect(() => {
-
-//       console.log("Postview : " + postId);
-//         const fetchPost = async () => {
-//             try {
-//                let accessToken = window.localStorage.getItem('accessToken');
-//                const response = await axios.get('http://127.0.0.1:8080/posts/' + postId, {
-//                      headers: { Authorization: `Bearer ${accessToken}` }
-//                });
-
-//                setPost(response.data);
-//             } catch (error) {
-//                 console.error("Error fetching post: ", error);
-//             }
-//         }
-
-//   return qna !== undefined ? <div className="postbox" id={qna.lock}>
-//       <div className="title boldtext">{'title ' + qna.title}{qnalock === 1 ? '🔒' : ''}</div><br/>
-//       <div >
-//         <div >
-//           <div >
-//             <span >{qna.memberName}</span>
-//             <span >{parsedDate(qna.createdAt)}</span>
-//             <span className="right_"> <button className="likebtn" onClick={handleLikeQna}>{qnaislike === 1 ? '❤️' : '🖤'}{qnalike}</button> {'\t' + '👁️  ' + qna.view} </span> 
-//             </div>
-//         </div>
-//         <div >
-//         <div className="body">{'body  ' + qna.body}</div><br/>
-//         <button className="btn-1 custom-mini-btn" onClick={() => {
-//           navigate('/modify/' + qna.qnaId);
-//         }}>수정</button>
-//         <button className="btn-1 custom-mini-btn" onClick={() => {
-//           navigate('/modify/' + qna.qnaId);
-//         }}>삭제</button>
-//         <button className="btn-1 custom-mini-btn" onClick={() => {
-//           navigate('/modify/' + qna.qnaId);
-//         }}>목록</button>
-//         {qnareply !== '' || qna.reply ? <div></div> : <input className="replyinput" value={qnareplyBody} onChange={(e) => setQnareplyBody(e.target.value)} />}
-//         {qnareply !== '' || qna.reply  ? <div></div> : <button className="btn-1 custom-btn" onClick={handleReply} >Reply</button>}
-//         {qnareply !== '' || qna.reply  ? <Reply reply = {qna.reply}></Reply> : <div></div>}
-//         </div>
-//       </div>
-//     </div> : <></>;
-//   };
-
-//   export default Postview;
-
-  const Postview = ({generation, postId}) => {
+  const Postview = ({generation, postid}) => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [view, setView] = useState('');
@@ -71,7 +19,7 @@ import Postreply from './Postreply';
     const [image3, setImage3] = useState('');
     const [image4, setImage4] = useState('');
     const [image5, setImage5] = useState('');
-    const [postReplyList, setPostReplyList] = useState('[]');
+    const [postReplyList, setPostReplyList] = useState([]);
     const [nickname, setNickname] = useState('');
     const [searchkeyword, setsearchkeyword] = useState('');
     const [commentListUpdated, setCommentListUpdated] = useState(false);
@@ -80,45 +28,43 @@ import Postreply from './Postreply';
   
     let accessToken = window.localStorage.getItem('accessToken');
 
-  useEffect(() => {
-  const fetchData = async () => {
-    try {
-        const response = await axios.get('http://127.0.0.1:8080/posts/' + postId, {
-        headers: { Authorization: `Bearer ${accessToken}` }
+    const fetchPostData = async () => {
+      try {
+        const response = await axios.get('http://127.0.0.1:8080/posts/' + postid, {
+          headers: { Authorization: `Bearer ${accessToken}` }
         });
-
         const data = response.data.data;
-        console.log(data.createdAt);
-                setTitle(data.title);
-                setBody(data.body);
-                setView(data.view);
-                setLikeCount(data.likeCount);
-                setCreatedAt(data.createdAt.slice(0, 10));
-                setImage1(data.image1);
-                setImage2(data.image2);
-                setImage3(data.image3);
-                setImage4(data.image4);
-                setImage5(data.image5);
-                setPostReplyList(data.postReplyList);
-                setNickname(data.nickname);
-
-    } catch (error) {
+        setTitle(data.title);
+        setBody(data.body);
+        setView(data.view);
+        setLikeCount(data.likeCount);
+        setCreatedAt(data.createdAt.slice(0, 10));
+        setImage1(data.image1);
+        setImage2(data.image2);
+        setImage3(data.image3);
+        setImage4(data.image4);
+        setImage5(data.image5);
+        setPostReplyList(data.postReplyList);
+        setNickname(data.nickname);
+  
+      } catch (error) {
         console.error("Error fetching data: ", error);
-   }
-};
-
-fetchData();
-}, [accessToken, generation]);
+      }
+    };
+  
+    useEffect(() => {
+      fetchPostData();
+    }, [accessToken, generation]);
 
   const handlePostReply = async () => {
     try {
         const response = await axios.post(
-        'http://127.0.0.1:8080/posts/' + postId + '/reply',
+        'http://127.0.0.1:8080/posts/' + postid + '/reply',
         {
             body:searchkeyword
         },
         {   
-          
+
             'Content-Type': 'application/json',
             headers:{
             Authorization: `Bearer ${accessToken}`,
@@ -126,16 +72,18 @@ fetchData();
 
         });
         setsearchkeyword('');
+        setCommentListUpdated(true);
         } catch (error) {
           console.error("Error posting reply:", error);
             alert(JSON.stringify(error.message));
     }
   };
 
+
   const handlePostLike = async () => {
     try {
         const response = await axios.post(
-        'http://127.0.0.1:8080/posts/' + postId + '/like',
+        'http://127.0.0.1:8080/posts/' + postid + '/like',
         {},
         {   
           headers: {
@@ -150,7 +98,24 @@ fetchData();
     }
   };
 
+  const scrollableDivRef = useRef(null);
 
+  useEffect(() => {
+    fetchPostData()
+  }, [commentListUpdated]);
+
+  useEffect(() => {
+      const scrollableDiv = scrollableDivRef.current;
+      if (scrollableDiv) {
+          scrollableDiv.scrollTop = scrollableDiv.scrollHeight;
+      }
+  }, [postReplyList]);
+
+  useEffect(() => {
+      if(commentListUpdated) {
+          setCommentListUpdated(false);
+      }
+  }, [commentListUpdated])
 
   return (
     <div className='post-view-container'>
@@ -180,9 +145,19 @@ fetchData();
           </div>
         </div>
       </div>
-      <div className='post-contents'>{body}</div>
+      <div className='post-contents-box'>
+        <img src={image1}></img>
+        <img src={image2}></img>
+        <img src={image3}></img>
+        <img src={image4}></img>
+        <img src={image5}></img>
+        <div className='post-contents'>{body}</div>
+      </div>
       <div className='post-comments-box'>
-        <div className='post-comment'>{postReplyList}</div>
+        <div id='scrollableDiv' ref={scrollableDivRef}  className='post-comment'>
+          {postReplyList.map((x, index) => (
+            <Balancegame_commentlistItem key={index} comment={x} generation={generation}/>
+        ))}</div>
         <div className='post-comment-form'>
           <textarea className='post-comment-box'  value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
           <button className='post-comment-submit' onClick={handlePostReply}>등록</button>

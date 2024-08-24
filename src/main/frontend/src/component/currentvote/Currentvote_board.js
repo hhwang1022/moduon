@@ -75,6 +75,7 @@ import TwitterButton from '../TwitterButton';
 
           });
         setsearchkeyword('');
+        setCommentListUpdated(true);
 
       } catch (error) {
         alert(JSON.stringify(error.message));
@@ -97,7 +98,6 @@ import TwitterButton from '../TwitterButton';
 
           });
 
-          console.log(response.data.data);
 
           memberInfo.updateMemberInfo({ 
             //여기에 바뀌어야하는 값을 넣는다//회원정보 수정, 공유할 때 등,...
@@ -165,7 +165,8 @@ import TwitterButton from '../TwitterButton';
           </div>
         </div>
         <div className='comments-box'>
-          <div className='comment'><Balancegame_commentlist generation={generation}/></div>
+          <div className='comment'><Balancegame_commentlist generation={generation} balanceGameId={balanceGameId} 
+          commentListUpdated={commentListUpdated} setCommentListUpdated={setCommentListUpdated}/></div>
           <div className='comment-form'>
             <textarea className='comment-box' value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
             <button className='comment-submit' onClick={handlePostReply}>등록</button>
