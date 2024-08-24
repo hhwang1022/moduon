@@ -13,6 +13,7 @@ const MyProfile = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const navigate = useNavigate();
   const [memberId, setmemberId] = useState('');
+  const [login, setlogin] = useState(true);
 
 
   const accessToken = window.localStorage.getItem('accessToken');
@@ -69,6 +70,9 @@ useEffect(() => {
       });
      console.log('회원 탈퇴 완료');
      closeModal();
+     localStorage.removeItem('accessToken');
+     localStorage.removeItem('refresh');
+     memberInfo.updateMemberInfo({ login: false });
      navigate('/')
    } catch (error) {
         console.error('회원 탈퇴 실패:', error);
