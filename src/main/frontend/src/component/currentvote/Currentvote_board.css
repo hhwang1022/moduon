@@ -123,39 +123,38 @@
     object-fit: contain; 
   }
   
-  .vote-name8090 {
-    background: white;  
-    border: 1px solid white;      
+  .vote-name8090 {   
     padding: 0 10px;        
     margin: 0; 
     font-weight: bold;
     cursor: pointer;
     font-size: medium;
+    font-family: 'DOSIyagiMedium';
+    color: white;
   }
 
   .vote-name9000 {
-    background: white;  
-    border: 1px solid black;      
+    background: white;    
     padding: 0 10px;        
     margin: 0; 
     font-weight: bold;
     cursor: pointer;
     font-size: medium;
+    font-family: 'DOSIyagiMedium';
   }
   
   .vote-name0010 {
-    background: white;  
-    border: 1px solid black;      
+    background: white;     
     padding: 0 10px;        
     margin: 0; 
     font-weight: bold;
     cursor: pointer;
     font-size: medium;
+    font-family: 'Roboto';
   }
 
   .vote-name1020 {
-    background: white;  
-    border: 1px solid black;      
+    background: white;    
     padding: 0 10px;        
     margin: 0; 
     font-weight: bold;
@@ -199,6 +198,18 @@
     vertical-align: top;
     border: 1px solid black;
     padding: 3px;
+  }
+
+  .commentfont8090{
+    font-family: 'DOSIyagiMedium';
+  }
+
+  .commentfont9000{
+    font-family: 'DOSIyagiMedium';
+  }
+
+  .commentfont0010{
+    font-family: 'Roboto';
   }
   
   .comment-submit {

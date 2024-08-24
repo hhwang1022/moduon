@@ -168,7 +168,7 @@ import TwitterButton from '../TwitterButton';
           <div className='comment'><Balancegame_commentlist generation={generation} balanceGameId={balanceGameId} 
           commentListUpdated={commentListUpdated} setCommentListUpdated={setCommentListUpdated}/></div>
           <div className='comment-form'>
-            <textarea className='comment-box' value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
+            <textarea className={'comment-box commentfont' + generation} value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
             <button className={'balancereplywritebtn' + generation} onClick={handlePostReply}>등록</button>
           </div>
         </div>
