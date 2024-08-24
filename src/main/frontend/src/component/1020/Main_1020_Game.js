@@ -28,7 +28,7 @@ const Main_1020_Game = ({ position, balancedata, onClickEvent }) => {
           <Main_1020_BalenceItem img={balancedata.voteImage2} title={balancedata.voteItem2} />
         </div>
         <div className='bodyprogress'>
-          <BalanceBar vote1={Math.floor(Math.random() * 10000)} vote2={Math.floor(Math.random() * 10000)} generation={"1020"}></BalanceBar>
+          <BalanceBar vote1={Math.floor(balancedata.votePoint1)} vote2={Math.floor(balancedata.votePoint2)} generation={"1020"}></BalanceBar>
         </div>
         <div></div>
         <div className='body'>당신의 선택은?</div>
