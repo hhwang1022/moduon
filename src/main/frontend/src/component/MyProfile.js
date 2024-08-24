@@ -84,7 +84,7 @@ useEffect(() => {
 
       <div className='MyProfilemainbox'>
         {/* 회원정보 수정 버튼 */}
-        <button className="UpdateProfile" onClick={handleUpdateProfileClick}>회원 정보 수정</button>
+        <button className="joinbutton gradient" onClick={handleUpdateProfileClick}>회원 정보 수정</button>
         <div className='SpacingBetween'></div>
 
         {/* 닉네임 필드 */}
@@ -103,7 +103,7 @@ useEffect(() => {
         <div className='SpacingBetween'></div>
 
         {/* 회원탈퇴 버튼 */}
-        <button className="DeleteAccount" onClick={handleDeleteAccountClick}>회원 탈퇴</button>
+        <button className="joinbutton gradient" onClick={handleDeleteAccountClick}>회원 탈퇴</button>
       </div>
 
        {/* 모달 렌더링 */}

@@ -65,10 +65,12 @@ const Header_1020 = ({ title, setcurrentindex, titleindex }) => {
         <div className="title">{titles[currenttitleindex]}</div>
         <div className="right">
         <button className="right" onClick={() => {
+          navigate('/main_1020/join');
           setcurrentindex(3);
           setcurrenttitleindex(3);
         }}><img className="padding" src="https://static-00.iconduck.com/assets.00/plus-icon-512x512-q1puivky.png" width={30} height={30} /></button>
         <button className="right" onClick={() => {
+          navigate('/main_1020/login');
           setcurrentindex(5);
           setcurrenttitleindex(5);
         }}><img className="padding" src="https://w7.pngwing.com/pngs/968/90/png-transparent-computer-icons-bullet-list-miscellaneous-angle-text-thumbnail.png" width={30} height={30} /></button>

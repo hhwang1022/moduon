@@ -53,7 +53,7 @@ const Mypage = ({ generation }) => {
                         <span className={'main' + generation + 'membertitlegeneration'}>[{info.generation}]</span></div>
                         <div className={'main' + generation + 'memberpoint'}>투표권 {info.balancegameticket}장</div>
                         {info.admin ? <div className={'main' + generation + 'memberpoint'}><button  className={'hotpostlist' + generation + 'title'} onClick={() => navigate('/main_' + generation +'/balance/write')}>투표글 등록</button></div> : <></>}
-                        <div className='direction-row'><button className={'main' + generation + 'memberbutton'}onClick={onClickMyProfile}>[마이페이지]</button>
+                        <div className='direction-row'><button className={'main' + generation + 'memberbutton'}onClick={() => navigate('/main_1020/myprofile')}>[마이페이지]</button>
                             <button className={'main' + generation + 'memberbutton'} onClick={updateInfo}>[로그아웃]</button></div></div>)
                     : <Login issmall={true} successhandler={() => setlogin(true)} generation={generation}/>}
 
