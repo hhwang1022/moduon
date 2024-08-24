@@ -17,7 +17,7 @@ const Main_1020_Game = ({ position, balancedata, onClickEvent }) => {
           <Main_1020_BalenceItem img={balancedata.img2} title={balancedata.title2} />
         </div>
         <div className='bodyprogress'>
-          <BalenceBar left={Math.random() * 100} right={Math.random() * 100}></BalenceBar>
+          <BalenceBar left={Math.floor(Math.random() * 10000)} right={Math.floor(Math.random() * 10000)}></BalenceBar>
         </div>
         <div></div>
         <div className='body'>당신의 선택은?</div>
