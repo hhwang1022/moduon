@@ -1,6 +1,7 @@
 .MyProfilemainbox{
     display: flex;
     flex-direction: column;
+    align-items: center;
     padding: 20px;
     margin: auto;
     margin-left: 50px;

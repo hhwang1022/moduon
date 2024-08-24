@@ -38,6 +38,7 @@ const Join = ({ successhandler }) => {
           },
         }
       ).then(function (response) {
+        navigate('/main_1020/login');
         successhandler(5);
         if (response !== undefined) {
 
