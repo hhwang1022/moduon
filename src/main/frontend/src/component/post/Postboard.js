@@ -13,6 +13,7 @@ const Postboard = ({ generation }) => {
     console.log("currentpostid : " + currentpostid);
   }, [currentpostid]);
 
+
   return (
     <Routes>
       <Route path="/" element={<Postlist generation={generation} onClickwirtebtn={() => navigate('write')} onClickreadbtn={(id) => navigate(`view/${id}`)} />} />

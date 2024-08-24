@@ -27,7 +27,7 @@ const PostlistItem = ({ post, generation, onclickhandler }) => {
                             )}
                         </div>
                         <td className={'postlist' + generation + 'text'}><button onClick={() => {
-                            onclickhandler(post.postid);
+                            onclickhandler(post.postId);
                         }}>{post.title}</button></td>
                         <div>
                             <td className={'postlist' + generation + 'text'}><img src='https://cdn-icons-png.flaticon.com/512/1077/1077057.png' height={16} width={16}/>{post.view}</td>
@@ -42,7 +42,7 @@ const PostlistItem = ({ post, generation, onclickhandler }) => {
                     getDayDiffDay(post.createsat) <= 2.0 ? <td className={'postitem' + generation + 'newtext'}>new</td> : <td></td>
                 )}
                 <td className={'postlist' + generation + 'text'}><button onClick={() => {
-                    onclickhandler(post.postid);
+                    onclickhandler(post.postId);
                 }}>{post.title}</button></td>
                 <td className={'postlist' + generation + 'text'}>{post.nickname}</td>
                 <td className={'postlist' + generation + 'text'}>{simpleday(post.createdAt)}</td>

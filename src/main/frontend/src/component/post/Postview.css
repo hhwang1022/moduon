@@ -113,6 +113,7 @@
   justify-content: right;
 }
 
+
 .post-view-header button {
   margin-right: 10px;
   margin-top: 10px;
@@ -123,6 +124,10 @@
   border: 1px solid black;
 }
  
+.post-like {
+  margin-right: 300px;
+}
+
 .post-title {
   margin-top: 30px;
   cursor: text;
@@ -177,6 +182,23 @@
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.post-views-box {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.post-views-word {
+  margin-right: 10px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.post-views {
+  font-size: 20px;
+  color: rgb(189, 189, 189);
 }
 
 .post-likes-word {
