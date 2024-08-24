@@ -10,6 +10,8 @@ const Login = ({ successhandler, issmall, generation }) => {
   let accessToken = "";
   let refreshToken = "";
 
+  const navigate = useNavigate();
+
   const handleLogin = async () => {
     try {
       const response = await axios.post(
@@ -74,6 +76,8 @@ const Login = ({ successhandler, issmall, generation }) => {
       else {
         successhandler();
       }
+
+      navigate('/main_1020');
 
     } catch (error) {
       alert(error.message);
