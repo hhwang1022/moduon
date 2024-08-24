@@ -9,11 +9,25 @@ import { useNavigate } from 'react-router-dom';
 
 const Mypage = ({ generation }) => {
     //info
-    const info = memberInfo.getMemberInfo();
+    const [info, setInfo] = useState(memberInfo.getMemberInfo()); 
     //로그인 상태를 넣어서 로그인창을 보여줄지 정보를 보여줄지를 결정함
     const [login, setlogin] = useState(info.login);
 
     const navigate = useNavigate();
+
+    useEffect(() => {
+        // Subscribe to memberInfo updates
+        const handleInfoUpdate = (updatedInfo) => {
+            setInfo(updatedInfo);
+        };
+
+        memberInfo.subscribe(handleInfoUpdate);
+
+        // Cleanup subscription on component unmount
+        return () => {
+            memberInfo.unsubscribe(handleInfoUpdate);
+        };
+    }, []);
 
     //회원정보 업데이트가 필요할 때 사용
     const updateInfo = () => {

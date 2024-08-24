@@ -203,42 +203,10 @@ const Main_1020 = () => {
         }
     };
 
-//    let balancedatas = [
-//        {
-//            title1: "고양이",
-//            img1: "https://modooon.s3.ap-northeast-2.amazonaws.com/imageserver/86a38d41-d521-4225-97bf-a3a25258ee50KakaoTalk_20240616_222752602_02.png",
-//            title2: "강아지",
-//            img2: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRxxNnf17cG-3BXPCxIUSrh9n0rUAF29gVV0ZkOlmePnl5zteaLIPwS_4eeU5km2egE_h4&usqp=CAU",
-//            category: "7080"
-//        },
-//        {
-//            title1: "햄스터",
-//            img1: "https://image.dongascience.com/Photo/2019/12/fb4f7da04758d289a466f81478f5f488.jpg",
-//            title2: "친칠라",
-//            img2: "https://img1.daumcdn.net/thumb/R1280x0/?fname=http://t1.daumcdn.net/brunch/service/user/4arX/image/3GMv_E7XKKy5km4x78r8AkgJZ3w.jpg",
-//            category: "8090"
-//        },
-//        {
-//            title1: "앵무새",
-//            img1: "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Ara_ararauna_Luc_Viatour.jpg/300px-Ara_ararauna_Luc_Viatour.jpg",
-//            title2: "까마귀",
-//            img2: "https://www.sputnik.kr/article_img/202405/article_1716688674.jpg",
-//            category: "9000"
-//        },
-//        {
-//            title1: "랫서팬더",
-//            img1: "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fe/Ailurus_fulgens_RoterPanda_LesserPanda.jpg/300px-Ailurus_fulgens_RoterPanda_LesserPanda.jpg",
-//            title2: "팬더",
-//            img2: "https://monthly.chosun.com/reporter/upload/lob050913_1-1.jpg",
-//            category: "0010"
-//        }
-//    ]
-
     return (<div>
         <Header_1020 setcurrentindex={setcurrentindex} titleindex={titleindex}></Header_1020>
         <div className={'main1020' + (currentindex === 1 ? " main1020photo" : "")}>
             <Page />
-           {currentindex !== 4 ? <Mypage generation={"1020"}></Mypage> : <></> }
         </div>
     </div>);
 };

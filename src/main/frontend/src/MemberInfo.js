@@ -8,6 +8,7 @@ class MemberInfo {
             this.generation = "1020";
             this.admin = false;
             this.login = false;
+            this.listeners = [];
             MemberInfo.instance = this;
         }
 
@@ -16,6 +17,7 @@ class MemberInfo {
 
     updateMemberInfo(newInfo) {
         Object.assign(this, newInfo);
+        this.notifyListeners();
     }
 
     getMemberInfo() {
@@ -29,6 +31,18 @@ class MemberInfo {
             admin: this.admin.length > 1 ? true : false,
             login: this.login
         };
+    }
+
+    subscribe(listener) {
+        this.listeners.push(listener);
+    }
+
+    unsubscribe(listener) {
+        this.listeners = this.listeners.filter(l => l !== listener);
+    }
+
+    notifyListeners() {
+        this.listeners.forEach(listener => listener(this.getMemberInfo()));
     }
 }
 

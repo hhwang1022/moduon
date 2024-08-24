@@ -3,7 +3,7 @@ import './Header_1020.css';
 import { useNavigate } from "react-router-dom";
 import React, { useState } from 'react';
 
-const Header_1020 = ({ title, setcurrentindex, titleindex}) => {
+const Header_1020 = ({ title, setcurrentindex, titleindex }) => {
   const [currenttitleindex, setcurrenttitleindex] = useState(titleindex);
   const navigate = useNavigate();
 
@@ -61,18 +61,18 @@ const Header_1020 = ({ title, setcurrentindex, titleindex}) => {
         ></InstarIcon> */}
       </div>
       <div class='hline'></div>
-      <div className="header title">
-        {titles[currenttitleindex]}
+      <div className="header">
+        <div className="title">{titles[currenttitleindex]}</div>
         <div className="right">
-          <button onClick={() => {
-            setcurrentindex(3);
-            setcurrenttitleindex(3);
-          }}><img className="padding" src="https://static-00.iconduck.com/assets.00/plus-icon-512x512-q1puivky.png" width={30} height={30} /></button>
-          <button onClick={() => {
-            setcurrentindex(5);
-            setcurrenttitleindex(5);
-          }}><img className="padding" src="https://w7.pngwing.com/pngs/968/90/png-transparent-computer-icons-bullet-list-miscellaneous-angle-text-thumbnail.png" width={30} height={30} /></button>
-        </div>
+        <button className="right" onClick={() => {
+          setcurrentindex(3);
+          setcurrenttitleindex(3);
+        }}><img className="padding" src="https://static-00.iconduck.com/assets.00/plus-icon-512x512-q1puivky.png" width={30} height={30} /></button>
+        <button className="right" onClick={() => {
+          setcurrentindex(5);
+          setcurrenttitleindex(5);
+        }}><img className="padding" src="https://w7.pngwing.com/pngs/968/90/png-transparent-computer-icons-bullet-list-miscellaneous-angle-text-thumbnail.png" width={30} height={30} /></button>
+      </div>
       </div>
     </div>
   );
