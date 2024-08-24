@@ -57,6 +57,7 @@ const Main_1020 = () => {
             const data = response.data.data;
             setbalancedatas(data);
 
+
           } catch (error) {
             console.error("Error fetching balancedatas: ", error);
             setbalancedatas([]);
