@@ -200,7 +200,7 @@ const Main_1020 = () => {
         <Header_1020 setcurrentindex={setcurrentindex} titleindex={titleindex}></Header_1020>
         <div className={'main1020' + (currentindex === 1 ? " main1020photo" : "")}>
             <Page />
-           {currentindex !== 4 ? <Mypage generation={"1020"}></Mypage> : <></> } 
+           {currentindex !== 4 ? <Mypage generation={"1020"}></Mypage> : <></> }
         </div>
     </div>);
 };

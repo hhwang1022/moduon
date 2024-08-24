@@ -1,6 +1,6 @@
 import './Main_1020_Game.css';
 import Main_1020_BalenceItem from './Main_1020_BalenceItem';
-import BalenceBar from '../BalenceBar';
+import BalanceBar from '../currentvote/BalanceBar';
 
 
 const Main_1020_Game = ({ position, balancedata, onClickEvent }) => {
@@ -17,7 +17,7 @@ const Main_1020_Game = ({ position, balancedata, onClickEvent }) => {
           <Main_1020_BalenceItem img={balancedata.img2} title={balancedata.title2} />
         </div>
         <div className='bodyprogress'>
-          <BalenceBar left={Math.random() * 100} right={Math.random() * 100}></BalenceBar>
+          <BalanceBar vote1={Math.floor(Math.random() * 10000)} vote2={Math.floor(Math.random() * 10000)} generation={"1020"}></BalanceBar>
         </div>
         <div></div>
         <div className='body'>당신의 선택은?</div>
