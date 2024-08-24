@@ -137,10 +137,10 @@ const Main_9000 = () => {
                     onClick={() => {
                         navigate('/main_0010/balance/view');
                     }}>00-10</button>
-                <button className='main9000categorybutton'
+                {/* <button className='main9000categorybutton'
                     onClick={() => {
                         navigate('/main_1020');
-                    }}>10-20</button>
+                    }}>10-20</button> */}
             </div>
             <div>
                 <div className='main9000windowcontentbox'>
