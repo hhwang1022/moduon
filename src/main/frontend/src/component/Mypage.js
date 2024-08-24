@@ -35,9 +35,10 @@ const Mypage = ({ generation }) => {
             <div className={'main' + generation + 'memberinbox'}>
                 {login ?
                 //info.변수로 사용
-                    (<div><div className={'main' + generation + 'membertitle'}><span>{info.name}</span>
-                        <span className={'main' + generation + 'membertitlegeneration'}>[1020]</span></div>
+                    (<div><div className={'main' + generation + 'membertitle'}><span>{info.admin ? "[ADMIN]" : ""}{info.name}</span>
+                        <span className={'main' + generation + 'membertitlegeneration'}>[{info.generation}]</span></div>
                         <div className={'main' + generation + 'memberpoint'}>투표권 {info.balancegameticket}장</div>
+                        {info.admin ? <div className={'main' + generation + 'memberpoint'}><button  className={'hotpostlist' + generation + 'title'} onClick={() => navigate('/main_' + generation +'/balance/write')}>투표글 등록</button></div> : <></>}
                         <div className='direction-row'><button className={'main' + generation + 'memberbutton'}onClick={onClickMyProfile}>[마이페이지]</button>
                             <button className={'main' + generation + 'memberbutton'} onClick={updateInfo}>[로그아웃]</button></div></div>)
                     : <Login issmall={true} successhandler={() => setlogin(true)} generation={generation}/>}

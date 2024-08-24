@@ -40,7 +40,7 @@ const Header_1020 = ({ title, setcurrentindex, titleindex}) => {
             navigate('/main_1020');
           }}
         ></InstarIcon>
-        <div class='vline'></div>
+        {/* <div class='vline'></div>
         <InstarIcon imgurl={"https://image.dongascience.com/Photo/2019/12/fb4f7da04758d289a466f81478f5f488.jpg"} name={"투표"}
         onClickHandler={() =>{
           setcurrentindex(0);
@@ -58,7 +58,7 @@ const Header_1020 = ({ title, setcurrentindex, titleindex}) => {
           setcurrentindex(2);
           setcurrenttitleindex(2);
         }}
-        ></InstarIcon>
+        ></InstarIcon> */}
       </div>
       <div class='hline'></div>
       <div className="header title">
