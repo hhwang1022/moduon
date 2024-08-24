@@ -35,8 +35,7 @@ public class PostReplyService {
 
     public PostReply createPostReply(PostReply postReply) throws IllegalAccessException {
         Post post = postService.findVerifiedPost(postReply.getPost().getPostId());
-        Member member = memberService.findVerifiedMember(postReply.getMember().getMemberId());
-
+        Member member = memberService.findVerifiedMember(postReply.getMember().getEmail());
 //        if (member.getMemberGeneration() == Member.Generation.GENERATION_8090) {
 //            if (post.getCategory() != Post.Category.CATEGORY_8090 &&
 //                    post.getCategory() != Post.Category.CATEGORY_9000) {

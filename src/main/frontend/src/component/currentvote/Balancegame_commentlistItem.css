@@ -1,10 +1,12 @@
 .balancegame-commentlist8090box {
     border: 1px solid rgb(190, 190, 190);
     background-color: white;
+    color: black;
     display: flex;
     justify-content: flex-start;
     align-items: center;
     margin-right: 20px;
+    margin-bottom: 10px;
 }
 
 .balancegame-commentlist8090nickname {
