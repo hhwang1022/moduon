@@ -31,8 +31,9 @@ const Postboard = ({ generation }) => {
             );
         }
         else{
+            console.log(currentpostid);
             return (
-                <Postview generation={generation} postid={currentpostid} />
+                <Postview generation={generation} postId = {currentpostid}/>
             );
         }
       };
