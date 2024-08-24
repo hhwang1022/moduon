@@ -13,6 +13,8 @@ import Main_9000 from './component/9000/Main_9000';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Errorpage from './component/Errorpage';
 import MyProfile from './component/MyProfile'
+import UpdateProfile from './component/UpdateProfile'
+
 
 const App = () => {
   const [accessToken, setAccessToken] = useState('');
@@ -49,6 +51,7 @@ const App = () => {
           <Route path='/error/:errorcode' element={<Errorpage />} />
           <Route path="/*" element={<Errorpage />} />
           <Route path="/myprofile" element={<MyProfile onClickMyProfile={() => {}} />} />} />
+          <Route path="/updateprofile" element={<UpdateProfile onclicklUpdateProfile={() => {}} />} />} />
         </Routes>
       </BrowserRouter>
     );

@@ -59,6 +59,7 @@ public class MemberDto {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class InfoResponse {
+        private long memberId;
         private String nickname;
         private String email;
         private Member.Generation memberGeneration;
