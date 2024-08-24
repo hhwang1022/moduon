@@ -90,5 +90,6 @@ public class PhotoDto {
         private String image4;
         private String image5;
         private List<PhotoReplyDto.Response> photoReplyList;
+        private String nickname;
     }
 }
