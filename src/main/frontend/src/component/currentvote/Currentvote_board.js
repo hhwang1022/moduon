@@ -99,7 +99,7 @@ import TwitterButton from '../TwitterButton';
 
           console.log(response.data.data);
 
-          memberInfo.updateMemberInfo({ 
+          memberInfo.updateMemberInfo({
             //여기에 바뀌어야하는 값을 넣는다//회원정보 수정, 공유할 때 등,...
             balancegameticket : response.data.data });
 
@@ -150,7 +150,7 @@ import TwitterButton from '../TwitterButton';
         onclickhandler={() => handlePostShare("kakao")}/>
         <TwitterButton url={window.location.href} title={voteTitle} description={"당신의 선택은?"}
         onclickhandler={() => handlePostShare("twitter")}/>
-        <FacebookButton url={window.location.href} 
+        <FacebookButton url={window.location.href}
         onclickhandler={() => handlePostShare("facebook")}/>
         </div>
         <div className='vote-box'>
