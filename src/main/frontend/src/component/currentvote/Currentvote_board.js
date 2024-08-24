@@ -7,6 +7,7 @@ import memberInfo from '../../MemberInfo';
 import KakaoButton from '../KakaoButton';
 import FacebookButton from '../FacebookButton';
 import TwitterButton from '../TwitterButton';
+import Loading from '../Loading';
 
   const info = memberInfo.getMemberInfo();
   const Currentvote_board= ({generation, onclicklistbtn}) => {
@@ -25,8 +26,7 @@ import TwitterButton from '../TwitterButton';
     const [votePoint2, setVotePoint2] = useState(0);
     const [voteItem, setVoteItem] = useState('');
     const [votePageReset, setVotePageReset] = useState(false);
-
-
+    const[isloading, setisloading] = useState(true);
 
     let accessToken = window.localStorage.getItem('accessToken');
 
@@ -52,8 +52,11 @@ import TwitterButton from '../TwitterButton';
           }
           setVotePageReset(false);
 
+          setisloading(false);
+
         } catch (error) {
           console.error("Error fetching data: ", error);
+          setisloading(false);
         }
       };
 
@@ -98,7 +101,6 @@ import TwitterButton from '../TwitterButton';
 
           });
 
-
           memberInfo.updateMemberInfo({
             //여기에 바뀌어야하는 값을 넣는다//회원정보 수정, 공유할 때 등,...
             balancegameticket : response.data.data });
@@ -138,6 +140,7 @@ import TwitterButton from '../TwitterButton';
     };
 
     return (
+      !isloading ? 
       <div className='vote-mainbox'>
         <div className='past-votes'>
           <button className={'postpagewritebtn' + generation} onClick={onclicklistbtn}>지난 투표</button>
@@ -172,7 +175,7 @@ import TwitterButton from '../TwitterButton';
             <button className={'balancereplywritebtn' + generation} onClick={handlePostReply}>등록</button>
           </div>
         </div>
-      </div>
+      </div> :  <div className='vote-mainbox'><Loading/> </div> 
     );
   };
 
