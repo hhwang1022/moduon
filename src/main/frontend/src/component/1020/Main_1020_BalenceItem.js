@@ -5,7 +5,7 @@ const Main_1020_BalenceItem = ({ img, title }) => {
 
   return (
     <span className='item'>
-      <img src={img} height={200} width={200}></img>
+      <img className='mainbalancegameitemimg' src={img} height={200} width={200}></img>
       <a>{title}</a>
     </span>
   );

@@ -140,10 +140,10 @@ import TwitterButton from '../TwitterButton';
     return (
       <div className='vote-mainbox'>
         <div className='past-votes'>
-          <button className={'past-votes-button' + generation} onClick={onclicklistbtn}>지난 투표</button>
+          <button className={'postpagewritebtn' + generation} onClick={onclicklistbtn}>지난 투표</button>
         </div>
-        <div className='vote-header'>
-          <div className='voting-topic'>이번 주 투표 - {voteTitle}</div>
+        <div className={'vote-header voting-topic' + generation}>
+        이번 주 투표 - {voteTitle}
         </div>
         <div className='sharebox'>
         <KakaoButton url={window.location.href} title={voteTitle} description={"당신의 선택은?"} imageUrl=""
@@ -168,8 +168,8 @@ import TwitterButton from '../TwitterButton';
           <div className='comment'><Balancegame_commentlist generation={generation} balanceGameId={balanceGameId} 
           commentListUpdated={commentListUpdated} setCommentListUpdated={setCommentListUpdated}/></div>
           <div className='comment-form'>
-            <textarea className='comment-box' value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
-            <button className='comment-submit' onClick={handlePostReply}>등록</button>
+            <textarea className={'comment-box commentfont' + generation} value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
+            <button className={'balancereplywritebtn' + generation} onClick={handlePostReply}>등록</button>
           </div>
         </div>
       </div>

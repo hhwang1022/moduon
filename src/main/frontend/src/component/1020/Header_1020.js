@@ -35,11 +35,11 @@ const Header_1020 = ({ title, setcurrentindex, titleindex }) => {
             navigate('/main_0010/balance/view');
           }}
         ></InstarIcon>
-        <InstarIcon imgurl={"https://image.dongascience.com/Photo/2019/12/fb4f7da04758d289a466f81478f5f488.jpg"} name={"10-20"}
+        {/* <InstarIcon imgurl={"https://image.dongascience.com/Photo/2019/12/fb4f7da04758d289a466f81478f5f488.jpg"} name={"10-20"}
           onClickHandler={() => {
             navigate('/main_1020');
           }}
-        ></InstarIcon>
+        ></InstarIcon> */}
         {/* <div class='vline'></div>
         <InstarIcon imgurl={"https://image.dongascience.com/Photo/2019/12/fb4f7da04758d289a466f81478f5f488.jpg"} name={"투표"}
         onClickHandler={() =>{

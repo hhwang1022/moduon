@@ -56,13 +56,37 @@
     margin-top: 0px;
     background-color: #F2F2F2;
     border: 1px solid #DFDFDF;
+    text-align: center;
   }
   
-  .voting-topic {
+  .voting-topic8090 {
+    text-align: center;
+    font-size: large;
+    background-color: #008080;
+    color: white;
+    font-family: 'DOSIyagiMedium';
+    display: flex;
+    justify-content: center;
+  }
+
+  .voting-topic9000 {
     text-align: center;
     font-size: large;
     background-color: wihte;
     color: black;
+    font-family: 'DOSIyagiMedium';
+    display: flex;
+    justify-content: center;
+  }
+
+  .voting-topic0010 {
+    text-align: center;
+    font-size: large;
+    background-color: wihte;
+    color: black;
+    font-family: 'Roboto';
+    display: flex;
+    justify-content: center;
   }
   
   .vote-header button{
@@ -99,39 +123,38 @@
     object-fit: contain; 
   }
   
-  .vote-name8090 {
-    background: white;  
-    border: 1px solid white;      
+  .vote-name8090 {   
     padding: 0 10px;        
     margin: 0; 
     font-weight: bold;
     cursor: pointer;
     font-size: medium;
+    font-family: 'DOSIyagiMedium';
+    color: white;
   }
 
   .vote-name9000 {
-    background: white;  
-    border: 1px solid black;      
+    background: white;    
     padding: 0 10px;        
     margin: 0; 
     font-weight: bold;
     cursor: pointer;
     font-size: medium;
+    font-family: 'DOSIyagiMedium';
   }
   
   .vote-name0010 {
-    background: white;  
-    border: 1px solid black;      
+    background: white;     
     padding: 0 10px;        
     margin: 0; 
     font-weight: bold;
     cursor: pointer;
     font-size: medium;
+    font-family: 'Roboto';
   }
 
   .vote-name1020 {
-    background: white;  
-    border: 1px solid black;      
+    background: white;    
     padding: 0 10px;        
     margin: 0; 
     font-weight: bold;
@@ -176,6 +199,18 @@
     border: 1px solid black;
     padding: 3px;
   }
+
+  .commentfont8090{
+    font-family: 'DOSIyagiMedium';
+  }
+
+  .commentfont9000{
+    font-family: 'DOSIyagiMedium';
+  }
+
+  .commentfont0010{
+    font-family: 'Roboto';
+  }
   
   .comment-submit {
     background-color: white;
@@ -186,3 +221,32 @@
     margin-right: 20px;
     cursor: pointer;
   }
+
+
+  .balancereplywritebtn8090{
+    margin-left: 10px;
+    bottom: 100px;
+    width: 80px;
+    height: 100%;
+    border: 2px solid #000000;
+    font-family: 'DOSIyagiMedium';
+    background-color: #008080;
+    color: white;
+}
+
+.balancereplywritebtn9000{
+  margin-left: 10px;
+    width: 80px;
+    height: 100%;
+    border: 2px solid #000000;
+    font-family: 'DOSIyagiMedium';
+}
+
+.balancereplywritebtn0010{
+  margin-left: 10px;
+  width: 80px;
+  height: 100%;
+  border: 1px solid #444444;
+  border-radius: 5px;
+  background-image: linear-gradient(#fff, #b8b8b8)
+}
