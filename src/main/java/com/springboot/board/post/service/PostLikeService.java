@@ -51,4 +51,13 @@ public class PostLikeService {
         }
         postRepository.save(post);
     }
+
+    public boolean findLike(String memberEmail, long postId) {
+        Optional<PostLike> optionalPostLike = postLikeRepository.findPostLikeByMemberEmailAndPostPostId(memberEmail, postId);
+        if (optionalPostLike.isPresent()) {
+            return true;
+        } else {
+            return false;
+        }
+    }
 }

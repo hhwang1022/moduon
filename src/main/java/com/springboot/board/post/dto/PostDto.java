@@ -1,6 +1,7 @@
 package com.springboot.board.post.dto;
 
 import com.springboot.board.post.entity.Post.Category;
+import com.springboot.board.post.entity.PostLike;
 import com.springboot.board.post.entity.PostReply;
 import com.springboot.member.entity.Member;
 import lombok.AllArgsConstructor;
@@ -81,5 +82,6 @@ public class PostDto  {
         private String image5;
         private List<PostReplyDto.Response> postReplyList;
         private String nickname;
+        private PostLike postLike;
     }
 }

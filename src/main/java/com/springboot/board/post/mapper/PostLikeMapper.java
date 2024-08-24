@@ -10,4 +10,5 @@ public interface PostLikeMapper {
 
     @Mapping(source = "memberId", target = "member.memberId")
     PostLike postLikePostDtoToPostLike(PostLikeDto.Post requestBody);
+
 }
