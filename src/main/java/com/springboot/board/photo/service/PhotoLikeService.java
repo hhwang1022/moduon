@@ -6,6 +6,7 @@ import com.springboot.board.photo.entity.PhotoLike;
 import com.springboot.board.photo.mapper.PhotoLikeMapper;
 import com.springboot.board.photo.repository.PhotoLikeRepository;
 import com.springboot.board.photo.repository.PhotoRepository;
+import com.springboot.board.post.entity.PostLike;
 import com.springboot.member.entity.Member;
 import com.springboot.member.service.MemberService;
 import net.bytebuddy.implementation.auxiliary.AuxiliaryType;
@@ -55,5 +56,14 @@ public class PhotoLikeService {
         }
 
         photoRepository.save(photo);
+    }
+
+    public boolean findLike(String memberEmail, long photoId) {
+        Optional<PhotoLike> optionalPhotoLike = photoLikeRepository.findPhotoLikeByMemberEmailAndPhotoPhotoId(memberEmail, photoId);
+        if (optionalPhotoLike.isPresent()) {
+            return true;
+        } else {
+            return false;
+        }
     }
 }

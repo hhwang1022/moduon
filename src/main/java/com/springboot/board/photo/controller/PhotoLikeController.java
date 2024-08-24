@@ -5,6 +5,8 @@ import com.springboot.board.photo.entity.PhotoLike;
 import com.springboot.board.photo.mapper.PhotoLikeMapper;
 import com.springboot.board.photo.mapper.PhotoMapper;
 import com.springboot.board.photo.service.PhotoLikeService;
+import com.springboot.board.post.dto.PostLikeDto;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.validation.annotation.Validated;
@@ -31,5 +33,17 @@ public class PhotoLikeController {
                                         @AuthenticationPrincipal Object principal) {
         photoLikeService.checkLike(principal.toString(), photoId);
         return ResponseEntity.ok().build();
+    }
+
+    @GetMapping
+    public ResponseEntity getPhotoLike(@PathVariable("photo-id") @Positive long photoId,
+                                      @AuthenticationPrincipal Object principal) {
+
+        boolean isLike = photoLikeService.findLike(principal.toString(), photoId);
+
+        return new ResponseEntity<>(
+                new PostLikeDto.Response(isLike),
+                HttpStatus.OK
+        );
     }
 }
