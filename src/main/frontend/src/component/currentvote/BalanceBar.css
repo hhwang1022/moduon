@@ -45,3 +45,132 @@
   font-size: 18px;
   color: white;
 }
+
+#progress_1020 {
+  appearance: none;
+  width: 500px;
+}
+#progress_1020::-webkit-progress-bar {
+  width: 500px;
+  background:#ff00dd;
+  border-radius:10px;
+  box-shadow: inset 3px 3px 10px #950092;
+}
+#progress_1020::-webkit-progress-value {
+  border-radius:10px;
+  background: #1d7497;
+  background: -webkit-linear-gradient(to right, #328bff, #1367af);
+  background: linear-gradient(to right, #2dc0ff, #1d6e97);
+}
+
+.balancepointbar{
+display: flex;
+}
+
+.balanceleftpoint1020{
+  margin-left: 10px;
+  margin-top: -27px;
+  margin-right: auto;
+  font-family: 'DungGeunMo';
+  color: white;
+}
+.balancerighttpoint1020{
+  margin-right: 10px;
+  margin-top: -27px;
+  margin-left: auto;
+  font-family: 'DungGeunMo';
+  color: white;
+}
+
+#progress_8090 {
+  appearance: none;
+  width: 300px;
+  height: 20px;
+}
+#progress_8090::-webkit-progress-bar {
+  width: 300px;
+  height: 20px;;
+  background:#ff00dd;
+  box-shadow: inset 3px 3px 10px #950092;
+}
+#progress_8090::-webkit-progress-value {
+  background: #1d7497;
+  background: -webkit-linear-gradient(to right, #328bff, #1367af);
+  background: linear-gradient(to right, #2dc0ff, #1d6e97);
+}
+.balanceleftpoint8090{
+  margin-left: 10px;
+  margin-top: -28px;
+  margin-right: auto;
+  font-family: 'DungGeunMo';
+  color: white;
+}
+.balancerighttpoint8090{
+  margin-right: 10px;
+  margin-top: -28px;
+  margin-left: auto;
+  font-family: 'DungGeunMo';
+  color: white;
+}
+
+#progress_9000 {
+  appearance: none;
+  width: 300px;
+  height: 20px;
+}
+#progress_9000::-webkit-progress-bar {
+  width: 300px;
+  height: 20px;
+  background:#ff00dd;
+  box-shadow: inset 3px 3px 10px #950092;
+}
+#progress_9000::-webkit-progress-value {
+  background: #1d7497;
+  background: -webkit-linear-gradient(to right, #328bff, #1367af);
+  background: linear-gradient(to right, #2dc0ff, #1d6e97);
+}
+.balanceleftpoint9000{
+  margin-left: 10px;
+  margin-top: -28px;
+  margin-right: auto;
+  font-family: 'DungGeunMo';
+  color: white;
+}
+.balancerighttpoint9000{
+  margin-right: 10px;
+  margin-top: -28px;
+  margin-left: auto;
+  font-family: 'DungGeunMo';
+  color: white;
+}
+
+#progress_0010 {
+  appearance: none;
+  width: 300px;
+  height: 20px;
+}
+#progress_0010::-webkit-progress-bar {
+  width: 300px;
+  height: 20px;
+  background:#ff00dd;
+  box-shadow: inset 3px 3px 10px #950092;
+}
+#progress_0010::-webkit-progress-value {
+  background: #1d7497;
+  background: -webkit-linear-gradient(to right, #328bff, #1367af);
+  background: linear-gradient(to right, #2dc0ff, #1d6e97);
+}
+.balanceleftpoint0010{
+  margin-left: 10px;
+  margin-top: -28px;
+  margin-right: auto;
+  font-family: 'DungGeunMo';
+  color: white;
+}
+.balancerighttpoint0010{
+  margin-right: 10px;
+  margin-top: -28px;
+  margin-left: auto;
+  font-family: 'DungGeunMo';
+  color: white;
+}
