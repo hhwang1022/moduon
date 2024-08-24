@@ -32,7 +32,7 @@ const Main_0010 = () => {
   return (
     <div className='main0010background'>
       <div className='main0010outbox'>
-        <div className='main0010category'>MODUON</div>
+        <div className='main0010category'><button onClick={() => navigate('/main_1020')}>MODUON</button></div>
         <div className='main1020categorybuttonarea'>
           <button className='main1020categorybutton main0010category'
             onClick={() => navigate('/main_8090/balance/view')}>
