@@ -47,3 +47,7 @@
     font-family: 'NotoSansKR';
     font-size: 18pt;
   }
+
+  .flex{
+    display: flex;
+  }

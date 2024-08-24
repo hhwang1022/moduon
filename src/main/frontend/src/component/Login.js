@@ -89,7 +89,7 @@ const Login = ({ successhandler, issmall, generation }) => {
       <input className={'joininput' + (issmall ? '_' + generation : '')} type="password" placeholder='비밀번호' value={password} onChange={(e) => setPassword(e.target.value)} />
     </div>
     <div>
-      <button className={'joinbutton' + (issmall ? '_' + generation + (generation == '1020' ? ' gradient' : '') : 'gradient')} onClick={handleLogin}>로그인</button>
+      <button className={'joinbutton' + (issmall ? '_' + generation + (generation == '1020' ? ' gradient' : '') : ' gradient')} onClick={handleLogin}>로그인</button>
     </div>
   </div>);
 };

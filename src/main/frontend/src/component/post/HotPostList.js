@@ -24,12 +24,7 @@ const HotPostList = ({generation}) => {
                  headers: { Authorization: `Bearer ${accessToken}` }
                 }).then(function (response) {
                         if(response && response.data && response.data.data) {
-
-                          //  console.log(response.data.data);
-
                             setpostlist(response.data.data);
-
-                            //console.log(response.data.data[0].category);
                         }
                 });
             } catch (error) {
@@ -37,11 +32,10 @@ const HotPostList = ({generation}) => {
             }
         };
 
-        const handlePostClick = (postId) => {
-        console.log(postId);
+        const handlePostClick = (post) => {
+        //console.log(post);
         //todo - 게시글로 연결
-           // navigate(`/posts/${postId}`);
-           //navigate(`/`);
+           navigate('/main_' + post.category.replace('CATEGORY_', '')  + '/post/view/' + post.postId);
         }
 
 
@@ -50,7 +44,7 @@ const HotPostList = ({generation}) => {
             <div className={'hotpostlist' + generation + 'title'}>인기글</div>
             {postlist.map((post, index) => {
                 return <div className={'hotpostlist' + generation + 'item'}>
-                <button onClick={() => handlePostClick(post.postId)}>
+                <button onClick={() => handlePostClick(post)}>
                 {"[" + post.category.replace('CATEGORY_', '') +"] " + post.title}</button></div>
             })}
         </div>
