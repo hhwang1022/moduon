@@ -77,6 +77,7 @@ import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistI
         } catch (error) {
           console.error("Error posting reply:", error);
             alert(JSON.stringify(error.message));
+            console.log(error.response.data);
     }
   };
 
@@ -95,6 +96,7 @@ import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistI
         setIsLike(!isLike);
         } catch (error) {
             alert(JSON.stringify(error.message));
+            console.log(error.response.data);
     }
   };
 

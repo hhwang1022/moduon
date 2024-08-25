@@ -74,6 +74,7 @@ const Postwrite = ({ generation, successhandler }) => {
         navigate('/main_' + generation + '/post');
     } catch (error) {
       alert(JSON.stringify(error.message));
+      console.log(error.response.data);
     }
   };
 
@@ -97,6 +98,7 @@ const Postwrite = ({ generation, successhandler }) => {
       console.log(newimgurllist);
     } catch (error) {
       alert(JSON.stringify(error.message));
+      console.log(error.response.data);
     }
   };
 

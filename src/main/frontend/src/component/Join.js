@@ -45,7 +45,8 @@ const Join = ({ successhandler }) => {
         }
     } catch (error) {
       //navigate('/error/' + error.message);
-      alert(error.message);
+      alert(JSON.stringify(error.message));
+      console.log(error.response.data);
     }
   };
 

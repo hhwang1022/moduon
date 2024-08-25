@@ -51,6 +51,7 @@ const Write = () => {
         navigate('/');
     } catch (error) {
       alert(JSON.stringify(error.message));
+      console.log(error.response.data);
     }
   };
 

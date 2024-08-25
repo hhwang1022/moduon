@@ -39,7 +39,8 @@ useEffect(() => {
       setmemberId(data.memberId);
 
     } catch (error) {
-      alert(error.message);
+      alert(JSON.stringify(error.message));
+      console.log(error.response.data);
     }
   };
   fetchProfile();

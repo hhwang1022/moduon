@@ -36,7 +36,8 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
 
 
       } catch (error) {
-         alert(error.message);
+        alert(JSON.stringify(error.message));
+        console.log(error.response.data);
         }
       };
         fetchProfile();
@@ -74,7 +75,8 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
 
       } catch (error) {
             console.error("Error updating profile: ", error);
-            alert('회원정보 변경에 실패했습니다.' + error.message);
+            alert('회원정보 변경에 실패했습니다.' + error.message);;
+            console.log(error.response.data);
       }
     };
 
