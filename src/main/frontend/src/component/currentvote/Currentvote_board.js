@@ -82,6 +82,7 @@ import Loading from '../Loading';
 
       } catch (error) {
         alert(JSON.stringify(error.message));
+        console.log(error.response.data);
       }
     };
 
@@ -107,6 +108,7 @@ import Loading from '../Loading';
 
       } catch (error) {
         alert(JSON.stringify(error.message));
+        console.log(error.response.data);
       }
     };
 
@@ -143,6 +145,8 @@ import Loading from '../Loading';
 
       } catch (error) {
         alert(JSON.stringify(error.message));
+        console.log(error.response.data);
+        console.log(error.response.data);
       }
     };
 

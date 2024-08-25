@@ -72,8 +72,8 @@ const handlePhotoReply = async () => {
       setsearchkeyword('');
       setCommentListUpdated(true);
       } catch (error) {
-        console.error("Error posting reply:", error);
           alert(JSON.stringify(error.message));
+          console.log(error.response.data);
   }
 };
 
@@ -92,6 +92,7 @@ const handlePhotoLike = async () => {
       setIsLike(!isLike);
       } catch (error) {
           alert(JSON.stringify(error.message));
+          console.log(error.response.data);
   }
 };
 

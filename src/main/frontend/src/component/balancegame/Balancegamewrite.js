@@ -69,6 +69,7 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
         navigate('/');
     } catch (error) {
       alert(JSON.stringify(error.message));
+      console.log(error.response.data);
     }
 
   };
@@ -97,6 +98,7 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
         }
     } catch (error) {
       alert(JSON.stringify(error.message));
+      console.log(error.response.data);
     }
   };
 

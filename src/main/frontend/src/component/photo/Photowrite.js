@@ -72,6 +72,7 @@ const Photowrite = ({ generation, successhandler }) => {
         navigate('/main_' + generation + '/photo');
     } catch (error) {
       alert(JSON.stringify(error.message));
+      console.log(error.response.data);
     }
   };
 
@@ -94,6 +95,7 @@ const Photowrite = ({ generation, successhandler }) => {
         console.log(newimgurllist);
     } catch (error) {
       alert(JSON.stringify(error.message));
+      console.log(error.response.data);
     }
   };
 

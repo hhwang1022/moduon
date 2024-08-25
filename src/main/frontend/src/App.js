@@ -2,10 +2,6 @@ import React, {useState, useEffect, useRef } from 'react';
 import { BrowserRouter, Routes, Route, useNavigate, Navigate } from 'react-router-dom'
 import './main.css';
 import './App.css';
-import Qna from './Qna';
-import Write from './Write';
-import QnaList from './QnaList';
-import Modify from './Modify';
 import Main_1020 from './component/1020/Main_1020';
 import Main_0010 from './component/0010/Main_0010';
 import Main_8090 from './component/8090/Main_8090';

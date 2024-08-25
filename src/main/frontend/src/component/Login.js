@@ -80,7 +80,8 @@ const Login = ({ successhandler, issmall, generation }) => {
       navigate('/main_1020');
 
     } catch (error) {
-      alert(error.message);
+      alert(JSON.stringify(error.message));
+      console.log(error.response.data);
       //navigate('/error/' + error.message);
     }
   };
