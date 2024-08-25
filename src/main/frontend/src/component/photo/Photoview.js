@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, navigate } from 'react-router-dom';
 import axios from 'axios';
 import './Photoview.css';
 import Reply from './Photoreply';
@@ -21,6 +21,8 @@ const Photoview = ({generation, photoid}) => {
   const [searchkeyword, setsearchkeyword] = useState('');
   const [commentListUpdated, setCommentListUpdated] = useState(false);
   const [isLike, setIsLike] = useState(false);
+
+  const navigate = useNavigate();
 
 
   let accessToken = window.localStorage.getItem('accessToken');
@@ -89,6 +91,7 @@ const handlePhotoLike = async () => {
            Authorization: `Bearer ${accessToken}`,
            },
       });
+      setLikeCount(isLike ? likeCount - 1 : likeCount + 1);
       setIsLike(!isLike);
       } catch (error) {
           alert(JSON.stringify(error.message));
@@ -132,12 +135,29 @@ const fetchPhotoLike = async () => {
   }
 };
 
+const handlePhotoDelete = async () => {
+  try{
+    const response = await axios.delete('http://127.0.0.1:8080/photos/' + photoid, {
+      headers: { Authorization: `Bearer ${accessToken}` }
+    })
+    navigate(`/main_${generation}/photo`);
+    alert("게시물 삭제 완료!");
+  }
+  catch (error){
+    alert(JSON.stringify(error.message));
+  }
+};
+
+const handlePhotoUpdate = () => {
+  navigate('../update/:' + photoid);
+}
+
 return (
   <div className={'photo-view-container' + generation}>
     <div className={'photo-view-header' + generation}>
     <button className='photo-like' onClick={handlePhotoLike}>{isLike ? '추천취소' : '추천하기'}</button>
-      <button className='photo-update'>수정</button>
-      <button className='photo-delete'>삭제</button>
+      <button className='photo-update' onClick={handlePhotoUpdate}>수정</button>
+      <button className='photo-delete' onClick={handlePhotoDelete}>삭제</button>
     </div>
     <div className='photo-info-box'>
       <div className='photo-title'>{title}</div>

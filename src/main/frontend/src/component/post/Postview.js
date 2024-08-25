@@ -1,11 +1,12 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, Navigate, Outlet } from 'react-router-dom';
 import axios from 'axios';
 import './Postview.css';
 import Reply from './Postreply';
 import Balancegame_commentlist from '../currentvote/Balancegame_commentlist';
 import Postreply from './Postreply';
 import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistItem';
+import PostUpdate from './PostUpdate';
 
 
   const Postview = ({generation, postid}) => {
@@ -25,6 +26,7 @@ import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistI
     const [commentListUpdated, setCommentListUpdated] = useState(false);
     const [isLike, setIsLike] = useState(false);
 
+    const navigate = useNavigate();
   
     let accessToken = window.localStorage.getItem('accessToken');
 
@@ -92,6 +94,7 @@ import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistI
              Authorization: `Bearer ${accessToken}`,
              },
         });
+        setLikeCount(isLike ? likeCount - 1 : likeCount + 1);
         setIsLike(!isLike);
         } catch (error) {
             alert(JSON.stringify(error.message));
@@ -131,16 +134,36 @@ import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistI
       }
 
     } catch (error) {
-      console.error("Error fetching data: ", error);
+      alert(JSON.stringify(error.message));
     }
   };
+
+
+  const handlePostDelete = async () => {
+    try{
+      const response = await axios.delete('http://127.0.0.1:8080/posts/' + postid, {
+        headers: { Authorization: `Bearer ${accessToken}` }
+      })
+      navigate(`/main_${generation}/post`);
+      console.log(generation);
+      alert("게시물 삭제 완료!");
+    }
+    catch (error){
+      alert(JSON.stringify(error.message));
+    }
+  };
+
+
+  const handlePostUpdate = () => {
+    navigate('../update/:' + postid);
+  }
 
   return (
     <div className={'post-view-container' + generation}>
       <div className={'post-view-header' + generation}>
       <button className='post-like' onClick={handlePostLike}>{isLike ? '추천취소' : '추천하기'}</button>
-        <button className='post-update'>수정</button>
-        <button className='post-delete'>삭제</button>
+        <button className='post-update' onClick={handlePostUpdate}>수정</button>
+        <button className='post-delete' onClick={handlePostDelete}>삭제</button>
       </div>
       <div className='post-info-box'>
         <div className='post-title'>{title}</div>
@@ -182,7 +205,6 @@ import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistI
         </div>
       </div>
     </div>
-
   );
 };
 
