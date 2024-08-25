@@ -62,7 +62,7 @@ const Header_1020 = ({ title, setcurrentindex, titleindex }) => {
       </div>
       <div class='hline'></div>
       <div className="header">
-        <div className="title">{titles[currenttitleindex]}</div>
+        {/* <div className="title">{titles[currenttitleindex]}</div> */}
         <div className="right">
         <button className="right" onClick={() => {
           navigate('/main_1020/join');

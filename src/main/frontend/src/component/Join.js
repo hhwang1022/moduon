@@ -51,8 +51,8 @@ const Join = ({ successhandler }) => {
 
   return (
     <div>
-      <div className='joinbar'><div className='joinline' />또는<div className='joinline' /></div>
       <div className='joinmainbox'>
+      <div className='joinbar'><div className='joinline' />회원가입<div className='joinline' /></div>
         <div>
           <input className='joininput' type="text" placeholder='Email' value={id} onChange={(e) => setId(e.target.value)} />
         </div>
