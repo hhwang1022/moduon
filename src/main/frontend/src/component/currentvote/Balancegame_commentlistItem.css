@@ -66,12 +66,12 @@
 .balancegame-commentlist1020box {
     border: 1px solid rgb(190, 190, 190);
     display: flex;
-    justify-content: flex-start;
     align-items: center;
     margin-right: 10px;
 }
 
 .balancegame-commentlist1020nickname {
+    margin-left: 5px;
     font-size: 15px;
     cursor: text;
 }
@@ -81,3 +81,19 @@
     font-size: 15px;
     cursor: text;
 }
+
+.balancegame-commentlist-delete-button {
+    border: 1px solid rgb(190, 190, 190);
+}
+
+.balancegame-commentlist-update-button {
+    border: 1px solid rgb(190, 190, 190);
+}
+
+.balancegame-commentlist-button {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    margin-left: auto;
+}
+

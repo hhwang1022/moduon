@@ -2,18 +2,15 @@ import React, { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import './Balancegame_commentlist.css';
 import Balancegame_commentlistItem from './Balancegame_commentlistItem';
+import memberInfo from "../../MemberInfo";
 
-const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated, setCommentListUpdated }) => {
+const info = memberInfo.getMemberInfo();
+const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated, setCommentListUpdated, value}) => {
     const scrollableDivRef = useRef(null);
     const [commentList, setCommentList] = useState([]);
-
-//    const [nickname, setNickname] = useState('');
-//    const [content, setContent] = useState('');
-//    const [isCreate, setIsCreate] = useState(false);
-//
+    const username = useState(info.name);
 
      let accessToken = window.localStorage.getItem('accessToken');
-
      const fetchReply = async () => {
         if (!balanceGameId) return;
 
@@ -54,11 +51,48 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
         }
     }, [commentListUpdated, setCommentListUpdated])
 
-    return (
+  const handleDeleteReply = async (isDeleted,commentId) => {
+      if (!isDeleted) return;
+      try {
+        const response = await axios.delete(
+          'http://127.0.0.1:8080/balancegames/' + balanceGameId + '/reply/' + commentId,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+        setCommentListUpdated(true);
+      } catch (error) {
+        console.error("comment delete: ", error);
+      }
+  }
+
+  const handUpdateReply = async (isUpdate, commentId) => {
+    if (!isUpdate) return;
+    try {
+      const response = await  axios.patch(
+        'http://127.0.0.1:8080/balancegames/' + balanceGameId + '/reply/' + commentId,
+        {
+          body: value
+        } ,
+        {   'Content-Type': 'application/json',
+          headers: { Authorization: `Bearer ${accessToken}`,
+          },
+        });
+      setCommentListUpdated(true);
+    } catch (error) {
+      console.error("comment update: ", error);
+    }
+  }
+
+  return (
         <div>
             <div id='scrollableDiv' ref={scrollableDivRef} className={`balancegame-comments${generation}box`}>
                 {commentList.map((x, index) => (
-                    <Balancegame_commentlistItem key={index} comment={x} generation={generation} />
+                  <Balancegame_commentlistItem
+                    key={index} comment={x} generation={generation}
+                    onDeleted={handleDeleteReply} username={username} onUpdate={handUpdateReply}></Balancegame_commentlistItem>
                 ))}
             </div>
         </div>

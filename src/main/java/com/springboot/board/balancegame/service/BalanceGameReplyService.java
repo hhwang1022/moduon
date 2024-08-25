@@ -67,8 +67,7 @@ public class BalanceGameReplyService {
     public void deleteBalanceGameReply(Long balanceGameReplyId, String memberEmail) {
         balanceGameReplyRepository.findById(balanceGameReplyId).ifPresent(balanceGameReply -> {
             if (balanceGameReply.getMember().getEmail().equals(memberEmail)) {
-                balanceGameReply.setReplyStatus(BalanceGameReply.BalanceGameReplyStatus.DELETED);
-                balanceGameReplyRepository.save(balanceGameReply);
+                balanceGameReplyRepository.delete(balanceGameReply);
             }
             else {
                 throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND);
