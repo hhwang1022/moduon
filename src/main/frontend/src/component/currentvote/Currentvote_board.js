@@ -101,14 +101,19 @@ import Loading from '../Loading';
 
           });
 
-          memberInfo.updateMemberInfo({
-            //여기에 바뀌어야하는 값을 넣는다//회원정보 수정, 공유할 때 등,...
-            balancegameticket : response.data.data });
+          console.log("response.data.data : " + response.data.data);
+
+          updateTicketCount(response.data.data);
 
       } catch (error) {
         alert(JSON.stringify(error.message));
       }
     };
+
+    const updateTicketCount = (newTicketCount) => {
+      // Update balancegameticket
+      memberInfo.updateMemberInfo({ balancegameticket: newTicketCount });
+  };
 
       const vote1 = (() => {
         const vote11 = "point1"
@@ -133,6 +138,8 @@ import Loading from '../Loading';
             headers: { Authorization: `Bearer ${accessToken}`,
             },
           });
+
+          updateTicketCount(response.data.data.votingRights);
 
       } catch (error) {
         alert(JSON.stringify(error.message));

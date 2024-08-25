@@ -21,7 +21,6 @@ class MemberInfo {
     }
 
     getMemberInfo() {
-        console.log(this.admin);
         return {
             name: this.name,
             email: this.email,
