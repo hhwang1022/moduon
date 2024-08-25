@@ -1,9 +1,9 @@
 import axios from 'axios';
-import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from "react-router-dom";
-import './Photowrite.css';
+import React, { useState, useEffect, useRef } from 'react';
+import { useNavigate } from "react-router-dom";
+import './PhotoUpdate.css';
 
-const Photowrite = ({ generation, successhandler }) => {
+const PhotoUpdate = ({ generation, photoid }) => {
   const [photoTitle, setphotoTitle] = useState('');
   const [photoBody, setphotoBody] = useState('');
   const [isLock, setIsLock] = useState(false);
@@ -45,8 +45,8 @@ const Photowrite = ({ generation, successhandler }) => {
     }
 
     try {
-      const response = await axios.post(
-        'http://127.0.0.1:8080/photos',
+      const response = await axios.patch(
+        'http://127.0.0.1:8080/photos/' + photoid,
         {
           title: photoTitle,
           body: photoBody,
@@ -64,15 +64,16 @@ const Photowrite = ({ generation, successhandler }) => {
             Authorization: `Bearer ${accessToken}`,
           },
         }
-      );
-      alert('게시글 남기기 성공!');
+      ).then(function (response) {
+        alert('게시글 수정 성공!');
 
         setFile([]);
         setimgurllist([]);
-        navigate('/main_' + generation + '/photo');
+        if (response !== undefined)
+        navigate('/main_' + generation + '/photo/view/' + photoid);
+      });
     } catch (error) {
       alert(JSON.stringify(error.message));
-      console.log(error.response.data);
     }
   };
 
@@ -89,13 +90,13 @@ const Photowrite = ({ generation, successhandler }) => {
             Authorization: `Bearer ${accessToken}`,
           },
         }
-      );
-      const newimgurllist = [...imgurllist, response.data];
+      ).then(function (response) {
+        const newimgurllist = [...imgurllist, response.data];
         setimgurllist(newimgurllist);
         console.log(newimgurllist);
+      });
     } catch (error) {
       alert(JSON.stringify(error.message));
-      console.log(error.response.data);
     }
   };
 
@@ -140,4 +141,4 @@ const Photowrite = ({ generation, successhandler }) => {
   </div>);
 };
 
-export default Photowrite;
+export default PhotoUpdate;
