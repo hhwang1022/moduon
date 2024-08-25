@@ -16,5 +16,6 @@ public interface BalanceGameVoteMapper {
 
     @Mapping(source = "member.nickname", target = "memberNickname")
     @Mapping(source = "balanceGame.balanceGameId", target = "balanceGameId")
+    @Mapping(source = "member.votingRights", target = "votingRights")
     BalanceGameVoteDto.Response balanceGameVoteToBalanceGameVoteResponse(BalanceGameVote balanceGameVote);
 }

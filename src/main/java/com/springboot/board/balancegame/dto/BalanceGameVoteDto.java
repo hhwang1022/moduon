@@ -24,5 +24,6 @@ public class BalanceGameVoteDto {
         private String memberNickname;
         private Long balanceGameId;
         private String voteItem;
+        private long votingRights;
     }
 }
