@@ -27,6 +27,17 @@
     font-size: 16pt;
   }
 
+  .joininputmiddle{
+    width: 350px;
+    height: 50px;
+    border-radius: 5px;
+    padding: 20px;
+    margin: 5px;
+    border: 1px solid black;
+    font-family: 'NotoSansKR';
+    font-size: 16pt;
+  }
+
   .joininput_8090{
     width: 200px;
     height: 30px;
@@ -92,6 +103,16 @@
     font-family: 'NotoSansKR';
     font-size: 16pt;
     color: black;
+  }
+
+  .joinuniquebutton{
+    width: 150px;
+    height: 50px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-family: 'NotoSansKR';
+    color: white;
+    font-size: 16pt;
   }
 
   .joinbutton{

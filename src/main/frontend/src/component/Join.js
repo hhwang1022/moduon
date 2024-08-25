@@ -11,6 +11,8 @@ const Join = ({ successhandler }) => {
   const [passwordconfrim, setPasswordconfrim] = useState('');
   const [genertion, seGenertion] = useState('');
   const [nickname, setNickname] = useState('');
+  const [isuniqueemail, setisuniqueemail] = useState('');
+  const [isuniquenickname, setisuniquenickname] = useState('');
 
   const accessToken = "";
 
@@ -19,6 +21,14 @@ const Join = ({ successhandler }) => {
   const handleJoin = async () => {
     if (password != passwordconfrim) {
       alert('비밀번호가 틀립니다fff!');
+      return;
+    }
+    else if(!isuniqueemail){
+      alert('이메일 중복확인을 해주세요!');
+      return;
+    }
+    else if(!isuniquenickname){
+      alert('닉네임 중복확인을 해주세요!');
       return;
     }
 
@@ -50,22 +60,79 @@ const Join = ({ successhandler }) => {
     }
   };
 
+  const handleUniqueEmail = async() => {
+    try {
+      const response = await axios.get(
+        'http://127.0.0.1:8080/members/checkemail?email=' + id,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+
+      if(response.data){
+        //alert("이미 존재하는 이메일입니다.");
+        setisuniqueemail(false);
+      }
+      else{
+        //alert("사용할 수 있는 이메일입니다.");
+        setisuniqueemail(true);
+      }
+    } catch (error) {
+      alert(JSON.stringify(error.message));
+      console.log(error.response.data);
+    }
+  };
+
+  const handleUniqueName = async() => {
+    try {
+      const response = await axios.get(
+        'http://127.0.0.1:8080/members/checkname?nickname=' + nickname,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
+          },
+        }
+      );
+
+      if(response.data){
+        //alert("이미 존재하는 닉네임입니다.");
+        setisuniquenickname(false);
+      }
+      else{
+        //alert("사용할 수 있는 닉네임입니다.");
+        setisuniquenickname(true);
+      }
+    } catch (error) {
+      alert(JSON.stringify(error.message));
+      console.log(error.response.data);
+    }
+  };
+
   return (
     <div>
       <div className='joinmainbox'>
       <div className='joinbar'><div className='joinline' />회원가입<div className='joinline' /></div>
         <div>
-          <input className='joininput' type="text" placeholder='Email' value={id} onChange={(e) => setId(e.target.value)} />
+          <input className='joininputmiddle' type="text" placeholder='Email' value={id} onChange={(e) => setId(e.target.value)} />
+          <button className="joinuniquebutton gradient" onClick={handleUniqueEmail}>중복확인</button>
         </div>
+        {(isuniqueemail !== "" ) ? (isuniqueemail ? "사용할 수 있는 이메일입니다." : "중복된 이메일입니다.") : ""}
         <div>
-          <input className='joininput' type="text" placeholder='닉네임' value={nickname} onChange={(e) => setNickname(e.target.value)} />
+          <input className='joininputmiddle' type="text" placeholder='닉네임' value={nickname} onChange={(e) => setNickname(e.target.value)} />
+          <button className="joinuniquebutton gradient" onClick={handleUniqueName}>중복확인</button>
         </div>
+        {(isuniquenickname !== "" ) ? (isuniquenickname ? "사용할 수 있는 닉네임입니다." : "중복된 닉네임입니다.") : ""}
         <div>
           <input className='joininput' type="password" placeholder='비밀번호' value={password} onChange={(e) => setPassword(e.target.value)} />
         </div>
         <div>
           <input className='joininput' type="password" placeholder='비밀번호 확인' value={passwordconfrim} onChange={(e) => setPasswordconfrim(e.target.value)} />
         </div>
+        {(passwordconfrim !== "" && password !== passwordconfrim )? "비밀번호가 일치하지 않습니다." : ""}
         <div>
           <select className={'joingenerationselect'} onChange={(e) => {
             seGenertion(e.target.value);
