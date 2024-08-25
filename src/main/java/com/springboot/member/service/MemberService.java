@@ -55,8 +55,11 @@ public class MemberService {
 
         Optional.ofNullable(member.getNickname())
                 .ifPresent(nickname -> findMember.setNickname(nickname));
+
+        String encryptedPassword = passwordEncoder.encode(member.getPassword());
+
         Optional.ofNullable(member.getPassword())
-                .ifPresent(password -> findMember.setPassword(password));
+                .ifPresent(password -> findMember.setPassword(encryptedPassword));
 
         return memberRepository.save(findMember);
     }
