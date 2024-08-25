@@ -48,13 +48,18 @@ public class MemberController {
                 new SingleResponseDto<>(mapper.memberToMemberResponseDto(member)), HttpStatus.OK);
     }
 
-    @GetMapping("/info")
-    public ResponseEntity getMember(@AuthenticationPrincipal Object principal) {
-        Member member = memberService.findVerifiedMember(principal.toString());
-
+    // 중복 이메일 체크
+    @GetMapping("/checkemail")
+    public ResponseEntity findEmail(@RequestParam String email) {
         return new ResponseEntity<>(
-                new SingleResponseDto<>(mapper.memberToMemberInfoResponse(member)), HttpStatus.OK
-        );
+                memberService.isUniqueEmail(email), HttpStatus.OK);
+    }
+
+    // 중복 이름 체크
+    @GetMapping("/checkname")
+    public ResponseEntity findName(@RequestParam String nickname) {
+        return new ResponseEntity<>(
+                memberService.isUniqueNickname(nickname), HttpStatus.OK);
     }
 
     @GetMapping

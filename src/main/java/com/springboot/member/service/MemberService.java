@@ -106,4 +106,15 @@ public class MemberService {
                 -> new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND));
         return findMember;
     }
+
+    //회원가입시 체크용
+    public boolean isUniqueEmail(String email) {
+        Optional<Member> member = memberRepository.findByEmail(email);
+        return member.isPresent();
+    }
+
+    public  boolean  isUniqueNickname(String nickname) {
+        Optional<Member> member = memberRepository.findByNickname(nickname);
+        return member.isPresent();
+    }
 }
