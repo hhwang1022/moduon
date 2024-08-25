@@ -175,7 +175,7 @@ import Loading from '../Loading';
             <button className={'balancereplywritebtn' + generation} onClick={handlePostReply}>등록</button>
           </div>
         </div>
-      </div> :  <div className='vote-mainbox'><Loading/> </div> 
+      </div> :  <div className='vote-mainbox'><Loading generation={generation}/> </div> 
     );
   };
 

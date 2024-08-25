@@ -1,0 +1,96 @@
+.loadingcentent{
+    margin: auto;
+}
+
+.grid {
+    display: grid;
+    grid-template-columns: repeat(7, 30px);
+    grid-template-rows: repeat(7, 30px);
+    gap: 5px;
+}
+
+.square {
+    width: 30px;
+    height: 30px;
+}
+
+.square.filled {
+    animation: rainbow 2s infinite;
+    animation-fill-mode: forwards; /* 애니메이션 이후 상태 유지 */
+  }
+
+.loadingtext8090{
+    font-size: 20pt;
+    text-align: center;
+    color: white;
+    font-family: 'DOSIyagiMedium';
+}
+
+.loadingtext9000{
+    font-size: 20pt;
+    text-align: center;
+    color: black;
+    font-family: 'DOSIyagiMedium';
+}
+
+.loadingtext0010{
+    font-size: 20pt;
+    text-align: center;
+    color: black;
+    font-family: 'DOSIyagiMedium';
+}
+
+/* 각 사각형의 초기 색상 설정 */
+.color-0, .color-1, .color-2, .color-4, .color-5, .color-6 {
+    background-color: #DF183D;
+  }
+  
+  .color-7, .color-8, .color-9, .color-11, .color-12, .color-13 {
+    background-color: #D89A2C;
+  }
+  
+  .color-14, .color-15, .color-16, .color-18, .color-19, .color-20 {
+    background-color: #DBC01D;
+  }
+  
+  .color-21, .color-22, .color-23, .color-25, .color-26, .color-27 {
+    background-color: #377065;
+  }
+  
+  .color-28, .color-29, .color-30, .color-32, .color-33, .color-34 {
+    background-color: #4397D5;
+  }
+  
+  .color-35 {
+    background-color: #379F40;
+  }
+
+@keyframes rainbow {
+    0% {
+        background-color: #DF183D;
+    }
+
+    17% {
+        background-color: #D89A2C;
+    }
+
+    34% {
+        background-color: #DBC01D;
+    }
+
+    51% {
+        background-color: #379F40;
+    }
+
+    68% {
+        background-color: #4397D5;
+    }
+
+    85% {
+        background-color: #2D515A;
+    }
+
+    100% {
+        background-color: #377065;
+    }
+}
