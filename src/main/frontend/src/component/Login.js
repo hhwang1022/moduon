@@ -86,6 +86,9 @@ const Login = ({ successhandler, issmall, generation }) => {
   };
 
   return (<div className={'joinmainbox' + (issmall ? '_' : '')}>
+    <div className='UpdateProfilebar'>
+        <div className='UpdateProfileline' />로그인<div className='UpdateProfileline' />
+      </div>
     <div>
       <input className={'joininput' + (issmall ? '_' + generation : '')} type="text" placeholder='Email' value={id} onChange={(e) => setId(e.target.value)} />
     </div>

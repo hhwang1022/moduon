@@ -11,6 +11,7 @@ import Photoboard from '../photo/Photoboard';
 import Balancegameborad from '../balancegame/Balancegameborad';
 import axios from 'axios';
 import MyProfile from '../MyProfile';
+import UpdateProfile from '../UpdateProfile';
 
 
 const Main_1020 = () => {
@@ -212,6 +213,7 @@ const Main_1020 = () => {
                 <Route path="join" element={<Join successhandler={setcurrentindex} />} />
                 <Route path="login" element={<Login successhandler={setcurrentindex} />} />
                 <Route path="myprofile" element={<MyProfile successhandler={setcurrentindex} />} />
+                <Route path="updateprofile" element={<UpdateProfile successhandler={setcurrentindex} />} />
                 <Route path="/" element={<MainBalancegame />} />
             </Routes>
         </div>
