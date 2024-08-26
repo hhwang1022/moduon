@@ -107,8 +107,12 @@ public class PostService {
 
     public void deletePost(long postId, String email) {
         Post findPost = findVerifiedPost(postId);
-        memberService.findVerifiedMember(email);
-        postRepository.delete(findPost);
+
+        if (findPost.getMember().getEmail().equals(email)) {
+            postRepository.delete(findPost);
+        } else {
+            throw new BusinessLogicException(ExceptionCode.POST_NOT_FOUND);
+        }
     }
 
     public Post findVerifiedPost(long postId) {
