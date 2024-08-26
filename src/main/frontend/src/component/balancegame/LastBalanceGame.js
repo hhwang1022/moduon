@@ -107,13 +107,13 @@ const LastBalanceGame = ({ generation }) => {
           <div className={'vote-name' + generation}>{voteItem1}</div>
         </div>
         <div className='votebar'>
-          <BalanceBar vote1={votePoint1} vote2={votePoint2} generation={generation} />
         </div>
         <div className="vote-item">
           <img className='vote-image' src={voteImage2} alt="Vote Option 2" />
           <div className={'vote-name' + generation}>{voteItem2}</div>
         </div>
       </div>
+      <BalanceBar vote1={votePoint1} vote2={votePoint2} generation={generation} />
       <div className='comments-box'>
         <div id='scrollableDiv' ref={scrollableDivRef} className='comment'>
           {commentList.length > 0 ? (

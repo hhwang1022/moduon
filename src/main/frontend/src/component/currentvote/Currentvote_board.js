@@ -8,6 +8,7 @@ import KakaoButton from '../KakaoButton';
 import FacebookButton from '../FacebookButton';
 import TwitterButton from '../TwitterButton';
 import Loading from '../Loading';
+const vsicon0010 = require('../../resource/vs_0010.png');
 
   const info = memberInfo.getMemberInfo();
   const Currentvote_board= ({generation, onclicklistbtn}) => {
@@ -177,12 +178,13 @@ import Loading from '../Loading';
             <img className='vote-image' src={voteImage1}></img>
             <button className={'vote-name' + generation} onClick={vote1}>{voteItem1}</button>
           </div>
-          <div className='votebar'><BalanceBar vote1={votePoint1} vote2={votePoint2} generation={generation} /></div>
+          <image scr={vsicon0010}/>
           <div class="vote-item">
             <img className='vote-image' src={voteImage2}></img>
             <button className={'vote-name' + generation} onClick={vote2}>{voteItem2}</button>
           </div>
         </div>
+        <BalanceBar vote1={votePoint1} vote2={votePoint2} generation={generation} />
         <div className='comments-box'>
           <div className='comment'><Balancegame_commentlist generation={generation} balanceGameId={balanceGameId} 
           commentListUpdated={commentListUpdated} setCommentListUpdated={setCommentListUpdated} value={searchkeyword}/></div>

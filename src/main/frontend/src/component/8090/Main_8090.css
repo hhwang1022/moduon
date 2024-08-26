@@ -112,6 +112,7 @@
     overflow: auto;
     margin: auto;
     display: flex;
+    justify-content: center;
 }
 
 .main8090windowcontentboxline {

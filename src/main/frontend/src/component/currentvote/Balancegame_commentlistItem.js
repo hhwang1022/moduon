@@ -47,12 +47,12 @@ const Balancegame_commentlistItem = ({comment, generation, onDeleted, username, 
       <div className={'balancegame-commentlist' + generation + 'box'}>
         <div className={'balancegame-commentlist' + generation + 'nickname'}>{comment.memberNickname + ' :'}</div>
         <div className={'balancegame-commentlist' + generation + 'content'}>{comment.body}</div>
-        <div className={'balancegame-commentlist-button'}>
+        <div className={'balancegame-commentlist-button' + generation}>
           {isButtonVisible && (
-            <button className={'balancegame-commentlist-update-button'} onClick={clickUpdateButton}>수정</button>
+            <button className={'balancegame-commentlist-update-button' + generation} onClick={clickUpdateButton}>수정</button>
           )}
           {isButtonVisible && (
-            <button className={'balancegame-commentlist-delete-button'} onClick={clickDeleteButton}>삭제</button>
+            <button className={'balancegame-commentlist-delete-button' + generation} onClick={clickDeleteButton}>삭제</button>
           )}
         </div>
       </div>
