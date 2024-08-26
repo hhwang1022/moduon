@@ -2,19 +2,19 @@ import './Main_9000.css';
 import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Footer_9000 from './Footer_9000';
-
 import Bgmbar from '../Bgmbar';
 import Mypage from '../Mypage';
 import Currentvote_board from '../currentvote/Currentvote_board';
 import Postboard from '../post/Postboard';
 import Photoboard from '../photo/Photoboard';
 import Balancegameborad from '../balancegame/Balancegameborad';
+import Loading from '../Loading';
 
 
 const Main_9000 = () => {
 
     const navigate = useNavigate();
-
+    const generation = "9000";
     const postsmallicon = require('../../resource/9000_postsmallicon.png');
     const photosmallicon = require('../../resource/9000_photosmallicon.png');
     const balencesmallicon = require('../../resource/9000balencesmallicon.png');
@@ -23,6 +23,15 @@ const Main_9000 = () => {
     const balencebigicon = require('../../resource/9000balencebigicon.png');
 
     const [currentindex, setcurrentindex] = useState(3);
+    const[isloading, setisloading] = useState(true);
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setisloading(false);
+        }, 500);
+
+        return () => clearTimeout(timer);
+    }, []);
 
     let categorys = [
         {
@@ -54,6 +63,7 @@ const Main_9000 = () => {
             );
         }
         else if (currentindex === 2) {
+            setisloading(false);
             return (
                 <Balancegameborad generation={"9000"} />
             );
@@ -88,7 +98,9 @@ const Main_9000 = () => {
         }
     };
 
-    return (<div className='main9000background'>
+    return (
+    !isloading ?
+    <div className='main9000background'>
         <div className='main9000lefticon'>
             <button
             onClick={() => {
@@ -164,7 +176,8 @@ const Main_9000 = () => {
             <div className='main9000windowbottombarbackground'>PC통신에서 나눴던 첫 인터넷 채팅</div>
         </div>
         <Footer_9000></Footer_9000>
-    </div>);
+    </div> : <div className='main9000background'><Loading generation={generation}/> </div>
+    );
 };
 
 export default Main_9000;

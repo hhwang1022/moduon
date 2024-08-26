@@ -4,6 +4,7 @@ import axios from 'axios';
 import './Photoview.css';
 import Reply from './Photoreply';
 import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistItem';
+import Loading from '../Loading';
 
 const Photoview = ({generation, photoid}) => {
   const [title, setTitle] = useState('');
@@ -21,6 +22,7 @@ const Photoview = ({generation, photoid}) => {
   const [searchkeyword, setsearchkeyword] = useState('');
   const [commentListUpdated, setCommentListUpdated] = useState(false);
   const [isLike, setIsLike] = useState(false);
+  const [isloading, setisloading] = useState(true);
 
   const navigate = useNavigate();
 
@@ -46,8 +48,11 @@ const Photoview = ({generation, photoid}) => {
       setPhotoReplyList(data.photoReplyList);
       setNickname(data.nickname);
       console.log(data);
+      setisloading(false);
+
     } catch (error) {
       console.error("Error fetching data: ", error);
+      setisloading(false);
     }
   };
 
@@ -154,6 +159,7 @@ const handlePhotoUpdate = () => {
 }
 
 return (
+!isloading ?
   <div className={'photo-view-container' + generation}>
     <div className={'photo-view-header' + generation}>
     <button className='photo-like' onClick={handlePhotoLike}>{isLike ? '추천취소' : '추천하기'}</button>
@@ -199,7 +205,7 @@ return (
         <button className='photo-comment-submit' onClick={handlePhotoReply}>등록</button>
       </div>
     </div>
-  </div>
+  </div> : <div className={'photo-view-container' + generation}><Loading generation={generation}/> </div>
 
   );
 };

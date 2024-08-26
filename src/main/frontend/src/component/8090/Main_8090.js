@@ -1,5 +1,5 @@
 import './Main_8090.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Footer_8090 from './Footer_8090';
 import Mypage from '../Mypage';
@@ -8,10 +8,22 @@ import TopBanner from '../TopBanner';
 import Postboard from '../post/Postboard';
 import Photoboard from '../photo/Photoboard';
 import Balancegameborad from '../balancegame/Balancegameborad';
+import Loading from '../Loading';
 
 const Main_8090 = () => {
     const navigate = useNavigate();
+    const generation = "8090";
     const [currentindex, setcurrentindex] = useState(0);
+    const[isloading, setisloading] = useState(true);
+
+
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            setisloading(false);
+        }, 500);
+
+        return () => clearTimeout(timer);
+    }, []);
 
 
     let categorys = [
@@ -43,7 +55,9 @@ const Main_8090 = () => {
         }
     };
 
+
     return (
+     !isloading ?
         <div className='main8090outwindow main8090dafaultwindow'>
             <div className='main8090windowtopbarbackground'><button onClick={() => {
                         navigate('/main_1020');
@@ -100,7 +114,7 @@ const Main_8090 = () => {
 
             <div className='main8090windowbottombarbackground'>{"* Tip) 매일 출석해서 투표권을 얻어보세요! *"}</div>
             <Footer_8090></Footer_8090>
-        </div>
+        </div> : <div className='main8090outwindow main8090dafaultwindow'><Loading generation={generation}/> </div>
     );
 };
 
