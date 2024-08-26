@@ -23,7 +23,7 @@ const Postboard = ({ generation }) => {
     <Routes>
       <Route path="/" element={<Postlist generation={generation} onClickwirtebtn={() => navigate('write')} onClickreadbtn={handleReadClick} />} />
       <Route path="write" element={<Postwrite generation={generation} />} />
-      <Route path="view/:postId" element={<Postview generation={generation} postid={currentpostid} />} />
+      <Route path="view/:postId" element={<Postview generation={generation} />} />
       <Route path="update/:postId" element={<PostUpdate generation={generation} postid={currentpostid} />} />
     </Routes>
   );
