@@ -7,6 +7,7 @@ import Balancegame_commentlist from '../currentvote/Balancegame_commentlist';
 import Postreply from './Postreply';
 import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistItem';
 import PostUpdate from './PostUpdate';
+import Loading from '../Loading';
 
 
   const Postview = ({generation, postid}) => {
@@ -25,7 +26,7 @@ import PostUpdate from './PostUpdate';
     const [searchkeyword, setsearchkeyword] = useState('');
     const [commentListUpdated, setCommentListUpdated] = useState(false);
     const [isLike, setIsLike] = useState(false);
-    const [replyId, setreplyId] = useState(null);
+    const [isloading, setisloading] = useState(true);
 
     const navigate = useNavigate();
   
@@ -49,9 +50,11 @@ import PostUpdate from './PostUpdate';
         setImage5(data.image5);
         setPostReplyList(data.postReplyList);
         setNickname(data.nickname);
+        setisloading(false);
   
       } catch (error) {
         console.error("Error fetching data: ", error);
+        setisloading(false);
       }
     };
   
@@ -77,10 +80,12 @@ import PostUpdate from './PostUpdate';
         });
         setsearchkeyword('');
         setCommentListUpdated(true);
+
         } catch (error) {
           console.error("Error posting reply:", error);
             alert(JSON.stringify(error.message));
             console.log(error.response.data);
+
     }
   };
 
@@ -98,9 +103,11 @@ import PostUpdate from './PostUpdate';
         });
         setLikeCount(isLike ? likeCount - 1 : likeCount + 1);
         setIsLike(!isLike);
+        setisloading(false);
         } catch (error) {
             alert(JSON.stringify(error.message));
             console.log(error.response.data);
+            setisloading(false);
     }
   };
 
@@ -197,6 +204,7 @@ const handUpdateReply = async (isUpdate, replyId) => {
 }
 
   return (
+  !isloading ?
     <div className={'post-view-container' + generation}>
       <div className={'post-view-header' + generation}>
       <button className='post-like' onClick={handlePostLike}>{isLike ? '추천취소' : '추천하기'}</button>
@@ -243,7 +251,7 @@ const handUpdateReply = async (isUpdate, replyId) => {
           <button className='post-comment-submit' onClick={handlePostReply}>등록</button>
         </div>
       </div>
-    </div>
+    </div> : <div className={'post-view-container' + generation}><Loading generation={generation}/> </div>
   );
 };
 

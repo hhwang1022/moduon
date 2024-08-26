@@ -24,6 +24,10 @@
 
     margin: 50px;
     margin-left: 100px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
 }
 
 /*--------------------------------------------*/
@@ -45,6 +49,10 @@
 
 .photolist9000mainbox{
     margin-left: 70px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
 }
 
 .photosumnailbox9000{
@@ -79,6 +87,10 @@
 
 .photolist0010mainbox{
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
 }
 
 /*-------------------------------------------------------------------------------------*/

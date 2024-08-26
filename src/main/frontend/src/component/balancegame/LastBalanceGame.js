@@ -1,9 +1,10 @@
-import './LastBalanceGame.css';
+import '../currentvote/Currentvote_board.css';
 import axios from 'axios';
 import BalanceBar from '../currentvote/BalanceBar';
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistItem';
+import Loading from '../Loading';
 
 const LastBalanceGame = ({ generation }) => {
   const { balanceid } = useParams();
@@ -19,6 +20,7 @@ const LastBalanceGame = ({ generation }) => {
   const [votePoint1, setVotePoint1] = useState(0);
   const [votePoint2, setVotePoint2] = useState(0);
   const [votePageReset, setVotePageReset] = useState(false);
+  const[isloading, setisloading] = useState(true);
 
   let accessToken = window.localStorage.getItem('accessToken');
 
@@ -43,8 +45,11 @@ const LastBalanceGame = ({ generation }) => {
         setCommentList(voteData.balanceGameReplesiList || []);
       }
       setVotePageReset(false);
+      setisloading(false);
+
     } catch (error) {
       console.error("Error fetching data: ", error);
+      setisloading(false);
     }
   };
 
@@ -91,6 +96,7 @@ const LastBalanceGame = ({ generation }) => {
   }, [commentListUpdated]);
 
   return (
+  !isloading ?
     <div className='vote-mainbox'>
       <div className='vote-header'>
         <div className='voting-topic'> {voteTitle}</div>
@@ -101,13 +107,13 @@ const LastBalanceGame = ({ generation }) => {
           <div className={'vote-name' + generation}>{voteItem1}</div>
         </div>
         <div className='votebar'>
-          <BalanceBar vote1={votePoint1} vote2={votePoint2} generation={generation} />
         </div>
         <div className="vote-item">
           <img className='vote-image' src={voteImage2} alt="Vote Option 2" />
           <div className={'vote-name' + generation}>{voteItem2}</div>
         </div>
       </div>
+      <BalanceBar vote1={votePoint1} vote2={votePoint2} generation={generation} />
       <div className='comments-box'>
         <div id='scrollableDiv' ref={scrollableDivRef} className='comment'>
           {commentList.length > 0 ? (
@@ -120,7 +126,7 @@ const LastBalanceGame = ({ generation }) => {
         </div>
 
       </div>
-    </div>
+    </div> : <div className='vote-mainbox'><Loading generation={generation}/> </div>
   );
 };
 

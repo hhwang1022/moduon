@@ -2,6 +2,7 @@ import './Photolist.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Photolistitem from './Photolistitem';
+import Loading from '../Loading';
 
 const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
 
@@ -12,6 +13,7 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
     const [curruntpage, setcurruntpage] = useState(1);
     const [sorttype, setsorttype] = useState('photoId_desc');
     const [isSearching, setIsSearching] = useState(false);
+    const [isloading, setisloading] = useState(true);
 
     /*1020일 땐 보이는 갯수 9개 아닐 땐 9개*/
     let size = generation === "1020" ? 9 : 8;
@@ -44,8 +46,11 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
                     setPhotolist(response.data.data);
                     settotalpage(response.data.pageInfo.totalPages);
             }
+            setisloading(false);
+
             } catch (error) {
                 console.error("Error fetching photos", error);
+                setisloading(false);
             }
         };
 
@@ -60,8 +65,12 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
                     setPhotolist(response.data.data);
                     settotalpage(response.data.pageInfo.totalPages);
             }
+            setisloading(false);
+
             } catch (error) {
                 console.error ("Error searching photos with keyword: ", error );
+                setisloading(false);
+
             } finally {
                 setIsSearching(false);
             }
@@ -70,8 +79,11 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
     useEffect(() => {
         if (isSearching) {
             searchPhotos();
+            setisloading(true);
+
         } else {
         fetchPhotos();
+        setisloading(true);
         }
     }, [sorttype, curruntpage, generation, searchkeyword]);
 
@@ -89,7 +101,9 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
     };
 
 
-    return (<div className={'photolist' + generation + 'mainbox'}>
+    return (
+    !isloading ?
+    <div className={'photolist' + generation + 'mainbox'}>
         <div className='right'>
             <select className={"postlistselect" + generation} onChange={(e) => {
                 setsorttype(e.target.value);
@@ -132,7 +146,8 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
                 <button className={'postpagebtn' + generation} onClick={handlesSearchClick}>검색</button>
             </div>
         </div>
-    </div>);
+    </div> : <div className={'photolist' + generation + 'mainbox'}> <Loading generation={generation}/> </div>
+    );
 };
 
 export default Photolist;

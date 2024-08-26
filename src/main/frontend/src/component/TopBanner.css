@@ -1,5 +1,5 @@
 .marquee8090 {
-    height: 50px;
+    height: 32px;
     overflow: hidden;
     position: relative;
     background-color: transparent;
@@ -10,11 +10,11 @@
     width: 100%;
     height: 100%;
     margin: 0;
-    line-height: 50px;
+    line-height: 32px;
     text-align: center;
     transform: translateX(100%);
     font-family: 'DOSIyagiMedium';
-    font-size: 24pt;
+    font-size: 18pt;
     color: #000000;
     animation: scroll-left 10s linear infinite;
 }

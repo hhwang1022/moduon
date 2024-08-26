@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import PostlistItem from './PostlistItem';
 import Postwrite from './Postwrite';
+import Loading from '../Loading';
 
 const Postlist = ({ generation , onClickwirtebtn, onClickreadbtn}) => {
 
@@ -13,6 +14,7 @@ const Postlist = ({ generation , onClickwirtebtn, onClickreadbtn}) => {
     const [curruntpage, setcurruntpage] = useState(1);
     const [sorttype, setsorttype] = useState('postId_desc');
     const [isSearching, setIsSearching] = useState(false);
+    const [isloading, setisloading] = useState(true);
 
       let accessToken = window.localStorage.getItem('accessToken');
 
@@ -41,9 +43,13 @@ const Postlist = ({ generation , onClickwirtebtn, onClickreadbtn}) => {
             if (response !== undefined) {
                 setPostlist(response.data.data);
                 settotalpage(response.data.pageInfo.totalPages);
-}
+                }
+
+                setisloading(false);
+
             } catch (error) {
                 console.error("Error fetching posts: ", error);
+                setisloading(false);
             }
         };
 
@@ -61,8 +67,13 @@ const Postlist = ({ generation , onClickwirtebtn, onClickreadbtn}) => {
                     setPostlist(response.data.data);
                     settotalpage(response.data.pageInfo.totalPages);
                     }
+
+                    setisloading(false);
+
             } catch (error) {
                 console.error("Error searching posts with keyword: ", error);
+                setisloading(false);
+
             } finally {
                 setIsSearching(false);
             }
@@ -71,8 +82,11 @@ const Postlist = ({ generation , onClickwirtebtn, onClickreadbtn}) => {
     useEffect(() => {
        if (isSearching) {
             searchPosts();
+            setisloading(true);
+
        } else {
             fetchPosts();
+            setisloading(true);
        }
     }, [sorttype, curruntpage, generation, searchkeyword]);
 
@@ -93,7 +107,9 @@ const Postlist = ({ generation , onClickwirtebtn, onClickreadbtn}) => {
 
 
 
-    return (<div className={'postlist' + generation + 'mainbox'}>
+    return (
+    !isloading ?
+    <div className={'postlist' + generation + 'mainbox'}>
         <div className='right'>
             <select className={'postlistselect' + generation} onChange={(e) => {
                 setsorttype(e.target.value);
@@ -153,7 +169,8 @@ const Postlist = ({ generation , onClickwirtebtn, onClickreadbtn}) => {
                 <button className={'postpagebtn' + generation} onClick={handleSearchClick}>검색</button>
             </div>
         </div>
-    </div>);
+    </div> : <div className={'postlist' + generation + 'mainbox'}> <Loading generation={generation}/> </div>
+    );
 };
 
 export default Postlist;

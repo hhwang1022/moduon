@@ -55,6 +55,7 @@ const Balancegame_commentlistItem = ({comment, generation, onDeleted, username, 
         {isLoggedIn && isButtonVisible && (
           <button className={'balancegame-commentlist-delete-button'} onClick={clickDeleteButton}>삭제</button>
         )}
+
         </div>
       </div>
     );
