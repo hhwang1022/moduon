@@ -1,10 +1,33 @@
-.joinmainbox{
-    display: flex;
-    flex-direction: column;
-    padding: 20px;
-    margin: auto;
-    margin-left: 50px;
-    text-align: center;
+.joinmainbox {
+  display: flex;
+  flex-direction: column;
+  justify-content: top; /* 세로 중앙 정렬 */
+  align-items: center;     /* 가로 중앙 정렬 */
+  padding: 10px;
+  margin: auto;
+  text-align: center;
+  position: relative;
+  top: 20px;                   /* 위쪽에서 50px 아래로 이동 */
+  min-height: 100vh;
+}
+
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: fixed;         /* 화면에 고정되도록 설정 */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 10;
+}
+
+.loading-container img {
+  max-width: 100%;         /* 로고가 컨테이너를 넘지 않도록 설정 */
+  max-height: 80%;         /* 로고의 높이 설정 */
+  height: auto;
 }
 
 .joinmainbox_{
@@ -189,9 +212,9 @@
   .joinbar{
     display: flex;
     justify-content: center;
-    margin: auto;
+    margin: 30px;
     font-family: 'NotoSansKR';
-    padding-top: 20px;
+    padding-top: 10px;
     font-size: 20pt;
     color: gray;
   }
