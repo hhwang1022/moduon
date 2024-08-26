@@ -56,7 +56,6 @@
     align-items: center;
     margin: 20px;
     margin-top: 0px;
-    background-color: #F2F2F2;
     border: 1px solid #DFDFDF;
     text-align: center;
   }
@@ -83,7 +82,7 @@
 
   .voting-topic0010 {
     text-align: center;
-    font-size: large;
+    font-size: medium;
     background-color: wihte;
     color: black;
     font-family: 'Roboto';
@@ -104,9 +103,9 @@
   
   .vote-box {
     display: flex;
-    justify-content: center;
     align-items: center;
     margin: 20px;
+    justify-content: space-between;
   }
   
   .vote-item {
@@ -170,6 +169,7 @@
     justify-content: center;
     height: 200px;
     margin-bottom: 10px;
+    margin-top: 80px;
   }
   
   .comment {

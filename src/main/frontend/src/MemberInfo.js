@@ -22,7 +22,7 @@ class MemberInfo {
 
     getMemberInfo() {
         return {
-            name: this.name,
+            name: this._name,
             email: this.email,
             memberid: this.memberid,
             balancegameticket: this.balancegameticket,
@@ -30,6 +30,12 @@ class MemberInfo {
             admin: this.admin.length > 1 ? true : false,
             login: this.login
         };
+    }
+
+    set name(newName) {
+        this._name = newName;
+        this.notifyListeners();
+        console.log(this.name);
     }
 
     subscribe(listener) {
@@ -41,7 +47,9 @@ class MemberInfo {
     }
 
     notifyListeners() {
-        this.listeners.forEach(listener => listener(this.getMemberInfo()));
+        if (this.listeners) {
+            this.listeners.forEach(listener => listener(this.getMemberInfo()));
+        }
     }
 }
 

@@ -33,7 +33,7 @@ const BalanceBar = ({ vote1, vote2, generation }) => {
         }
     }, [vote2]);
 
-    return (<span><progress
+    return (<div className={'vote-containe' + generation}><progress
         class={"progress_" + generation}
         id={"progress_" + generation}
         value={leftpoint}
@@ -45,7 +45,7 @@ const BalanceBar = ({ vote1, vote2, generation }) => {
     <div className={'balanceleftpoint' + generation}>{vote1.toLocaleString()}</div> 
     <div className={'balancerighttpoint' + generation}>{vote2.toLocaleString()}</div>
     </div>
-    </span>);
+    </div>);
 };
 
 export default BalanceBar;

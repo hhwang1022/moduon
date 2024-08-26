@@ -72,6 +72,7 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
       if (response.status === 200) {
         successhandler(5);
         alert('회원정보가 변경되었습니다.');
+        memberInfo.name = nickname;
         navigate('/');
          }
 
@@ -81,6 +82,18 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
             console.log(error.response.data);
       }
     };
+
+    useEffect(() => {
+      const updateState = (info) => {
+          setnickname(info.name);
+      };
+
+      memberInfo.subscribe(updateState);
+
+      return () => {
+          memberInfo.unsubscribe(updateState);
+      };
+  }, []);
 
   return (
     <div>

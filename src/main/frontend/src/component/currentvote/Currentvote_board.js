@@ -8,9 +8,9 @@ import KakaoButton from '../KakaoButton';
 import FacebookButton from '../FacebookButton';
 import TwitterButton from '../TwitterButton';
 import Loading from '../Loading';
-import {useNavigate, Navigate} from "react-router-dom";
+const vsicon0010 = require('../../resource/vs_0010.png');
 
-  let info = memberInfo.getMemberInfo();
+  const info = memberInfo.getMemberInfo();
   const Currentvote_board= ({generation, onclicklistbtn}) => {
 
     // const [generation, setGeneration] = useState('');
@@ -28,9 +28,9 @@ import {useNavigate, Navigate} from "react-router-dom";
     const [voteItem, setVoteItem] = useState('');
     const [votePageReset, setVotePageReset] = useState(false);
     const[isloading, setisloading] = useState(true);
+    const [commentId, setCommentId] = useState(null);
 
     let accessToken = window.localStorage.getItem('accessToken');
-    const navigate = useNavigate();
 
     useEffect(() => {
       const fetchData = async () => {
@@ -53,14 +53,15 @@ import {useNavigate, Navigate} from "react-router-dom";
             setVotePoint2(voteData.votePoint2);
           }
           setVotePageReset(false);
+
           setisloading(false);
 
         } catch (error) {
-          alert(generation + "게시판의 금주 투표가 없습니다.");
-          navigate("/main_" + {generation} + "/balancegame");
+          console.error("Error fetching data: ", error);
           setisloading(false);
         }
       };
+
       fetchData();
     }, [accessToken, generation, votePageReset]);
 
@@ -76,22 +77,14 @@ import {useNavigate, Navigate} from "react-router-dom";
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
+
           });
         setsearchkeyword('');
         setCommentListUpdated(true);
+
       } catch (error) {
-        if (searchkeyword === '' && info.name === "홍길동") {
-          alert("로그인 해주세요");
-          return;
-        }
-        if (searchkeyword === '') {
-          alert("댓글을 입력해주세요");
-          return;
-        }
-        if (info.name === '홍길동') {
-          alert("로그인 해주세요");
-          return;
-        }
+        alert(JSON.stringify(error.message));
+        console.log(error.response.data);
       }
     };
 
@@ -108,10 +101,16 @@ import {useNavigate, Navigate} from "react-router-dom";
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
+
           });
+
+          console.log("response.data.data : " + response.data.data);
+
           updateTicketCount(response.data.data);
+
       } catch (error) {
         alert(JSON.stringify(error.message));
+        console.log(error.response.data);
       }
     };
 
@@ -121,14 +120,14 @@ import {useNavigate, Navigate} from "react-router-dom";
   };
 
       const vote1 = (() => {
-        const vote1 = "point1"
-        handlePostVote(vote1);
+        const vote11 = "point1"
+        handlePostVote(vote11);
         setVotePageReset(true);
     });
 
     const vote2 = (() => {
-      const vote2 = "point2"
-      handlePostVote(vote2);
+      const vote12 = "point2"
+      handlePostVote(vote12);
       setVotePageReset(true);
     });
 
@@ -143,10 +142,18 @@ import {useNavigate, Navigate} from "react-router-dom";
             headers: { Authorization: `Bearer ${accessToken}`,
             },
           });
+
           updateTicketCount(response.data.data.votingRights);
+
       } catch (error) {
         alert(JSON.stringify(error.message));
+        console.log(error.response.data);
+        console.log(error.response.data);
       }
+    };
+
+    const handleCommentId = (newCommentId) => {
+      setCommentId(newCommentId);
     };
 
     return (
@@ -171,12 +178,13 @@ import {useNavigate, Navigate} from "react-router-dom";
             <img className='vote-image' src={voteImage1}></img>
             <button className={'vote-name' + generation} onClick={vote1}>{voteItem1}</button>
           </div>
-          <div className='votebar'><BalanceBar vote1={votePoint1} vote2={votePoint2} generation={generation} /></div>
+          <img height={150} width={150} src={vsicon0010}/>
           <div class="vote-item">
             <img className='vote-image' src={voteImage2}></img>
             <button className={'vote-name' + generation} onClick={vote2}>{voteItem2}</button>
           </div>
         </div>
+        <BalanceBar vote1={votePoint1} vote2={votePoint2} generation={generation} />
         <div className='comments-box'>
           <div className='comment'><Balancegame_commentlist generation={generation} balanceGameId={balanceGameId} 
           commentListUpdated={commentListUpdated} setCommentListUpdated={setCommentListUpdated} value={searchkeyword}/></div>
