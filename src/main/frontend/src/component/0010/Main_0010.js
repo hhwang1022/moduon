@@ -1,5 +1,5 @@
 import './Main_0010.css';
-import React, { useState } from 'react';
+import React, { useState, useEffect} from 'react';
 import { Routes, Route, useNavigate } from "react-router-dom";
 import Menubar_0010 from './Menubar_0010';
 import Mypage from '../Mypage';
@@ -7,10 +7,23 @@ import Bgmbar from '../Bgmbar';
 import Postboard from '../post/Postboard';
 import Photoboard from '../photo/Photoboard';
 import Balancegameborad from '../balancegame/Balancegameborad';
+import Loading from '../Loading';
 
 const Main_0010 = () => {
+
   const navigate = useNavigate();
+  const generation = "0010";
   const [currentindex, setcurrentindex] = useState(0);
+  const[isloading, setisloading] = useState(true);
+
+    useEffect(() => {
+          const timer = setTimeout(() => {
+              setisloading(false);
+          }, 500);
+
+          return () => clearTimeout(timer);
+      }, []);
+
 
   const handleMenuClick = (index) => {
     setcurrentindex(index);
@@ -22,6 +35,7 @@ const Main_0010 = () => {
         navigate('/main_0010/photo');
         break;
       case 2:
+      setisloading(false);
         navigate('/main_0010/balance/view');
         break;
       default:
@@ -30,6 +44,7 @@ const Main_0010 = () => {
   };
 
   return (
+  !isloading ?
     <div className='main0010background'>
       <div className='main0010outbox'>
         <div className='main0010category'><button onClick={() => navigate('/main_1020')}>MODUON</button></div>
@@ -67,7 +82,7 @@ const Main_0010 = () => {
           </div>
         </div>
       </div>
-    </div>
+    </div> :  <div className='main0010background'><Loading generation={generation}/> </div>
   );
 };
 

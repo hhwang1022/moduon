@@ -4,6 +4,7 @@ import BalanceBar from '../currentvote/BalanceBar';
 import React, { useState, useEffect, useRef } from 'react';
 import { useParams } from 'react-router-dom';
 import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistItem';
+import Loading from '../Loading';
 
 const LastBalanceGame = ({ generation }) => {
   const { balanceid } = useParams();
@@ -19,6 +20,7 @@ const LastBalanceGame = ({ generation }) => {
   const [votePoint1, setVotePoint1] = useState(0);
   const [votePoint2, setVotePoint2] = useState(0);
   const [votePageReset, setVotePageReset] = useState(false);
+  const[isloading, setisloading] = useState(true);
 
   let accessToken = window.localStorage.getItem('accessToken');
 
@@ -43,8 +45,11 @@ const LastBalanceGame = ({ generation }) => {
         setCommentList(voteData.balanceGameReplesiList || []);
       }
       setVotePageReset(false);
+      setisloading(false);
+
     } catch (error) {
       console.error("Error fetching data: ", error);
+      setisloading(false);
     }
   };
 
@@ -91,6 +96,7 @@ const LastBalanceGame = ({ generation }) => {
   }, [commentListUpdated]);
 
   return (
+  !isloading ?
     <div className='vote-mainbox'>
       <div className='vote-header'>
         <div className='voting-topic'> {voteTitle}</div>
@@ -120,7 +126,7 @@ const LastBalanceGame = ({ generation }) => {
         </div>
 
       </div>
-    </div>
+    </div> : <div className='vote-mainbox'><Loading generation={generation}/> </div>
   );
 };
 

@@ -8,8 +8,9 @@ import KakaoButton from '../KakaoButton';
 import FacebookButton from '../FacebookButton';
 import TwitterButton from '../TwitterButton';
 import Loading from '../Loading';
+import {useNavigate, Navigate} from "react-router-dom";
 
-  const info = memberInfo.getMemberInfo();
+  let info = memberInfo.getMemberInfo();
   const Currentvote_board= ({generation, onclicklistbtn}) => {
 
     // const [generation, setGeneration] = useState('');
@@ -30,6 +31,7 @@ import Loading from '../Loading';
     const [commentId, setCommentId] = useState(null);
 
     let accessToken = window.localStorage.getItem('accessToken');
+    const navigate = useNavigate();
 
     useEffect(() => {
       const fetchData = async () => {
@@ -52,15 +54,14 @@ import Loading from '../Loading';
             setVotePoint2(voteData.votePoint2);
           }
           setVotePageReset(false);
-
           setisloading(false);
 
         } catch (error) {
-          console.error("Error fetching data: ", error);
+          alert(generation + "게시판의 금주 투표가 없습니다.");
+          navigate("/main_" + {generation} + "/balancegame");
           setisloading(false);
         }
       };
-
       fetchData();
     }, [accessToken, generation, votePageReset]);
 
@@ -76,14 +77,22 @@ import Loading from '../Loading';
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
-
           });
         setsearchkeyword('');
         setCommentListUpdated(true);
-
       } catch (error) {
-        alert(JSON.stringify(error.message));
-        console.log(error.response.data);
+        if (searchkeyword === '' && info.name === "홍길동") {
+          alert("로그인 해주세요");
+          return;
+        }
+        if (searchkeyword === '') {
+          alert("댓글을 입력해주세요");
+          return;
+        }
+        if (info.name === '홍길동') {
+          alert("로그인 해주세요");
+          return;
+        }
       }
     };
 
@@ -100,16 +109,10 @@ import Loading from '../Loading';
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
-
           });
-
-          console.log("response.data.data : " + response.data.data);
-
           updateTicketCount(response.data.data);
-
       } catch (error) {
         alert(JSON.stringify(error.message));
-        console.log(error.response.data);
       }
     };
 
@@ -119,14 +122,14 @@ import Loading from '../Loading';
   };
 
       const vote1 = (() => {
-        const vote11 = "point1"
-        handlePostVote(vote11);
+        const vote1 = "point1"
+        handlePostVote(vote1);
         setVotePageReset(true);
     });
 
     const vote2 = (() => {
-      const vote12 = "point2"
-      handlePostVote(vote12);
+      const vote2 = "point2"
+      handlePostVote(vote2);
       setVotePageReset(true);
     });
 
@@ -141,18 +144,10 @@ import Loading from '../Loading';
             headers: { Authorization: `Bearer ${accessToken}`,
             },
           });
-
           updateTicketCount(response.data.data.votingRights);
-
       } catch (error) {
         alert(JSON.stringify(error.message));
-        console.log(error.response.data);
-        console.log(error.response.data);
       }
-    };
-
-    const handleCommentId = (newCommentId) => {
-      setCommentId(newCommentId);
     };
 
     return (

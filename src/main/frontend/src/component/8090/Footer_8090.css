@@ -4,7 +4,7 @@
     justify-content: center; 
     bottom: 0px;
     position: absolute;
-    height: 50px;
+    height: 32px;
     width: 100%;
     background-color: #008080;
 }
@@ -12,7 +12,7 @@
 .footer8090today{
     background-color: #008080;
     width: 9.9vw;
-    font-size: 24pt;
+    font-size: 18pt;
     color: white;
     font-family: 'DOSIyagiMedium';
     text-align: center;
@@ -20,12 +20,12 @@
 
 .footer8090todayline1, .footer8090todayline3, .footer8090todayline5, .footer8090todayline7, .footer8090todayline8, .footer8090todayline9{
     width: 5px;
-    height: 50px;
+    height: 32px;
     background-color: rgba(0,0,0,0.2);
 }
 
 .footer8090todayline2, .footer8090todayline4, .footer8090todayline6{
     width: 5px;
-    height: 50px;
+    height: 32px;
     background-color: black;
 }
