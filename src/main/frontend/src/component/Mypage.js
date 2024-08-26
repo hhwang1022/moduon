@@ -37,6 +37,7 @@ const Mypage = ({ generation }) => {
         setlogin(false);
         localStorage.setItem('accessToken', "");
         localStorage.setItem('refresh', "");
+        
     };
 
     const onClickMyProfile = () => {

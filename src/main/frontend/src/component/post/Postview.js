@@ -25,6 +25,7 @@ import PostUpdate from './PostUpdate';
     const [searchkeyword, setsearchkeyword] = useState('');
     const [commentListUpdated, setCommentListUpdated] = useState(false);
     const [isLike, setIsLike] = useState(false);
+    const [replyId, setreplyId] = useState(null);
 
     const navigate = useNavigate();
   
@@ -116,12 +117,6 @@ import PostUpdate from './PostUpdate';
       }
   }, [postReplyList]);
 
-  useEffect(() => {
-      if(commentListUpdated) {
-          setCommentListUpdated(false);
-      }
-  }, [commentListUpdated])
-
   const fetchPostLike = async () => {
     try {
       const response = await axios.get(process.env.REACT_APP_API_URL + 'posts/' + postid + '/like', {
@@ -159,6 +154,47 @@ import PostUpdate from './PostUpdate';
   const handlePostUpdate = () => {
     navigate('../update/:' + postid);
   }
+
+  const handleDeleteReply = async (isDeleted,replyId) => {
+    if (!isDeleted) return;
+    try {
+      const response = await axios.delete(
+        process.env.REACT_APP_API_URL + 'posts/' + postid + '/reply/' + replyId,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+      setCommentListUpdated(true);
+    } catch (error) {
+      console.error("comment delete: ", error);
+    }
+}
+
+useEffect(() => {
+  if(commentListUpdated) {
+      setCommentListUpdated(false);
+  }
+}, [commentListUpdated])
+
+const handUpdateReply = async (isUpdate, replyId) => {
+  if (!isUpdate) return;
+  try {
+    const response = await  axios.patch(
+      process.env.REACT_APP_API_URL + 'posts/' + postid + '/reply/' + replyId,
+      {
+        body: searchkeyword
+      } ,
+      {   'Content-Type': 'application/json',
+        headers: { Authorization: `Bearer ${accessToken}`,
+        },
+      });
+    setCommentListUpdated(true);
+  } catch (error) {
+    console.error("comment update: ", error);
+  }
+}
 
   return (
     <div className={'post-view-container' + generation}>
@@ -199,7 +235,8 @@ import PostUpdate from './PostUpdate';
       <div className='post-comments-box'>
         <div id='scrollableDiv' ref={scrollableDivRef}  className='post-comment'>
           {postReplyList.map((x, index) => (
-            <Balancegame_commentlistItem key={index} comment={x} generation={generation}/>
+            <Balancegame_commentlistItem key={index} comment={x} generation={generation}
+            onPostReplyDeleted={handleDeleteReply} username={nickname} onPostReplyUpdate={handUpdateReply}></Balancegame_commentlistItem>
         ))}</div>
         <div className='post-comment-form'>
           <textarea className='post-comment-box'  value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate, useParams, useLocation } from "react-router-dom";
 import memberInfo from '../MemberInfo';
 
 const Login = ({ successhandler, issmall, generation }) => {
@@ -11,6 +11,7 @@ const Login = ({ successhandler, issmall, generation }) => {
   let refreshToken = "";
 
   const navigate = useNavigate();
+  const location = useLocation(); // 현재 경로를 가져옴
 
   const handleLogin = async () => {
     try {
@@ -76,8 +77,8 @@ const Login = ({ successhandler, issmall, generation }) => {
       else {
         successhandler();
       }
-
-      navigate('/main_1020');
+        
+  
 
     } catch (error) {
       alert(JSON.stringify(error.message));

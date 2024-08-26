@@ -9,6 +9,7 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
     const scrollableDivRef = useRef(null);
     const [commentList, setCommentList] = useState([]);
     const username = useState(info.name);
+    const [isLoggedIn, setIsLoggedIn] = useState(memberInfo.getMemberInfo().login);
 
      let accessToken = window.localStorage.getItem('accessToken');
      const fetchReply = async () => {
@@ -47,10 +48,32 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
 
     useEffect(() => {
         if(commentListUpdated) {
+            fetchReply();
             setCommentListUpdated(false);
         }
     }, [commentListUpdated, setCommentListUpdated])
 
+    useEffect(() => {
+      const handleInfoUpdate = (updatedInfo) => {
+        setIsLoggedIn(updatedInfo.login);
+
+        if (!updatedInfo.login) {
+          setTimeout(() => {
+            setCommentList([]);  // 로그아웃 시 댓글 리스트 초기화
+            setCommentListUpdated(true);  // 상태 업데이트 및 강제 리렌더링
+        }, 0);
+      } else {
+          setCommentListUpdated(true);
+      }
+  };
+    
+      memberInfo.subscribe(handleInfoUpdate);
+    
+      return () => {
+        memberInfo.unsubscribe(handleInfoUpdate);
+      };
+    }, []);
+    
   const handleDeleteReply = async (isDeleted,commentId) => {
       if (!isDeleted) return;
       try {
@@ -91,8 +114,8 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
             <div id='scrollableDiv' ref={scrollableDivRef} className={`balancegame-comments${generation}box`}>
                 {commentList.map((x, index) => (
                   <Balancegame_commentlistItem
-                    key={index} comment={x} generation={generation}
-                    onDeleted={handleDeleteReply} username={username} onUpdate={handUpdateReply}></Balancegame_commentlistItem>
+                    key={x} comment={x} generation={generation}
+                    onDeleted={handleDeleteReply} username={username} onUpdate={handUpdateReply} isLoggedIn={isLoggedIn}></Balancegame_commentlistItem>
                 ))}
             </div>
         </div>
