@@ -1,4 +1,4 @@
-import './LastBalanceGame.css';
+import '../currentvote/Currentvote_board.css';
 import axios from 'axios';
 import BalanceBar from '../currentvote/BalanceBar';
 import React, { useState, useEffect, useRef } from 'react';

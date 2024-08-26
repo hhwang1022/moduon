@@ -178,7 +178,7 @@ const vsicon0010 = require('../../resource/vs_0010.png');
             <img className='vote-image' src={voteImage1}></img>
             <button className={'vote-name' + generation} onClick={vote1}>{voteItem1}</button>
           </div>
-          <image scr={vsicon0010}/>
+          <img height={150} width={150} src={vsicon0010}/>
           <div class="vote-item">
             <img className='vote-image' src={voteImage2}></img>
             <button className={'vote-name' + generation} onClick={vote2}>{voteItem2}</button>

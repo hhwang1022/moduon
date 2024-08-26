@@ -95,7 +95,7 @@
   appearance: none;
   width: 90%;
   height: 20px;
-  left: 10%;
+  margin-left: 10%;
 }
 
 #progress_8090::-webkit-progress-bar {
