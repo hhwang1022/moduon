@@ -40,7 +40,6 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
           }
         );
       const data = response.data.data;
-      console.log(response);
       setmemberId(data.memberId);
       setnickname(nickname);
       setPassword(password);
@@ -59,8 +58,7 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
     if (password != passwordconfrim) {
              alert('비밀번호가 틀립니다!');
              return;
-     }
-     ;
+     };
 
     try {
       const response = await axios.patch(
@@ -78,8 +76,6 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
           },
         }
       );
-      console.log('successhandler:', successhandler);
-
 
       if (response.status === 200) {
         successhandler(5);
@@ -89,9 +85,7 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
          }
 
       } catch (error) {
-            console.error("Error updating profile: ", error);
-            alert('회원정보 변경에 실패했습니다.' + error.message);;
-            console.log(error.response.data);
+            alert('회원정보 변경에 실패했습니다.' + error.message);
       }
     };
 

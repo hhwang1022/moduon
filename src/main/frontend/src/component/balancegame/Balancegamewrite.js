@@ -23,7 +23,6 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
   let accessToken = window.localStorage.getItem('accessToken');
 
   const handleUpload = (index, e) => {
-    console.log("index : " + index);
     formData = new FormData();
     formData.append('multipartFile', e.target.files[0]);
     handlePostimg(index);
@@ -45,9 +44,6 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
       const [year, month, day] = dateString.split('-').map(Number);
       return [year, month, day, 23, 59, 59, 99];
     }
-
-    console.log(image1);
-    console.log(image2);
 
     const voteData = {
       title: title,
@@ -73,9 +69,8 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
       if (response !== undefined)
         navigate('/');
     } catch (error) {
-      alert(JSON.stringify(error.message));
+      alert("투표 작성에 실패했습니다.");
     }
-
   };
 
   //이미지를 등록하는 함수
@@ -92,8 +87,6 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
           },
         }
       );
-      console.log(response.data);
-        console.log(index);
         if (index === 0) {
           setImage1(response.data);
         }
@@ -101,8 +94,7 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
           setImage2(response.data);
         }
     } catch (error) {
-      alert(JSON.stringify(error.message));
-      console.log(error.response.data);
+      alert("이미지 등록에 실패했습니다.");
     }
   };
 

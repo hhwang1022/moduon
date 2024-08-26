@@ -20,20 +20,12 @@ const Footer_8090 = () => {
       setminutes(now.getMinutes().toString().padStart(2, '0'));
       setseconds(now.getSeconds().toString().padStart(2, '0'));
 
-      
-      setdisplayHours(hours % 12);
-
-      if (hours >= 12) {
-        setampms('PM');
-      }
-      else {
-        setampms('AM');
-      }
+      setdisplayHours(hours % 12 || 12); // 0시를 12로 표시
+      setampms(hours >= 12 ? 'PM' : 'AM');
     }, 1000);
 
-    return () => clearInterval(timer)
-  }, [seconds]);
-
+    return () => clearInterval(timer);
+  }, []);
 
   return (<div className='footer8090background'>
     <div className='footer8090today'>YEAR</div>

@@ -46,23 +46,18 @@ const Main_1020 = () => {
     useEffect(() => {
         const fetchbalancedatas = async () => {
             try {
-
                 const response = await axios.get(
                     process.env.REACT_APP_API_URL + 'balancegames?' +
                     'page=' + 1 + '&size=' + 10, {
                     headers: { Authorization: `Bearer ${accessToken}` }
                 });
-
                 const data = response.data.data;
                 setbalancedatas(data);
-
-
           } catch (error) {
-            console.error("Error fetching balancedatas: ", error);
             setbalancedatas([]);
+            alert("밸런스게임 가져오기 실패했습니다.")
           }
         };
-
         fetchbalancedatas();
     }, [accessToken]);
 
@@ -102,7 +97,6 @@ const Main_1020 = () => {
                                         else {
                                             setcurrentgameindex(currentgameindex - 1);
                                         }
-
                                         setmotionleftscale(0.7);
                                         setmotionmiddlescale(0.8);
                                         setmotionrightscale(0.7);
@@ -200,9 +194,6 @@ const Main_1020 = () => {
             return (
                 <Login successhandler={setcurrentindex} />
             );
-        }
-        else {
-
         }
     };
 

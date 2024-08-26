@@ -86,3 +86,17 @@
 .SpacingBetweenFields {
     height: 30px; /* 원하는 간격 */
 }
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 10px;
+    display: flex;
+    align-items: center;
+}
+
+.error-icon {
+    margin-bottom: auto;
+    margin-left: 10px;
+}
+

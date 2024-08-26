@@ -30,11 +30,9 @@ const LastBalanceGame = ({ generation }) => {
         headers: { Authorization: `Bearer ${accessToken}` }
       });
       const data = response.data.data;
-      console.log(response);
 
       if (data) {
         const voteData = data;
-        console.log("fetched data: ", data);
         setVoteTitle(voteData.title);
         setVoteImage1(voteData.voteImage1);
         setVoteImage2(voteData.voteImage2);
@@ -49,31 +47,13 @@ const LastBalanceGame = ({ generation }) => {
 
     } catch (error) {
       setisloading(false);
+      alert("단일투표 조회 실패");
     }
   };
 
   useEffect(() => {
     fetchData();
   }, [commentListUpdated]);
-
-  const handlePostReply = async () => {
-    try {
-      const response = await axios.post(
-        process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId + '/reply',
-        { body: searchkeyword },
-        {
-          'Content-Type': 'application/json',
-          headers: { Authorization: `Bearer ${accessToken}` }
-        }
-      );
-      setSearchkeyword('');
-      setCommentListUpdated(true);
-    } catch (error) {
-      console.error("Error posting reply:", error);
-      alert(JSON.stringify(error.message));
-      console.log(error.response.data);
-    }
-  };
 
   const scrollableDivRef = useRef(null);
 

@@ -44,7 +44,6 @@ useEffect(() => {
       );
 
       const data = response.data.data;
-      console.log(data);
       setName(data.nickname);
       setEmail(data.email);
       setBalanceGameTicket(data.votingRights);
@@ -52,7 +51,6 @@ useEffect(() => {
 
     } catch (error) {
       alert(JSON.stringify(error.message));
-      console.log(error.response.data);
     }
   };
   fetchProfile();
@@ -81,14 +79,12 @@ useEffect(() => {
         Authorization: `Bearer ${accessToken}`,
        },
       });
-     console.log('회원 탈퇴 완료');
      closeModal();
      localStorage.removeItem('accessToken');
      localStorage.removeItem('refresh');
      memberInfo.updateMemberInfo({ login: false });
      navigate('/')
    } catch (error) {
-        console.error('회원 탈퇴 실패:', error);
      }
    };
 

@@ -3,8 +3,6 @@ import './DeleteAccountModal.css';
 
 const DeleteAccountModal = ({ onClose, onConfirm }) => {
 
-  console.log("onConfirm function:", onConfirm);
-
   return (
     <div className="modal-overlay">
       <div className="modal-content">
