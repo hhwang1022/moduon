@@ -32,8 +32,13 @@ const HotPostList = ({generation}) => {
         };
 
         const handlePostClick = (post) => {
-        //todo - 게시글로 연결
-           navigate('/main_' + post.category.replace('CATEGORY_', '')  + '/post/view/' + post.postId);
+           if(generation === post.category.replace('CATEGORY_', '')){
+            navigate('/main_' + post.category.replace('CATEGORY_', '')  + '/post/view/' + post.postId);
+            window.location.reload();
+           }
+           else{
+            navigate('/main_' + post.category.replace('CATEGORY_', '')  + '/post/view/' + post.postId);
+           }
         }
 
 
