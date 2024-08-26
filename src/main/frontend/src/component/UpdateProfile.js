@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import memberInfo from '../MemberInfo';
+import Loading from './Loading';
 
 
 const UpdateProfile = ({ successhandler = () => {} }) => {
@@ -11,9 +12,20 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
   const [passwordconfrim, setPasswordaconfrim] = useState('');
   const [memberId, setmemberId] = useState('');
   const [profile, setProfile] = useState(null);
+  const[isloading, setisloading] = useState(true);
+  const [generation, setGeneration] = useState('');
 
  const accessToken = window.localStorage.getItem('accessToken');
  const navigate = useNavigate();
+
+  useEffect(() => {
+           const timer = setTimeout(() => {
+               setisloading(false);
+           }, 500);
+
+           return () => clearTimeout(timer);
+       }, []);
+
 
   useEffect(() => {
     const fetchProfile = async () => {
@@ -83,6 +95,7 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
     };
 
   return (
+  !isloading ?
     <div>
       <div className='UpdateProfilebar'>
         <div className='UpdateProfileline' />회원 정보 수정<div className='UpdateProfileline' />
@@ -111,7 +124,7 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
             <button className="cancellation" onClick={() => navigate('/')}>취소</button>
             <button className="Update" onClick={updateMember}>수정</button></div>
        </div>
-    </div>
+    </div> : <div className='UpdateProfilebar'><Loading generation={generation}/> </div>
   );
 };
 

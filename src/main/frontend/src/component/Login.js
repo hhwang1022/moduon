@@ -2,15 +2,27 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams } from "react-router-dom";
 import memberInfo from '../MemberInfo';
+import Loading from './Loading';
 
 const Login = ({ successhandler, issmall, generation }) => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
+  const[isloading, setisloading] = useState(!issmall);
+  const [genertion, seGenertion] = useState('');
 
   let accessToken = "";
   let refreshToken = "";
 
   const navigate = useNavigate();
+
+   useEffect(() => {
+          const timer = setTimeout(() => {
+              setisloading(false);
+          }, 500);
+
+          return () => clearTimeout(timer);
+      }, [issmall]);
+
 
   const handleLogin = async () => {
     try {
@@ -86,22 +98,30 @@ const Login = ({ successhandler, issmall, generation }) => {
     }
   };
 
-  return (<div className={'joinmainbox' + (issmall ? '_' : '')}>
-    {issmall ? <></> :
-      <div className='UpdateProfilebar'>
-        <div className='UpdateProfileline' />로그인<div className='UpdateProfileline' />
-      </div>}
+   return (
+      !isloading ? (
+        <div className={'joinmainbox' + (issmall ? '_' : '')}>
+          {!issmall && (
+            <div className='UpdateProfilebar'>
+              <div className='UpdateProfileline' />로그인<div className='UpdateProfileline' />
+            </div>
+          )}
+          <div>
+            <input className={'joininput' + (issmall ? '_' + generation : '')} type="text" placeholder='Email' value={id} onChange={(e) => setId(e.target.value)} />
+          </div>
+          <div>
+            <input className={'joininput' + (issmall ? '_' + generation : '')} type="password" placeholder='비밀번호' value={password} onChange={(e) => setPassword(e.target.value)} />
+          </div>
+          <div>
+            <button className={'joinbutton' + (issmall ? '_' + generation + (generation === '1020' ? ' gradient' : '') : ' gradient')} onClick={handleLogin}>로그인</button>
+          </div>
+        </div>
+      ) : (
+        <div className={'joinmainbox' + (issmall ? '_' : '')}>
+          <Loading />
+        </div>
+      )
+    );
+  };
 
-    <div>
-      <input className={'joininput' + (issmall ? '_' + generation : '')} type="text" placeholder='Email' value={id} onChange={(e) => setId(e.target.value)} />
-    </div>
-    <div>
-      <input className={'joininput' + (issmall ? '_' + generation : '')} type="password" placeholder='비밀번호' value={password} onChange={(e) => setPassword(e.target.value)} />
-    </div>
-    <div>
-      <button className={'joinbutton' + (issmall ? '_' + generation + (generation == '1020' ? ' gradient' : '') : ' gradient')} onClick={handleLogin}>로그인</button>
-    </div>
-  </div>);
-};
-
-export default Login;
+  export default Login;

@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import memberInfo from '../MemberInfo';
 import updateProfile from './UpdateProfile';
 import DeleteAccountModal from './DeleteAccountModal';
+import Loading from './Loading';
 
 const MyProfile = () => {
   const [name, setName] = useState('');
@@ -14,9 +15,20 @@ const MyProfile = () => {
   const navigate = useNavigate();
   const [memberId, setmemberId] = useState('');
   const [login, setlogin] = useState(true);
+  const[isloading, setisloading] = useState(true);
+  const [generation, setGeneration] = useState('');
 
 
   const accessToken = window.localStorage.getItem('accessToken');
+
+     useEffect(() => {
+            const timer = setTimeout(() => {
+                setisloading(false);
+            }, 500);
+
+            return () => clearTimeout(timer);
+        }, []);
+
 
 useEffect(() => {
   const fetchProfile = async () => {
@@ -82,6 +94,7 @@ useEffect(() => {
 
 
   return (
+  !isloading ?
     <div>
       <div className='MyProfilebar'>
         <div className='MyProfileline' />마이페이지<div className='MyProfileline' />
@@ -117,7 +130,7 @@ useEffect(() => {
             onClose={closeModal}
             onConfirm={handleConfirmDelete}/>
             )}
-    </div>
+    </div> : <div className='MyProfilebar'><Loading generation={generation}/> </div>
   );
 };
 
