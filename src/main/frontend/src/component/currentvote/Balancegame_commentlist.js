@@ -15,7 +15,7 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
         if (!balanceGameId) return;
 
         try {
-              const response = await axios.get('http://127.0.0.1:8080/balancegames/this-week?'
+              const response = await axios.get(process.env.REACT_APP_API_URL + 'balancegames/this-week?'
               + 'page=' + 1 + '&size=' + 100 + '&generation=' + generation, {
              headers: { Authorization: `Bearer ${accessToken}` }
              });
@@ -55,7 +55,7 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
       if (!isDeleted) return;
       try {
         const response = await axios.delete(
-          'http://127.0.0.1:8080/balancegames/' + balanceGameId + '/reply/' + commentId,
+          process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId + '/reply/' + commentId,
           {
             headers: {
               'Content-Type': 'application/json',
@@ -72,7 +72,7 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
     if (!isUpdate) return;
     try {
       const response = await  axios.patch(
-        'http://127.0.0.1:8080/balancegames/' + balanceGameId + '/reply/' + commentId,
+        process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId + '/reply/' + commentId,
         {
           body: value
         } ,

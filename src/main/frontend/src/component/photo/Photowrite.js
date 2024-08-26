@@ -46,7 +46,7 @@ const Photowrite = ({ generation, successhandler }) => {
 
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8080/photos',
+        process.env.REACT_APP_API_URL + 'photos',
         {
           title: photoTitle,
           body: photoBody,
@@ -82,7 +82,7 @@ const Photowrite = ({ generation, successhandler }) => {
 
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8080/images', formData,
+        process.env.REACT_APP_API_URL + 'images', formData,
         {
           headers: {
             'Content-Type': 'multipart/form-data',

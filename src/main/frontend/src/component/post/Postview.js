@@ -32,7 +32,7 @@ import PostUpdate from './PostUpdate';
 
     const fetchPostData = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8080/posts/' + postid, {
+        const response = await axios.get(process.env.REACT_APP_API_URL + 'posts/' + postid, {
           headers: { Authorization: `Bearer ${accessToken}` }
         });
         const data = response.data.data;
@@ -62,7 +62,7 @@ import PostUpdate from './PostUpdate';
   const handlePostReply = async () => {
     try {
         const response = await axios.post(
-        'http://127.0.0.1:8080/posts/' + postid + '/reply',
+       process.env.REACT_APP_API_URL + 'posts/' + postid + '/reply',
         {
             body:searchkeyword
         },
@@ -87,7 +87,7 @@ import PostUpdate from './PostUpdate';
   const handlePostLike = async () => {
     try {
         const response = await axios.post(
-        'http://127.0.0.1:8080/posts/' + postid + '/like',
+        process.env.REACT_APP_API_URL + 'posts/' + postid + '/like',
         {},
         {   
           headers: {
@@ -124,7 +124,7 @@ import PostUpdate from './PostUpdate';
 
   const fetchPostLike = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8080/posts/' + postid + '/like', {
+      const response = await axios.get(process.env.REACT_APP_API_URL + 'posts/' + postid + '/like', {
         headers: { Authorization: `Bearer ${accessToken}` }
       });
     
@@ -143,7 +143,7 @@ import PostUpdate from './PostUpdate';
 
   const handlePostDelete = async () => {
     try{
-      const response = await axios.delete('http://127.0.0.1:8080/posts/' + postid, {
+      const response = await axios.delete(process.env.REACT_APP_API_URL + 'posts/' + postid, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       navigate(`/main_${generation}/post`);

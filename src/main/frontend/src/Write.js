@@ -33,7 +33,7 @@ const Write = () => {
   const handlePostQna = async () => {
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8080/v11/board/qna',
+       process.env.REACT_APP_API_URL + 'v11/board/qna',
         {
           title: qnaTitle,
           body: qnaBody,

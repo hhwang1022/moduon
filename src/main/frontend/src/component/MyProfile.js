@@ -22,7 +22,7 @@ useEffect(() => {
   const fetchProfile = async () => {
     try {
       const response = await axios.get(
-        'http://127.0.0.1:8080/members/info',
+        process.env.REACT_APP_API_URL + 'members/info',
         {
           headers: {
             'Content-Type': 'application/json',
@@ -61,7 +61,7 @@ useEffect(() => {
    const handleConfirmDelete = async () => {
     try {
        const response = await axios.delete(
-       'http://127.0.0.1:8080/members?memberId=' + memberId,
+       process.env.REACT_APP_API_URL + 'members?memberId=' + memberId,
       {
 
          headers: {
