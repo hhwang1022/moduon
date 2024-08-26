@@ -122,8 +122,9 @@ public class PostController {
     }
 
     @DeleteMapping("/{post-id}")
-    public ResponseEntity deletePost(@PathVariable("post-id") @Positive long postId) {
-        postService.deletePost(postId);
+    public ResponseEntity deletePost(@AuthenticationPrincipal Object principal,
+                                     @PathVariable("post-id") @Positive long postId) {
+        postService.deletePost(postId, principal.toString());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
