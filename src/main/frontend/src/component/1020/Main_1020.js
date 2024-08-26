@@ -21,7 +21,7 @@ const Main_1020 = () => {
     const [rightindex, setrightindex] = useState(2);
 
     const [motionposition, setmotionposition] = useState(100);
-    const [motionmiddlescale, setmotionmiddlescale] = useState(1);
+    const [motionmiddlescale, setmotionmiddlescale] = useState(0.9);
     const [motionleftscale, setmotionleftscale] = useState(0.5);
     const [motionrightscale, setmotionrightscale] = useState(0.5);
 
@@ -38,7 +38,7 @@ const Main_1020 = () => {
         setTimeout(function () {
             setmotionposition(0);
             setmotionleftscale(0.5);
-            setmotionmiddlescale(1);
+            setmotionmiddlescale(0.9);
             setmotionrightscale(0.5);
         }, 100);
     }, [motionposition]);
