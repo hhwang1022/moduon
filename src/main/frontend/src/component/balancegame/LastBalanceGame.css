@@ -140,17 +140,19 @@
   }
 
   .comments-box {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 200px;
-    margin-bottom: 10px;
+     display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height: 200px; /* 필요에 따라 높이 조정 */
+        margin-bottom: 10px;
   }
   
   .comment {
     margin-left: 20px;
-    margin-right: 20px;
-    
+       margin-right: 20px;
+        margin-bottom: 10px;
+       height: 100%; /* 댓글 목록이 전체 박스를 채우도록 설정 */
+       overflow-y: auto; /* 스크롤 적용 */
   }
 
   .comment-form {

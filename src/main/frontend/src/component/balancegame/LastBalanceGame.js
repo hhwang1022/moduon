@@ -40,7 +40,7 @@ const LastBalanceGame = ({ generation }) => {
         setVoteItem2(voteData.voteItem2);
         setVotePoint1(voteData.votePoint1);
         setVotePoint2(voteData.votePoint2);
-        setCommentList(voteData.commentList || []);
+        setCommentList(voteData.balanceGameReplesiList || []);
       }
       setVotePageReset(false);
     } catch (error) {
@@ -118,10 +118,7 @@ const LastBalanceGame = ({ generation }) => {
             <p>No comments available.</p>
           )}
         </div>
-        <div className='comment-form'>
-          <textarea className='comment-box' value={searchkeyword} onChange={(e) => setSearchkeyword(e.target.value)}></textarea>
-          <button className='comment-submit' onClick={handlePostReply}>등록</button>
-        </div>
+
       </div>
     </div>
   );

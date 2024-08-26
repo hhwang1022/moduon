@@ -78,4 +78,13 @@ public class MemberController {
         memberService.deleteMember(principal.toString());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
+
+    @GetMapping("/info")
+    public ResponseEntity getMember(@AuthenticationPrincipal Object principal) {
+        Member member = memberService.findVerifiedMember(principal.toString());
+
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(mapper.memberToMemberInfoResponse(member)), HttpStatus.OK
+        );
+    }
 }
