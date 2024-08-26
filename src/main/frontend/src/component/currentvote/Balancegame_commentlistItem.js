@@ -3,7 +3,6 @@ import React, {useState, useEffect} from 'react';
 import memberInfo from "../../MemberInfo";
 
 const Balancegame_commentlistItem = ({comment, generation, onDeleted, username, onUpdate}) => {
-  console.log(comment);
   const [isButtonVisible, setIsButtonVisible] = useState(false);
   const [commentDeleted, setCommentDeleted] = useState(false);
   const [balanceGameCommentId, setBalanceGameCommentId] = useState(null);
@@ -21,6 +20,7 @@ const Balancegame_commentlistItem = ({comment, generation, onDeleted, username, 
 
   const info = memberInfo.getMemberInfo();
 
+
   useEffect(() => {
     if (info.name === comment.memberNickname) {
       setIsButtonVisible(true);
@@ -30,11 +30,17 @@ const Balancegame_commentlistItem = ({comment, generation, onDeleted, username, 
   })
 
   useEffect(() => {
+    if (!commentDeleted) return;
     onDeleted(commentDeleted,balanceGameCommentId)
-  }, [commentDeleted])
+    setCommentDeleted(false);
+    setBalanceGameCommentId(null);
+  }, [commentDeleted]);
 
   useEffect(() => {
+    if (!commentUpdated) return;
     onUpdate(commentUpdated, balanceGameCommentId)
+    setCommentUpdated(false);
+    setBalanceGameCommentId(null);
   }, [commentUpdated]);
 
     return (
