@@ -27,6 +27,7 @@ import Loading from '../Loading';
     const [voteItem, setVoteItem] = useState('');
     const [votePageReset, setVotePageReset] = useState(false);
     const[isloading, setisloading] = useState(true);
+    const [commentId, setCommentId] = useState(null);
 
     let accessToken = window.localStorage.getItem('accessToken');
 
@@ -150,6 +151,10 @@ import Loading from '../Loading';
       }
     };
 
+    const handleCommentId = (newCommentId) => {
+      setCommentId(newCommentId);
+    };
+
     return (
       !isloading ? 
       <div className='vote-mainbox'>
@@ -180,7 +185,7 @@ import Loading from '../Loading';
         </div>
         <div className='comments-box'>
           <div className='comment'><Balancegame_commentlist generation={generation} balanceGameId={balanceGameId} 
-          commentListUpdated={commentListUpdated} setCommentListUpdated={setCommentListUpdated}/></div>
+          commentListUpdated={commentListUpdated} setCommentListUpdated={setCommentListUpdated} value={searchkeyword}/></div>
           <div className='comment-form'>
             <textarea className={'comment-box commentfont' + generation} value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
             <button className={'balancereplywritebtn' + generation} onClick={handlePostReply}>등록</button>
