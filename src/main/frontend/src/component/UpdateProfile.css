@@ -76,7 +76,7 @@
 .UpdateProfilebar {
   display: flex;
   justify-content: center; /* 수평 중앙 정렬 */
-  margin: auto;
+  margin: 30px;
   font-family: 'NotoSansKR';
   padding-top: 20px;
   font-size: 20pt;
