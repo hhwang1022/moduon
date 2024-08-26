@@ -59,16 +59,13 @@
 
 #progress_1020::-webkit-progress-bar {
   width: 500px;
-  background: #ff00dd;
+  background: rgb(177, 177, 177);
   border-radius: 10px;
-  box-shadow: inset 3px 3px 10px #950092;
 }
 
 #progress_1020::-webkit-progress-value {
   border-radius: 10px;
-  background: #1d7497;
-  background: -webkit-linear-gradient(to right, #328bff, #1367af);
-  background: linear-gradient(to right, #2dc0ff, #1d6e97);
+  background: #e90c59;
 }
 
 .balancepointbar {
@@ -100,26 +97,26 @@
 
 #progress_8090::-webkit-progress-bar {
   width: 90%;
-  height: 20px;
+  height: 15px;
   ;
-  background: #ff00dd;
-  border-top-right-radius: 10px;
+  background: rgb(177, 177, 177);
+  /* border-top-right-radius: 10px;
   border-bottom-right-radius: 10px;
   border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-bottom-left-radius: 10px; */
+  border-radius: 10px;
 }
 
 #progress_8090::-webkit-progress-value {
-  background: #2dc0ff;
+  background: #e90c59;
   /* background: -webkit-linear-gradient(to right, #328bff, #1367af);
   background: linear-gradient(to right, #2dc0ff, #1d6e97); */
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  border-radius: 10px;
 }
 
 .balanceleftpoint8090 {
   margin-left: 12%;
-  margin-top: -28px;
+  margin-top: -30px;
   margin-right: auto;
   font-family: 'DungGeunMo';
   color: white;
@@ -127,7 +124,7 @@
 
 .balancerighttpoint8090 {
   margin-right: 12%;
-  margin-top: -28px;
+  margin-top: -30px;
   margin-left: auto;
   font-family: 'DungGeunMo';
   color: white;
@@ -142,26 +139,19 @@
 
 #progress_9000::-webkit-progress-bar {
   width: 90%;
-  height: 20px;
-  background: #ff00dd;
-  /* box-shadow: inset 3px 3px 10px #950092; */
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  height: 15px;
+  background: rgb(177, 177, 177);
+  border-radius: 10px;
 }
 
 #progress_9000::-webkit-progress-value {
-  background: #2dc0ff;
-  /* background: -webkit-linear-gradient(to right, #328bff, #1367af);
-  background: linear-gradient(to right, #2dc0ff, #1d6e97); */
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  background: #e90c59;
+  border-radius: 10px;
 }
 
 .balanceleftpoint9000 {
   margin-left: 12%;
-  margin-top: -28px;
+  margin-top: -30px;
   margin-right: auto;
   font-family: 'DungGeunMo';
   color: white;
@@ -169,7 +159,7 @@
 
 .balancerighttpoint9000 {
   margin-right: 12%;
-  margin-top: -28px;
+  margin-top: -30px;
   margin-left: auto;
   font-family: 'DungGeunMo';
   color: white;
@@ -184,26 +174,19 @@
 
 #progress_0010::-webkit-progress-bar {
   width: 90%;
-  height: 20px;
-  background: #ff00dd;
-  /* box-shadow: inset 3px 3px 10px #950092; */
-  border-top-right-radius: 10px;
-  border-bottom-right-radius: 10px;
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  height: 15px;
+  background: rgb(177, 177, 177);
+  border-radius: 10px;
 }
 
 #progress_0010::-webkit-progress-value {
-  background: #2dc0ff;
-  /* background: -webkit-linear-gradient(to right, #328bff, #1367af);
-  background: linear-gradient(to right, #2dc0ff, #1d6e97); */
-  border-top-left-radius: 10px;
-  border-bottom-left-radius: 10px;
+  background: #e90c59;
+  border-radius: 10px;
 }
 
 .balanceleftpoint0010 {
   margin-left: 12%;
-  margin-top: -28px;
+  margin-top: -30px;
   margin-right: auto;
   font-family: 'DungGeunMo';
   color: white;
@@ -211,7 +194,7 @@
 
 .balancerighttpoint0010 {
   margin-right: 12%;
-  margin-top: -28px;
+  margin-top: -30px;
   margin-left: auto;
   font-family: 'DungGeunMo';
   color: white;
