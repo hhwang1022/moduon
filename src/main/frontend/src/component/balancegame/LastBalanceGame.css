@@ -1,6 +1,7 @@
 .vote-mainbox {
     display: flex;
     flex-direction: column;
+
   }
 
   .sharebox {

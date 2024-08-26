@@ -1,5 +1,11 @@
-.loadingcentent{
+.loadingcentent {
+    overflow: auto;
     margin: auto;
+    display: flex;
+    justify-content: center;  /* 가로 중앙 정렬 */
+    align-items: center;      /* 세로 중앙 정렬 */
+    height: 100vh;            /* 전체 화면 높이를 차지 */
+    overflow: hidden;         /* 로딩 중 스크롤 방지 */
 }
 
 .grid {

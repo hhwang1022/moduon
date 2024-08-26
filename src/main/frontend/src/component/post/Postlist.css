@@ -12,6 +12,10 @@
 
 .postlist8090mainbox{
     margin-top: 50px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
 }
 
 .postlist8090title{
@@ -101,6 +105,10 @@
 /*--------------------------------------------------------*/
 
 .postlist9000mainbox{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
     
 }
 
@@ -177,6 +185,10 @@
 
 .postlist0010mainbox{
     margin-top: 20px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
 }
 
 .postlist0010title{
