@@ -105,8 +105,9 @@ public class PostService {
         return postsList;
     }
 
-    public void deletePost(long postId) {
+    public void deletePost(long postId, String email) {
         Post findPost = findVerifiedPost(postId);
+        memberService.findVerifiedMember(email);
         postRepository.delete(findPost);
     }
 
