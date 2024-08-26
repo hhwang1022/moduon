@@ -28,7 +28,6 @@ import {useNavigate, Navigate} from "react-router-dom";
     const [voteItem, setVoteItem] = useState('');
     const [votePageReset, setVotePageReset] = useState(false);
     const[isloading, setisloading] = useState(true);
-    const [commentId, setCommentId] = useState(null);
 
     let accessToken = window.localStorage.getItem('accessToken');
     const navigate = useNavigate();

@@ -48,7 +48,6 @@ const LastBalanceGame = ({ generation }) => {
       setisloading(false);
 
     } catch (error) {
-      console.error("Error fetching data: ", error);
       setisloading(false);
     }
   };

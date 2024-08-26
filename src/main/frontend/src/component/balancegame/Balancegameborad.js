@@ -12,10 +12,6 @@ const Balancegameboard = ({ generation }) => {
     const { balanceid } = useParams();
     const [balanceGameId, setbalanceGameId] = useState(balanceid ? parseInt(balanceid) : 1);
 
-    useEffect(() => {
-        console.log("balanceGameId: " + balanceGameId );
-    }, [balanceGameId]);
-
     const handleReadClick = (id) => {
         setbalanceGameId(id);
         navigate(`view/${id}`);

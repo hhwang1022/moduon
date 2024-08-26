@@ -18,7 +18,7 @@ const Balancegame_commentlistItem = ({comment, generation, onDeleted, username, 
     setBalanceGameCommentId(comment.balanceGameReplyId);
   };
 
-  const info = memberInfo.getMemberInfo();
+  let info = memberInfo.getMemberInfo();
 
 
   useEffect(() => {

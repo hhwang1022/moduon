@@ -81,10 +81,6 @@ const Main_8090 = () => {
                     onClick={() => {
                         navigate('/main_0010/balance/view');
                     }}>00-10</button>
-                {/* <button className='main8090categorybutton'
-                    onClick={() => {
-                        navigate('/main_1020');
-                    }}>10-20</button> */}
             </div>
 
             <div className='main8090topbanner'> 80년대로 여러분들을 초대합니다.

@@ -4,7 +4,7 @@ import './Balancegame_commentlist.css';
 import Balancegame_commentlistItem from './Balancegame_commentlistItem';
 import memberInfo from "../../MemberInfo";
 
-const info = memberInfo.getMemberInfo();
+let info = memberInfo.getMemberInfo();
 const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated, setCommentListUpdated, value}) => {
     const scrollableDivRef = useRef(null);
     const [commentList, setCommentList] = useState([]);
@@ -21,15 +21,9 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
              });
 
              const data = response.data.data[0];
-             //console.log(data);
-             // if(Array.isArray(data.balanceGameReplesiList)) {
                 setCommentList(data.balanceGameReplesiList);
                 console.log(commentList);
-             // } else {
-             //    setCommentList([]);
-             // }
          } catch (error) {
-             console.error("Error fetching Reply: ", error);
              setCommentList([]);
         }
      };
@@ -64,7 +58,7 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
           });
         setCommentListUpdated(true);
       } catch (error) {
-        console.error("comment delete: ", error);
+        alert("투표 삭제 실패");
       }
   }
 
@@ -82,7 +76,7 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
         });
       setCommentListUpdated(true);
     } catch (error) {
-      console.error("comment update: ", error);
+      alert("투표 댓글 업데이트 실패");
     }
   }
 
