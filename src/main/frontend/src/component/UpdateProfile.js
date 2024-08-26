@@ -47,7 +47,8 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
     if (password != passwordconfrim) {
              alert('비밀번호가 틀립니다!');
              return;
-     };
+     }
+     ;
 
     try {
       const response = await axios.patch(
@@ -71,6 +72,7 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
       if (response.status === 200) {
         successhandler(5);
         alert('회원정보가 변경되었습니다.');
+        navigate('/');
          }
 
       } catch (error) {
@@ -83,7 +85,7 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
   return (
     <div>
       <div className='UpdateProfilebar'>
-        <div className='UpdateProfileline' />회원정보 수정<div className='UpdateProfileline' />
+        <div className='UpdateProfileline' />회원 정보 수정<div className='UpdateProfileline' />
       </div>
 
       <div className='UpdateProfilemainbox'>

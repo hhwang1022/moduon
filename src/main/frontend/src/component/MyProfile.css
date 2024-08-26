@@ -8,15 +8,6 @@
     text-align: center;
 }
 
-.MyProfilemainbox_{
-  display: flex;
-  flex-direction: column;
-  margin: auto;
-  margin-top: 40px;
-  margin-bottom: 40px;
-  text-align: center;
-}
-
 .MyProfileDetails {
     width: 500px;                /* 너비를 MyProfileinput과 동일하게 설정 */
     height: 50px;                /* 높이를 MyProfileinput과 동일하게 설정 */
