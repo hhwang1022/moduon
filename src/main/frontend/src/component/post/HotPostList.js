@@ -32,7 +32,6 @@ const HotPostList = ({generation}) => {
         };
 
         const handlePostClick = (post) => {
-        //console.log(post);
         //todo - 게시글로 연결
            navigate('/main_' + post.category.replace('CATEGORY_', '')  + '/post/view/' + post.postId);
         }

@@ -10,7 +10,7 @@ import PostUpdate from './PostUpdate';
 import Loading from '../Loading';
 
 
-  const Postview = ({generation, postid}) => {
+  const Postview = ({generation}) => {
     const [title, setTitle] = useState('');
     const [body, setBody] = useState('');
     const [view, setView] = useState('');
@@ -27,6 +27,7 @@ import Loading from '../Loading';
     const [commentListUpdated, setCommentListUpdated] = useState(false);
     const [isLike, setIsLike] = useState(false);
     const [isloading, setisloading] = useState(true);
+    const { postId } = useParams();
 
     const navigate = useNavigate();
   
@@ -34,7 +35,7 @@ import Loading from '../Loading';
 
     const fetchPostData = async () => {
       try {
-        const response = await axios.get(process.env.REACT_APP_API_URL + 'posts/' + postid, {
+        const response = await axios.get(process.env.REACT_APP_API_URL + 'posts/' + postId, {
           headers: { Authorization: `Bearer ${accessToken}` }
         });
         const data = response.data.data;
@@ -66,7 +67,7 @@ import Loading from '../Loading';
   const handlePostReply = async () => {
     try {
         const response = await axios.post(
-       process.env.REACT_APP_API_URL + 'posts/' + postid + '/reply',
+       process.env.REACT_APP_API_URL + 'posts/' + postId + '/reply',
         {
             body:searchkeyword
         },
@@ -93,7 +94,7 @@ import Loading from '../Loading';
   const handlePostLike = async () => {
     try {
         const response = await axios.post(
-        process.env.REACT_APP_API_URL + 'posts/' + postid + '/like',
+        process.env.REACT_APP_API_URL + 'posts/' + postId + '/like',
         {},
         {   
           headers: {
@@ -132,7 +133,7 @@ import Loading from '../Loading';
 
   const fetchPostLike = async () => {
     try {
-      const response = await axios.get(process.env.REACT_APP_API_URL + 'posts/' + postid + '/like', {
+      const response = await axios.get(process.env.REACT_APP_API_URL + 'posts/' + postId + '/like', {
         headers: { Authorization: `Bearer ${accessToken}` }
       });
     
@@ -151,7 +152,7 @@ import Loading from '../Loading';
 
   const handlePostDelete = async () => {
     try{
-      const response = await axios.delete(process.env.REACT_APP_API_URL + 'posts/' + postid, {
+      const response = await axios.delete(process.env.REACT_APP_API_URL + 'posts/' + postId, {
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       navigate(`/main_${generation}/post`);
@@ -165,14 +166,14 @@ import Loading from '../Loading';
 
 
   const handlePostUpdate = () => {
-    navigate('../update/:' + postid);
+    navigate('../update/:' + postId);
   }
 
   const handleDeleteReply = async (isDeleted,replyId) => {
     if (!isDeleted) return;
     try {
       const response = await axios.delete(
-        process.env.REACT_APP_API_URL + 'posts/' + postid + '/reply/' + replyId,
+        process.env.REACT_APP_API_URL + 'posts/' + postId + '/reply/' + replyId,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -195,7 +196,7 @@ const handUpdateReply = async (isUpdate, replyId) => {
   if (!isUpdate) return;
   try {
     const response = await  axios.patch(
-      process.env.REACT_APP_API_URL + 'posts/' + postid + '/reply/' + replyId,
+      process.env.REACT_APP_API_URL + 'posts/' + postId + '/reply/' + replyId,
       {
         body: searchkeyword
       } ,
