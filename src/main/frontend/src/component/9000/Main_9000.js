@@ -159,10 +159,10 @@ const Main_9000 = () => {
             <div>
                 <div className='main9000windowcontentbox'>
                     <Bgmbar generation={"9000"} />
-                    {currentindex !== 3 ?
+                    {/* {currentindex !== 3 ?
                         <div className='main9000cstegorytab'><img src={categorys[currentindex].smallsrc} width={76} height={71} />{categorys[currentindex].title}</div>
                         : <></>
-                    }
+                    } */}
                     <div className='main9000contentbox'>
                     <Routes>
                             <Route path="post/*" element={<Postboard generation={"9000"} />} />
