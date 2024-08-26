@@ -3,6 +3,7 @@ import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Photolistitem from './Photolistitem';
 import Loading from '../Loading';
+import { useNavigate } from "react-router-dom";
 
 const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
 
@@ -15,10 +16,9 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
     const [isSearching, setIsSearching] = useState(false);
     const [isloading, setisloading] = useState(true);
 
-    /*1020일 땐 보이는 갯수 9개 아닐 땐 9개*/
-    let size = generation === "1020" ? 9 : 8;
 
     let accessToken = window.localStorage.getItem('accessToken');
+    const navigate = useNavigate();
 
     const getCategoryByGeneration = (generation) => {
             switch (generation) {
@@ -28,10 +28,8 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
                     return "CATEGORY_9000";
                 case "0010":
                     return "CATEGORY_0010";
-                case "1020":
-                    return "CATEGORY_1020";
                 default:
-                    return "CATEGORY_1020";  // 기본값 설정
+                    return "CATEGORY_00 v10";  // 기본값 설정
             }
         };
 
@@ -39,17 +37,17 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
             try {
                 const category = getCategoryByGeneration(generation);
                 const response = await axios.get(process.env.REACT_APP_API_URL + 'photos?'
-                + 'page=' + curruntpage + '&size=' + size + '&sort=' + sorttype + '&category=' + category, {
+                + 'page=' + curruntpage + '&size=' + 8 + '&sort=' + sorttype + '&category=' + category, {
                 headers: { Authorization: `Bearer ${accessToken}` }
                 });
                 if (response !== undefined) {
                     setPhotolist(response.data.data);
                     settotalpage(response.data.pageInfo.totalPages);
-            }
-            setisloading(false);
-
+                  }
+                      setisloading(false);
             } catch (error) {
-                console.error("Error fetching photos", error);
+                alert("게시글을 가져오는 중 오류가 발생했습니다. 다시 시도해주세요.");
+                navigate('/');
                 setisloading(false);
             }
         };
@@ -64,32 +62,27 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
                 if (response !== undefined) {
                     setPhotolist(response.data.data);
                     settotalpage(response.data.pageInfo.totalPages);
-            }
-            setisloading(false);
-
+                    }
+                    setisloading(false);
             } catch (error) {
-                console.error ("Error searching photos with keyword: ", error );
+                alert("r키워드로 게시물을 검색하는 중 오류가 발생했습니다. 다시 시도해주세요.")
                 setisloading(false);
-
-            } finally {
-                setIsSearching(false);
             }
         };
 
     useEffect(() => {
         if (isSearching) {
             searchPhotos();
-            setisloading(true);
-
         } else {
         fetchPhotos();
-        setisloading(true);
-        }
-    }, [sorttype, curruntpage, generation, searchkeyword]);
+       }
+    }, [sorttype, curruntpage, generation]);
 
     const handlesSearchClick = () => {
+        setIsSearching(true);
+        setcurruntpage(1);
         searchPhotos();
-    }
+    };
 
     const handlePageChange = (pageNumber) => {
         setcurruntpage(pageNumber);
