@@ -90,7 +90,7 @@ const Login = ({ successhandler, issmall, generation }) => {
         successhandler();
       }
         
-  
+   navigate('/');
 
     } catch (error) {
       alert(JSON.stringify(error.message));
