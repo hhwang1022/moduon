@@ -18,7 +18,7 @@ const ShareButton = ({ sharetype, url, title, description, imageUrl }) => {
     const handleShare = async () => {
         try {
             const response = await axios.post(
-                'http://127.0.0.1:8080/members//balancegames/' + 1 + '/share',
+                process.env.REACT_APP_API_URL + 'members//balancegames/' + 1 + '/share',
                 {
                     balanceGameId: 1,
                     shareType: { sharetype }

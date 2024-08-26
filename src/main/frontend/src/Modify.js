@@ -14,7 +14,7 @@ const Modify = ({qna}) => {
   const handleModifyQna = async () => {
     try {
       const response = await axios.patch(
-        'http://127.0.0.1:8080/v11/board/qna/' + qna.qnaId ,
+        process.env.REACT_APP_API_URL + 'v11/board/qna/' + qna.qnaId ,
         {
           title: qnaTitle,
           body: qnaBody,

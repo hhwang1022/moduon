@@ -20,7 +20,7 @@ const InstaCurrentvote_board = ({onclicklistbtn}) => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://127.0.0.1:8080/balancegames/this-week?'
+                const response = await axios.get(process.env.REACT_APP_API_URL + 'balancegames/this-week?'
                 + 'page=' + 1 + '&size=' + 10 + '&generation=' + 1020, {
                 headers: { Authorization: `Bearer ${accessToken}` }
                 });

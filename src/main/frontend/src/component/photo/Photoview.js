@@ -29,7 +29,7 @@ const Photoview = ({generation, photoid}) => {
 
   const fetchPhotoData = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8080/photos/' + photoid, {
+      const response = await axios.get(process.env.REACT_APP_API_URL + 'photos/' + photoid, {
         headers: { Authorization: `Bearer ${accessToken}` }
       });
       const data = response.data.data;
@@ -59,7 +59,7 @@ const Photoview = ({generation, photoid}) => {
 const handlePhotoReply = async () => {
   try {
       const response = await axios.post(
-      'http://127.0.0.1:8080/photos/' + photoid + '/reply',
+      process.env.REACT_APP_API_URL + 'photos/' + photoid + '/reply',
       {
           body:searchkeyword
       },
@@ -83,7 +83,7 @@ const handlePhotoReply = async () => {
 const handlePhotoLike = async () => {
   try {
       const response = await axios.post(
-      'http://127.0.0.1:8080/photos/' + photoid + '/like',
+      process.env.REACT_APP_API_URL + 'photos/' + photoid + '/like',
       {},
       {   
         headers: {
@@ -120,7 +120,7 @@ useEffect(() => {
 
 const fetchPhotoLike = async () => {
   try {
-    const response = await axios.get('http://127.0.0.1:8080/photos/' + photoid + '/like', {
+    const response = await axios.get(process.env.REACT_APP_API_URL + 'photos/' + photoid + '/like', {
       headers: { Authorization: `Bearer ${accessToken}` }
     });
   
@@ -138,7 +138,7 @@ const fetchPhotoLike = async () => {
 
 const handlePhotoDelete = async () => {
   try{
-    const response = await axios.delete('http://127.0.0.1:8080/photos/' + photoid, {
+    const response = await axios.delete(process.env.REACT_APP_API_URL + 'photos/' + photoid, {
       headers: { Authorization: `Bearer ${accessToken}` }
     })
     navigate(`/main_${generation}/photo`);

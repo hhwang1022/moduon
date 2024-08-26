@@ -15,7 +15,7 @@ const Login = ({ successhandler, issmall, generation }) => {
   const handleLogin = async () => {
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8080/members/login',
+        process.env.REACT_APP_API_URL + 'members/login',
         {
           username: id,
           password: password
@@ -52,7 +52,7 @@ const Login = ({ successhandler, issmall, generation }) => {
     console.log(accessToken);
     try {
       const response = await axios.get(
-        'http://127.0.0.1:8080/members/info',
+        process.env.REACT_APP_API_URL + 'members/info',
         {
           headers: {
             Authorization: `Bearer ${accessToken}`,
@@ -87,9 +87,11 @@ const Login = ({ successhandler, issmall, generation }) => {
   };
 
   return (<div className={'joinmainbox' + (issmall ? '_' : '')}>
-    <div className='UpdateProfilebar'>
+    {issmall ? <></> :
+      <div className='UpdateProfilebar'>
         <div className='UpdateProfileline' />로그인<div className='UpdateProfileline' />
-      </div>
+      </div>}
+
     <div>
       <input className={'joininput' + (issmall ? '_' + generation : '')} type="text" placeholder='Email' value={id} onChange={(e) => setId(e.target.value)} />
     </div>

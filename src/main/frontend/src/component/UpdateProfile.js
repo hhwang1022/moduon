@@ -19,7 +19,7 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
     const fetchProfile = async () => {
       try {
         const response = await axios.get(
-          'http://127.0.0.1:8080/members/info',
+         process.env.REACT_APP_API_URL + 'members/info',
           {
             headers: {
               'Content-Type': 'application/json',
@@ -52,7 +52,7 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
 
     try {
       const response = await axios.patch(
-        'http://127.0.0.1:8080/members/',
+        process.env.REACT_APP_API_URL + 'members/',
         {
         memberId: memberId,
          nickname: nickname,

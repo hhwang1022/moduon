@@ -36,7 +36,7 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
         const fetchPhotos = async () => {
             try {
                 const category = getCategoryByGeneration(generation);
-                const response = await axios.get('http://127.0.0.1:8080/photos?'
+                const response = await axios.get(process.env.REACT_APP_API_URL + 'photos?'
                 + 'page=' + curruntpage + '&size=' + size + '&sort=' + sorttype + '&category=' + category, {
                 headers: { Authorization: `Bearer ${accessToken}` }
                 });
@@ -52,7 +52,7 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
         const searchPhotos = async () => {
             try {
                 const category = getCategoryByGeneration(generation);
-                const response = await axios.get('http://127.0.0.1:8080/photos/search?'
+                const response = await axios.get(process.env.REACT_APP_API_URL + 'photos/search?'
                 + 'page=' + curruntpage + '&size=' + 10 + '&category=' + category + '&keyword=' + searchkeyword, {
                 headers: { Authorization: `Bearer ${accessToken}` }
                 });

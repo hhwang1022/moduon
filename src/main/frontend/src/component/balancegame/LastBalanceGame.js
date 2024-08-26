@@ -24,7 +24,7 @@ const LastBalanceGame = ({ generation }) => {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get('http://127.0.0.1:8080/balancegames/' + balanceGameId, {
+      const response = await axios.get(process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId, {
         headers: { Authorization: `Bearer ${accessToken}` }
       });
       const data = response.data.data;
@@ -55,7 +55,7 @@ const LastBalanceGame = ({ generation }) => {
   const handlePostReply = async () => {
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8080/balancegames/' + balanceGameId + '/reply',
+        process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId + '/reply',
         { body: searchkeyword },
         {
           'Content-Type': 'application/json',

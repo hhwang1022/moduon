@@ -34,7 +34,7 @@ const Postlist = ({ generation , onClickwirtebtn, onClickreadbtn}) => {
     const fetchPosts = async () => {
         try {
             const category = getCategoryByGeneration(generation);
-            const response = await axios.get('http://127.0.0.1:8080/posts?'
+            const response = await axios.get(process.env.REACT_APP_API_URL + 'posts?'
             + 'page=' + curruntpage + '&size='  + 10 + '&sort=' + sorttype + '&category='  +category, {
             headers: { Authorization: `Bearer ${accessToken}` }
             });
@@ -51,7 +51,7 @@ const Postlist = ({ generation , onClickwirtebtn, onClickreadbtn}) => {
             try {
                 const category = getCategoryByGeneration(generation);
                 console.log("Searching with keyword: ",  searchkeyword);
-                const response = await axios.get('http://127.0.0.1:8080/posts/search?'
+                const response = await axios.get(process.env.REACT_APP_API_URL + 'posts/search?'
                 +'page=' + curruntpage + '&size=' + 10 + '&category=' + category
                 + '&keyword=' + searchkeyword, {
                 headers: { Authorization: `Bearer ${accessToken}` }

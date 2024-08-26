@@ -14,7 +14,7 @@ const Balancegamelist = ({ generation, onClickwirtebtn, balanceGameId }) => {
 
     const fetchPosts = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:8080/balancegames/end?' +
+            const response = await axios.get(process.env.REACT_APP_API_URL + 'balancegames/end?' +
                 'page=' + curruntpage + '&size=' + 10 + '&generation=' + generation,
                 {
                     headers: { Authorization: `Bearer ${accessToken}` }

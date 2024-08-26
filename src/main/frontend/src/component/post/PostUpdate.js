@@ -42,7 +42,7 @@ const PostUpdate = ({ generation, postid }) => {
 
     try {
       const response = await axios.patch(
-        'http://127.0.0.1:8080/posts/ ' + postid,
+       process.env.REACT_APP_API_URL + 'posts/ ' + postid,
         {
           title: postTitle,
           body: postBody,
@@ -81,7 +81,7 @@ const PostUpdate = ({ generation, postid }) => {
 
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8080/images', formData,
+       process.env.REACT_APP_API_URL + 'images', formData,
         {
           headers: {
             'Content-Type': 'multipart/form-data',

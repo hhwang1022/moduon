@@ -34,7 +34,7 @@ const Join = ({ successhandler }) => {
 
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8080/members',
+        process.env.REACT_APP_API_URL + 'members',
         {
           email: id,
           password: password,
@@ -63,7 +63,7 @@ const Join = ({ successhandler }) => {
   const handleUniqueEmail = async() => {
     try {
       const response = await axios.get(
-        'http://127.0.0.1:8080/members/checkemail?email=' + id,
+        process.env.REACT_APP_API_URL + 'members/checkemail?email=' + id,
         {
           headers: {
             'Content-Type': 'application/json',
@@ -89,7 +89,7 @@ const Join = ({ successhandler }) => {
   const handleUniqueName = async() => {
     try {
       const response = await axios.get(
-        'http://127.0.0.1:8080/members/checkname?nickname=' + nickname,
+        process.env.REACT_APP_API_URL + 'members/checkname?nickname=' + nickname,
         {
           headers: {
             'Content-Type': 'application/json',

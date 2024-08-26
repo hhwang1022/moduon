@@ -48,7 +48,7 @@ const Main_1020 = () => {
             try {
 
                 const response = await axios.get(
-                    'http://127.0.0.1:8080/balancegames?' +
+                    process.env.REACT_APP_API_URL + 'balancegames?' +
                     'page=' + 1 + '&size=' + 10, {
                     headers: { Authorization: `Bearer ${accessToken}` }
                 });

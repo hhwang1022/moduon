@@ -56,7 +56,7 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
     };
 
     try {
-      const response = await axios.post('http://127.0.0.1:8080/balancegames', voteData, {
+      const response = await axios.post(process.env.REACT_APP_API_URL + 'balancegames', voteData, {
         headers: {
           'Content-Type': 'application/json',
           Authorization: `Bearer ${accessToken}`,
@@ -80,7 +80,7 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
 
     try {
       const response = await axios.post(
-        'http://127.0.0.1:8080/images', formData,
+        process.env.REACT_APP_API_URL + 'images', formData,
         {
           headers: {
             'Content-Type': 'multipart/form-data',

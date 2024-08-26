@@ -34,7 +34,7 @@ import Loading from '../Loading';
     useEffect(() => {
       const fetchData = async () => {
         try {
-          const response = await axios.get('http://127.0.0.1:8080/balancegames/this-week?'
+          const response = await axios.get(process.env.REACT_APP_API_URL + 'balancegames/this-week?'
             + 'page=' + 1 + '&size=' + 10 + '&generation=' + generation, {
             headers: {Authorization: `Bearer ${accessToken}`}
           });
@@ -67,7 +67,7 @@ import Loading from '../Loading';
     const handlePostReply = async () => {
       try {
         const response = await axios.post(
-          'http://127.0.0.1:8080/balancegames/' + balanceGameId + '/reply',
+         process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId + '/reply',
           {
             body: searchkeyword,
           },
@@ -91,7 +91,7 @@ import Loading from '../Loading';
     const handlePostShare = async (sharetype) => {
       try {
         const response = await axios.post(
-          'http://127.0.0.1:8080/balancegames/' + balanceGameId + '/share',
+          process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId + '/share',
           {
             "sharetype": sharetype,
           },
@@ -133,7 +133,7 @@ import Loading from '../Loading';
     const handlePostVote = async (vote) => {
       try {
         const response = await axios.post(
-          'http://127.0.0.1:8080/balancegames/' + balanceGameId + '/vote',
+          process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId + '/vote',
           {
             voteItem: vote
           },
