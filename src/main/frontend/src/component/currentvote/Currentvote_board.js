@@ -29,6 +29,7 @@ const vsicon0010 = require('../../resource/vs_0010.gif');
     const [votePageReset, setVotePageReset] = useState(false);
     const[isloading, setisloading] = useState(true);
     const [commentId, setCommentId] = useState(null);
+    const [enddate, setenddate] = useState(Date.now);
 
     let accessToken = window.localStorage.getItem('accessToken');
 
@@ -41,6 +42,7 @@ const vsicon0010 = require('../../resource/vs_0010.gif');
           });
 
           const data = response.data.data;
+
           if (data && data.length > 0) {
             const voteData = data[0];
             setVoteTitle(voteData.title);
@@ -51,6 +53,7 @@ const vsicon0010 = require('../../resource/vs_0010.gif');
             setBalanceGameId(voteData.balanceGameId);
             setVotePoint1(voteData.votePoint1);
             setVotePoint2(voteData.votePoint2);
+            setenddate(voteData.endDate);
           }
           setVotePageReset(false);
 
@@ -179,14 +182,13 @@ const vsicon0010 = require('../../resource/vs_0010.gif');
             <button className={'vote-name' + generation} onClick={vote1}>{voteItem1}</button>
           </div>
           <img height={150} width={150} src={vsicon0010} className='vote-vs'/>
-          {/* <div className='vote-hline'></div> */}
           <div class="vote-item">
             <img className='vote-image' src={voteImage2}></img>
             <button className={'vote-name' + generation} onClick={vote2}>{voteItem2}</button>
           </div>
         </div>
         <BalanceBar vote1={votePoint1} vote2={votePoint2} generation={generation} />
-        <div className='vote-info-box'>사람살려....
+        <div className='vote-info-box'>{'투표 마감까지 ' + Math.floor((new Date(enddate) - new Date()) / (1000 * 3600)) + '일!!!'}
         </div>
         <div className='comments-box'>
           <div className='comment'><Balancegame_commentlist generation={generation} balanceGameId={balanceGameId} 
