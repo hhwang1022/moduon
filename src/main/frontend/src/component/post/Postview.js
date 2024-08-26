@@ -124,6 +124,12 @@ import Loading from '../Loading';
       }
   }, [postReplyList]);
 
+  useEffect(() => {
+      if(commentListUpdated) {
+          setCommentListUpdated(false);
+      }
+  }, [commentListUpdated])
+
   const fetchPostLike = async () => {
     try {
       const response = await axios.get(process.env.REACT_APP_API_URL + 'posts/' + postid + '/like', {

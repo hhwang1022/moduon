@@ -99,9 +99,9 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
       const updateState = (info) => {
           setnickname(info.name);
       };
-  
+
       memberInfo.subscribe(updateState);
-  
+
       return () => {
           memberInfo.unsubscribe(updateState);
       };

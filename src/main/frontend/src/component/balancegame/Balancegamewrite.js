@@ -36,10 +36,15 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const parseDateToList = (dateString) => {
+    const parseStartDateToList = (dateString) => {
       const [year, month, day] = dateString.split('-').map(Number);
       return [year, month, day, 0, 0];
     };
+
+    const parseEndDateToList = (dateString) => {
+      const [year, month, day] = dateString.split('-').map(Number);
+      return [year, month, day, 23, 59, 59, 99];
+    }
 
     console.log(image1);
     console.log(image2);
@@ -50,8 +55,8 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
       voteItem2: image2name,
       voteImage1: image1,
       voteImage2: image2,
-      createDateList: parseDateToList(startDate),
-      endDateList: parseDateToList(endDate),
+      createDateList: parseStartDateToList(startDate),
+      endDateList: parseEndDateToList(endDate),
       generation: selectedGeneration
     };
 
@@ -69,7 +74,6 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
         navigate('/');
     } catch (error) {
       alert(JSON.stringify(error.message));
-      console.log(error.response.data);
     }
 
   };
@@ -103,7 +107,6 @@ function Balancegamewrite({ onClickcanclebtn, successhandler }) {
   };
 
   return (
-    // <form className="vote-creation-form" onSubmit={handleSubmit}>
     <div>
       <div className='vote-creation-header'>
         <div className='vote-creation-category'>

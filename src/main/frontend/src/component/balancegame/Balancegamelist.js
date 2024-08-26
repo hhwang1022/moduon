@@ -20,12 +20,11 @@ const Balancegamelist = ({ generation, onClickwirtebtn, balanceGameId }) => {
                     headers: { Authorization: `Bearer ${accessToken}` }
                 });
             if (response !== undefined) {
-                console.log("Response Data:", response.data);
                 setPostlist(response.data.data);
                 setTotalpage(response.data.pageInfo.totalPages);
             }
         } catch (error) {
-            console.error("Error fetching posts: ", error);
+            alert("지난 투표 조회 에러");
         }
     };
 

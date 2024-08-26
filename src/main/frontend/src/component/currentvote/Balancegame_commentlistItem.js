@@ -7,7 +7,6 @@ const Balancegame_commentlistItem = ({comment, generation, onDeleted, username, 
   const [commentDeleted, setCommentDeleted] = useState(false);
   const [balanceGameCommentId, setBalanceGameCommentId] = useState(null);
   const [commentUpdated, setCommentUpdated] = useState(false);
-  const [postReplyId, setPostReplyId] = useState(false);
 
   const clickDeleteButton = () => {
       setCommentDeleted(true);
@@ -19,7 +18,7 @@ const Balancegame_commentlistItem = ({comment, generation, onDeleted, username, 
     setBalanceGameCommentId(comment.balanceGameReplyId);
   };
 
-  const info = memberInfo.getMemberInfo();
+  let info = memberInfo.getMemberInfo();
 
 
   useEffect(() => {
