@@ -20,7 +20,7 @@ const HotPostList = ({generation}) => {
 
         const fetchHotPosts = async () => {
             try {
-                const response = await axios.get(process.env.REACT_APP_API_URL + 'posts/popular?' + 'page=' + 1 + '&size=' + 10, {
+                const response = await axios.get(process.env.REACT_APP_API_URL + 'posts/popular?' + 'page=' + 1 + '&size=' + 6, {
                  headers: { Authorization: `Bearer ${accessToken}` }
                 });
                 if(response && response.data && response.data.data) {
