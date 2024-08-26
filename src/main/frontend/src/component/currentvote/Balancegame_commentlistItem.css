@@ -62,6 +62,7 @@
     font-size: 15px;
     cursor: text;
     font-family: 'Roboto';
+    color: #0080a7;
 }
 
 .balancegame-commentlist0010content {
@@ -137,3 +138,6 @@
     margin-left: auto;
     font-family: 'Roboto';
 }
+
+.pull {position:relative; margin: 50px; padding: 20px; width:200px; height:60px; color: #FFF; border-radius: 10px; background-color: #000;}
+.pull:after {content:""; position: absolute; top: 21px; right: -30px; border-left: 30px solid #000; border-top: 10px solid transparent; border-bottom: 10px solid transparent;}
