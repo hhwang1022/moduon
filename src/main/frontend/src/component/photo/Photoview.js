@@ -183,6 +183,9 @@ const handlePhotoUpdate = () => {
 
   const handleUpdatePhotoReply = async (isUpdate, commentId) => {
     if (!isUpdate) return;
+    if (searchkeyword === '') {
+      alert("수정 내용을 입력해주세요")
+    }
     try {
       const response = await  axios.patch(
         process.env.REACT_APP_API_URL + 'photos/' + photoid + '/reply/' + commentId,
