@@ -94,6 +94,8 @@ const Login = ({ successhandler, issmall, generation }) => {
         login: true,
       });
 
+      console.log(memberInfo.getMemberInfo);
+
       if (!issmall) {
         successhandler(4);
       }
@@ -103,7 +105,14 @@ const Login = ({ successhandler, issmall, generation }) => {
       }
 
     } catch (error) {
-      alert(JSON.stringify(error.message));
+      if (accessToken !== null && accessToken !== undefined && accessToken !== '') {
+        alert("서비스 미사용으로 자동 로그아웃 되었습니다.");
+        localStorage.removeItem('accessToken');
+        localStorage.removeItem('refreshToken');
+      }
+      else{
+        alert(JSON.stringify(error.message));
+      }
     }
   };
 

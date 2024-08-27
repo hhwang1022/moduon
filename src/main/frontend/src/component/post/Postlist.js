@@ -117,13 +117,13 @@ const Postlist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
             })}</div> :
             <table className={'postlist' + generation + 'margin'}>
                 <thead>
-                    <tr className={'postlist' + generation + 'title'}>
+                    <tr className={'postlist' + generation}>
                         <td width="50"></td>
-                        <td className={'postlist' + generation + 'text'}>제목</td>
-                        <td className={'postlist' + generation + 'text'}>닉네임</td>
-                        <td className={'postlist' + generation + 'text'} width="50">작성일</td>
-                        <td className={'postlist' + generation + 'text'} width="50">조회수</td>
-                        <td className={'postlist' + generation + 'text'} width="50">추천수</td>
+                        <td className={'postlist' + generation + 'title'}>제목</td>
+                        <td className={'postlist' + generation + 'ninkname'}>닉네임</td>
+                        <td className={'postlist' + generation + 'createdat'} width="100">작성일</td>
+                        <td className={'postlist' + generation + 'views'} width="100">조회수</td>
+                        <td className={'postlist' + generation + 'likes'} width="100">추천수</td>
                     </tr>
                 </thead>
                 <tbody>
