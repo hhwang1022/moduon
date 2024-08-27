@@ -16,6 +16,7 @@ public interface PhotoMapper {
     @Mapping(source = "memberEmail", target = "member.email")
     Photo photoPatchDtoToPhoto(PhotoDto.Patch requestBody);
 
+    @Mapping(source = "member.nickname", target = "nickname")
     @Mapping(source = "member.memberId", target = "memberId")
     @Mapping(target = "photoReplyList", qualifiedByName = "photoReplyToPhotoReplyResponse")
     PhotoDto.Response photoToPhotoResponseDto(Photo photo);
