@@ -29,6 +29,7 @@ import memberInfo from "../../MemberInfo";
     const [isloading, setisloading] = useState(true);
     const { postId } = useParams();
     const [isLoggedIn, setIsLoggedIn] = useState(memberInfo.getMemberInfo().login);
+    const [currentUserNickname, setCurrentUserNickname] = useState('');
 
     const navigate = useNavigate();
   
@@ -208,6 +209,7 @@ useEffect(() => {
     useEffect(() => {
       const handleInfoUpdate = (updatedInfo) => {
         setIsLoggedIn(updatedInfo.login);
+        setCurrentUserNickname(memberInfo._name);
 
         if (!updatedInfo.login) {
           setTimeout(() => {
@@ -226,11 +228,23 @@ useEffect(() => {
       };
     }, []);
 
+    const renderAdminButton = () => {
+        if(memberInfo._name === nickname) {
+            return (
+                <>
+                  <button className='post-update' onClick={handlePostUpdate}>수정</button>
+                  <button className='post-delete' onClick={handlePostDelete}>삭제</button>
+                </>
+            );
+        }
+        return null;
+    };
 
   return (
   !isloading ?
     <div className={'post-view-container' + generation}>
       <div className={'post-view-header' + generation}>
+      {renderAdminButton()}
       <button 
         className='post-like' 
         onClick={handlePostLike}
@@ -238,8 +252,6 @@ useEffect(() => {
       >
         {isLike ? '추천취소' : '추천하기'}
       </button>
-        <button className='post-update' onClick={handlePostUpdate}>수정</button>
-        <button className='post-delete' onClick={handlePostDelete}>삭제</button>
       </div>
       <div className='post-info-box'>
         <div className={'post-title' + generation}>{title}</div>

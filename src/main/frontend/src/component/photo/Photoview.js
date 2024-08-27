@@ -25,6 +25,7 @@ const Photoview = ({generation, photoid}) => {
   const [isLike, setIsLike] = useState(false);
   const [isloading, setisloading] = useState(true);
   const [isLoggedIn, setIsLoggedIn] = useState(memberInfo.getMemberInfo().login);
+  const [currentUserNickname, setCurrentUserNickname] = useState('');
 
   const navigate = useNavigate();
 
@@ -68,7 +69,7 @@ const handlePhotoReply = async () => {
       {
           body:searchkeyword
       },
-      {   
+      {
 
           'Content-Type': 'application/json',
           headers:{
@@ -89,7 +90,7 @@ const handlePhotoLike = async () => {
       const response = await axios.post(
       process.env.REACT_APP_API_URL + 'photos/' + photoid + '/like',
       {},
-      {   
+      {
         headers: {
           'Content-Type': 'application/json',
            Authorization: `Bearer ${accessToken}`,
@@ -127,7 +128,7 @@ const fetchPhotoLike = async () => {
     const response = await axios.get(process.env.REACT_APP_API_URL + 'photos/' + photoid + '/like', {
       headers: { Authorization: `Bearer ${accessToken}` }
     });
-  
+
     if(response.data.data.isLike){
       setIsLike(true);
     }
@@ -206,6 +207,8 @@ const handlePhotoUpdate = () => {
   useEffect(() => {
     const handleInfoUpdate = (updatedInfo) => {
       setIsLoggedIn(updatedInfo.login);
+      console.log(memberInfo);
+      setCurrentUserNickname(memberInfo._name);
 
       if (!updatedInfo.login) {
         setTimeout(() => {
@@ -224,20 +227,31 @@ const handlePhotoUpdate = () => {
     };
   }, []);
 
+    const renderAdminButton = () => {
+        if(memberInfo._name === nickname) {
+            return (
+                <>
+                  <button className='photo-update' onClick={handlePhotoUpdate}>수정</button>
+                  <button className='photo-delete' onClick={handlePhotoDelete}>삭제</button>
+                </>
+            );
+        }
+        return null;
+    };
+
 
 return (
 !isloading ?
   <div className={'photo-view-container' + generation}>
     <div className={'photo-view-header' + generation}>
-    <button 
-      className='photo-like' 
+    {renderAdminButton()}
+    <button
+      className='photo-like'
       onClick={handlePhotoLike}
       style={{ color: isLike ? 'red' : 'blue' }}
   >
       {isLike ? '추천취소' : '추천하기'}
     </button>
-      <button className='photo-update' onClick={handlePhotoUpdate}>수정</button>
-      <button className='photo-delete' onClick={handlePhotoDelete}>삭제</button>
     </div>
     <div className='photo-info-box'>
       <div className={'photo-title' + generation}>{title}</div>
