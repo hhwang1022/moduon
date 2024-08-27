@@ -32,7 +32,16 @@ const Mypage = ({ generation }) => {
     const updateInfo = () => {
         memberInfo.updateMemberInfo({ 
             //여기에 바뀌어야하는 값을 넣는다//회원정보 수정, 공유할 때 등,...
-            login: false });
+            name: "홍길동",
+            email: "hgd@gmail.com",
+            memberid: 1,
+            balancegameticket: 1,
+            generation: "1020",
+            admin: false,
+            login: false
+        });
+        window.location.reload();
+        
         setlogin(false);
         localStorage.setItem('accessToken', "");
         localStorage.setItem('refresh', "");

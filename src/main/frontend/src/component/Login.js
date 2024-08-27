@@ -19,7 +19,7 @@ const Login = ({ successhandler, issmall, generation }) => {
 
   useEffect(() => {
     accessToken = localStorage.getItem('accessToken');
-    if (accessToken) {
+    if (accessToken !== null && accessToken !== undefined && accessToken !== '') {
       handleInfo();
     }
   }, []);
@@ -61,6 +61,9 @@ const Login = ({ successhandler, issmall, generation }) => {
 
         if (location.pathname === '/main_1020/login') {
           navigate('/');
+        }
+        else{
+          window.location.reload();
         }
       }
 
