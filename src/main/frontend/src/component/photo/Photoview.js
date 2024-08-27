@@ -162,7 +162,13 @@ return (
 !isloading ?
   <div className={'photo-view-container' + generation}>
     <div className={'photo-view-header' + generation}>
-    <button className='photo-like' onClick={handlePhotoLike}>{isLike ? '추천취소' : '추천하기'}</button>
+    <button 
+      className='photo-like' 
+      onClick={handlePhotoLike}
+      style={{ color: isLike ? 'red' : 'blue' }}
+  >
+      {isLike ? '추천취소' : '추천하기'}
+    </button>
       <button className='photo-update' onClick={handlePhotoUpdate}>수정</button>
       <button className='photo-delete' onClick={handlePhotoDelete}>삭제</button>
     </div>

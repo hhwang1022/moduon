@@ -25,23 +25,35 @@
   .post-view-header8090 button {
     margin-right: 10px;
     margin-top: 10px;
-    background-color: rgb(160, 160, 160);
-    color: black;
-    width: 50px;
-    height: 50px;
-    cursor: pointer;
-    border: 1px solid white;
-  }
-  
-  .post-view-header9000 button, .post-view-header0010 button {
-    margin-right: 10px;
-    margin-top: 10px;
-    background-color: rgb(160, 160, 160);
-    color: black;
+    background-color: #008080;
+    color: white;
     width: 50px;
     height: 50px;
     cursor: pointer;
     border: 1px solid black;
+  }
+  
+  .post-view-header9000 button {
+    margin-right: 10px;
+    margin-top: 10px;
+    background-color: white;
+    color: black;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border: 2px solid #000000;
+  }
+
+  .post-view-header0010 button {
+    margin-right: 10px;
+    margin-top: 10px;
+    background-color: white;
+    color: black;
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+    border: 1px solid #444444;
+    background-image: linear-gradient(#fff, #b8b8b8);
   }
    
   .post-like {

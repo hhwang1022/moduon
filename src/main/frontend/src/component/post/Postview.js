@@ -214,26 +214,32 @@ const handUpdateReply = async (isUpdate, replyId) => {
   !isloading ?
     <div className={'post-view-container' + generation}>
       <div className={'post-view-header' + generation}>
-      <button className='post-like' onClick={handlePostLike}>{isLike ? '추천취소' : '추천하기'}</button>
+      <button 
+        className='post-like' 
+        onClick={handlePostLike}
+        style={{ color: isLike ? 'red' : 'blue' }}
+      >
+        {isLike ? '추천취소' : '추천하기'}
+      </button>
         <button className='post-update' onClick={handlePostUpdate}>수정</button>
         <button className='post-delete' onClick={handlePostDelete}>삭제</button>
       </div>
       <div className='post-info-box'>
-        <div className='post-title'>{title}</div>
+        <div className={'post-title' + generation}>{title}</div>
         <div className={'post-info' + generation}>
-          <div className='post-nickname-box'>
+          <div className={'post-nickname-box' + generation}>
             <div className='post-nickname-word'>닉네임: </div>
             <div className='post-nickname'>{nickname}</div>
           </div>
-          <div className='post-created-at-box'>
+          <div className={'post-created-at-box' + generation}>
             <div className='post-created-at-word'>작성일: </div>
             <div className='post-created-at'>{createdAt}</div>
           </div>
-          <div className='post-views-box'>
+          <div className={'post-views-box' + generation}>
             <div className='post-views-word'>조회수 : </div>
             <div className='post-views'>{view}</div>
           </div>
-          <div className='post-likes-box'>
+          <div className={'post-likes-box' + generation}>
             <div className='post-likes-word'>추천수 : </div>
             <div className='post-likes'>{likeCount}</div>
           </div>
@@ -254,7 +260,7 @@ const handUpdateReply = async (isUpdate, replyId) => {
             onPostReplyDeleted={handleDeleteReply} username={nickname} onPostReplyUpdate={handUpdateReply}></Balancegame_commentlistItem>
         ))}</div>
         <div className='post-comment-form'>
-          <textarea className='post-comment-box'  value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
+          <textarea className={'post-comment-box' + generation}  value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
           <button className='post-comment-submit' onClick={handlePostReply}>등록</button>
         </div>
       </div>

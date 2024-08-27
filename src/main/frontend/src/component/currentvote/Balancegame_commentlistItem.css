@@ -93,10 +93,15 @@
 
 .balancegame-commentlist-delete-button8090 {
     font-family: 'DOSIyagiMedium';
+    border: 1px solid black;
+    background-color: #008080;
 }
 
 .balancegame-commentlist-update-button8090 {
     font-family: 'DOSIyagiMedium';
+    margin-right: 5px;
+    border: 1px solid black;
+    background-color: #008080;
 }
 
 .balancegame-commentlist-button8090 {
@@ -109,10 +114,13 @@
 
 .balancegame-commentlist-delete-button9000 {
     font-family: 'DOSIyagiMedium';
+    border: 1px solid black;
 }
 
 .balancegame-commentlist-update-button9000 {
     font-family: 'DOSIyagiMedium';
+    margin-right: 5px;
+    border: 1px solid black;
 }
 
 .balancegame-commentlist-button9000 {
@@ -125,10 +133,17 @@
 
 .balancegame-commentlist-delete-button0010 {
     font-family: 'Roboto';
+    border: 1px solid #444444;
+    background-image: linear-gradient(#fff, #b8b8b8);
+    border-radius: 3px;
 }
 
 .balancegame-commentlist-update-button0010 {
     font-family: 'Roboto';
+    margin-right: 5px;
+    border: 1px solid #444444;
+    background-image: linear-gradient(#fff, #b8b8b8);
+    border-radius: 3px;
 }
 
 .balancegame-commentlist-button0010 {
