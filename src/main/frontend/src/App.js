@@ -18,21 +18,22 @@ const App = () => {
   const [islogin, setislogin] = useState(false);
   //const navigate = useNavigate();
 
-  useEffect(() => {
-    const urlParams = new URLSearchParams(window.location.search);
-    const accessToken = urlParams.get('access_token');
-    const refreshToken = urlParams.get('refresh_token');
+  // useEffect(() => {
+  //   const urlParams = new URLSearchParams(window.location.search);
+  //   const accessToken = urlParams.get('access_token');
+  //   const refreshToken = urlParams.get('refresh_token');
 
-    localStorage.setItem('accessToken', accessToken);
-    localStorage.setItem('refreshToken', refreshToken);
 
-    setAccessToken(accessToken);
-    setRefreshToken(refreshToken);
+  //   localStorage.setItem('accessToken', accessToken);
+  //   localStorage.setItem('refreshToken', refreshToken);
+  //   setAccessToken(accessToken);
+  //   setRefreshToken(refreshToken);
 
-    document.cookie = `refreshtoken=${refreshToken}`;
 
-    //메인 페이지
-  }, []);
+  //   document.cookie = `refreshtoken=${refreshToken}`;
+
+  //   //메인 페이지
+  // }, []);
 
   const Router = () => {
     return (

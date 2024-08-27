@@ -17,6 +17,14 @@ const Login = ({ successhandler, issmall, generation }) => {
   const navigate = useNavigate();
   const location = useLocation(); // 현재 경로를 가져옴
 
+  useEffect(() => {
+    accessToken = localStorage.getItem('accessToken');
+    if (accessToken) {
+      handleInfo();
+    }
+  }, []);
+
+
    useEffect(() => {
           const timer = setTimeout(() => {
               setisloading(false);
@@ -47,12 +55,13 @@ const Login = ({ successhandler, issmall, generation }) => {
       if (response.headers['authorization'] !== undefined) {
         accessToken = response.headers['authorization'].replace('Bearer ', '');
         refreshToken = response.headers['refresh'];
-        localStorage.removeItem('accessToken');
-        localStorage.removeItem('refreshToken');
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refresh', refreshToken);
-
         handleInfo();
+
+        if (location.pathname === '/main_1020/login') {
+          navigate('/');
+        }
       }
 
     } catch (error) {
@@ -78,6 +87,7 @@ const Login = ({ successhandler, issmall, generation }) => {
         balancegameticket: updateinfo.votingRights,
         generation: updateinfo.memberGeneration,
         admin: updateinfo.roles,
+        email :updateinfo.email,
         login: true,
       });
 

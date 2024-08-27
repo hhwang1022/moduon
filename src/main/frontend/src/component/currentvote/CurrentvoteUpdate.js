@@ -57,7 +57,6 @@ useEffect(() => {
       setIsLoading(false);
     } catch (error) {
       alert("데이터를 가져오는 중 오류가 발생했습니다.");
-      console.error(error);
       navigate('/');
     }
   };
@@ -89,7 +88,6 @@ useEffect(() => {
       navigate(`/main_${generation}/balance`);
     } catch (error) {
       alert("수정 중 오류가 발생했습니다.");
-      console.error(error);
     }
   };
 

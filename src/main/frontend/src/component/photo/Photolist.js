@@ -1,4 +1,5 @@
 import './Photolist.css';
+import '../post/Postlist.css';
 import axios from 'axios';
 import React, { useState, useEffect } from 'react';
 import Photolistitem from './Photolistitem';
@@ -96,7 +97,7 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
 
     return (
     !isloading ?
-    <div className={'photolist' + generation + 'mainbox'}>
+    <div className={'postlist' + generation + 'mainbox'}>
         <div className='right'>
             <select className={"postlistselect" + generation} onChange={(e) => {
                 setsorttype(e.target.value);

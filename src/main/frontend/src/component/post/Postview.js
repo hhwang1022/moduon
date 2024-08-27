@@ -268,7 +268,7 @@ useEffect(() => {
         <img src={image3}></img>
         <img src={image4}></img>
         <img src={image5}></img>
-        <div className='post-contents'>{body}</div>
+        <div className={'post-contents' + generation}>{body}</div>
       </div>
       <div className='post-comments-box'>
         <div id='scrollableDiv' ref={scrollableDivRef}  className='post-comment'>

@@ -27,7 +27,7 @@
 }
 
 .post-view-container8090 {
-  display: flex;
+
   flex-direction: column;
   color: white;
   margin: 20px;
@@ -37,7 +37,6 @@
 }
 
 .post-view-container9000, .post-view-container0010 {
-  display: flex;
   flex-direction: column;
   color: black;
   margin: 20px;
@@ -54,12 +53,12 @@
 .post-view-header8090 button {
   margin-right: 10px;
   margin-top: 10px;
-  background-color: rgb(160, 160, 160);
-  color: black;
+  background-color: #008080;
+  color: white;
   width: 50px;
   height: 50px;
   cursor: pointer;
-  border: 1px solid white;
+  border: 1px solid black;
   font-family: 'DOSIyagiMedium';
 }
 
@@ -78,13 +77,15 @@
 }
 
 .post-view-header0010 button {
-  font-family: 'DungGeunMo'
+  border: 1px solid #444444;
+    border-radius: 5px;
+    background-image: linear-gradient(#fff, #b8b8b8);
+  font-family: 'DungGeunMo';
 }
  
 .post-like {
   width: 100px!important;
   margin-right: 50px!important;
-  font-family: 'DOSIyagiMedium';
 }
 
 .post-title8090 {
@@ -122,7 +123,6 @@
   text-overflow: ellipsis;
   font-family: 'DungGeunMo'
 }
-
 
 .post-info8090 {
   display: flex;
@@ -232,12 +232,6 @@
   overflow: hidden;
 }
 
-.post-likes-box {
-  display: flex;
-  justify-content: flex-start;
-  align-items: center;
-}
-
 .post-likes-box8090, .post-likes-box9000, .post-likes-box0010 {
   display: flex;
   justify-content: flex-start;
@@ -278,6 +272,14 @@
 .post-contents-box img{
   width: 100%;
   margin-bottom: 10px;
+}
+
+.post-contents8090, .post-contents9000 {
+  font-family: 'DOSIyagiMedium';
+}
+
+.post-contents0010 {
+  font-family: 'DungGeunMo';
 }
 
 .post-comments-box {
@@ -370,4 +372,5 @@
   margin-left: 5px;
   margin-right: 20px;
   cursor: pointer;
+  font-family: 'DOSIyagiMedium';
 }
