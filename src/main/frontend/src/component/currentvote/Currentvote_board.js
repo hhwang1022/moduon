@@ -11,34 +11,78 @@ import Loading from '../Loading';
 import Polaroid from '../Polaroid';
 import { useNavigate } from "react-router-dom";
 const vsicon0010 = require('../../resource/vs_0010.png');
-const info = memberInfo.getMemberInfo();
-const Currentvote_board = ({ generation, onclicklistbtn }) => {
 
-  // const [generation, setGeneration] = useState('');
-  const [voteTitle, setVoteTitle] = useState('');
-  const [voteImage1, setVoteImage1] = useState('');
-  const [voteImage2, setVoteImage2] = useState('');
-  const [voteItem1, setVoteItem1] = useState('');
-  const [voteItem2, setVoteItem2] = useState('');
-  const [searchkeyword, setsearchkeyword] = useState('');
-  const [commentList, setCommentList] = useState([]);
-  const [balanceGameId, setBalanceGameId] = useState(null);
-  const [commentListUpdated, setCommentListUpdated] = useState(false);
-  const [votePoint1, setVotePoint1] = useState(0);
-  const [votePoint2, setVotePoint2] = useState(0);
-  const [voteItem, setVoteItem] = useState('');
-  const [votePageReset, setVotePageReset] = useState(false);
-  const [isloading, setisloading] = useState(true);
-  const [commentId, setCommentId] = useState(null);
-  const [enddate, setenddate] = useState(Date.now);
-  const [day, setday] = useState(0);
-  const [minutes, setminutes] = useState(0);
-  const [hours, sethours] = useState(0);
-  const [seconds, setseconds] = useState(0);
+  const info = memberInfo.getMemberInfo();
+  const Currentvote_board= ({generation, onclicklistbtn}) => {
 
-  let accessToken = window.localStorage.getItem('accessToken');
+    // const [generation, setGeneration] = useState('');
+    const [voteTitle, setVoteTitle] = useState('');
+    const [voteImage1, setVoteImage1] = useState('');
+    const [voteImage2, setVoteImage2] = useState('');
+    const [voteItem1, setVoteItem1] = useState('');
+    const [voteItem2, setVoteItem2] = useState('');
+    const [searchkeyword, setsearchkeyword] = useState('');
+    const [commentList, setCommentList] = useState([]);
+    const [balanceGameId, setBalanceGameId] = useState(null);
+    const [commentListUpdated, setCommentListUpdated] = useState(false);
+    const [votePoint1, setVotePoint1] = useState(0);
+    const [votePoint2, setVotePoint2] = useState(0);
+    const [voteItem, setVoteItem] = useState('');
+    const [votePageReset, setVotePageReset] = useState(false);
+    const[isloading, setisloading] = useState(true);
+    const [commentId, setCommentId] = useState(null);
+    const [enddate, setenddate] = useState(Date.now);
+    const [nickname, setnickname] = useState('');
+    const [info, setInfo] = useState(null);
 
-  const navigate = useNavigate();
+
+
+    let accessToken = window.localStorage.getItem('accessToken');
+    const navigate = useNavigate();
+
+useEffect(() => {
+    const fetchMemberInfo = async () => {
+       try {
+         const info = await memberInfo.getMemberInfo();
+         setnickname(info.name);
+         setInfo(info);
+     } catch (error) {
+            alert("회원 정보를 가져오는 중 오류가 발생했습니다. 다시 로그인을 시도해주세요.")
+        }
+    };
+
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(process.env.REACT_APP_API_URL + 'balancegames/this-week?'
+            + 'page=' + 1 + '&size=' + 10 + '&generation=' + generation, {
+            headers: {Authorization: `Bearer ${accessToken}`}
+          });
+
+          const data = response.data.data;
+
+          if (data && data.length > 0) {
+            const voteData = data[0];
+            setVoteTitle(voteData.title);
+            setVoteImage1(voteData.voteImage1);
+            setVoteImage2(voteData.voteImage2);
+            setVoteItem1(voteData.voteItem1);
+            setVoteItem2(voteData.voteItem2);
+            setBalanceGameId(voteData.balanceGameId);
+            setVotePoint1(voteData.votePoint1);
+            setVotePoint2(voteData.votePoint2);
+            setenddate(voteData.endDate);
+          }
+          setVotePageReset(false);
+          setisloading(false);
+        } catch (error) {
+        alert("투표 데이터를 가져오는 중 오류가 발생했습니다. 다시 시도해주세요.")
+          setisloading(false);
+        }
+      };
+
+      fetchMemberInfo();
+      fetchData();
+    }, [accessToken, generation, votePageReset]);
 
   let info = memberInfo.getMemberInfo();
 
@@ -135,10 +179,24 @@ const Currentvote_board = ({ generation, onclicklistbtn }) => {
           });
         updateTicketCount(response.data.data);
       } catch (error) {
-        alert("공유에 실패했습니다.")
+        alert("투표에 실패했습니다. 다시 시도해주세요.")
+
       }
     }
   };
+
+
+    const handleVoteUpdate = (balance) => {
+      // balance와 그 속성들이 정의되어 있는지 확인
+      if (balance && balance.category && balance.generation) {
+        if (generation === balance.category.replace('CATEGORY_', '')) {
+          navigate('/main_' + balance.generation.replace('CATEGORY_', '') + '/balance/update/' + balance.balanceGameId);
+          //window.location.reload();
+        } else {
+          navigate('/main_' + balance.generation.replace('CATEGORY_', '') + '/balance/view/' + balance.balanceGameId);
+        }
+      } else {
+         alert("올바르지 않은 투표 데이터입니다.");
 
   const updateTicketCount = (newTicketCount) => {
     // Update balancegameticket
@@ -172,48 +230,50 @@ const Currentvote_board = ({ generation, onclicklistbtn }) => {
         });
       updateTicketCount(response.data.data.votingRights);
     } catch (error) {
-      alert("투표에 실패했습니다.")
+      alert("투표에 실패했습니다. 다시 시도해주세요.")
     }
   };
 
-  //        const handleVoteUpdate = () => {
-  //          navigate('../update/' + balanceGameId);
-  //        }
-
-  const handleVoteUpdate = (balance) => {
-    // balance와 그 속성들이 정의되어 있는지 확인
-    if (balance && balance.category && balance.generation) {
-      if (generation === balance.category.replace('CATEGORY_', '')) {
-        navigate('/main_' + balance.generation.replace('CATEGORY_', '') + '/balance/update/' + balance.balanceGameId);
-        //window.location.reload();
-      } else {
-        navigate('/main_' + balance.generation.replace('CATEGORY_', '') + '/balance/view/' + balance.balanceGameId);
       }
     } else {
       console.error("Invalid balance object:", balance); // 디버깅 용도
     }
   };
 
-  const handleVoteDelete = async () => {
-    try {
-      const response = await axios.delete(process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId, {
-        headers: { Authorization: `Bearer ${accessToken}` }
-      })
-      navigate(`/main_${generation}/balance`);
-      alert("게시물 삭제 완료!");
-    }
-    catch (error) {
-      alert(JSON.stringify(error.message));
-    }
-  };
 
-  return (
-    !isloading ?
-      <div className='vote-mainbox'>
-        <div className='past-votes'>
+       const handleVoteDelete = async () => {
+          try{
+            const response = await axios.delete(process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId, {
+              headers: { Authorization: `Bearer ${accessToken}` }
+            })
+            navigate(`/main_${generation}/balance`);
+            alert("게시물이 성공적으로 삭제되었습니다.");
+          }
+          catch (error){
+            alert("게시물 삭제에 실패했습니다.");
+          }
+        };
+
+ const renderAdminButtons = () => {
+    if (nickname === '관리자') {
+      return (
+        <>
           <button className={'postpagewritebtn' + generation} onClick={() => handleVoteUpdate({ category: "CATEGORY_" + generation, generation: generation, balanceGameId: balanceGameId })}>수정</button>
           <button className={'postpagewritebtn' + generation} onClick={handleVoteDelete}>삭제</button>
-          <button className={'postpagewritebtn' + generation} onClick={onclicklistbtn}>지난 투표</button>
+        </>
+      );
+    }
+    return null;
+  };
+
+
+    return (
+      !isloading ? 
+      <div className='vote-mainbox'>
+        <div className='past-votes'>
+            {renderAdminButtons()}
+        <button className={'postpagewritebtn' + generation} onClick={onclicklistbtn}>지난 투표</button>
+
         </div>
         <div className={'vote-header voting-topic' + generation}>
           이번 주 투표 - {voteTitle}
