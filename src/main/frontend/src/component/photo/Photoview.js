@@ -244,7 +244,7 @@ return (
       <div className={'photo-info' + generation}>
         <div className={'photo-nickname-box' + generation}>
           <div className='photo-nickname-word'>닉네임: </div>
-          <div className='photo-nickname'>{nickname+ "111111"}</div>
+          <div className='photo-nickname'>{nickname}</div>
         </div>
         <div className={'photo-created-at-box' + generation}>
           <div className='photo-created-at-word'>작성일: </div>
