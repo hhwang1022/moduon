@@ -25,7 +25,7 @@ const Menubar_0010 = ({onClickHandler}) => {
 
   return (<span className='main0010menubar'>
     {menu.map((x, index) => {
-      return <button className={(index === currentindex ? 'main0010menubtnactive' : 'main0010menubtn')}
+      return <button key={index} className={(index === currentindex ? 'main0010menubtnactive' : 'main0010menubtn')}
         onClick={() => {
           setcurrentindex(index);
           onClickHandler(index);

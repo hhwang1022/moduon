@@ -5,18 +5,40 @@ import memberInfo from "../../MemberInfo";
 const Balancegame_commentlistItem = ({comment, generation, onDeleted, username, onUpdate, onPostReplyDeleted, onPostReplyUpdate, isLoggedIn, key}) => {
   const [isButtonVisible, setIsButtonVisible] = useState(false);
   const [commentDeleted, setCommentDeleted] = useState(false);
-  const [balanceGameCommentId, setBalanceGameCommentId] = useState(null);
+  const [commentId, setCommentId] = useState(null);
   const [commentUpdated, setCommentUpdated] = useState(false);
 
   let info = memberInfo.getMemberInfo();
   const clickDeleteButton = () => {
       setCommentDeleted(true);
-      setBalanceGameCommentId(comment.balanceGameReplyId);
+      if (comment.balanceGameReplyId !== undefined) {
+        setCommentId(comment.balanceGameReplyId);
+        return;
+      }
+      if (comment.postReplyId !== undefined) {
+        setCommentId(comment.postReplyId);
+        return;
+      }
+      if (comment.photoReplyId !== undefined) {
+        setCommentId(comment.photoReplyId);
+        return;
+      }
     };
 
   const clickUpdateButton = () => {
     setCommentUpdated(true);
-    setBalanceGameCommentId(comment.balanceGameReplyId);
+    if (comment.balanceGameReplyId !== undefined) {
+      setCommentId(comment.balanceGameReplyId);
+      return;
+    }
+    if (comment.postReplyId !== undefined) {
+      setCommentId(comment.postReplyId);
+      return;
+    }
+    if (comment.photoReplyId !== undefined) {
+      setCommentId(comment.photoReplyId);
+      return;
+    }
   };
 
   useEffect(() => {
@@ -29,16 +51,16 @@ const Balancegame_commentlistItem = ({comment, generation, onDeleted, username, 
 
   useEffect(() => {
     if (!commentDeleted) return;
-    onDeleted(commentDeleted,balanceGameCommentId)
+    onDeleted(commentDeleted,commentId)
     setCommentDeleted(false);
-    setBalanceGameCommentId(null);
+    setCommentId(null);
   }, [commentDeleted]);
 
   useEffect(() => {
     if (!commentUpdated) return;
-    onUpdate(commentUpdated, balanceGameCommentId)
+    onUpdate(commentUpdated, commentId)
     setCommentUpdated(false);
-    setBalanceGameCommentId(null);
+    setCommentId(null);
   }, [commentUpdated]);
 
     return (

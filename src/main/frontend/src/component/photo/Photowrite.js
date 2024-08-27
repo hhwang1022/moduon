@@ -23,7 +23,6 @@ const Photowrite = ({ generation, successhandler }) => {
       setFile(newfile);
 
       formData = new FormData();
-
       formData.append('multipartFile', e.target.files[0]);
 
       handlePhotoimg(uplodfile.length);
@@ -65,14 +64,14 @@ const Photowrite = ({ generation, successhandler }) => {
           },
         }
       );
-      alert('게시글 남기기 성공!');
-
         setFile([]);
         setimgurllist([]);
         navigate('/main_' + generation + '/photo');
     } catch (error) {
-      alert(JSON.stringify(error.message));
-      console.log(error.response.data);
+      if (photoTitle === undefined && photoBody === undefined && imgurllist[0] === undefined) {
+        alert("내용을 입력해주세요");
+        return;
+      }
     }
   };
 
@@ -95,7 +94,6 @@ const Photowrite = ({ generation, successhandler }) => {
         console.log(newimgurllist);
     } catch (error) {
       alert(JSON.stringify(error.message));
-      console.log(error.response.data);
     }
   };
 

@@ -46,8 +46,8 @@ const HotPostList = ({generation}) => {
         <div>
             <div className={'hotpostlist' + generation + 'title'}>인기글</div>
             {postlist.map((post, index) => {
-                return <div className={'hotpostlist' + generation + 'item'}>
-                <button onClick={() => handlePostClick(post)}>
+                return <div key={index} className={'hotpostlist' + generation + 'item'}>
+                <button key={index} onClick={() => handlePostClick(post)}>
                 {"[" + post.category.replace('CATEGORY_', '') +"] " + post.title}</button></div>
             })}
         </div>

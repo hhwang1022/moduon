@@ -115,8 +115,9 @@ public class PhotoController {
     }
 
     @DeleteMapping("/{photo-id}")
-    public ResponseEntity deletePhoto(@PathVariable("photo-id") @Positive long photoId) {
-        photoService.deletePhoto(photoId);
+    public ResponseEntity deletePhoto(@AuthenticationPrincipal Object principal,
+                                      @PathVariable("photo-id") @Positive long photoId) {
+        photoService.deletePhoto(photoId,principal.toString());
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }

@@ -101,9 +101,15 @@ public class PhotoService {
         return photosList;
     }
 
-    public void deletePhoto(long photoId) {
+    public void deletePhoto(long photoId, String email) {
         Photo findPhoto = findVerifiedPhoto(photoId);
-        photoRepository.delete(findPhoto);
+        memberService.findVerifiedMember(email);
+
+        if (findPhoto.getMember().getEmail().equals(email)) {
+            photoRepository.delete(findPhoto);
+        } else {
+            throw new BusinessLogicException(ExceptionCode.MEMBER_NOT_FOUND);
+        }
     }
 
     public Photo findVerifiedPhoto(long photoId) {

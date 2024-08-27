@@ -15,6 +15,7 @@ public interface PhotoReplyMapper {
     @Mapping(source = "memberEmail", target = "member.email")
     PhotoReply photoReplyPostDtoToPhotoReply(PhotoReplyDto.Post requestBody);
 
+    @Mapping(source = "memberEmail", target = "member.email")
     PhotoReply photoReplyPatchDtoToPhotoReply(PhotoReplyDto.Patch requestBody);
 
     @Mapping(source = "member.nickname", target = "memberNickname")

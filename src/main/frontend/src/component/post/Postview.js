@@ -8,7 +8,7 @@ import Postreply from './Postreply';
 import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistItem';
 import PostUpdate from './PostUpdate';
 import Loading from '../Loading';
-
+import memberInfo from "../../MemberInfo";
 
   const Postview = ({generation}) => {
     const [title, setTitle] = useState('');
@@ -28,10 +28,12 @@ import Loading from '../Loading';
     const [isLike, setIsLike] = useState(false);
     const [isloading, setisloading] = useState(true);
     const { postId } = useParams();
+    const [isLoggedIn, setIsLoggedIn] = useState(memberInfo.getMemberInfo().login);
 
     const navigate = useNavigate();
   
     let accessToken = window.localStorage.getItem('accessToken');
+    let info = memberInfo.getMemberInfo();
 
     const fetchPostData = async () => {
       try {
@@ -52,9 +54,9 @@ import Loading from '../Loading';
         setPostReplyList(data.postReplyList);
         setNickname(data.nickname);
         setisloading(false);
-  
+
       } catch (error) {
-        console.error("Error fetching data: ", error);
+        alert("데이터를 불러오는 중 오류가 발생했습니다.");
         setisloading(false);
       }
     };
@@ -71,25 +73,23 @@ import Loading from '../Loading';
         {
             body:searchkeyword
         },
-        {   
-
-            'Content-Type': 'application/json',
+        {'Content-Type': 'application/json',
             headers:{
             Authorization: `Bearer ${accessToken}`,
              },
-
         });
         setsearchkeyword('');
         setCommentListUpdated(true);
 
         } catch (error) {
-          console.error("Error posting reply:", error);
-            alert(JSON.stringify(error.message));
-            console.log(error.response.data);
-
+            if (info.name === "홍길동") {
+              alert("로그인 해주세요.");
+            } else {
+              alert("내용을 입력해주세요.")
+            }
+            setisloading(false);
     }
   };
-
 
   const handlePostLike = async () => {
     try {
@@ -106,8 +106,7 @@ import Loading from '../Loading';
         setIsLike(!isLike);
         setisloading(false);
         } catch (error) {
-            alert(JSON.stringify(error.message));
-            console.log(error.response.data);
+            alert("로그인 해주세요");
             setisloading(false);
     }
   };
@@ -145,10 +144,9 @@ import Loading from '../Loading';
       }
 
     } catch (error) {
-      alert(JSON.stringify(error.message));
+      alert("좋아요 가져오기 실패했습니다.");
     }
   };
-
 
   const handlePostDelete = async () => {
     try{
@@ -156,35 +154,15 @@ import Loading from '../Loading';
         headers: { Authorization: `Bearer ${accessToken}` }
       })
       navigate(`/main_${generation}/post`);
-      console.log(generation);
-      alert("게시물 삭제 완료!");
     }
     catch (error){
-      alert(JSON.stringify(error.message));
+      alert("게시물 삭제에 실패했습니다.");
     }
   };
-
 
   const handlePostUpdate = () => {
     navigate('../update/:' + postId);
   }
-
-  const handleDeleteReply = async (isDeleted,replyId) => {
-    if (!isDeleted) return;
-    try {
-      const response = await axios.delete(
-        process.env.REACT_APP_API_URL + 'posts/' + postId + '/reply/' + replyId,
-        {
-          headers: {
-            'Content-Type': 'application/json',
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-      setCommentListUpdated(true);
-    } catch (error) {
-      console.error("comment delete: ", error);
-    }
-}
 
 useEffect(() => {
   if(commentListUpdated) {
@@ -192,23 +170,62 @@ useEffect(() => {
   }
 }, [commentListUpdated])
 
-const handUpdateReply = async (isUpdate, replyId) => {
-  if (!isUpdate) return;
-  try {
-    const response = await  axios.patch(
-      process.env.REACT_APP_API_URL + 'posts/' + postId + '/reply/' + replyId,
-      {
-        body: searchkeyword
-      } ,
-      {   'Content-Type': 'application/json',
-        headers: { Authorization: `Bearer ${accessToken}`,
-        },
-      });
-    setCommentListUpdated(true);
-  } catch (error) {
-    console.error("comment update: ", error);
-  }
-}
+    const handleDeletePostReply = async (isDeleted,commentId) => {
+      if (!isDeleted) return;
+      try {
+        const response = await axios.delete(
+          process.env.REACT_APP_API_URL + 'posts/' + postId + '/reply/' + commentId,
+          {
+            headers: {
+              'Content-Type': 'application/json',
+              Authorization: `Bearer ${accessToken}`,
+            },
+          });
+        setCommentListUpdated(true);
+      } catch (error) {
+        alert("투표 삭제 실패");
+      }
+    }
+
+    const handUpdatePostReply = async (isUpdate, commentId) => {
+      if (!isUpdate) return;
+      try {
+        const response = await  axios.patch(
+          process.env.REACT_APP_API_URL + 'posts/' + postId + '/reply/' + commentId,
+          {
+            body: searchkeyword
+          } ,
+          {   'Content-Type': 'application/json',
+            headers: { Authorization: `Bearer ${accessToken}`,
+            },
+          });
+        setCommentListUpdated(true);
+      } catch (error) {
+        alert("투표 댓글 업데이트 실패");
+      }
+    }
+
+    useEffect(() => {
+      const handleInfoUpdate = (updatedInfo) => {
+        setIsLoggedIn(updatedInfo.login);
+
+        if (!updatedInfo.login) {
+          setTimeout(() => {
+            setPostReplyList([]);  // 로그아웃 시 댓글 리스트 초기화
+            setCommentListUpdated(true);  // 상태 업데이트 및 강제 리렌더링
+          }, 0);
+        } else {
+          setCommentListUpdated(true);
+        }
+      };
+
+      memberInfo.subscribe(handleInfoUpdate);
+
+      return () => {
+        memberInfo.unsubscribe(handleInfoUpdate);
+      };
+    }, []);
+
 
   return (
   !isloading ?
@@ -257,7 +274,7 @@ const handUpdateReply = async (isUpdate, replyId) => {
         <div id='scrollableDiv' ref={scrollableDivRef}  className='post-comment'>
           {postReplyList.map((x, index) => (
             <Balancegame_commentlistItem key={index} comment={x} generation={generation}
-            onPostReplyDeleted={handleDeleteReply} username={nickname} onPostReplyUpdate={handUpdateReply}></Balancegame_commentlistItem>
+                                         onDeleted={handleDeletePostReply} username={nickname} onUpdate={handUpdatePostReply} isLoggedIn={isLoggedIn}></Balancegame_commentlistItem>
         ))}</div>
         <div className='post-comment-form'>
           <textarea className={'post-comment-box' + generation}  value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>

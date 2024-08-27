@@ -104,7 +104,7 @@ const Main_8090 = () => {
                 <div className='main8090windowcontentbox'>
                     <div className='main8090windowcontentboxline'>
                         {categorys.map((x, index) => {
-                            return <button className={currentindex === index ? 'main8090selectmenubutton' : 'main8090menubutton'} onClick={() => handleMenuClick(index)}>{"\u00a0\u00a0\u00a0\u00a0" + x.title}</button>;
+                            return <button key={index} className={currentindex === index ? 'main8090selectmenubutton' : 'main8090menubutton'} onClick={() => handleMenuClick(index)}>{"\u00a0\u00a0\u00a0\u00a0" + x.title}</button>;
                         })}
                     </div>
                     <div className='main8090windowcontentinbox'>

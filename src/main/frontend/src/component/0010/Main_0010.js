@@ -60,10 +60,6 @@ const Main_0010 = () => {
               onClick={() => navigate('/main_0010/balance/view')}>
               0010
             </button>
-            {/* <button className='main1020categorybutton main0010category'
-            onClick={() => navigate('/main_1020')}>
-            1020
-          </button> */}
           </div>
           <div className='main0010dotbox'>
             <Menubar_0010 onClickHandler={handleMenuClick} />

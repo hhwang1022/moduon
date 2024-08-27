@@ -11,7 +11,6 @@ const Postboard = ({ generation }) => {
   const [currentpostid, setCurrentPostId] = useState(parseInt(postId) || 1);
 
   useEffect(() => {
-    console.log("currentpostid : " + currentpostid);
   }, [currentpostid]);
 
   const handleReadClick = (id) => {
