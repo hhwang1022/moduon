@@ -52,12 +52,13 @@
 .photo-view-header8090 button {
   margin-right: 10px;
   margin-top: 10px;
-  background-color: rgb(160, 160, 160);
-  color: black;
+  background-color: #008080;
+  color: white;
   width: 50px;
   height: 50px;
   cursor: pointer;
-  border: 1px solid white;
+  border: 1px solid black;
+  font-family: 'DOSIyagiMedium';
 }
 
 .photo-view-header9000 button, .photo-view-header0010 button {
@@ -69,12 +70,24 @@
   cursor: pointer;
   border: 1px solid black;
 }
+
+.photo-view-header9000 button {
+  font-family: 'DOSIyagiMedium';
+}
+
+.photo-view-header0010 button {
+  border: 1px solid #444444;
+    border-radius: 5px;
+    background-image: linear-gradient(#fff, #b8b8b8);
+  font-family: 'DungGeunMo';
+}
  
 .photo-like {
   width: 100px!important;
   margin-right: 50px!important;
 }
-.photo-title {
+
+.photo-title8090 {
   margin-top: 30px;
   cursor: text;
   font-size: 25px;
@@ -83,7 +96,33 @@
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+  font-family: 'DOSIyagiMedium';
 }
+
+.photo-title9000 {
+  margin-top: 30px;
+  cursor: text;
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'DOSIyagiMedium';
+}
+
+.photo-title0010 {
+  margin-top: 30px;
+  cursor: text;
+  font-size: 25px;
+  text-align: center;
+  font-weight: bold;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-family: 'DungGeunMo'
+}
+
 
 .photo-info8090 {
   display: flex;
@@ -111,13 +150,21 @@
   width: 100%;
 }
 
-.photo-nickname-box {
+.photo-nickname-box8090, .photo-nickname-box9000, .photo-nickname-box0010 {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
 
-.post-nickname-word {
+.photo-nickname-box8090 div, .photo-nickname-box9000 div {
+  font-family: 'DOSIyagiMedium';
+}
+
+.photo-nickname-box0010 div {
+  font-family: 'DungGeunMo';
+}
+
+.photo-nickname-word {
   margin-right: 10px;
   font-size: 20px;
   font-weight: bold;
@@ -130,11 +177,20 @@
   overflow: hidden;
 }
 
-.photo-created-at-box {
+.photo-created-at-box8090, .photo-created-at-box9000, .photo-created-at-box0010 {
   display: flex;
   justify-content: flex-start;
   align-items: center;
 }
+
+.photo-created-at-box8090 div, .photo-created-at-box9000 div {
+  font-family: 'DOSIyagiMedium';
+}
+
+.photo-created-at-box0010 div {
+  font-family: 'DungGeunMo';
+}
+
 
 .photo-created-at-word {
   margin-right: 10px;
@@ -149,10 +205,18 @@
   overflow: hidden;
 }
 
-.photo-views-box {
+.photo-views-box8090, .photo-views-box9000, .photo-views-box0010 {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.photo-views-box8090 div, .photo-views-box9000 div {
+  font-family: 'DOSIyagiMedium';
+}
+
+.photo-views-box0010 div {
+  font-family: 'DungGeunMo';
 }
 
 .photo-views-word {
@@ -168,10 +232,18 @@
   overflow: hidden;
 }
 
-.photo-likes-box {
+.photo-likes-box8090, .photo-likes-box9000, .photo-likes-box0010 {
   display: flex;
   justify-content: flex-start;
   align-items: center;
+}
+
+.photo-likes-box8090 div, .photo-likes-box9000 div {
+  font-family: 'DOSIyagiMedium';
+}
+
+.photo-likes-box0010 div {
+  font-family: 'DungGeunMo';
 }
 
 .photo-likes-word {
@@ -195,12 +267,19 @@
   word-wrap: break-word;
   word-break: break-all; 
   white-space: pre-wrap;
-  
 }
 
 .photo-contents-box img{
   width: 100%;
   margin-bottom: 10px;
+}
+
+.photo-contents8090, .photo-contents9000 {
+  font-family: 'DOSIyagiMedium';
+}
+
+.photo-contents0010 {
+  font-family: 'DungGeunMo';
 }
 
 .photo-comments-box {
@@ -221,7 +300,6 @@
   word-wrap: break-word;
   word-break: break-all; 
   white-space: pre-wrap;
-  
 }
 
 .photo-comment-form {
@@ -233,7 +311,7 @@
   margin-top: 20px;
 }
 
-.photo-comment-box {
+.photo-comment-box8090 {
   width: 90%;
   height: 100px;
   margin-left: 20px;
@@ -247,6 +325,41 @@
   vertical-align: top;
   border: 1px solid black;
   padding: 3px;
+  font-family: 'DOSIyagiMedium';
+}
+
+.photo-comment-box9000 {
+  width: 90%;
+  height: 100px;
+  margin-left: 20px;
+  box-sizing: border-box;
+  line-height: 1.5;
+  resize: none; 
+  overflow-wrap: break-word;
+  word-break: break-word;
+  padding-top: 0;  
+  text-align: left; 
+  vertical-align: top;
+  border: 1px solid black;
+  padding: 3px;
+  font-family: 'DOSIyagiMedium';
+}
+
+.photo-comment-box0010 {
+  width: 90%;
+  height: 100px;
+  margin-left: 20px;
+  box-sizing: border-box;
+  line-height: 1.5;
+  resize: none; 
+  overflow-wrap: break-word;
+  word-break: break-word;
+  padding-top: 0;  
+  text-align: left; 
+  vertical-align: top;
+  border: 1px solid black;
+  padding: 3px;
+  font-family: 'DungGeunMo';
 }
 
 .photo-comment-submit {
@@ -258,4 +371,5 @@
   margin-left: 5px;
   margin-right: 20px;
   cursor: pointer;
+  font-family: 'DOSIyagiMedium';
 }
