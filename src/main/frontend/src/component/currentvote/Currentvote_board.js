@@ -9,9 +9,8 @@ import FacebookButton from '../FacebookButton';
 import TwitterButton from '../TwitterButton';
 import Loading from '../Loading';
 import Polaroid from '../Polaroid';
-const vsicon0010 = require('../../resource/vs_0010.png');
 import { useNavigate } from "react-router-dom";
-
+const vsicon0010 = require('../../resource/vs_0010.png');
   const info = memberInfo.getMemberInfo();
   const Currentvote_board= ({generation, onclicklistbtn}) => {
 
