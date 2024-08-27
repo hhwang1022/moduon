@@ -23,7 +23,6 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
 
              const data = response.data.data[0];
                 setCommentList(data.balanceGameReplesiList);
-                console.log(commentList);
          } catch (error) {
              setCommentList([]);
         }
@@ -87,6 +86,10 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
 
   const handUpdateReply = async (isUpdate, commentId) => {
     if (!isUpdate) return;
+    if (value === '') {
+      alert("수정 내용을 입력해주세요");
+      return;
+    }
     try {
       const response = await  axios.patch(
         process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId + '/reply/' + commentId,
