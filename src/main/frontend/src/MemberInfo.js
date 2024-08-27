@@ -18,6 +18,8 @@ class MemberInfo {
     updateMemberInfo(newInfo) {
         Object.assign(this, newInfo);
         this.notifyListeners();
+
+        localStorage.setItem('memberInfo', JSON.stringify(this.getMemberInfo()));
     }
 
     getMemberInfo() {
