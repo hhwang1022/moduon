@@ -73,7 +73,11 @@ public class BalanceGameService {
 		BalanceGame findBalanceGame = findVerifiedBalanceGame(balanceGameId);
 
 		balanceGameReplyRepository.deleteByBalanceGameId(balanceGameId);
-		balanceGameVoteRepository.deleteById(balanceGameId);
+
+		if (balanceGameVoteRepository.existsById(balanceGameId)) {
+			balanceGameVoteRepository.deleteById(balanceGameId);
+		}
+
 		balanceGameRepository.delete(findBalanceGame);
 	}
 
