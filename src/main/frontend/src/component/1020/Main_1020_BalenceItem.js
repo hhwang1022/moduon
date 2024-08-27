@@ -1,11 +1,14 @@
 import './Main_1020_BalenceItem.css';
 
-const Main_1020_BalenceItem = ({ img, title }) => {
-
+const Main_1020_BalenceItem = ({ img, title, iswin }) => {
+  const winicon = require('../../resource/balancewinicon.png');
 
   return (
     <span className='item'>
       <img className='mainbalancegameitemimg' src={img} height={200} width={200}></img>
+      {iswin ? <div class="mainbalancegameitemimgsticker">
+            <img src={winicon} />
+        </div> : <></>}
       <a>{title}</a>
     </span>
   );
