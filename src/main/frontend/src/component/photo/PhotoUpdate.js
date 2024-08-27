@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import './PhotoUpdate.css';
+import Loading from '../Loading';
 
 const PhotoUpdate = ({ generation, photoid }) => {
   const [photoTitle, setphotoTitle] = useState('');
@@ -11,11 +12,39 @@ const PhotoUpdate = ({ generation, photoid }) => {
   const [imgurllist, setimgurllist] = useState([]);
   const fileInput = React.useRef(null);
   const maximgcount = 5;
+  const [isloading, setisloading] = useState(true);
 
   let accessToken = window.localStorage.getItem('accessToken');
   let formData = new FormData();
 
   const navigate = useNavigate();
+
+  useEffect(() => {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get(
+            process.env.REACT_APP_API_URL + 'photos/' + photoid, {
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            }
+          );
+        const { title, body, isNotice, image1, image2, image3, image4, image5 } = response.data;
+              setphotoTitle(title);
+              setphotoBody(body);
+              setIsLock(isNotice === 1);
+              const images = [image1, image2, image3, image4, image5].filter(Boolean);
+              setimgurllist(images);
+              setisloading(false);
+            } catch (error) {
+              alert("데이터를 불러오는 중 오류가 발생했습니다.");
+              setisloading(false);
+            }
+          };
+
+         fetchData();
+         }, [photoid, accessToken]);
+
 
   const handleUpload = (e) => {
     if (uplodfile.length < maximgcount) {
@@ -100,7 +129,9 @@ const PhotoUpdate = ({ generation, photoid }) => {
     }
   };
 
-  return (<div className={"photowritemain" + generation}>
+  return (
+  !isloading ?
+  <div className={"photowritemain" + generation}>
     <div>
       <label className={'phototitle' + generation} htmlFor="photoTitle">제목</label>
       <input className={"phototitleinput" + generation} type="text" value={photoTitle} onChange={(e) => setphotoTitle(e.target.value)} />
@@ -138,7 +169,8 @@ const PhotoUpdate = ({ generation, photoid }) => {
     <div>
       <button className={"photowritebtn" + generation} onClick={handlePostphoto}>작성</button>
     </div>
-  </div>);
+  </div> : <div className={"photowritemain" + generation}><Loading generation={generation}/></div>
+  );
 };
 
 export default PhotoUpdate;
