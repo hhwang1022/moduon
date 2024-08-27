@@ -141,11 +141,6 @@ const Main_1020 = () => {
                     </motion.span>
                     <div>
                         <div className="header">
-                            <div className="left">
-                                <img className="padding" src="https://cdn-icons-png.flaticon.com/512/25/25424.png" width={30} height={30} />
-                                <img className="padding" src="https://cdn-icons-png.flaticon.com/512/109/109594.png" width={30} height={30} />
-                                <img className="padding" src="https://cdn-icons-png.flaticon.com/512/13/13267.png" width={30} height={30} />
-                            </div>
                             <div className='middle'>
                                 <div className='balencegame_scroll_btncontent'>
                                     {balancedatas.map((x, index) => {
