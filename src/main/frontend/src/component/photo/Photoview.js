@@ -173,21 +173,21 @@ return (
       <button className='photo-delete' onClick={handlePhotoDelete}>삭제</button>
     </div>
     <div className='photo-info-box'>
-      <div className='photo-title'>{title}</div>
+      <div className={'photo-title' + generation}>{title}</div>
       <div className={'photo-info' + generation}>
-        <div className='photo-nickname-box'>
+        <div className={'photo-nickname-box' + generation}>
           <div className='photo-nickname-word'>닉네임: </div>
           <div className='photo-nickname'>{nickname+ "111111"}</div>
         </div>
-        <div className='photo-created-at-box'>
+        <div className={'photo-created-at-box' + generation}>
           <div className='photo-created-at-word'>작성일: </div>
           <div className='photo-created-at'>{createdAt}</div>
         </div>
-        <div className='photo-views-box'>
+        <div className={'photo-views-box' + generation}>
           <div className='photo-views-word'>조회수 : </div>
           <div className='photo-views'>{view}</div>
         </div>
-        <div className='photo-likes-box'>
+        <div className={'photo-likes-box' + generation}>
           <div className='photo-likes-word'>추천수 : </div>
           <div className='photo-likes'>{likeCount}</div>
         </div>
@@ -199,7 +199,7 @@ return (
       <img src={image3}></img>
       <img src={image4}></img>
       <img src={image5}></img>
-      <div className='photo-contents'>{body}</div>
+      <div className={'photo-contents' + generation}>{body}</div>
     </div>
     <div className='photo-comments-box'>
       <div id='scrollableDiv' ref={scrollableDivRef}  className='photo-comment'>
@@ -207,7 +207,7 @@ return (
           <Balancegame_commentlistItem key={index} comment={x} generation={generation}/>
       ))}</div>
       <div className='photo-comment-form'>
-        <textarea className='photo-comment-box'  value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
+        <textarea className={'photo-comment-box' + generation}  value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
         <button className='photo-comment-submit' onClick={handlePhotoReply}>등록</button>
       </div>
     </div>
