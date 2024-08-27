@@ -1,6 +1,6 @@
 import './Main_8090.css';
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Footer_8090 from './Footer_8090';
 import Mypage from '../Mypage';
 import Bgmbar from '../Bgmbar';
@@ -16,6 +16,7 @@ const Main_8090 = () => {
     const [currentindex, setcurrentindex] = useState(0);
     const[isloading, setisloading] = useState(true);
 
+    const location = useLocation();
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -24,6 +25,18 @@ const Main_8090 = () => {
 
         return () => clearTimeout(timer);
     }, []);
+
+    useEffect(() => {
+        if (location.pathname.indexOf('/post') > 0) {
+          setcurrentindex(0);
+        }
+        else if(location.pathname.indexOf('/photo') > 0){
+          setcurrentindex(1);
+        }
+        else{
+          setcurrentindex(2);
+        }
+      }, [location.pathname]);
 
 
     let categorys = [
@@ -91,7 +104,7 @@ const Main_8090 = () => {
                 <div className='main8090windowcontentbox'>
                     <div className='main8090windowcontentboxline'>
                         {categorys.map((x, index) => {
-                            return <button onClick={() => handleMenuClick(index)}>{"\u00a0\u00a0\u00a0\u00a0" + x.title}</button>;
+                            return <button className={currentindex === index ? 'main8090selectmenubutton' : 'main8090menubutton'} onClick={() => handleMenuClick(index)}>{"\u00a0\u00a0\u00a0\u00a0" + x.title}</button>;
                         })}
                     </div>
                     <div className='main8090windowcontentinbox'>

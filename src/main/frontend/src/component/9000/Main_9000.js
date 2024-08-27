@@ -1,26 +1,23 @@
 import './Main_9000.css';
 import React, { useState, useEffect } from 'react';
-import { Routes, Route, useNavigate } from "react-router-dom";
+import { Routes, Route, useNavigate, useLocation } from "react-router-dom";
 import Footer_9000 from './Footer_9000';
 import Bgmbar from '../Bgmbar';
 import Mypage from '../Mypage';
-import Currentvote_board from '../currentvote/Currentvote_board';
 import Postboard from '../post/Postboard';
 import Photoboard from '../photo/Photoboard';
 import Balancegameborad from '../balancegame/Balancegameborad';
 import Loading from '../Loading';
 
-
 const Main_9000 = () => {
 
     const navigate = useNavigate();
     const generation = "9000";
-    const postsmallicon = require('../../resource/9000_postsmallicon.png');
-    const photosmallicon = require('../../resource/9000_photosmallicon.png');
-    const balencesmallicon = require('../../resource/9000balencesmallicon.png');
     const postbigicon = require('../../resource/9000_postbigicon.png');
     const photobigicon = require('../../resource/9000_photobigicon.png');
     const balencebigicon = require('../../resource/9000balencebigicon.png');
+
+    const location = useLocation();
 
     const [currentindex, setcurrentindex] = useState(3);
     const[isloading, setisloading] = useState(true);
@@ -33,19 +30,28 @@ const Main_9000 = () => {
         return () => clearTimeout(timer);
     }, []);
 
+    useEffect(() => {
+        if (location.pathname.indexOf('/post') > 0) {
+          setcurrentindex(0);
+        }
+        else if(location.pathname.indexOf('/photo') > 0){
+          setcurrentindex(1);
+        }
+        else{
+          setcurrentindex(2);
+        }
+      }, [location.pathname]);
+
     let categorys = [
         {
-            "smallsrc": postsmallicon,
             "bigsrc": postbigicon,
             "title": "게시판"
         },
         {
-            "smallsrc": photosmallicon,
             "bigsrc": photobigicon,
             "title": "사진첩"
         },
         {
-            "smallsrc": balencesmallicon,
             "bigsrc": balencebigicon,
             "title": "투표"
         }
@@ -105,28 +111,26 @@ const Main_9000 = () => {
             <button
             onClick={() => {
                 handleMenuClick(0);
-            }}><img src={require("../../resource/9000_icon1.png")}/></button>
-            내 컴퓨터
+            }}><img src={require("../../resource/9000_postbigicon.png")} className={currentindex === 0 ? 'main9000leftselecticon' : ''} height={86} width={86}/></button>
+            <span className={currentindex === 0 ? 'main9000iconselecttext' : 'main9000icontext'}>일반 게시판</span>
             <button
             onClick={() => {
                 handleMenuClick(1);
-            }}><img src={require("../../resource/9000_icon2.png")}/></button>
-            네트워크 환경
+            }}><img src={require("../../resource/9000_photobigicon.png")} className={currentindex === 1 ? 'main9000leftselecticon' : ''} height={86} width={86}/></button>
+            <span className={currentindex === 1 ? 'main9000iconselecttext' : 'main9000icontext'}>사진 게시판</span>
             <button
             onClick={() => {
                 handleMenuClick(2);
-            }}><img src={require("../../resource/9000_icon3.png")}/></button>
-            인터넷
-            <button><img src={require("../../resource/9000_icon4.png")}/></button>
+            }}><img src={require("../../resource/9000balencebigicon.png")} className={currentindex === 2 ? 'main9000leftselecticon' : ''} height={86} width={86}/></button>
+            <span className={currentindex === 2 ? 'main9000iconselecttext' : 'main9000icontext'}>투표</span>
+             {/* <button><img src={require("../../resource/9000_icon4.png")}/></button>
             휴지통
-            <button><img src={require("../../resource/9000_icon5.png")}/></button>
-            받은 편지함
+           <button><img src={require("../../resource/9000_icon5.png")}/></button>
+            받은 편지함 */}
         </div>
         <div className='main9000righticon'>
-            <img src={require("../../resource/9000_icon6.png")}></img>
-            The <br />
-            Microsoft<br />
-            Network
+            <img src={require("../../resource/9000_icon1.png")}  height={86} width={86}></img>
+            <span className='main9000icontext'>휴지통</span>
         </div>
         <div className='main9000outwindow main9000dafaultwindow'>
             <div className='main9000windowtopbarbackground'><button onClick={() => {

@@ -16,10 +16,22 @@ const Main_1020_Game = ({ position, balancedata, onClickEvent }) => {
         return <div>Loading...</div>;
       }
 
+      const generation = (gene) =>{
+        if(gene === "8090"){
+          return "𝟖𝟎𝟗𝟎";
+        }
+        else if(gene === "9000"){
+          return "𝟗𝟎𝟎𝟎";
+        }
+        else{
+        return "𝟎𝟎𝟏𝟎";
+        }
+      }
+
   return (<div className={position}>
     <div className='mainbox'>
       <button className='maingamebutton' onClick={onClickEvent}>
-        <div className='category'>{balancedata.balanceGameGeneration.replace("GENERATION_", "")}</div>
+        <div className='category'>{generation(balancedata.balanceGameGeneration.replace("GENERATION_", ""))}</div>
         <div className='itembox'>
           <Main_1020_BalenceItem img={balancedata.voteImage1} title={balancedata.voteItem1} />
           <span className='gamevs'>

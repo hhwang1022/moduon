@@ -105,7 +105,7 @@
     flex-grow: 1;
 }
 
-.main8090windowcontentinbox{
+.main8090windowcontentinbox {
     width: 100%;
     height: 600px;
     border-top: 4px solid #154041;
@@ -114,6 +114,14 @@
     margin: auto;
     display: flex;
     justify-content: center;
+}
+
+.main8090selectmenubutton {
+    color: aqua;
+}
+
+.main8090menubutton {
+    color: white;
 }
 
 .main8090windowcontentboxline {
@@ -132,7 +140,7 @@
     background-color: #008381;
 }
 
-.main8090margin{
+.main8090margin {
     margin: 7%;
 }
 
@@ -154,7 +162,7 @@
 
 .main8090categorybutton.pressed {
     box-shadow: inset 2px 2px 5px #000000;
-    background-color: #005454; 
+    background-color: #005454;
     border-top: 2px solid #333333;
     border-left: 2px solid #333333;
     border-right: 2px solid #000000;
