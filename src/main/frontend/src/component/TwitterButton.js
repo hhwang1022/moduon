@@ -6,7 +6,7 @@ const TwitterButton = ({url, title, description, onclickhandler}) => {
     };
 
   return <button onClick={() => shareTwitter(url, title, description)} className="sharebtn">
-           <img className="w-12 h-12" src={"https://i.imgur.com/r58bivv.png"} referrerpolicy="no-referrer" />
+           <img className="w-12 h-12" src={"https://i.imgur.com/r58bivv.png"} referrerPolicy="no-referrer" />
          </button>;
 };
 

@@ -6,7 +6,7 @@ const Main_1020_BalenceItem = ({ img, title, iswin }) => {
   return (
     <span className='item'>
       <img className='mainbalancegameitemimg' src={img} height={200} width={200}></img>
-      {iswin ? <div class="mainbalancegameitemimgsticker">
+      {iswin ? <div className="mainbalancegameitemimgsticker">
             <img src={winicon} />
         </div> : <></>}
       <a>{title}</a>

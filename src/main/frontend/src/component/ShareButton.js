@@ -84,19 +84,19 @@ const ShareButton = ({ sharetype, url, title, description, imageUrl }) => {
         case "twitter":
             return (
                 <button onClick={() => shareTwitter(url, title, description)} className="sharebtn">
-                    <img className="w-12 h-12" src={"https://i.imgur.com/r58bivv.png"} referrerpolicy="no-referrer" />
+                    <img className="w-12 h-12" src={"https://i.imgur.com/r58bivv.png"} referrerPolicy="no-referrer" />
                 </button>
             );
         case "facebook":
             return (
                 <button onClick={() => shareFacebook(url)} className="sharebtn">
-                    <img className="w-12 h-12" src={"https://i.imgur.com/gtRnCB0.png"} referrerpolicy="no-referrer" />
+                    <img className="w-12 h-12" src={"https://i.imgur.com/gtRnCB0.png"} referrerPolicy="no-referrer" />
                 </button>
             );
         case "kakao":
             return (
                 <button onClick={() => shareKakao(url, title, description, imageUrl)} className="sharebtn">
-                    <img src={"https://i.imgur.com/QaKbG3n.png"} referrerpolicy="no-referrer" />
+                    <img src={"https://i.imgur.com/QaKbG3n.png"} referrerPolicy="no-referrer" />
                 </button>
             );
     }
