@@ -17,6 +17,7 @@ const Join = ({ successhandler }) => {
   const[isloading, setisloading] = useState(true);
   const [generation, setGeneration] = useState('');
 
+    const validateEmail = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
   const accessToken = "";
 
   const navigate = useNavigate();
@@ -29,9 +30,14 @@ const Join = ({ successhandler }) => {
           return () => clearTimeout(timer);
       }, []);
 
+    const emailCheck = (id) => {
+     return validateEmail.test(id);
+    }
 
   const handleJoin = async () => {
+
     if (password != passwordconfrim) {
+    console.log(password);
       alert('비밀번호가 틀립니다');
       return;
     }
@@ -72,6 +78,11 @@ const Join = ({ successhandler }) => {
   };
 
   const handleUniqueEmail = async() => {
+    if(!emailCheck(id)) {
+     alert('유효한 이메일 주소를 입력해 주세요.');
+     return;
+    }
+
     try {
       const response = await axios.get(
         process.env.REACT_APP_API_URL + 'members/checkemail?email=' + id,
@@ -121,6 +132,7 @@ const Join = ({ successhandler }) => {
     }
   };
 
+
   return (
       <div className={`joinmainbox ${isloading ? 'loading' : ''}`}>
         {!isloading ? (
@@ -131,7 +143,7 @@ const Join = ({ successhandler }) => {
               <div className='joinline' />
             </div>
             <div>
-              <input className='joininputmiddle' type="text" placeholder='Email' value={id} onChange={(e) => setId(e.target.value)} />
+              <input className='joininputmiddle' type="email" placeholder='email' value={id} onChange={(e) => setId(e.target.value)} />
               <button className="joinuniquebutton gradient" onClick={handleUniqueEmail}>중복확인</button>
             </div>
             {(isuniqueemail !== "" ) ? (isuniqueemail ? "사용할 수 있는 이메일입니다." : "중복된 이메일입니다.") : ""}
@@ -158,6 +170,7 @@ const Join = ({ successhandler }) => {
                 <option className={"joingenerationselectoption"} value="GENERATION_1020">1020</option>
               </select>
             </div>
+            <p></p>
             {"모든 세대의 글은 조회가 가능하나, 댓글과 게시글 작성 및 투표는 "}<br />
             {"선택한 세대와 앞 뒤로 1세대만 추가로 가능합니다. "}<br />
             {"예시) 9000을 선택하지면 8090~0010만 작성 및 투표가 가능합니다."}
