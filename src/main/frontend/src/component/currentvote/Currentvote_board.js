@@ -31,14 +31,25 @@ const vsicon0010 = require('../../resource/vs_0010.png');
     const[isloading, setisloading] = useState(true);
     const [commentId, setCommentId] = useState(null);
     const [enddate, setenddate] = useState(Date.now);
+    const [nickname, setnickname] = useState('');
+    const [info, setInfo] = useState(null);
+
+
 
     let accessToken = window.localStorage.getItem('accessToken');
-
     const navigate = useNavigate();
 
-    let info = memberInfo.getMemberInfo();
+useEffect(() => {
+    const fetchMemberInfo = async () => {
+       try {
+         const info = await memberInfo.getMemberInfo();
+         setnickname(info.name);
+         setInfo(info);
+     } catch (error) {
+            alert("회원 정보를 가져오는 중 오류가 발생했습니다. 다시 로그인을 시도해주세요.")
+        }
+    };
 
-    useEffect(() => {
       const fetchData = async () => {
         try {
           const response = await axios.get(process.env.REACT_APP_API_URL + 'balancegames/this-week?'
@@ -63,10 +74,12 @@ const vsicon0010 = require('../../resource/vs_0010.png');
           setVotePageReset(false);
           setisloading(false);
         } catch (error) {
+        alert("투표 데이터를 가져오는 중 오류가 발생했습니다. 다시 시도해주세요.")
           setisloading(false);
         }
       };
 
+      fetchMemberInfo();
       fetchData();
     }, [accessToken, generation, votePageReset]);
 
@@ -153,13 +166,9 @@ const vsicon0010 = require('../../resource/vs_0010.png');
           });
           updateTicketCount(response.data.data.votingRights);
       } catch (error) {
-        alert("투표에 실패했습니다.")
+        alert("투표에 실패했습니다. 다시 시도해주세요.")
       }
     };
-
-//        const handleVoteUpdate = () => {
-//          navigate('../update/' + balanceGameId);
-//        }
 
     const handleVoteUpdate = (balance) => {
       // balance와 그 속성들이 정의되어 있는지 확인
@@ -171,7 +180,7 @@ const vsicon0010 = require('../../resource/vs_0010.png');
           navigate('/main_' + balance.generation.replace('CATEGORY_', '') + '/balance/view/' + balance.balanceGameId);
         }
       } else {
-        console.error("Invalid balance object:", balance); // 디버깅 용도
+         alert("올바르지 않은 투표 데이터입니다.");
       }
     };
 
@@ -181,20 +190,31 @@ const vsicon0010 = require('../../resource/vs_0010.png');
               headers: { Authorization: `Bearer ${accessToken}` }
             })
             navigate(`/main_${generation}/balance`);
-            alert("게시물 삭제 완료!");
+            alert("게시물이 성공적으로 삭제되었습니다.");
           }
           catch (error){
-            alert(JSON.stringify(error.message));
+            alert("게시물 삭제에 실패했습니다.");
           }
         };
+
+ const renderAdminButtons = () => {
+    if (nickname === '관리자') {
+      return (
+        <>
+          <button className={'postpagewritebtn' + generation} onClick={() => handleVoteUpdate({ category: "CATEGORY_" + generation, generation: generation, balanceGameId: balanceGameId })}>수정</button>
+          <button className={'postpagewritebtn' + generation} onClick={handleVoteDelete}>삭제</button>
+        </>
+      );
+    }
+    return null;
+  };
 
 
     return (
       !isloading ? 
       <div className='vote-mainbox'>
         <div className='past-votes'>
-        <button className={'postpagewritebtn' + generation} onClick={() => handleVoteUpdate({ category: "CATEGORY_" + generation, generation: generation, balanceGameId: balanceGameId })}>수정</button>
-        <button className={'postpagewritebtn' + generation} onClick={handleVoteDelete}>삭제</button>
+            {renderAdminButtons()}
         <button className={'postpagewritebtn' + generation} onClick={onclicklistbtn}>지난 투표</button>
         </div>
         <div className={'vote-header voting-topic' + generation}>

@@ -78,6 +78,7 @@ const Login = ({ successhandler, issmall, generation }) => {
         balancegameticket: updateinfo.votingRights,
         generation: updateinfo.memberGeneration,
         admin: updateinfo.roles,
+        email :updateinfo.email,
         login: true,
       });
 
