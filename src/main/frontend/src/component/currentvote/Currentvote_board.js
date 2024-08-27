@@ -56,7 +56,7 @@ const Currentvote_board = ({ generation, onclicklistbtn }) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(process.env.REACT_APP_API_URL + 'balancegames/this-week?'
-          + 'page=' + 1 + '&size=' + 10 + '&generation=' + generation, {
+          + 'generation=' + generation, {
           headers: { Authorization: `Bearer ${accessToken}` }
         });
 
@@ -73,8 +73,6 @@ const Currentvote_board = ({ generation, onclicklistbtn }) => {
           setVotePoint1(voteData.votePoint1);
           setVotePoint2(voteData.votePoint2);
           setenddate(voteData.endDate);
-
-          console.log(voteData.endDate);
         }
         setVotePageReset(false);
         setisloading(false);
