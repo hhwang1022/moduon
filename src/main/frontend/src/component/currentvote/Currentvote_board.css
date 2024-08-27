@@ -1,3 +1,17 @@
+@font-face {
+  font-family: 'DOSIyagiMedium';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/DOSIyagiMedium.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'DOSGothic';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSGothic.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 .vote-mainbox {
   display: flex;
   flex-direction: column;
@@ -118,6 +132,7 @@
   border-radius: 20px;
   text-align: center;
   color: #e90c59;
+  font-family: 'DOSIyagiMedium';
 }
 
 .vote-hline {
