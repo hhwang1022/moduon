@@ -66,11 +66,8 @@ public class BalanceGameController {
 	}
 
 	@GetMapping("/this-week")
-	public ResponseEntity getThisWeekBalanceGames(@Positive @RequestParam int page,
-												  @Positive @RequestParam int size,
-												  @RequestParam String generation) {
-		Page<BalanceGame> pageBalanceGames = balanceGameService.findBalanceGames(page - 1, size);
-		List<BalanceGame> findBalanceGames = pageBalanceGames.stream()
+	public ResponseEntity getThisWeekBalanceGames(@RequestParam String generation) {
+		List<BalanceGame> findBalanceGames = balanceGameService.findBalanceGames().stream()
 				.filter(value -> value.getBalanceGameGeneration().getGeneration().contains(generation))
 				.filter(value -> balanceGameService.isAfterNow(value.getEndDate()))
 				.toList();
@@ -78,8 +75,7 @@ public class BalanceGameController {
 		List<BalanceGame> balanceGames = balanceGameService.setVotePoints(findBalanceGames);
 
 		return new ResponseEntity<>(
-				new MultiResponseDto<>(mapper.balanceGameToBalanceGameDtoList(balanceGames),
-						pageBalanceGames),
+				new SingleResponseDto<>(mapper.balanceGameToBalanceGameDtoList(balanceGames)),
 				HttpStatus.OK);
 	}
 

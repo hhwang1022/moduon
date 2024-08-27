@@ -69,6 +69,11 @@ public class BalanceGameService {
 		);
 	}
 
+	public List<BalanceGame> findBalanceGames() {
+		return balanceGameRepository.findAll();
+	}
+
+
 	public void deleteBalanceGame(long balanceGameId) {
 		BalanceGame findBalanceGame = findVerifiedBalanceGame(balanceGameId);
 
