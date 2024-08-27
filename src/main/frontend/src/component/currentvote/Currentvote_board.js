@@ -252,14 +252,6 @@ const Currentvote_board = ({ generation, onclicklistbtn }) => {
         <div className={'vote-header voting-topic' + generation}>
           이번 주 투표 - {voteTitle}
         </div>
-        <div className='sharebox'>
-          <KakaoButton url={window.location.href} title={voteTitle} description={"당신의 선택은?"} imageUrl=""
-            onclickhandler={() => handlePostShare("kakao")} />
-          <TwitterButton url={window.location.href} title={voteTitle} description={"당신의 선택은?"}
-            onclickhandler={() => handlePostShare("twitter")} />
-          <FacebookButton url={window.location.href}
-            onclickhandler={() => handlePostShare("facebook")} />
-        </div>
         <div className={'vote-box' + generation}>
           <div class="vote-item">
             {/* <img className='vote-image' src={voteImage1}></img> */}
@@ -275,6 +267,14 @@ const Currentvote_board = ({ generation, onclicklistbtn }) => {
         </div>
         <BalanceBar vote1={votePoint1} vote2={votePoint2} generation={generation} />
         <div className='vote-info-box'>{'투표 마감까지 ' + day + "일" + hours + "시" + minutes + "분" + seconds + "초"}
+        </div>
+        <div className='sharebox'>
+          <KakaoButton url={window.location.href} title={voteTitle} description={"당신의 선택은?"} imageUrl=""
+            onclickhandler={() => handlePostShare("kakao")} />
+          <TwitterButton url={window.location.href} title={voteTitle} description={"당신의 선택은?"}
+            onclickhandler={() => handlePostShare("twitter")} />
+          <FacebookButton url={window.location.href}
+            onclickhandler={() => handlePostShare("facebook")} />
         </div>
         <div className='comments-box'>
           <div className='comment'><Balancegame_commentlist generation={generation} balanceGameId={balanceGameId}
