@@ -74,8 +74,8 @@ useEffect(() => {
           voteImage2: voteImage2,
           voteItem1: voteItem1,
           voteItem2: voteItem2,
-          startDate: startDate,
-          endDate: endDate
+          createDateList: parseStartDateToList(startDate),
+          endDateList: parseEndDateToList(endDate)
         },
         {
           headers: {
@@ -114,6 +114,16 @@ useEffect(() => {
         alert("이미지 등록에 실패했습니다.");
       }
     };
+
+   const parseStartDateToList = (dateString) => {
+     const [year, month, day] = dateString.split('-').map(Number);
+     return [year, month, day, 0, 0];
+   };
+
+   const parseEndDateToList = (dateString) => {
+     const [year, month, day] = dateString.split('-').map(Number);
+     return [year, month, day, 23, 59, 59, 99];
+   }
 
   return !isLoading ? (
     <div>

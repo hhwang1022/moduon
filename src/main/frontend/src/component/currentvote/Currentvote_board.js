@@ -197,7 +197,14 @@ const Currentvote_board = ({ generation, onclicklistbtn }) => {
         });
       updateTicketCount(response.data.data.votingRights);
     } catch (error) {
-      alert("투표에 실패했습니다. 다시 시도해주세요.")
+      if (info.name === "홍길동") {
+        alert("로그인 해주세요");
+        return;
+      }
+      if (info.generation === "0010" && generation === "8090" || info.generation === "8090" && generation === "0010") {
+        alert("세대가 " + info.generation + "인 사용자는 " + generation + "에서는 투표가 불가능합니다.");
+        return;
+      }
     }
   };
 
