@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import './PostUpdate.css';
+import Loading from '../Loading';
 
 const PostUpdate = ({ generation, postid }) => {
   const [postTitle, setpostTitle] = useState('');
@@ -11,11 +12,42 @@ const PostUpdate = ({ generation, postid }) => {
   const [imgurllist, setimgurllist] = useState([]);
   const fileInput = React.useRef(null);
   const maximgcount = 5;
+  const [isloading, setisloading] = useState(true);
 
   let accessToken = window.localStorage.getItem('accessToken');
   let formData = new FormData();
 
   const navigate = useNavigate();
+
+  const fetchPost = async () => {
+      try {
+        const response = await axios.get(process.env.REACT_APP_API_URL + 'posts/' + postid, {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+         setpostTitle(response.data.title);
+          setpostBody(response.data.body);
+          setIsLock(response.data.isNotice === 1);
+          setimgurllist([
+            response.data.image1,
+            response.data.image2,
+            response.data.image3,
+            response.data.image4,
+            response.data.image5,
+          ].filter(Boolean));
+
+          setisloading(false);
+
+           } catch (error) {
+                alert("게시글을 불러오는 중 오류가 발생했습니다.");
+                navigate('/');
+              }
+            };
+
+     useEffect(() => {
+        fetchPost();
+      }, []);
 
   const handleUpload = (e) => {
     if (uplodfile.length < maximgcount) {
@@ -38,7 +70,6 @@ const PostUpdate = ({ generation, postid }) => {
   };
 
   const handlePostpost = async () => {
-    console.log(imgurllist);
 
     try {
       const response = await axios.patch(
@@ -61,7 +92,7 @@ const PostUpdate = ({ generation, postid }) => {
           },
         }
       ).then(function (response) {
-        
+
         alert('게시글 수정 성공!');
 
         setFile([]);
@@ -71,7 +102,7 @@ const PostUpdate = ({ generation, postid }) => {
           navigate('/main_' + generation + '/post/view/' + postid);
       });
     } catch (error) {
-      alert(JSON.stringify(error.message));
+      alert("게시글 수정에 실패했습니다.");
     }
   };
 
@@ -91,14 +122,15 @@ const PostUpdate = ({ generation, postid }) => {
       ).then(function (response) {
         const newimgurllist = [...imgurllist, response.data];
         setimgurllist(newimgurllist);
-        console.log(newimgurllist);
       });
     } catch (error) {
-      alert(JSON.stringify(error.message));
+      alert("이미지 등록에 실패했습니다.");
     }
   };
 
-  return (<div className={"postwritemain" + generation}>
+  return (
+  !isloading ?
+  <div className={"postwritemain" + generation}>
     <div>
       <label className={'posttitle' + generation} htmlFor="postTitle">제목</label>
       <input className={"posttitleinput" + generation} type="text" value={postTitle} onChange={(e) => setpostTitle(e.target.value)} />
@@ -137,7 +169,8 @@ const PostUpdate = ({ generation, postid }) => {
     <div>
       <button className={"postwritebtn" + generation} onClick={handlePostpost}>작성</button>
     </div>
-  </div>);
+  </div> : <div className={"postwritemain" + generation}><Loading generation={generation}/> </div>
+  );
 };
 
 export default PostUpdate;
