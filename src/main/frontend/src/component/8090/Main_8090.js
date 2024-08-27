@@ -71,14 +71,14 @@ const Main_8090 = () => {
 
     return (
      !isloading ?
-        <div className='main8090outwindow main8090dafaultwindow'>
+        <div className='main8090outwindow main8090defaultwindow'>
             <div className='main8090windowtopbarbackground'><button onClick={() => {
                         navigate('/main_1020');
                     }}>ModuON</button>
                 <span className='main8090windowtopbarbuttonarea'>
-                    <span className='main8090windowtopbarbutton main8090dafaultwindow'>_</span>
-                    <span className='main8090windowtopbarbutton main8090dafaultwindow'>□</span>
-                    <span className='main8090windowtopbarbutton main8090dafaultwindow'>X</span>
+                    <span className='main8090windowtopbarbutton main8090defaultwindow'>_</span>
+                    <span className='main8090windowtopbarbutton main8090defaultwindow'>□</span>
+                    <span className='main8090windowtopbarbutton main8090defaultwindow'>X</span>
                 </span>
             </div>
             <div className='main8090categorybar'>
@@ -123,7 +123,7 @@ const Main_8090 = () => {
 
             <div className='main8090windowbottombarbackground'>{"* Tip) 매일 출석해서 투표권을 얻어보세요! *"}</div>
             <Footer_8090></Footer_8090>
-        </div> : <div className='main8090outwindow main8090dafaultwindow'><Loading generation={generation}/> </div>
+        </div> : <div className='main8090outwindow main8090defaultwindow'><Loading generation={generation}/> </div>
     );
 };
 

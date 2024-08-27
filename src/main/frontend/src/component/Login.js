@@ -57,14 +57,14 @@ const Login = ({ successhandler, issmall, generation }) => {
         refreshToken = response.headers['refresh'];
         localStorage.setItem('accessToken', accessToken);
         localStorage.setItem('refresh', refreshToken);
-        handleInfo();
-
+        
         if (location.pathname === '/main_1020/login') {
           navigate('/');
         }
         else{
           window.location.reload();
         }
+        handleInfo();
       }
 
     } catch (error) {

@@ -132,14 +132,14 @@ const Main_9000 = () => {
             <img src={require("../../resource/9000_icon1.png")}  height={86} width={86}></img>
             <span className='main9000icontext'>휴지통</span>
         </div>
-        <div className='main9000outwindow main9000dafaultwindow'>
+        <div className='main9000outwindow main9000defaultwindow'>
             <div className='main9000windowtopbarbackground'><button onClick={() => {
                         navigate('/main_1020');
                     }}>ModuON</button>
                 <span className='main9000windowtopbarbuttonarea'>
-                    <span className='main9000windowtopbarbutton main9000dafaultwindow'>_</span>
-                    <span className='main9000windowtopbarbutton main9000dafaultwindow'>□</span>
-                    <span className='main9000windowtopbarbutton main9000dafaultwindow'>X</span>
+                    <span className='main9000windowtopbarbutton main9000defaultwindow'>_</span>
+                    <span className='main9000windowtopbarbutton main9000defaultwindow'>□</span>
+                    <span className='main9000windowtopbarbutton main9000defaultwindow'>X</span>
                 </span>
             </div>
             <div className='main9000categorybar'>

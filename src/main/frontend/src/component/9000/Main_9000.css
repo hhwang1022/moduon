@@ -30,17 +30,13 @@
 }
 
 
-.main9000dafaultwindow{
+.main9000defaultwindow{
     font-family: 'DOSIyagiMedium';
     border: 4px solid #ffffff;
     background-color: #E6E6E6;
     border-bottom: 2px solid black;
     border-right: 2px solid black;
     font-size: 17pt;
-}
-
-.main9000button{
-
 }
 
 .main9000windowtopbarbackground{

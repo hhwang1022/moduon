@@ -30,6 +30,7 @@ const Mypage = ({ generation }) => {
 
     //회원정보 업데이트가 필요할 때 사용
     const updateInfo = () => {
+        window.location.reload();
         memberInfo.updateMemberInfo({ 
             //여기에 바뀌어야하는 값을 넣는다//회원정보 수정, 공유할 때 등,...
             name: "홍길동",
@@ -40,7 +41,6 @@ const Mypage = ({ generation }) => {
             admin: false,
             login: false
         });
-        window.location.reload();
         
         setlogin(false);
         localStorage.setItem('accessToken', "");
