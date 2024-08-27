@@ -108,7 +108,7 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
             <div id='scrollableDiv' ref={scrollableDivRef} className={`balancegame-comments${generation}box`}>
                 {commentList.map((x, index) => (
                   <Balancegame_commentlistItem
-                    key={x} comment={x} generation={generation}
+                    key={index} comment={x} generation={generation}
                     onDeleted={handleDeleteReply} username={username} onUpdate={handUpdateReply} isLoggedIn={isLoggedIn}></Balancegame_commentlistItem>
                 ))}
             </div>
