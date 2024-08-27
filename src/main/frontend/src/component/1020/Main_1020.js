@@ -46,33 +46,37 @@ const Main_1020 = () => {
     useEffect(() => {
         const fetchbalancedatas = async () => {
             try {
+
                 const response = await axios.get(
                     process.env.REACT_APP_API_URL + 'balancegames?' +
-                    'page=' + 1 + '&size=' + 10, {
+                    'page=' + 1 + '&size=' + 100, {
                     headers: { Authorization: `Bearer ${accessToken}` }
                 });
+
                 const data = response.data.data;
                 setbalancedatas(data);
+                
           } catch (error) {
+            console.error("Error fetching balancedatas: ", error);
             setbalancedatas([]);
-            alert("밸런스게임 가져오기 실패했습니다.")
           }
         };
+
         fetchbalancedatas();
-    }, [accessToken]);
+    }, []);
 
     const MainBalancegame = ()=> {
         if (balancedatas.length > 0) {
             return (
                 <div>
-                    <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1, x: motionposition, transition: {ease: "easeInOut"}}}>
+                    <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1, x: motionposition, ease: "easeInOut" }}>
                         <div className='main1020'>
-                            <motion.span width={0} className='middlegame' initial={{ opacity: 0 }} animate={{ opacity: 1, scale: motionmiddlescale,  transition: {ease: "easeInOut"}}}>
+                            <motion.span width={0} className='middlegame' initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionmiddlescale }}>
                                 <Main_1020_Game position={"middlegame"}
                                     balancedata={balancedatas[currentgameindex]}>
                                 </Main_1020_Game>
                             </motion.span>
-                            <motion.span className='leftgame' initial={{ opacity: 0 }} animate={{ opacity: 1, scale: motionleftscale, transition: {ease: "easeInOut"}}}>
+                            <motion.span className='leftgame' initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionleftscale }}>
                                 <Main_1020_Game
                                     balancedata={balancedatas[leftindex]}
                                     onClickEvent={() => {
@@ -96,6 +100,7 @@ const Main_1020 = () => {
                                         else {
                                             setcurrentgameindex(currentgameindex - 1);
                                         }
+
                                         setmotionleftscale(0.7);
                                         setmotionmiddlescale(0.8);
                                         setmotionrightscale(0.7);
@@ -104,7 +109,7 @@ const Main_1020 = () => {
                                 >
                                 </Main_1020_Game>
                             </motion.span>
-                            <motion.span className='rightgame' width={0} initial={{ opacity: 0 }} animate={{ opacity: 1, scale: motionrightscale, transition: {ease: "easeInOut"}}}>
+                            <motion.span className='rightgame' width={0} initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionrightscale }}>
                                 <Main_1020_Game
                                     balancedata={balancedatas[rightindex]}
                                     onClickEvent={() => {
@@ -141,14 +146,19 @@ const Main_1020 = () => {
                     </motion.span>
                     <div>
                         <div className="header">
+                            <div className="left">
+                                <img className="padding" src="https://cdn-icons-png.flaticon.com/512/25/25424.png" width={30} height={30} />
+                                <img className="padding" src="https://cdn-icons-png.flaticon.com/512/109/109594.png" width={30} height={30} />
+                                <img className="padding" src="https://cdn-icons-png.flaticon.com/512/13/13267.png" width={30} height={30} />
+                            </div>
                             <div className='middle'>
                                 <div className='balencegame_scroll_btncontent'>
                                     {balancedatas.map((x, index) => {
                                         if (index !== currentgameindex) {
-                                            return <div key={index} className="balencegame_scroll_btn_unactive"></div>
+                                            return <div className="balencegame_scroll_btn_unactive"></div>
                                         }
                                         else {
-                                            return <div key={index} className="balencegame_scroll_btn_active"></div>
+                                            return <div className="balencegame_scroll_btn_active"></div>
                                         }
                                     })}
                                 </div>
@@ -188,6 +198,9 @@ const Main_1020 = () => {
             return (
                 <Login successhandler={setcurrentindex} />
             );
+        }
+        else {
+
         }
     };
 
