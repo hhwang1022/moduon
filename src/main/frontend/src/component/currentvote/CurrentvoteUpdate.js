@@ -1,206 +1,216 @@
-import './Currentvote_board.css';
+import React, { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
-import BalanceBar from './BalanceBar'
-import React, { useState, useEffect } from 'react';
-import Balancegame_commentlist from './Balancegame_commentlist';
-import memberInfo from '../../MemberInfo';
-import KakaoButton from '../KakaoButton';
-import FacebookButton from '../FacebookButton';
-import TwitterButton from '../TwitterButton';
+import { useNavigate, useParams } from "react-router-dom";
 import Loading from '../Loading';
-const vsicon0010 = require('../../resource/vs_0010.gif');
 
-  const info = memberInfo.getMemberInfo();
-  const Currentvote_board= ({generation, onclicklistbtn}) => {
+ const CurrentvoteUpdate = ({ generation }) => {
+  const generations = ['8090', '9000', '0010'];
+  const [voteTitle, setVoteTitle] = useState('');
+  const [voteImage1, setVoteImage1] = useState('');
+  const [voteImage2, setVoteImage2] = useState('');
+  const [voteItem1, setVoteItem1] = useState('');
+  const [voteItem2, setVoteItem2] = useState('');
+  const [startDate, setStartDate] = useState('');
+  const [endDate, setEndDate] = useState('');
+  const [isLoading, setIsLoading] = useState(true);
+  const [selectedGeneration, setSelectedGeneration] = useState(generations[0]);
 
-    // const [generation, setGeneration] = useState('');
-    const [voteTitle, setVoteTitle] = useState('');
-    const [voteImage1, setVoteImage1] = useState('');
-    const [voteImage2, setVoteImage2] = useState('');
-    const [voteItem1, setVoteItem1] = useState('');
-    const [voteItem2, setVoteItem2] = useState('');
-    const [searchkeyword, setsearchkeyword] = useState('');
-    const [commentList, setCommentList] = useState([]);
-    const [balanceGameId, setBalanceGameId] = useState(null);
-    const [commentListUpdated, setCommentListUpdated] = useState(false);
-    const [votePoint1, setVotePoint1] = useState(0);
-    const [votePoint2, setVotePoint2] = useState(0);
-    const [voteItem, setVoteItem] = useState('');
-    const [votePageReset, setVotePageReset] = useState(false);
-    const[isloading, setisloading] = useState(true);
-    const [commentId, setCommentId] = useState(null);
-    const [enddate, setenddate] = useState(Date.now);
+  const fileInput1 = useRef(null);
+  const fileInput2 = useRef(null);
+  let formData = new FormData();
+  const navigate = useNavigate();
 
-    let accessToken = window.localStorage.getItem('accessToken');
+  const { balanceid } = useParams();
 
-    useEffect(() => {
-      const fetchData = async () => {
-        try {
-          const response = await axios.get(process.env.REACT_APP_API_URL + 'balancegames/this-week?'
-            + 'page=' + 1 + '&size=' + 10 + '&generation=' + generation, {
-            headers: {Authorization: `Bearer ${accessToken}`}
-          });
+  let accessToken = window.localStorage.getItem('accessToken');
 
-          const data = response.data.data;
+  const handleUpload = (index, e) => {
+      formData = new FormData();
+      formData.append('multipartFile', e.target.files[0]);
+      handlePostimg(index);
+    };
 
-          if (data && data.length > 0) {
-            const voteData = data[0];
-            setVoteTitle(voteData.title);
-            setVoteImage1(voteData.voteImage1);
-            setVoteImage2(voteData.voteImage2);
-            setVoteItem1(voteData.voteItem1);
-            setVoteItem2(voteData.voteItem2);
-            setBalanceGameId(voteData.balanceGameId);
-            setVotePoint1(voteData.votePoint1);
-            setVotePoint2(voteData.votePoint2);
-            setenddate(voteData.endDate);
-          }
-          setVotePageReset(false);
-
-          setisloading(false);
-
-        } catch (error) {
-          console.error("Error fetching data: ", error);
-          setisloading(false);
+  // 데이터를 가져오는 함수
+useEffect(() => {
+  const fetchVote = async () => {
+  console.log("balanceGameId : " + balanceid);
+    try {
+      const response = await axios.get(process.env.REACT_APP_API_URL + 'balancegames/' + balanceid,
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
         }
-      };
+      );
+      const data = response.data;
+      console.log(response);
 
-      fetchData();
-    }, [accessToken, generation, votePageReset]);
+      // 서버로부터 받은 데이터를 상태로 설정
+      setVoteTitle(data.title);
+      setVoteImage1(data.voteImage1);
+      setVoteImage2(data.voteImage2);
+      setVoteItem1(data.voteItem1);
+      setVoteItem2(data.voteItem2);
+      setStartDate(data.startDate);
+      setEndDate(data.endDate);
 
-    const handlePostReply = async () => {
-      try {
-        const response = await axios.post(
-         process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId + '/reply',
-          {
-            body: searchkeyword,
+      setIsLoading(false);
+    } catch (error) {
+      alert("데이터를 가져오는 중 오류가 발생했습니다.");
+      console.error(error);
+      navigate('/');
+    }
+  };
+    fetchVote();
+  }, [balanceid, accessToken, navigate]);
+
+
+  // 데이터 수정 요청 함수
+  const handleSubmit = async () => {
+    try {
+      const response = await axios.patch(process.env.REACT_APP_API_URL + 'balancegames/' + balanceid,
+        {
+          title: voteTitle,
+          voteImage1: voteImage1,
+          voteImage2: voteImage2,
+          voteItem1: voteItem1,
+          voteItem2: voteItem2,
+          startDate: startDate,
+          endDate: endDate
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
           },
-          {
-            'Content-Type': 'application/json',
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
+        }
+      );
 
-          });
-        setsearchkeyword('');
-        setCommentListUpdated(true);
-
-      } catch (error) {
-        alert(JSON.stringify(error.message));
-        console.log(error.response.data);
-      }
-    };
-
-    //공유하기
-    const handlePostShare = async (sharetype) => {
-      try {
-        const response = await axios.post(
-          process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId + '/share',
-          {
-            "sharetype": sharetype,
-          },
-          {
-            'Content-Type': 'application/json',
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
-            },
-
-          });
-
-          console.log("response.data.data : " + response.data.data);
-
-          updateTicketCount(response.data.data);
-
-      } catch (error) {
-        alert(JSON.stringify(error.message));
-        console.log(error.response.data);
-      }
-    };
-
-    const updateTicketCount = (newTicketCount) => {
-      // Update balancegameticket
-      memberInfo.updateMemberInfo({ balancegameticket: newTicketCount });
+      alert("수정 완료!");
+      navigate(`/main_${generation}/balance`);
+    } catch (error) {
+      alert("수정 중 오류가 발생했습니다.");
+      console.error(error);
+    }
   };
 
-      const vote1 = (() => {
-        const vote11 = "point1"
-        handlePostVote(vote11);
-        setVotePageReset(true);
-    });
+   const handlePostimg = async (index) => {
+      accessToken = window.localStorage.getItem('accessToken');
 
-    const vote2 = (() => {
-      const vote12 = "point2"
-      handlePostVote(vote12);
-      setVotePageReset(true);
-    });
-
-    const handlePostVote = async (vote) => {
       try {
         const response = await axios.post(
-          process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId + '/vote',
+          process.env.REACT_APP_API_URL + 'images', formData,
           {
-            voteItem: vote
-          },
-          {   'Content-Type': 'application/json',
-            headers: { Authorization: `Bearer ${accessToken}`,
+            headers: {
+              'Content-Type': 'multipart/form-data',
+              Authorization: `Bearer ${accessToken}`,
             },
-          });
-
-          updateTicketCount(response.data.data.votingRights);
-
+          }
+        );
+          if (index === 0) {
+            setVoteImage1(response.data);
+          }
+          else {
+            setVoteImage2(response.data);
+          }
       } catch (error) {
-        alert(JSON.stringify(error.message));
-        console.log(error.response.data);
-        console.log(error.response.data);
+        alert("이미지 등록에 실패했습니다.");
       }
     };
 
-    const handleCommentId = (newCommentId) => {
-      setCommentId(newCommentId);
-    };
+  return !isLoading ? (
+    <div>
+      <div className='vote-creation-header'>
+        <div className='vote-creation-category'>
+          <label>카테고리 :</label>
+            <select
+            value={selectedGeneration}
+            onChange={(e) => setSelectedGeneration(e.target.value)}
+          >
+            {generations.map((gen) => (
+              <option key={gen} value={gen}>
+                {gen}
+              </option>
+            ))}
 
-    return (
-      !isloading ? 
-      <div className='vote-mainbox'>
-        <div className='past-votes'>
-          <button className={'postpagewritebtn' + generation} onClick={onclicklistbtn}>지난 투표</button>
+         </select>
         </div>
-        <div className={'vote-header voting-topic' + generation}>
-        이번 주 투표 - {voteTitle}
+        <div className='vote-creation-title'>
+          <label>제목 :</label>
+          <input
+            type="text"
+            value={voteTitle}
+            onChange={(e) => setVoteTitle(e.target.value)}
+          />
         </div>
-        <div className='sharebox'>
-        <KakaoButton url={window.location.href} title={voteTitle} description={"당신의 선택은?"} imageUrl=""
-        onclickhandler={() => handlePostShare("kakao")}/>
-        <TwitterButton url={window.location.href} title={voteTitle} description={"당신의 선택은?"}
-        onclickhandler={() => handlePostShare("twitter")}/>
-        <FacebookButton url={window.location.href}
-        onclickhandler={() => handlePostShare("facebook")}/>
-        </div>
-        <div className='vote-box'>
-          <div class="vote-item">
-            <img className='vote-image' src={voteImage1}></img>
-            <button className={'vote-name' + generation} onClick={vote1}>{voteItem1}</button>
-          </div>
-          <img height={150} width={150} src={vsicon0010} className='vote-vs'/>
-          <div class="vote-item">
-            <img className='vote-image' src={voteImage2}></img>
-            <button className={'vote-name' + generation} onClick={vote2}>{voteItem2}</button>
-          </div>
-        </div>
-        <BalanceBar vote1={votePoint1} vote2={votePoint2} generation={generation} />
-        <div className='vote-info-box'>{'투표 마감까지 ' + Math.floor((new Date(enddate) - new Date()) / (1000 * 3600)) + '일!!!'}
-        </div>
-        <div className='comments-box'>
-          <div className='comment'><Balancegame_commentlist generation={generation} balanceGameId={balanceGameId} 
-          commentListUpdated={commentListUpdated} setCommentListUpdated={setCommentListUpdated} value={searchkeyword}/></div>
-          <div className='comment-form'>
-            <textarea className={'comment-box commentfont' + generation} value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>
-            <button className={'balancereplywritebtn' + generation} onClick={handlePostReply}>등록</button>
-          </div>
-        </div>
-      </div> :  <div className='vote-mainbox'><Loading generation={generation}/> </div> 
-    );
-  };
+      </div>
 
+      <div className="image-upload">
+        <div className='image'>
+          <label>Image 1</label>
+          <button className='balancegameuploadbtn' onClick={() => fileInput1.current.click()}>
+            업로드 버튼
+          </button>
+          <input
+           type="file"
+           ref={fileInput1}
+            onChange={(e) => handleUpload(0, e)}
+            style={{ display: "none" }}
+            />
+          {voteImage1 && <img src={voteImage1} alt="이미지 1 미리보기" />}
+          <input className='image-name'
+            type="text"
+            value={voteItem1}
+            onChange={(e) => setVoteItem1(e.target.value)}
+            placeholder="이미지 1 이름"
+          />
+        </div>
 
-export default Currentvote_board;
+        <div className='image'>
+          <label>Image 2</label>
+          <button className='balancegameuploadbtn' onClick={() => fileInput2.current.click()}>
+            업로드 버튼
+          </button>
+            <input
+              type="file"
+              ref={fileInput2}
+              onChange={(e) => handleUpload(1,e)}
+              style={{ display: "none" }}
+            />
+          {voteImage2 && <img src={voteImage2} alt="이미지 2 미리보기" />}
+          <input className='image-name'
+                type="text"
+                value={voteItem2}
+                 onChange={(e) => setVoteItem2(e.target.value)}
+                 placeholder="이미지 2 이름"
+              />
+        </div>
+      </div>
+
+      <div className='date-setting'>
+        <label>기간 :</label>
+        <input
+          type="date"
+          value={startDate}
+          onChange={(e) => setStartDate(e.target.value)}
+        />
+        ~
+        <input
+          type="date"
+          value={endDate}
+          onChange={(e) => setEndDate(e.target.value)}
+        />
+      </div>
+
+      <div className='vote-creation-footer'>
+        <button className='joinbutton_8090' type="button" onClick={() => navigate(-1)}>취소</button>
+        <button className='joinbutton_8090' type="button" onClick={handleSubmit}>수정</button>
+      </div>
+    </div>
+  ) : (
+    <div className='vote-creation-header'>
+      <Loading generation={generation} />
+    </div>
+  );
+};
+
+export default CurrentvoteUpdate;
