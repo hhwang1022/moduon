@@ -2,7 +2,7 @@ import './Balancegame_commentlistItem.css';
 import React, {useState, useEffect} from 'react';
 import memberInfo from "../../MemberInfo";
 
-const Balancegame_commentlistItem = ({comment, generation, onDeleted, username, onUpdate, onPostReplyDeleted, onPostReplyUpdate, isLoggedIn, key}) => {
+const Balancegame_commentlistItem = ({comment, generation, onDeleted, onUpdate, isLoggedIn}) => {
   const [isButtonVisible, setIsButtonVisible] = useState(false);
   const [commentDeleted, setCommentDeleted] = useState(false);
   const [commentId, setCommentId] = useState(null);
@@ -64,7 +64,7 @@ const Balancegame_commentlistItem = ({comment, generation, onDeleted, username, 
   }, [commentUpdated]);
 
     return (
-      <div className={'balancegame-commentlist' + generation + 'box'} key={key}>
+      <div className={'balancegame-commentlist' + generation + 'box'} >
         <div className={'balancegame-commentlist' + generation + 'nickname'}>{comment.memberNickname + ' :'}</div>
         <div className={'balancegame-commentlist' + generation + 'content'}>{comment.body}</div>
         <div className={'balancegame-commentlist-button' + generation}>
