@@ -8,7 +8,8 @@ import KakaoButton from '../KakaoButton';
 import FacebookButton from '../FacebookButton';
 import TwitterButton from '../TwitterButton';
 import Loading from '../Loading';
-const vsicon0010 = require('../../resource/vs_0010.gif');
+import Polaroid from '../Polaroid';
+const vsicon0010 = require('../../resource/vs_0010.png');
 
   const info = memberInfo.getMemberInfo();
   const Currentvote_board= ({generation, onclicklistbtn}) => {
@@ -99,21 +100,23 @@ const vsicon0010 = require('../../resource/vs_0010.gif');
 
     //공유하기
     const handlePostShare = async (sharetype) => {
-      try {
-        const response = await axios.post(
-          process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId + '/share',
-          {
-            "sharetype": sharetype,
-          },
-          {
-            'Content-Type': 'application/json',
-            headers: {
-              Authorization: `Bearer ${accessToken}`,
+      if(info.login){
+        try {
+          const response = await axios.post(
+            process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId + '/share',
+            {
+              "sharetype": sharetype,
             },
-          });
-          updateTicketCount(response.data.data);
-      } catch (error) {
-        alert("공유에 실패했습니다.")
+            {
+              'Content-Type': 'application/json',
+              headers: {
+                Authorization: `Bearer ${accessToken}`,
+              },
+            });
+            updateTicketCount(response.data.data);
+        } catch (error) {
+          alert("공유에 실패했습니다.")
+        }
       }
     };
 
@@ -168,14 +171,16 @@ const vsicon0010 = require('../../resource/vs_0010.gif');
         <FacebookButton url={window.location.href}
         onclickhandler={() => handlePostShare("facebook")}/>
         </div>
-        <div className='vote-box'>
+        <div className={'vote-box' + generation}>
           <div class="vote-item">
-            <img className='vote-image' src={voteImage1}></img>
+            {/* <img className='vote-image' src={voteImage1}></img> */}
+            <Polaroid img={voteImage1} name={voteItem1} generation={generation} iswin={votePoint1 > votePoint2} isright ={false}/>
             <button className={'vote-name' + generation} onClick={vote1}>{voteItem1}</button>
           </div>
           <img height={150} width={150} src={vsicon0010} className='vote-vs'/>
           <div class="vote-item">
-            <img className='vote-image' src={voteImage2}></img>
+          <Polaroid img={voteImage2} name={voteItem2} generation={generation} iswin={votePoint2 > votePoint1} isright ={true}/>
+            {/* <img className='vote-image' src={voteImage2}></img> */}
             <button className={'vote-name' + generation} onClick={vote2}>{voteItem2}</button>
           </div>
         </div>

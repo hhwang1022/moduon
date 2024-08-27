@@ -21,6 +21,7 @@ const LastBalanceGame = ({ generation }) => {
   const [votePoint2, setVotePoint2] = useState(0);
   const [votePageReset, setVotePageReset] = useState(false);
   const[isloading, setisloading] = useState(true);
+  const vsicon0010 = require('../../resource/vs_0010.png');
 
   let accessToken = window.localStorage.getItem('accessToken');
 
@@ -77,16 +78,15 @@ const LastBalanceGame = ({ generation }) => {
   return (
   !isloading ?
     <div className='vote-mainbox'>
-      <div className='vote-header'>
-        <div className='voting-topic'> {voteTitle}</div>
+      <div className={'vote-header voting-topic' + generation}>
+      {voteTitle}
       </div>
       <div className='vote-box'>
         <div className="vote-item">
           <img className='vote-image' src={voteImage1} alt="Vote Option 1" />
           <div className={'vote-name' + generation}>{voteItem1}</div>
         </div>
-        <div className='votebar'>
-        </div>
+        <img height={150} width={150} src={vsicon0010} className='vote-vs'/>
         <div className="vote-item">
           <img className='vote-image' src={voteImage2} alt="Vote Option 2" />
           <div className={'vote-name' + generation}>{voteItem2}</div>
