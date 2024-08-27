@@ -37,7 +37,6 @@ const ShareButton = ({ sharetype, url, title, description, imageUrl }) => {
             });
         } catch (error) {
             alert(error.message);
-            //navigate('/error/' + error.message);
         }
     };
 

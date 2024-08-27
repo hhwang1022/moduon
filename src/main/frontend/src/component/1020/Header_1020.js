@@ -35,34 +35,9 @@ const Header_1020 = ({ title, setcurrentindex, titleindex }) => {
             navigate('/main_0010/balance/view');
           }}
         ></InstarIcon>
-        {/* <InstarIcon imgurl={"https://image.dongascience.com/Photo/2019/12/fb4f7da04758d289a466f81478f5f488.jpg"} name={"10-20"}
-          onClickHandler={() => {
-            navigate('/main_1020');
-          }}
-        ></InstarIcon> */}
-        {/* <div class='vline'></div>
-        <InstarIcon imgurl={"https://image.dongascience.com/Photo/2019/12/fb4f7da04758d289a466f81478f5f488.jpg"} name={"투표"}
-        onClickHandler={() =>{
-          setcurrentindex(0);
-          setcurrenttitleindex(0);
-        }}
-        ></InstarIcon>
-        <InstarIcon imgurl={"https://image.dongascience.com/Photo/2019/12/fb4f7da04758d289a466f81478f5f488.jpg"} name={"갤러리"}
-        onClickHandler={() =>{
-          setcurrentindex(1);
-          setcurrenttitleindex(1);
-        }}
-        ></InstarIcon>
-        <InstarIcon imgurl={"https://image.dongascience.com/Photo/2019/12/fb4f7da04758d289a466f81478f5f488.jpg"} name={"게시판"}
-        onClickHandler={() =>{
-          setcurrentindex(2);
-          setcurrenttitleindex(2);
-        }}
-        ></InstarIcon> */}
       </div>
       <div class='hline'></div>
       <div className="header">
-        {/* <div className="title">{titles[currenttitleindex]}</div> */}
         <div className="right">
         <button className="right" onClick={() => {
           navigate('/main_1020/join');

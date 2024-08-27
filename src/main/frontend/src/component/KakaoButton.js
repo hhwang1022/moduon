@@ -16,10 +16,9 @@ const KakaoButton = ({url, title, description, imageUrl, onclickhandler}) => {
         if (window.Kakao) {
           const kakao = window.Kakao;
           if (!kakao.isInitialized()) {
-            console.log(process.env.REACT_APP_KAKAO_API_KEY);
             kakao.init(process.env.REACT_APP_KAKAO_API_KEY);
           }
-      
+
           kakao.Link.sendDefault({
             objectType: "feed",
             content: {
@@ -42,7 +41,6 @@ const KakaoButton = ({url, title, description, imageUrl, onclickhandler}) => {
             ]
           });
         }
-
         onclickhandler();
   };
 

@@ -20,7 +20,6 @@ const Mypage = ({ generation }) => {
         const handleInfoUpdate = (updatedInfo) => {
             setInfo(updatedInfo);
         };
-
         memberInfo.subscribe(handleInfoUpdate);
 
         // Cleanup subscription on component unmount
@@ -42,7 +41,6 @@ const Mypage = ({ generation }) => {
     const onClickMyProfile = () => {
             navigate('/myprofile');
     };
-
 
     return (
         <div className={'main' + generation + 'memberbox'}>

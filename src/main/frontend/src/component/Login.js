@@ -9,6 +9,7 @@ const Login = ({ successhandler, issmall, generation }) => {
   const [password, setPassword] = useState('');
   const[isloading, setisloading] = useState(!issmall);
   const [genertion, seGenertion] = useState('');
+  const [error, setError] = useState('');
 
   let accessToken = "";
   let refreshToken = "";
@@ -55,14 +56,11 @@ const Login = ({ successhandler, issmall, generation }) => {
       }
 
     } catch (error) {
-      console.log(error);
-      alert(error.message);
-      //navigate('/error/' + error.message);
+      setError("아이디 또는 비밀번호가 잘못 되었습니다.");
     }
   };
 
   const handleInfo = async () => {
-    console.log(accessToken);
     try {
       const response = await axios.get(
         process.env.REACT_APP_API_URL + 'members/info',
@@ -88,16 +86,19 @@ const Login = ({ successhandler, issmall, generation }) => {
       }
       else {
         successhandler();
+        setError('');
       }
-        
-   navigate('/');
 
     } catch (error) {
       alert(JSON.stringify(error.message));
-      console.log(error.response.data);
-      //navigate('/error/' + error.message);
     }
   };
+
+  const handleKeyDown = (event) => {
+    if (event.key === 'Enter') {
+      handleLogin();
+    }
+  }
 
    return (
       !isloading ? (
@@ -108,13 +109,21 @@ const Login = ({ successhandler, issmall, generation }) => {
             </div>
           )}
           <div>
-            <input className={'joininput' + (issmall ? '_' + generation : '')} type="text" placeholder='Email' value={id} onChange={(e) => setId(e.target.value)} />
+            <input className={'joininput' + (issmall ? '_' + generation : '')} type="text" placeholder='Email' value={id}
+                   onChange={(e) => setId(e.target.value)} onKeyDown={handleKeyDown}/>
           </div>
           <div>
-            <input className={'joininput' + (issmall ? '_' + generation : '')} type="password" placeholder='비밀번호' value={password} onChange={(e) => setPassword(e.target.value)} />
+            <input className={'joininput' + (issmall ? '_' + generation : '')} type="password" placeholder='비밀번호' value={password}
+                   onChange={(e) => setPassword(e.target.value)} onKeyDown={handleKeyDown}/>
           </div>
           <div>
             <button className={'joinbutton' + (issmall ? '_' + generation + (generation === '1020' ? ' gradient' : '') : ' gradient')} onClick={handleLogin}>로그인</button>
+            {error && (
+              <div className="error-message">
+                <span className="error-icon">⚠️</span>
+                <span>{error}</span>
+              </div>
+            )}
           </div>
         </div>
       ) : (

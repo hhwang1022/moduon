@@ -54,7 +54,6 @@ const Bgmbar = ({ generation }) => {
         // 새로운 노래를 로드하고 재생
         bgm.current.src = categorymusiclist[newIndex].sound;
         bgm.current.play().catch((error) => {
-            console.error("오디오 재생 중 오류가 발생했습니다:", error);
         });
     };
 

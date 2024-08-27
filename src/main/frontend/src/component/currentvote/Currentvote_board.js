@@ -32,6 +32,7 @@ const vsicon0010 = require('../../resource/vs_0010.gif');
     const [enddate, setenddate] = useState(Date.now);
 
     let accessToken = window.localStorage.getItem('accessToken');
+    let info = memberInfo.getMemberInfo();
 
     useEffect(() => {
       const fetchData = async () => {
@@ -56,11 +57,8 @@ const vsicon0010 = require('../../resource/vs_0010.gif');
             setenddate(voteData.endDate);
           }
           setVotePageReset(false);
-
           setisloading(false);
-
         } catch (error) {
-          console.error("Error fetching data: ", error);
           setisloading(false);
         }
       };
@@ -86,8 +84,16 @@ const vsicon0010 = require('../../resource/vs_0010.gif');
         setCommentListUpdated(true);
 
       } catch (error) {
-        alert(JSON.stringify(error.message));
-        console.log(error.response.data);
+        if (searchkeyword === '' && info.name === "홍길동") {
+          alert("로그인 하셔야 댓글 작성 가능합니다.");
+          return;
+        }
+        if (searchkeyword === '') {
+          alert("메세지를 입력해주세요.");
+          return;
+        } else {
+          alert("로그인 하셔야 댓글 작성 가능합니다.")
+        }
       }
     };
 
@@ -104,16 +110,10 @@ const vsicon0010 = require('../../resource/vs_0010.gif');
             headers: {
               Authorization: `Bearer ${accessToken}`,
             },
-
           });
-
-          console.log("response.data.data : " + response.data.data);
-
           updateTicketCount(response.data.data);
-
       } catch (error) {
-        alert(JSON.stringify(error.message));
-        console.log(error.response.data);
+        alert("공유에 실패했습니다.")
       }
     };
 
@@ -145,18 +145,10 @@ const vsicon0010 = require('../../resource/vs_0010.gif');
             headers: { Authorization: `Bearer ${accessToken}`,
             },
           });
-
           updateTicketCount(response.data.data.votingRights);
-
       } catch (error) {
-        alert(JSON.stringify(error.message));
-        console.log(error.response.data);
-        console.log(error.response.data);
+        alert("투표에 실패했습니다.")
       }
-    };
-
-    const handleCommentId = (newCommentId) => {
-      setCommentId(newCommentId);
     };
 
     return (

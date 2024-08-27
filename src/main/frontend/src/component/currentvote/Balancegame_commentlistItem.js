@@ -8,6 +8,7 @@ const Balancegame_commentlistItem = ({comment, generation, onDeleted, username, 
   const [balanceGameCommentId, setBalanceGameCommentId] = useState(null);
   const [commentUpdated, setCommentUpdated] = useState(false);
 
+  let info = memberInfo.getMemberInfo();
   const clickDeleteButton = () => {
       setCommentDeleted(true);
       setBalanceGameCommentId(comment.balanceGameReplyId);
@@ -17,9 +18,6 @@ const Balancegame_commentlistItem = ({comment, generation, onDeleted, username, 
     setCommentUpdated(true);
     setBalanceGameCommentId(comment.balanceGameReplyId);
   };
-
-  let info = memberInfo.getMemberInfo();
-
 
   useEffect(() => {
     if (info.name === comment.memberNickname) {

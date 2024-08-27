@@ -29,7 +29,6 @@ const Menubar_0010 = ({onClickHandler}) => {
         onClick={() => {
           setcurrentindex(index);
           onClickHandler(index);
-          //console.log("onClickHandler : " + onClickHandler);
         }}
       >{x}</button>
     })}
