@@ -96,10 +96,17 @@ const Currentvote_board = ({ generation, onclicklistbtn }) => {
 
     let timer = setInterval(() => {
       let now = dueday - new Date();
-      setday(Math.floor(now / 1000 / 60 / 60 / 24 % 24));
-      setminutes(Math.floor(now / 1000 / 60 % 60));
-      setseconds(Math.floor((now / 1000) % 60));
-      sethours(Math.floor(now / 1000 / 60 / 60 % 60));
+      // 날, 시간, 분, 초 계산
+      let days = Math.floor(now / 1000 / 60 / 60 / 24);
+      let hours = Math.floor((now / 1000 / 60 / 60) % 24);
+      let minutes = Math.floor((now / 1000 / 60) % 60);
+      let seconds = Math.floor((now / 1000) % 60);
+
+      // 상태 업데이트
+      setday(days);
+      sethours(hours);
+      setminutes(minutes);
+      setseconds(seconds);
     }, 1000);
 
     return () => clearInterval(timer);
