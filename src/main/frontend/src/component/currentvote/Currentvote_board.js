@@ -260,13 +260,13 @@ const Currentvote_board = ({ generation, onclicklistbtn }) => {
           이번 주 투표 - {voteTitle}
         </div>
         <div className={'vote-box' + generation}>
-          <div class="vote-item">
+          <div className="vote-item">
             {/* <img className='vote-image' src={voteImage1}></img> */}
             <Polaroid img={voteImage1} name={voteItem1} generation={generation} iswin={votePoint1 > votePoint2} isright={false} />
             <button className={'vote-name' + generation} onClick={vote1}>{voteItem1}</button>
           </div>
           <img height={150} width={150} src={vsicon0010} className='vote-vs' />
-          <div class="vote-item">
+          <div className="vote-item">
             <Polaroid img={voteImage2} name={voteItem2} generation={generation} iswin={votePoint2 > votePoint1} isright={true} />
             {/* <img className='vote-image' src={voteImage2}></img> */}
             <button className={'vote-name' + generation} onClick={vote2}>{voteItem2}</button>

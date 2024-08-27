@@ -8,7 +8,7 @@ const FacebookButton = ({url, onclickhandler}) => {
   };
 
   return <button onClick={() => shareFacebook(url)} className="sharebtn">
-           <img className="w-12 h-12" src={"https://i.imgur.com/gtRnCB0.png"} referrerpolicy="no-referrer" />
+           <img className="w-12 h-12" src={"https://i.imgur.com/gtRnCB0.png"} referrerPolicy="no-referrer" />
          </button>;
 };
 

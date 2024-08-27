@@ -34,7 +34,7 @@ const BalanceBar = ({ vote1, vote2, generation }) => {
     }, [vote2]);
 
     return (<div className={'vote-containe' + generation}><progress
-        class={"progress_" + generation}
+        className={"progress_" + generation}
         id={"progress_" + generation}
         value={leftpoint}
         min={0}

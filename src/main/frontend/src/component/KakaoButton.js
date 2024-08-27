@@ -45,7 +45,7 @@ const KakaoButton = ({url, title, description, imageUrl, onclickhandler}) => {
   };
 
   return <button onClick={() => shareKakao(url, title, description, imageUrl)} className="sharebtn">
-           <img src={"https://i.imgur.com/QaKbG3n.png"} referrerpolicy="no-referrer" />
+           <img src={"https://i.imgur.com/QaKbG3n.png"} referrerPolicy="no-referrer" />
          </button>;
 };
 

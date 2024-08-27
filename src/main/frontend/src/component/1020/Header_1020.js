@@ -22,7 +22,7 @@ const Header_1020 = ({ title, setcurrentindex, titleindex }) => {
   return (
     <div>
       <div className="header">
-        <span className="header1020maintitle">𝑴𝒐𝒅𝒖𝒐𝒏</span>
+        <span className="header1020maintitle">𝑴𝒐𝒅𝒖𝑶𝑵</span>
         <div className="right">
           <img className="padding" src={menuloveicon} width={30} height={30} />
           <img className="padding" src={menuflighticon} width={30} height={30} />
@@ -46,7 +46,7 @@ const Header_1020 = ({ title, setcurrentindex, titleindex }) => {
           }}
         ></InstarIcon>
       </div>
-      <div class='hline'></div>
+      <div className='hline'></div>
       <div className="header">
         <div className="right">
         <button className="right" onClick={() => {
