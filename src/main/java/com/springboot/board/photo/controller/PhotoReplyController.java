@@ -58,8 +58,10 @@ public class PhotoReplyController {
 
     @PatchMapping("/{reply-id}")
     public ResponseEntity patchPhotoReply(@PathVariable("reply-id") @Positive long photoReplyId,
+                                          @AuthenticationPrincipal Object principal,
                                           @Valid @RequestBody PhotoReplyDto.Patch requestBody) {
         requestBody.setPhotoReplyId(photoReplyId);
+        requestBody.setMemberEmail(principal.toString());
         PhotoReply updatePhotoReply = mapper.photoReplyPatchDtoToPhotoReply(requestBody);
         PhotoReply photoReply = photoReplyService.updatePhotoReply(updatePhotoReply);
         return new ResponseEntity<>(

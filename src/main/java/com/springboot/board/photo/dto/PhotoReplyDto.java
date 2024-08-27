@@ -28,9 +28,8 @@ public class PhotoReplyDto {
         @NotBlank
         private String body;
 
-        public void setPhotoReplyId(long photoReplyId) {
-            this.photoReplyId = photoReplyId;
-        }
+        @Setter
+        private String memberEmail;
     }
 
     @Getter

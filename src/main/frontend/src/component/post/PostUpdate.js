@@ -36,7 +36,6 @@ const PostUpdate = ({ generation, postid }) => {
             response.data.image4,
             response.data.image5,
           ].filter(Boolean));
-
           setisloading(false);
 
            } catch (error) {
@@ -92,8 +91,6 @@ const PostUpdate = ({ generation, postid }) => {
           },
         }
       ).then(function (response) {
-
-        alert('게시글 수정 성공!');
 
         setFile([]);
         setimgurllist([]);

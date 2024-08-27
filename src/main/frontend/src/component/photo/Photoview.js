@@ -5,6 +5,7 @@ import './Photoview.css';
 import Reply from './Photoreply';
 import Balancegame_commentlistItem from '../currentvote/Balancegame_commentlistItem';
 import Loading from '../Loading';
+import memberInfo from "../../MemberInfo";
 
 const Photoview = ({generation, photoid}) => {
   const [title, setTitle] = useState('');
@@ -23,6 +24,7 @@ const Photoview = ({generation, photoid}) => {
   const [commentListUpdated, setCommentListUpdated] = useState(false);
   const [isLike, setIsLike] = useState(false);
   const [isloading, setisloading] = useState(true);
+  const [isLoggedIn, setIsLoggedIn] = useState(memberInfo.getMemberInfo().login);
 
   const navigate = useNavigate();
 
@@ -47,11 +49,9 @@ const Photoview = ({generation, photoid}) => {
       setImage5(data.image5);
       setPhotoReplyList(data.photoReplyList);
       setNickname(data.nickname);
-      console.log(data);
       setisloading(false);
 
     } catch (error) {
-      console.error("Error fetching data: ", error);
       setisloading(false);
     }
   };
@@ -83,7 +83,6 @@ const handlePhotoReply = async () => {
           console.log(error.response.data);
   }
 };
-
 
 const handlePhotoLike = async () => {
   try {
@@ -158,6 +157,74 @@ const handlePhotoUpdate = () => {
   navigate('../update/:' + photoid);
 }
 
+  useEffect(() => {
+    if(commentListUpdated) {
+      setCommentListUpdated(false);
+    }
+  }, [commentListUpdated])
+
+  const handleDeletePhotoReply = async (isDeleted,commentId) => {
+    if (!isDeleted) return;
+    try {
+      const response = await axios.delete(
+        process.env.REACT_APP_API_URL + 'photos/' + photoid + '/reply/' + commentId,
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+      setCommentListUpdated(true);
+    } catch (error) {
+      alert("투표 삭제 실패");
+    }
+  }
+
+  const handleUpdatePhotoReply = async (isUpdate, commentId) => {
+    if (!isUpdate) return;
+    try {
+      const response = await  axios.patch(
+        process.env.REACT_APP_API_URL + 'photos/' + photoid + '/reply/' + commentId,
+        {
+          body: searchkeyword
+        } ,{
+          headers: {
+            'Content-Type': 'application/json',
+            Authorization: `Bearer ${accessToken}`,
+          },
+        });
+      console.log(searchkeyword);
+      console.log(photoid);
+      console.log(commentId);
+      setCommentListUpdated(true);
+      console.log("photoReply 변경됨");
+    } catch (error) {
+      alert("투표 댓글 업데이트 실패");
+    }
+  }
+
+  useEffect(() => {
+    const handleInfoUpdate = (updatedInfo) => {
+      setIsLoggedIn(updatedInfo.login);
+
+      if (!updatedInfo.login) {
+        setTimeout(() => {
+          setPhotoReplyList([]);  // 로그아웃 시 댓글 리스트 초기화
+          setCommentListUpdated(true);  // 상태 업데이트 및 강제 리렌더링
+        }, 0);
+      } else {
+        setCommentListUpdated(true);
+      }
+    };
+
+    memberInfo.subscribe(handleInfoUpdate);
+
+    return () => {
+      memberInfo.unsubscribe(handleInfoUpdate);
+    };
+  }, []);
+
+
 return (
 !isloading ?
   <div className={'photo-view-container' + generation}>
@@ -204,7 +271,8 @@ return (
     <div className='photo-comments-box'>
       <div id='scrollableDiv' ref={scrollableDivRef}  className='photo-comment'>
         {photoReplyList.map((x, index) => (
-          <Balancegame_commentlistItem key={index} comment={x} generation={generation}/>
+          <Balancegame_commentlistItem key={index} comment={x} generation={generation}
+                                       onDeleted={handleDeletePhotoReply} username={nickname} onUpdate={handleUpdatePhotoReply} isLoggedIn={isLoggedIn} />
       ))}</div>
       <div className='photo-comment-form'>
         <textarea className='photo-comment-box'  value={searchkeyword} onChange={(e) => setsearchkeyword(e.target.value)}></textarea>

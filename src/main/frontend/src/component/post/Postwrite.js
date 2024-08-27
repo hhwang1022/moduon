@@ -2,6 +2,7 @@ import axios from 'axios';
 import React, { useState, useEffect, useRef } from 'react';
 import { useNavigate } from "react-router-dom";
 import './Postwrite.css';
+import memberInfo from "../../MemberInfo";
 
 const Postwrite = ({ generation, successhandler }) => {
   const [postTitle, setpostTitle] = useState('');
@@ -14,6 +15,7 @@ const Postwrite = ({ generation, successhandler }) => {
 
   let accessToken = window.localStorage.getItem('accessToken');
   let formData = new FormData();
+  let info = memberInfo.getMemberInfo();
 
   const navigate = useNavigate();
 
@@ -38,7 +40,6 @@ const Postwrite = ({ generation, successhandler }) => {
   };
 
   const handlePostpost = async () => {
-    console.log(imgurllist);
 
     try {
       const response = await axios.post(
@@ -64,8 +65,6 @@ const Postwrite = ({ generation, successhandler }) => {
 
       if (successhandler !== undefined)
         successhandler(5);
-      
-      alert('게시글 남기기 성공!');
 
       setFile([]);
       setimgurllist([]);
@@ -73,15 +72,22 @@ const Postwrite = ({ generation, successhandler }) => {
       if (response !== undefined)
         navigate('/main_' + generation + '/post');
     } catch (error) {
-      alert(JSON.stringify(error.message));
-      console.log(error.response.data);
+      if (postTitle === '' && postBody === '' && info.name === "홍길동") {
+        alert("내용을 입력해주세요. ");
+        return;
+      }
+      if (info.name === '홍길동') {
+        alert("로그인 해주세요.");
+        return;
+      } else {
+        alert("내용을 입력해주세요");
+      }
     }
   };
 
   //이미지를 등록하는 함수
   const handlePostimg = async (index) => {
     accessToken = window.localStorage.getItem('accessToken');
-
     try {
       const response = await axios.post(
         process.env.REACT_APP_API_URL + 'images', formData,
@@ -92,13 +98,10 @@ const Postwrite = ({ generation, successhandler }) => {
           },
         }
       );
-
       const newimgurllist = [...imgurllist, response.data];
       setimgurllist(newimgurllist);
-      console.log(newimgurllist);
     } catch (error) {
-      alert(JSON.stringify(error.message));
-      console.log(error.response.data);
+      alert("이미지 등록에 실패했습니다. ")
     }
   };
 
@@ -126,11 +129,10 @@ const Postwrite = ({ generation, successhandler }) => {
       {uplodfile.map((x, index) => (
 
         <span key={index}>
-          <button>
-            <img height={50} width={50} src={URL.createObjectURL(uplodfile[index]) } className='postuploadsumnailicon'/>
+          <button >
+            <img key={index} height={50} width={50} src={URL.createObjectURL(uplodfile[index]) } className='postuploadsumnailicon'/>
           </button>
         </span>
-
       ))}
 
     </div>

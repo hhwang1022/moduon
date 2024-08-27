@@ -62,8 +62,9 @@ public class PhotoReplyService {
 
     public PhotoReply updatePhotoReply(PhotoReply photoReply) {
         PhotoReply findPhotoReply = findVerifiedPhotoReply(photoReply.getPhotoReplyId());
+        memberService.findVerifiedMember(photoReply.getMember().getEmail());
         Optional.ofNullable(photoReply.getBody())
-                .ifPresent(body -> photoReply.setBody(body));
+                .ifPresent(body -> findPhotoReply.setBody(body));
         return photoReplyRepository.save(findPhotoReply);
     }
 
