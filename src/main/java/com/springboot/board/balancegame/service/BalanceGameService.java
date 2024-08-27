@@ -1,7 +1,9 @@
 package com.springboot.board.balancegame.service;
 
 import com.springboot.board.balancegame.entity.BalanceGame;
+import com.springboot.board.balancegame.repository.BalanceGameReplyRepository;
 import com.springboot.board.balancegame.repository.BalanceGameRepository;
+import com.springboot.board.balancegame.repository.BalanceGameVoteRepository;
 import com.springboot.exception.BusinessLogicException;
 import com.springboot.exception.ExceptionCode;
 import com.springboot.member.service.MemberService;
@@ -20,10 +22,17 @@ import java.util.Optional;
 @Service
 public class BalanceGameService {
 	private final BalanceGameRepository balanceGameRepository;
+	private final BalanceGameReplyRepository balanceGameReplyRepository;
+	private final BalanceGameVoteRepository balanceGameVoteRepository;
 
-	public BalanceGameService(BalanceGameRepository balanceGameRepository) {
+
+	public BalanceGameService(BalanceGameRepository balanceGameRepository,
+							  BalanceGameReplyRepository balanceGameReplyRepository,
+							  BalanceGameVoteRepository balanceGameVoteRepository) {
 		this.balanceGameRepository = balanceGameRepository;
-	}
+        this.balanceGameReplyRepository = balanceGameReplyRepository;
+        this.balanceGameVoteRepository = balanceGameVoteRepository;
+    }
 
 	public BalanceGame createBalanceGame(BalanceGame balanceGame) {
 		BalanceGame savedBalanceGame = balanceGameRepository.save(balanceGame);
@@ -62,9 +71,14 @@ public class BalanceGameService {
 
 	public void deleteBalanceGame(long balanceGameId) {
 		BalanceGame findBalanceGame = findVerifiedBalanceGame(balanceGameId);
-		findBalanceGame.setBalanceGameStatus(BalanceGame.BalanceGameStatus.DELETED);
 
-		balanceGameRepository.save(findBalanceGame);
+		balanceGameReplyRepository.deleteByBalanceGameId(balanceGameId);
+
+		if (balanceGameVoteRepository.existsById(balanceGameId)) {
+			balanceGameVoteRepository.deleteById(balanceGameId);
+		}
+
+		balanceGameRepository.delete(findBalanceGame);
 	}
 
 	public BalanceGame findVerifiedBalanceGame(long balanceGameId) {

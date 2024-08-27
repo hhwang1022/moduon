@@ -95,7 +95,7 @@ public class BalanceGame extends Auditable {
 		}
 	}
 
-	@OneToMany(mappedBy = "balanceGame", cascade = {CascadeType.PERSIST})
+	@OneToMany(mappedBy = "balanceGame", cascade = {CascadeType.PERSIST}, orphanRemoval = true)
 	@JsonManagedReference
 	private List<BalanceGameReply> balanceGameReplesiList = new ArrayList<>();
 
@@ -115,7 +115,7 @@ public class BalanceGame extends Auditable {
 	@JsonBackReference
 	private Member member;
 
-	@OneToMany(mappedBy = "balanceGame", cascade = {CascadeType.PERSIST})
+	@OneToMany(mappedBy = "balanceGame", cascade = {CascadeType.PERSIST},  orphanRemoval = true)
 	@JsonManagedReference
 	private List<BalanceGameVote> balanceGameVoteList = new ArrayList<>();
 

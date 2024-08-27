@@ -5,7 +5,7 @@ import InstaCurrentvote_board from '../instacurrentvote/InstaCurrentvote_board';
 import Balancegamelist from './Balancegamelist';
 import LastBalanceGame from './LastBalanceGame';
 import Balancegamewrite from './Balancegamewrite';
-
+import CurrentvoteUpdate from '../currentvote/CurrentvoteUpdate';
 
 const Balancegameboard = ({ generation }) => {
     const navigate = useNavigate();
@@ -23,6 +23,7 @@ const Balancegameboard = ({ generation }) => {
                     onClickwirtebtn={handleReadClick} />} />
                 <Route path="write" element={<Balancegamewrite />} />
                 <Route path="view/:balanceid" element={<LastBalanceGame generation={generation} balanceid={balanceGameId}/>} />
+                <Route path="update/:balanceid" element={<CurrentvoteUpdate generation={generation} balanceid={balanceGameId}/>} />
                 <Route path="view" element={generation !== "1020" ? <Currentvote_board generation={generation} onclicklistbtn={() => navigate('/main_' + generation + '/balance')} /> : <InstaCurrentvote_board />} />
             </Routes>
         );

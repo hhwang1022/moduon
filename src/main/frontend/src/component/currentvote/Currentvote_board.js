@@ -10,6 +10,7 @@ import TwitterButton from '../TwitterButton';
 import Loading from '../Loading';
 import Polaroid from '../Polaroid';
 const vsicon0010 = require('../../resource/vs_0010.png');
+import { useNavigate } from "react-router-dom";
 
   const info = memberInfo.getMemberInfo();
   const Currentvote_board= ({generation, onclicklistbtn}) => {
@@ -33,6 +34,9 @@ const vsicon0010 = require('../../resource/vs_0010.png');
     const [enddate, setenddate] = useState(Date.now);
 
     let accessToken = window.localStorage.getItem('accessToken');
+
+    const navigate = useNavigate();
+
     let info = memberInfo.getMemberInfo();
 
     useEffect(() => {
@@ -154,11 +158,45 @@ const vsicon0010 = require('../../resource/vs_0010.png');
       }
     };
 
+//        const handleVoteUpdate = () => {
+//          navigate('../update/' + balanceGameId);
+//        }
+
+    const handleVoteUpdate = (balance) => {
+      // balance와 그 속성들이 정의되어 있는지 확인
+      if (balance && balance.category && balance.generation) {
+        if (generation === balance.category.replace('CATEGORY_', '')) {
+          navigate('/main_' + balance.generation.replace('CATEGORY_', '') + '/balance/update/' + balance.balanceGameId);
+          //window.location.reload();
+        } else {
+          navigate('/main_' + balance.generation.replace('CATEGORY_', '') + '/balance/view/' + balance.balanceGameId);
+        }
+      } else {
+        console.error("Invalid balance object:", balance); // 디버깅 용도
+      }
+    };
+
+       const handleVoteDelete = async () => {
+          try{
+            const response = await axios.delete(process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId, {
+              headers: { Authorization: `Bearer ${accessToken}` }
+            })
+            navigate(`/main_${generation}/balance`);
+            alert("게시물 삭제 완료!");
+          }
+          catch (error){
+            alert(JSON.stringify(error.message));
+          }
+        };
+
+
     return (
       !isloading ? 
       <div className='vote-mainbox'>
         <div className='past-votes'>
-          <button className={'postpagewritebtn' + generation} onClick={onclicklistbtn}>지난 투표</button>
+        <button className={'postpagewritebtn' + generation} onClick={() => handleVoteUpdate({ category: "CATEGORY_" + generation, generation: generation, balanceGameId: balanceGameId })}>수정</button>
+        <button className={'postpagewritebtn' + generation} onClick={handleVoteDelete}>삭제</button>
+        <button className={'postpagewritebtn' + generation} onClick={onclicklistbtn}>지난 투표</button>
         </div>
         <div className={'vote-header voting-topic' + generation}>
         이번 주 투표 - {voteTitle}
