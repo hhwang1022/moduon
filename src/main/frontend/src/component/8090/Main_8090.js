@@ -74,7 +74,7 @@ const Main_8090 = () => {
         <div className='main8090outwindow main8090dafaultwindow'>
             <div className='main8090windowtopbarbackground'><button onClick={() => {
                         navigate('/main_1020');
-                    }}>MODOO-ON</button>
+                    }}>ModuON</button>
                 <span className='main8090windowtopbarbuttonarea'>
                     <span className='main8090windowtopbarbutton main8090dafaultwindow'>_</span>
                     <span className='main8090windowtopbarbutton main8090dafaultwindow'>□</span>
@@ -114,7 +114,7 @@ const Main_8090 = () => {
                             <Route path="balance/*" element={<Balancegameborad generation={"8090"} />} />
                         </Routes>
                     </div>
-                    <div className='main8090windowcontentboxline' /></div>
+                </div>
                 <div className='main8090memberbox'>
                     <Bgmbar generation={"8090"} />
                     <Mypage generation={"8090"} />

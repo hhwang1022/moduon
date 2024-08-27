@@ -1,3 +1,18 @@
+@font-face {
+    font-family: 'DOSIyagiMedium';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/DOSIyagiMedium.woff2') format('woff2');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'DOSGothic';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSGothic.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+
 .postmiddle{
     display: flex;
     flex-direction: column;
@@ -16,11 +31,12 @@
     flex-direction: column;
     width: 100%;
     height: 100%;
-
 }
 
-.postlist8090title{
+.postlist8090 td{
     height: 40px;
+    font-family: 'DOSIyagiMedium';
+    color: white;
 }
 
 .pagebtnselect8090{
@@ -42,9 +58,15 @@
 }
 
 .postlist8090margin{
-    margin: 15px;
-    width: 750px;
+    margin: 50px auto;
+    width: 80%;
+    height: auto;
 }
+
+.postlist8090margin td{
+    padding: 10px 0;
+}
+
 
 .postlist8090line{
     border-bottom: 1px dashed #444444;

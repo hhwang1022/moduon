@@ -135,7 +135,7 @@ const Main_9000 = () => {
         <div className='main9000outwindow main9000dafaultwindow'>
             <div className='main9000windowtopbarbackground'><button onClick={() => {
                         navigate('/main_1020');
-                    }}>MODOO-ON</button>
+                    }}>ModuON</button>
                 <span className='main9000windowtopbarbuttonarea'>
                     <span className='main9000windowtopbarbutton main9000dafaultwindow'>_</span>
                     <span className='main9000windowtopbarbutton main9000dafaultwindow'>□</span>
