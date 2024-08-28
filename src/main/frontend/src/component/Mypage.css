@@ -1,10 +1,9 @@
 .main8090memberbox{
     margin-top: 50px;
     min-width: 300px;
-}
-
-.main8090memberinbox{
-
+    display: flex;
+    flex-direction: column;
+    overflow-y: auto;
 }
 
 .main8090membertitle{
@@ -57,15 +56,10 @@
 .main9000memberbox{
     width: 250px;
     height: 626px;
-    margin-left: 750px;
-    position: absolute;
     border-left: 2px solid #000000;
     z-index: 3;
     font-family: 'DOSIyagiMedium';
-}
-
-.main9000memberinbox{
-
+    background-color: white;
 }
 
 .main9000membertitle{

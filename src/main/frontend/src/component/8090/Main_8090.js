@@ -131,6 +131,7 @@ const Main_8090 = () => {
 
     return (
      !isloading ?
+         <>
         <div className='main8090outwindow main8090defaultwindow'>
             <div className='main8090windowtopbarbackground'><button onClick={() => {
                         navigate('/main_1020');
@@ -155,10 +156,7 @@ const Main_8090 = () => {
                         navigate('/main_0010/balance/view');
                     }}>00-10</button>
             </div>
-
-            <div className='main8090topbanner'> {randomMessage}
-
-            </div>
+            <div className='main8090topbanner'> {randomMessage}</div>
             <div className='main8090windowcontentoutbox'>
                 <div className='main8090margin'></div>
                 <div className='main8090windowcontentbox'>
@@ -181,9 +179,12 @@ const Main_8090 = () => {
                 </div>
             </div>
 
+        </div>
+        <div className='main8090footer'>
             <div className='main8090windowbottombarbackground'>{"* Tip) 매일 출석해서 투표권을 얻어보세요! *"}</div>
             <Footer_8090></Footer_8090>
-        </div> : <div className='main8090outwindow main8090defaultwindow'><Loading generation={generation}/> </div>
+        </div>
+        </> : <div className='main8090outwindow main8090defaultwindow'><Loading generation={generation}/> </div>
     );
 };
 
