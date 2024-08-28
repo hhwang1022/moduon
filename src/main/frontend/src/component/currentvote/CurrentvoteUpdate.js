@@ -75,7 +75,8 @@ useEffect(() => {
           voteItem1: voteItem1,
           voteItem2: voteItem2,
           createDateList: parseStartDateToList(startDate),
-          endDateList: parseEndDateToList(endDate)
+          endDateList: parseEndDateToList(endDate),
+          generation: selectedGeneration
         },
         {
           headers: {
