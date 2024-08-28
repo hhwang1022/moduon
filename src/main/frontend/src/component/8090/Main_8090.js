@@ -15,8 +15,32 @@ const Main_8090 = () => {
     const generation = "8090";
     const [currentindex, setcurrentindex] = useState(0);
     const[isloading, setisloading] = useState(true);
+    const [randomMessage, setRandomMessage] = useState('');
 
     const location = useLocation();
+    const messages = [
+                'MS-DOS, 명령어의 시대',
+                '2400bps 모뎀, 인터넷의 첫걸음',
+                'IBM PC 호환기가 대세였던 시절',
+                '마우스? 그게 뭐야? 키보드로 충분했지',
+                '그대형 CRT 모니터와 함께했던 컴퓨터 책상',
+                '비한글 입력이 쉽지 않았던 시절',
+                'PC에 사운드 카드를 처음 달아봤을 때의 충격',
+                '배경 화면 없이 검정 바탕에 하얀 글씨',
+                'MS-DOS 게임을 하기 위해 기억나는 디스크 스왑',
+                '디스크 복사 방지를 뚫으려는 친구들의 노력',
+                '카세트와 앨범으로 음악을 수집하던 시절',
+                '아날로그 TV에서의 색상 조정과 그에 대한 경험',
+                '80년대 초반의 패션과 그에 따른 독특한 스타일',
+                '가정용 비디오 카메라의 첫 출시와 그로 인한 흥미',
+                '디지털 시계와 그에 대한 친구들의 호기심'
+           ];
+
+     useEffect(() => {
+                const randomIndex = Math.floor(Math.random() * messages.length);
+                setRandomMessage(messages[randomIndex]);
+            }, []);
+
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -96,7 +120,7 @@ const Main_8090 = () => {
                     }}>00-10</button>
             </div>
 
-            <div className='main8090topbanner'> 80년대로 여러분들을 초대합니다.
+            <div className='main8090topbanner'> {randomMessage}
 
             </div>
             <div className='main8090windowcontentoutbox'>
