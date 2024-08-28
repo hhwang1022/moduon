@@ -3,7 +3,7 @@
 # 프로젝트 요약
 
 연령대 추억 공감 커뮤니티
-
+<br><br><br>
 ## 기획 의도
 
 1. 세대 간 소통과 연결
@@ -23,8 +23,18 @@
    - 노년층과 같이 기술 사용에 어려움을 겪는 사용자들에게도 접근성 제공
 6. 잠재적 비즈니스 기회
    - 특정 연령대의 관심사에 맞춘 광고, 제품 판매 등을 통해 수익 창출
+<br><br><br>
 
-### 기술 스택
+## ERD
+![](https://i.imgur.com/1DrhsxS.png)
+
+<br><br><br>
+
+## 시스템 요구사항 명세서
+![](https://i.imgur.com/yK79xTB.png)
+<br><br><br>
+
+## 기술 스택
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
 ![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
@@ -33,31 +43,38 @@
 ![AWS](https://img.shields.io/badge/AWS-%23FF9900.svg?style=for-the-badge&logo=amazon-aws&logoColor=white)
 
 
+<br><br><br>
 
-### 프로젝트 인원
+## 프로젝트 인원
 
-|황해진|방승욱|윤영아|서진형|
-|------|---|---|---|
 |![](https://i.imgur.com/wQh0uO2.png)|![](https://i.imgur.com/ycdATnY.png)|![](https://i.imgur.com/8RQfmpQ.png)|![](https://i.imgur.com/0YqKVim.png)|
+|------|---|---|---|
 |황해진|방승욱|윤영아|서진형|
-|-팀장<br>-프론트앤드<br>(세대별 기본 프레임)<br>-백앤드 보조<br>(이미지 업로드, 공유, 가입, 로그인)|-팀원<br>-프론트앤드<br>()|-팀원<br>-백앤드<br>(사진첩·일반게시판기능 구현)<br>|-팀원<br>-백앤드<br>(멤버·투표 기능 구현)<br>|
+|-팀장<br>-프론트앤드<br>(세대별 기본 프레임)<br>-백앤드 보조<br>(이미지 업로드, 공유, 가입, 로그인)|-팀원<br>-프론트앤드<br>()|-팀원<br>-백앤드<br>(사진첩·일반게시판기능 구현)|-팀원<br>-백앤드<br>()<br>프론트앤드<br>(멤버·투표 기능 구현)|
 
 
+<br><br><br>
 
-### 주요 화면
+## 주요 화면
 
 
 ![](https://i.imgur.com/J3G03rq.png)
 ### 메인화면
+
+![](https://i.imgur.com/9lkIytl.png)
+### 회원가입 화면
 
 ![](https://i.imgur.com/i7yPEoU.png)
 ### 일반 게시판 화면(0010)
 
+![](https://i.imgur.com/BKti1MU.png)
+### 금주 투표 화면(0010)
+
 ![](https://i.imgur.com/JUrFKYr.png)
 ### 사진 게시판 글작성 화면(9000)
 
-![](https://i.imgur.com/BKti1MU.png)
-### 금주 투표 화면
+![](https://i.imgur.com/pJ9a9WC.png)
+### 사진 게시판 화면(9000)
 
-![](https://i.imgur.com/J3G03rq.png)
-### 메인화면
+
+
