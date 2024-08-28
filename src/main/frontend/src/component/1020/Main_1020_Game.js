@@ -10,6 +10,9 @@ const Main_1020_Game = ({ position, balancedata, onClickEvent }) => {
 
     let accessToken = window.localStorage.getItem('accessToken');
 
+    balancedata.votePoint1 = Math.floor(Math.random() * 9999);
+    balancedata.votePoint2 = Math.floor(Math.random() * 9999);
+
       if (!balancedata) {
         return <div>Loading...</div>;
       }
