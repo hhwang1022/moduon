@@ -40,8 +40,7 @@
   flex-direction: column;
   color: black;
   margin: 20px;
-  overflow-y: auto;
-  overflow-x: hidden;
+  overflow: auto;
 }
 
 .post-view-header8090, .post-view-header9000, .post-view-header0010 {
