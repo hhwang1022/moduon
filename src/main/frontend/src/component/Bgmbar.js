@@ -5,6 +5,11 @@ import sound2 from '../resource/bgm_test2.mp3';
 import sound3 from '../resource/bgm_test3.mp3';
 import sound4 from '../resource/bgm_test4.mp3';
 import sound5 from '../resource/bgm_test5.mp3';
+import sound6 from '../resource/bgm_test6.mp3';
+import sound7 from '../resource/bgm_test7.mp3';
+import sound8 from '../resource/bgm_test8.mp3';
+import sound9 from '../resource/bgm_test9.mp3';
+import sound10 from '../resource/bgm_test10.mp3';
 
 const Bgmbar = ({ generation }) => {
 
@@ -13,30 +18,55 @@ const Bgmbar = ({ generation }) => {
 
     const musiclist = [
         {
-            "name": "n.SSign-SPICE",
+            "name": "신해철 - 그대에게",
             "sound": sound1,
             "generation": "8090"
         },
         {
-            "name": "MSG워너비-듣고 싶을까",
+            "name": "이문세 - 붉은노을",
             "sound": sound2,
+            "generation": "8090"
+        },
+        {
+            "name": "이선희 - 나 항상 그대를",
+            "sound": sound3,
+            "generation": "8090"
+        },
+        {
+            "name": "H.O.T. - 캔디",
+            "sound": sound4,
             "generation": "9000"
         },
         {
-            "name": "임영웅-다시 사랑한다면",
-            "sound": sound3,
+            "name": "S.E.S. - I'm Your Girl",
+            "sound": sound5,
+            "generation": "9000"
+        },
+        {
+            "name": "신화 -Perfect Man",
+            "sound": sound6,
+            "generation": "9000"
+        },
+        {
+            "name": "프리스타일 - Y",
+            "sound": sound7,
             "generation": "0010"
         },
         {
-            "name": "루시-21세기의 어떤 날",
-            "sound": sound4,
-            "generation": "1020"
+            "name": "Buzz - Monologue",
+            "sound": sound8,
+            "generation": "0010"
         },
         {
-            "name": "김필-그대 떠나가도",
-            "sound": sound5,
-            "generation": "1020"
-        }
+            "name": "빅뱅 - 하루하루",
+            "sound": sound9,
+            "generation": "0010"
+        },
+        {
+            "name": "원더걸스 - Tell me",
+            "sound": sound10,
+            "generation": "0010"
+        },
     ];
 
     let categorymusiclist = musiclist.filter(x => x.generation === generation);
