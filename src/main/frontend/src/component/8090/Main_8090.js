@@ -97,7 +97,7 @@ const Main_8090 = () => {
             </div>
 
             <div className='main8090topbanner'> 80년대로 여러분들을 초대합니다.
-                <TopBanner generation={"8090"} />
+
             </div>
             <div className='main8090windowcontentoutbox'>
                 <div className='main8090margin'></div>
