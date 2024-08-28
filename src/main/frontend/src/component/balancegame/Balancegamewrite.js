@@ -4,7 +4,7 @@ import axios from 'axios';
 import { useNavigate, useParams } from "react-router-dom";
 
 function Balancegamewrite({ onClickcanclebtn, successhandler }) {
-  const generations = ['8090', '9000', '0010', '1020'];
+  const generations = ['8090', '9000', '0010'];
 
   const [selectedGeneration, setSelectedGeneration] = useState(generations[0]);
   const [title, setTitle] = useState('');
