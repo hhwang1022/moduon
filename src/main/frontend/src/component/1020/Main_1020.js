@@ -42,12 +42,9 @@ const Main_1020 = () => {
                 process.env.REACT_APP_API_URL + 'balancegames/main', {
                 headers: { Authorization: `Bearer ${accessToken}` }
             });
-
-            console.log(response.data);
             setbalancedatas(response.data);
             
       } catch (error) {
-        console.error("Error fetching balancedatas: ", error);
         setbalancedatas([]);
       }
     };
