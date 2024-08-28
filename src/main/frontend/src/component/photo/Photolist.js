@@ -87,11 +87,11 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
 
     const handlePageChange = (pageNumber) => {
         setcurruntpage(pageNumber);
-        if (isSearching) {
-            searchPhotos();
-        } else {
-            fetchPhotos();
-        }
+        // if (isSearching) {
+        //     searchPhotos();
+        // } else {
+        //     fetchPhotos();
+        // }
     };
 
 
