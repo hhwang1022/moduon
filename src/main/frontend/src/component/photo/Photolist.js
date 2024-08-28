@@ -87,11 +87,11 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
 
     const handlePageChange = (pageNumber) => {
         setcurruntpage(pageNumber);
-        if (isSearching) {
-            searchPhotos();
-        } else {
-            fetchPhotos();
-        }
+        // if (isSearching) {
+        //     searchPhotos();
+        // } else {
+        //     fetchPhotos();
+        // }
     };
 
 
@@ -114,7 +114,7 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
         </div>
         <div className={"photomainconent" + generation}>
             {photolist.map((x, index) => {
-                return <Photolistitem post={x} generation={generation} onclickhandler={() => {onClickreadbtn(x.photoId)}} />
+                return <Photolistitem key={index} post={x} generation={generation} onclickhandler={() => {onClickreadbtn(x.photoId)}} />
             })}
         </div>
         <div className='postmiddle'>
@@ -126,7 +126,7 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
                     ◁
                 </button>
                 {[...Array(parseInt(totalpage))].map((n, index) => {
-                    return <button className={curruntpage === index + 1 ? 'pagebtnselect' + generation : 'pagebtn' + generation} onClick={() => setcurruntpage(index + 1)}> {index + 1}  </button>
+                    return <button key={index} className={curruntpage === index + 1 ? 'pagebtnselect' + generation : 'pagebtn' + generation} onClick={() => setcurruntpage(index + 1)}> {index + 1}  </button>
                 })}
                 <button className={'pagebtn' + generation} onClick={() => {
                     if (currentindex < totalpage - 1)

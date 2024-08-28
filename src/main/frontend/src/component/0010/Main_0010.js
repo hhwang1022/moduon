@@ -15,6 +15,68 @@ const Main_0010 = () => {
   const generation = "0010";
   const [currentindex, setcurrentindex] = useState(0);
   const [isloading, setisloading] = useState(true);
+  const [randomMessage, setRandomMessage] = useState('');
+
+    const messages = {
+    0: [
+            '일촌평에 남긴 소소한 마음의 표현',
+            '브라우저의 진화, Internet Explorer',
+            'UCC의 초기 단계',
+            '핸드폰 벨소리 다운로드',
+            '디지털 뮤직 비디오의 인기도',
+            '싸이월드 미니홈피와 방명록',
+            '미니홈피의 스킨 꾸미기',
+            '팬픽과 온라인 커뮤니티',
+            '스마트폰과 모바일 앱의 확산',
+            '디지털 음악과 mp3 파일',
+            '미키마우스 MP3와 아이팟과 아이튠즈',
+            '휴대폰의 다양한 디자인',
+            '전자사전으로 보던 인터넷소설',
+            '디지몬 어드벤처의 전설적인 디지몬과의 모험',
+            '엽기토끼와 졸라맨, 그 시절의 인터넷 문화와 개그'
+       ],
+       1: [
+            '일촌평에 남긴 소소한 마음의 표현',
+            '브라우저의 진화, Internet Explorer',
+            'UCC의 초기 단계',
+            '핸드폰 벨소리 다운로드',
+            '디지털 뮤직 비디오의 인기도',
+            '싸이월드 미니홈피와 방명록',
+            '미니홈피의 스킨 꾸미기',
+            '팬픽과 온라인 커뮤니티',
+            '스마트폰과 모바일 앱의 확산',
+            '디지털 음악과 mp3 파일',
+            '미키마우스 MP3와 아이팟과 아이튠즈',
+            '휴대폰의 다양한 디자인',
+            '전자사전으로 보던 인터넷소설',
+            '디지몬 어드벤처의 전설적인 디지몬과의 모험',
+            '엽기토끼와 졸라맨, 그 시절의 인터넷 문화와 개그'
+       ],
+
+       2: [
+            '일촌평에 남긴 소소한 마음의 표현',
+             '브라우저의 진화, Internet Explorer',
+             'UCC의 초기 단계',
+             '핸드폰 벨소리 다운로드',
+             '디지털 뮤직 비디오의 인기도',
+             '싸이월드 미니홈피와 방명록',
+             '미니홈피의 스킨 꾸미기',
+             '팬픽과 온라인 커뮤니티',
+             '스마트폰과 모바일 앱의 확산',
+             '디지털 음악과 mp3 파일',
+             '미키마우스 MP3와 아이팟과 아이튠즈',
+             '휴대폰의 다양한 디자인',
+             '전자사전으로 보던 인터넷소설',
+             '디지몬 어드벤처의 전설적인 디지몬과의 모험',
+             '엽기토끼와 졸라맨, 그 시절의 인터넷 문화와 개그'
+             ]
+  };
+
+
+    useEffect(() => {
+      const randomIndex = Math.floor(Math.random() * messages[currentindex].length);
+      setRandomMessage(messages[currentindex][randomIndex]);
+    }, [currentindex]);
 
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -26,6 +88,7 @@ const Main_0010 = () => {
 
   const handleMenuClick = (index) => {
     setcurrentindex(index);
+
     switch (index) {
       case 0:
         navigate('/main_0010/post');
@@ -73,7 +136,7 @@ const Main_0010 = () => {
                 </Routes>
               </div>
               <Mypage generation={"0010"} />
-              <div className='main0010footer'>일촌평에 남긴 소소한 마음의 표현</div>
+              <div className='main0010footer'>{randomMessage}</div>
             </div>
           </div>
         </div>

@@ -21,7 +21,12 @@ const Balancegamelist = ({ generation, onClickwirtebtn, balanceGameId }) => {
                 });
             if (response !== undefined) {
                 setPostlist(response.data.data);
-                setTotalpage(response.data.pageInfo.totalPages);
+                if(response.data.pageInfo.totalPages % 10 === 0){
+                    setTotalpage(response.data.data.length / 10);
+                }
+                else{
+                    setTotalpage(response.data.data.length / 10 + 1);
+                } 
             }
         } catch (error) {
             alert("지난 투표 조회 에러");
@@ -34,7 +39,7 @@ const Balancegamelist = ({ generation, onClickwirtebtn, balanceGameId }) => {
 
     const handlePageChange = (pageNumber) => {
         setCurruntpage(pageNumber);
-        fetchPosts();
+        //fetchPosts();
     };
 
     return (
@@ -63,9 +68,9 @@ const Balancegamelist = ({ generation, onClickwirtebtn, balanceGameId }) => {
                             <td width="50"></td>
                             <td className={'postlist' + generation + 'text'}>제목</td>
                             <td className={'postlist' + generation + 'text'}>닉네임</td>
-                            <td className={'postlist' + generation + 'text'} width="50">작성일</td>
+                            {/* <td className={'postlist' + generation + 'text'} width="50">작성일</td>
                             <td className={'postlist' + generation + 'text'} width="50">조회수</td>
-                            <td className={'postlist' + generation + 'text'} width="50">추천수</td>
+                            <td className={'postlist' + generation + 'text'} width="50">추천수</td> */}
                         </tr>
                     </thead>
                     <tbody>

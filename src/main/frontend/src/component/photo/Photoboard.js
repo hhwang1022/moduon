@@ -10,7 +10,6 @@ const Photoboard = ({ generation }) => {
   const { photoId } = useParams();
   const [currentphotoid, setCurrentPhotoId] = useState(parseInt(photoId) || 1);
   useEffect(() => {
-    console.log("currentphotoid : " + currentphotoid);
   }, [currentphotoid]);
 
    const handleReadClick = (id) => {

@@ -87,11 +87,11 @@ const Postlist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
 
     const handlePageChange = (pageNumber) => {
         setcurruntpage(pageNumber);
-        if (isSearching) {
-            searchPosts();
-        } else {
-            fetchPosts();
-        }
+        // if (isSearching) {
+        //     searchPosts();
+        // } else {
+        //     fetchPosts();
+        // }
     };
 
     return (

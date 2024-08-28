@@ -167,7 +167,6 @@ const Join = ({ successhandler }) => {
                 <option className={"joingenerationselectoption"} value="GENERATION_8090">8090</option>
                 <option className={"joingenerationselectoption"} value="GENERATION_9000">9000</option>
                 <option className={"joingenerationselectoption"} value="GENERATION_0010">0010</option>
-                <option className={"joingenerationselectoption"} value="GENERATION_1020">1020</option>
               </select>
             </div>
             <p></p>

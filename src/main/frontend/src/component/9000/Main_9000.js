@@ -21,6 +21,70 @@ const Main_9000 = () => {
 
     const [currentindex, setcurrentindex] = useState(3);
     const[isloading, setisloading] = useState(true);
+    const [randomMessage, setRandomMessage] = useState('');
+
+    const messages = {
+    0: [
+            '삐삐의 숫자 암호로 전하던 마음',
+            '인터넷 초창기 시절, 그리운 대화방',
+            '디지털 시대의 첫 발걸음, 채팅의 추억',
+            '온라인에서 시작된 우리의 첫 대화',
+            '그때 그 시절, PC통신에서 나눈 대화',
+            '비디오 가게에서 빌리던 최신 영화들',
+            '하드디스크 용량이 1GB를 넘으면 미래를 느끼던 시절',
+            'X세대로 불리며 새로운 문화의 주인공이었던 그때',
+            '천리안과 하이텔의 초기 인터넷 탐험',
+            '컴퓨터 학원에서 배우던 처음의 윈도우 95',
+            '라디오 DJ에게 사연을 보내던 순수한 추억',
+            '플로피 디스크에 저장하던 중요한 파일들',
+            '컴퓨터 전원이 꺼질 때마다 느꼈던 아찔한 순간들',
+            '오락실 대신 집에서 플레이하던 네오지오 게임들',
+            '3.5인치 플로피 디스크에 들어가는 용량이 겨우 1.44MB였던 사실'
+       ],
+    1: [
+            '삐삐의 숫자 암호로 전하던 마음',
+            '인터넷 초창기 시절, 그리운 대화방',
+            '디지털 시대의 첫 발걸음, 채팅의 추억',
+            '온라인에서 시작된 우리의 첫 대화',
+            '그때 그 시절, PC통신에서 나눈 대화',
+            '비디오 가게에서 빌리던 최신 영화들',
+            '하드디스크 용량이 1GB를 넘으면 미래를 느끼던 시절',
+            'X세대로 불리며 새로운 문화의 주인공이었던 그때',
+            '천리안과 하이텔의 초기 인터넷 탐험',
+            '컴퓨터 학원에서 배우던 처음의 윈도우 95',
+            '라디오 DJ에게 사연을 보내던 순수한 추억',
+            '플로피 디스크에 저장하던 중요한 파일들',
+            '컴퓨터 전원이 꺼질 때마다 느꼈던 아찔한 순간들',
+            '오락실 대신 집에서 플레이하던 네오지오 게임들',
+            '3.5인치 플로피 디스크에 들어가는 용량이 겨우 1.44MB였던 사실'
+       ],
+    2: [
+            '삐삐의 숫자 암호로 전하던 마음',
+            '인터넷 초창기 시절, 그리운 대화방',
+            '디지털 시대의 첫 발걸음, 채팅의 추억',
+            '온라인에서 시작된 우리의 첫 대화',
+            '그때 그 시절, PC통신에서 나눈 대화',
+            '비디오 가게에서 빌리던 최신 영화들',
+            '하드디스크 용량이 1GB를 넘으면 미래를 느끼던 시절',
+            'X세대로 불리며 새로운 문화의 주인공이었던 그때',
+            '천리안과 하이텔의 초기 인터넷 탐험',
+            '컴퓨터 학원에서 배우던 처음의 윈도우 95',
+            '라디오 DJ에게 사연을 보내던 순수한 추억',
+            '플로피 디스크에 저장하던 중요한 파일들',
+            '컴퓨터 전원이 꺼질 때마다 느꼈던 아찔한 순간들',
+            '오락실 대신 집에서 플레이하던 네오지오 게임들',
+            '3.5인치 플로피 디스크에 들어가는 용량이 겨우 1.44MB였던 사실'
+       ]
+    };
+
+  useEffect(() => {
+      if (messages[currentindex]) {
+          const randomIndex = Math.floor(Math.random() * messages[currentindex].length);
+          setRandomMessage(messages[currentindex][randomIndex]);
+      } else {
+          setRandomMessage('메시지가 없습니다.');
+      }
+  }, [currentindex]);
 
     useEffect(() => {
         const timer = setTimeout(() => {
@@ -169,7 +233,7 @@ const Main_9000 = () => {
                     <Mypage generation={"9000"} />
                 </div>
             </div>
-            <div className='main9000windowbottombarbackground'>PC통신에서 나눴던 첫 인터넷 채팅</div>
+            <div className='main9000windowbottombarbackground'>{randomMessage}</div>
         </div>
         <Footer_9000></Footer_9000>
     </div> : <div className='main9000background'><Loading generation={generation}/> </div>
