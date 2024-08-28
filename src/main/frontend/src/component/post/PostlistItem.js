@@ -44,7 +44,9 @@ const PostlistItem = ({ post, generation, onclickhandler }) => {
                 <td className={'postlist' + generation + 'text'}><button onClick={() => {
                     onclickhandler(post.postId);
                 }}>{post.title}</button></td>
-                <td className={'postlist' + generation + 'text'}>{post.nickname}</td>
+                <td>
+                    <div className={'postlist' + generation + 'text'}>{post.nickname}</div>
+                </td>
                 <td className={'postlist' + generation + 'text'}>{simpleday(post.createdAt)}</td>
                 <td className={'postlist' + generation + 'text'}>{post.view}</td>
                 <td className={'postlist' + generation + 'text'}>{post.likeCount}</td>

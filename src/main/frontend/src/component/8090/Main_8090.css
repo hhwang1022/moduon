@@ -15,10 +15,11 @@
 
 .main8090outwindow {
     width: 100%;
-    height: 100vh;
+    height: 100%;
     position: relative;
     display: flex;
     flex-direction: column;
+
 }
 
 
@@ -30,9 +31,6 @@
     border-right: 2px solid black;
     font-size: 14pt;
     cursor: default;
-    display: flex;
-    flex-direction: column;
-    overflow-y: hidden;
 }
 
 .main8090topbanner {
@@ -95,21 +93,20 @@
 
 
 .main8090windowcontentbox {
-    background-color: transparent;
-    width: 1120px;
-    align-items: center;
+    width: 1120vh;
+    height: 100vh;
+    
     border-left: 4px solid #206061;
     border-right: 4px solid #206061;
     flex-direction: column;
-    flex-grow: 1;
-    align-content: flex-start;
+    
+    
 }
 
 .main8090windowcontentinbox {
     width: 100%;
-    height: auto;
+    height: 100%;
     border-top: 4px solid #154041;
-    overflow: auto;
     margin: auto;
     display: flex;
     justify-content: center;

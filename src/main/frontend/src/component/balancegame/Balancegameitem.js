@@ -9,10 +9,7 @@ const BalancegameItem = ({ post, generation, onclickhandler }) => {
             <td className={'postlist' + generation + 'text'}>
                 <button onClick={() => onclickhandler(post.balanceGameId)}>
                     {post.title}</button></td>
-            <td className={'postlist' + generation + 'text'}>{post.nickname}</td>
             <td className={'postlist' + generation + 'text'}>{post.createsat}</td>
-            <td className={'postlist' + generation + 'text'}>{post.view}</td>
-            <td className={'postlist' + generation + 'text'}>{post.like}</td>
         </tr>
     );
 };
