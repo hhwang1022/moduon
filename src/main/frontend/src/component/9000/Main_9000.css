@@ -15,16 +15,17 @@
 .main9000background{
     width: 100vw;
     height: 100vh;
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
     background-color: #008080;
 }
 
 .main9000outwindow{
     width: 1024px;
     height: 800px;
-    margin-top: 100px;
+    
+    top: 50px;
+
+    margin: auto;
+    position: relative;
 }
 
 
@@ -77,17 +78,11 @@
 	position: absolute;
 }
 
-.main9000windowbox{
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    height: 550px;
-}
 
 .main9000windowcontentbox{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
+    width: 1000px;
+    height: 630px;
+    margin: 10px;
     border: 2px solid black;
     border-bottom: 2px solid #E6E6E6;
     border-right: 2px solid #E6E6E6;
@@ -107,14 +102,22 @@
 }
 
 .main9000contentbox{
-    display: flex;
+    
+    width: 700px;
+    height: 570px;
     background-color: white;
-    height: 600px;
+    margin: 10px;
+    margin-top: 50px;
+    border-radius: 10px;
+    position: absolute;
+    z-index: 3;
+    overflow: auto;
+   
 }
 
 .main9000lefticon{
     display: flex;
-    height: 100%;
+    position: absolute;
     flex-direction: column;
     text-align: center;
     margin: 20px;
@@ -144,7 +147,9 @@
 }
 
 .main9000righticon{
-    height: 100%;
+    position: absolute;
+    top: 600px;
+    right: 100px;
     display: flex;
     flex-direction: column;
     text-align: center;

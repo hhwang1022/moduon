@@ -170,7 +170,6 @@ const Main_9000 = () => {
 
     return (
     !isloading ?
-    <div>
     <div className='main9000background'>
         <div className='main9000lefticon'>
             <button
@@ -199,7 +198,7 @@ const Main_9000 = () => {
                     <span className='main9000windowtopbarbutton main9000defaultwindow'>□</span>
                     <span className='main9000windowtopbarbutton main9000defaultwindow'>X</span>
                 </span>
-            </div>
+                </div>
             <div className='main9000categorybar'>
                 <button className='main9000categorybutton'
                     onClick={() => {
@@ -214,32 +213,28 @@ const Main_9000 = () => {
                         navigate('/main_0010/balance/view');
                     }}>00-10</button>
             </div>
-            <div className='main9000windowbox'>
+            <div>
                 <div className='main9000windowcontentbox'>
-                    <div>
                     <Bgmbar generation={"9000"} />
-                    </div>
                     <div className='main9000contentbox'>
-                        <Routes>
-                                <Route path="post/*" element={<Postboard generation={"9000"} />} />
-                                <Route path="photo/*" element={<Photoboard generation={"9000"} />} />
-                                <Route path="balance/*" element={<Balancegameborad generation={"9000"} />} />
+                    <Routes>
+                            <Route path="post/*" element={<Postboard generation={"9000"} />} />
+                            <Route path="photo/*" element={<Photoboard generation={"9000"} />} />
+                            <Route path="balance/*" element={<Balancegameborad generation={"9000"} />} />
                         </Routes>
                     </div>
-                </div>
-                <div>
                     <Mypage generation={"9000"} />
                 </div>
+            </div>
                 <div className='main9000windowbottombarbackground'>{randomMessage}</div>
             </div>
-        </div>
         <div className='main9000righticon'>
             <img src={require("../../resource/9000_icon1.png")}  height={86} width={86}></img>
             <span className='main9000icontext'>휴지통</span>
         </div>
-        </div>
         <Footer_9000></Footer_9000>
-    </div> : <div className='main9000background'><Loading generation={generation}/> </div>
+        </div>
+         : <div className='main9000background'><Loading generation={generation}/> </div>
     );
 };
 

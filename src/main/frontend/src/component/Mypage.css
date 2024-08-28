@@ -59,7 +59,8 @@
     border-left: 2px solid #000000;
     z-index: 3;
     font-family: 'DOSIyagiMedium';
-    background-color: white;
+    margin-left: 750px;
+    position: absolute;
 }
 
 .main9000membertitle{

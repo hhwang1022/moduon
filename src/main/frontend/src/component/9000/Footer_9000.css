@@ -1,10 +1,11 @@
 .footer9000background{
     width: 100%;
-    height: a;
-    margin-top: auto;
+    height: 50px;
+
+    bottom: 0px;
+	position: absolute;
     padding: 2px;
     padding-left: 5px;
-    display: flex;
 }
 
 .footer9000button{
