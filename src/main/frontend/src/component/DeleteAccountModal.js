@@ -13,7 +13,6 @@ const DeleteAccountModal = ({ onClose, onConfirm }) => {
           <button
             className="confirm-button"
             onClick={() => {
-              console.log("Confirm button clicked");
               onConfirm();
             }}
           >

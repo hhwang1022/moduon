@@ -106,7 +106,7 @@ public class BalanceGame extends Auditable {
 		}
 	}
 
-	@OneToMany(mappedBy = "balanceGame", cascade = {CascadeType.PERSIST})
+	@OneToMany(mappedBy = "balanceGame", cascade = {CascadeType.PERSIST}, orphanRemoval = true)
 	@JsonManagedReference
 	private List<Share> shareList = new ArrayList<>();
 

@@ -137,7 +137,14 @@ const Currentvote_board = ({ generation, onclicklistbtn }) => {
         alert("메세지를 입력해주세요.");
         return;
       } else {
-        alert("로그인 하셔야 댓글 작성 가능합니다.")
+        if(info.generation === "8090" && generation === "0010") {
+         alert("8090세대는 8090과 9000 카테고리만 글쓰기가 가능합니다.");
+        } else if (info.generation === "0010" && generation === "8090") {
+            alert("0010세대는 9000과 0010 카테고리만 글쓰기가 가능합니다.");
+        } else {
+        alert("내용을 입력해주세요.")
+        }
+        setisloading(false);
       }
     }
   };

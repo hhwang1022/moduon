@@ -31,6 +31,7 @@ const Photoview = ({generation, photoid}) => {
 
 
   let accessToken = window.localStorage.getItem('accessToken');
+  let info = memberInfo.getMemberInfo();
 
   const fetchPhotoData = async () => {
     try {
@@ -53,6 +54,7 @@ const Photoview = ({generation, photoid}) => {
       setisloading(false);
 
     } catch (error) {
+        alert("데이터를 불러오는 중 오류가 발생했습니다.");
       setisloading(false);
     }
   };
@@ -79,9 +81,20 @@ const handlePhotoReply = async () => {
       });
       setsearchkeyword('');
       setCommentListUpdated(true);
+
       } catch (error) {
-          alert(JSON.stringify(error.message));
-          console.log(error.response.data);
+          if (info.name === "홍길동") {
+            alert("로그인 해주세요.");
+          } else {
+            if(info.generation === "8090" && generation === "0010") {
+               alert("8090세대는 8090과 9000 카테고리만 글쓰기가 가능합니다.");
+             } else if (info.generation === "0010" && generation === "8090") {
+                alert("0010세대는 9000과 0010 카테고리만 글쓰기가 가능합니다.");
+             } else {
+                alert("내용을 입력해주세요.")
+             }
+             setisloading(false);
+          }
   }
 };
 
@@ -99,8 +112,8 @@ const handlePhotoLike = async () => {
       setLikeCount(isLike ? likeCount - 1 : likeCount + 1);
       setIsLike(!isLike);
       } catch (error) {
-          alert(JSON.stringify(error.message));
-          console.log(error.response.data);
+          alert("로그인 해주세요");
+          setisloading(false);
   }
 };
 
@@ -137,7 +150,7 @@ const fetchPhotoLike = async () => {
     }
 
   } catch (error) {
-    console.error("Error fetching data: ", error);
+    alert("좋아요 가져오기 실패했습니다.");
   }
 };
 
@@ -150,7 +163,7 @@ const handlePhotoDelete = async () => {
     alert("게시물 삭제 완료!");
   }
   catch (error){
-    alert(JSON.stringify(error.message));
+    alert("게시물 삭제에 실패했습니다.");
   }
 };
 
@@ -197,11 +210,8 @@ const handlePhotoUpdate = () => {
             Authorization: `Bearer ${accessToken}`,
           },
         });
-      console.log(searchkeyword);
-      console.log(photoid);
-      console.log(commentId);
       setCommentListUpdated(true);
-      console.log("photoReply 변경됨");
+
     } catch (error) {
       alert("투표 댓글 업데이트 실패");
     }
@@ -210,7 +220,6 @@ const handlePhotoUpdate = () => {
   useEffect(() => {
     const handleInfoUpdate = (updatedInfo) => {
       setIsLoggedIn(updatedInfo.login);
-      console.log(memberInfo);
       setCurrentUserNickname(memberInfo._name);
 
       if (!updatedInfo.login) {

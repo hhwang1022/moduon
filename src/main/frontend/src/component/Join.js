@@ -37,7 +37,6 @@ const Join = ({ successhandler }) => {
   const handleJoin = async () => {
 
     if (password != passwordconfrim) {
-    console.log(password);
       alert('비밀번호가 틀립니다');
       return;
     }
@@ -73,7 +72,6 @@ const Join = ({ successhandler }) => {
         }
     } catch (error) {
       alert(JSON.stringify(error.message));
-      console.log(error.response.data);
     }
   };
 

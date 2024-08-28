@@ -32,7 +32,11 @@ import memberInfo from "../../MemberInfo";
     const [currentUserNickname, setCurrentUserNickname] = useState('');
 
     const navigate = useNavigate();
-  
+
+   useEffect(() => {
+        info = memberInfo.getMemberInfo();
+    }, []);
+
     let accessToken = window.localStorage.getItem('accessToken');
     let info = memberInfo.getMemberInfo();
 
@@ -86,9 +90,15 @@ import memberInfo from "../../MemberInfo";
             if (info.name === "홍길동") {
               alert("로그인 해주세요.");
             } else {
+                if(info.generation === "8090" && generation === "0010") {
+                    alert("8090세대는 8090과 9000 카테고리만 글쓰기가 가능합니다.");
+                } else if (info.generation === "0010" && generation === "8090") {
+                    alert("0010세대는 9000과 0010 카테고리만 글쓰기가 가능합니다.");
+                } else {
               alert("내용을 입력해주세요.")
             }
             setisloading(false);
+    }
     }
   };
 
