@@ -4,7 +4,6 @@ import { useNavigate } from "react-router-dom";
 import './Postwrite.css';
 import memberInfo from "../../MemberInfo";
 
-
 const Postwrite = ({ generation, successhandler }) => {
   const [postTitle, setpostTitle] = useState('');
   const [postBody, setpostBody] = useState('');
@@ -13,17 +12,17 @@ const Postwrite = ({ generation, successhandler }) => {
   const [imgurllist, setimgurllist] = useState([]);
   const fileInput = React.useRef(null);
   const maximgcount = 5;
-
- useEffect(() => {
-      info = memberInfo.getMemberInfo();
-  }, []);
+  const plusicon = require('../../resource/plus_icon.png');
 
   let accessToken = window.localStorage.getItem('accessToken');
   let formData = new FormData();
   let info = memberInfo.getMemberInfo();
 
-  const navigate = useNavigate();
+  useEffect(() => {
+    info = memberInfo.getMemberInfo();
+}, []);
 
+  const navigate = useNavigate();
 
   const handleUpload = (e) => {
     if (uplodfile.length < maximgcount) {
@@ -77,9 +76,7 @@ const Postwrite = ({ generation, successhandler }) => {
 
       if (response !== undefined)
         navigate('/main_' + generation + '/post');
-
     } catch (error) {
-
       if (postTitle === '' && postBody === '' && info.name === "홍길동") {
         alert("내용을 입력해주세요. ");
         return;
@@ -88,15 +85,11 @@ const Postwrite = ({ generation, successhandler }) => {
         alert("로그인 해주세요.");
         return;
       } else {
-        if (info.generation === "8090" && generation === "0010") {
-                alert("8090세대는 8090과 9000 카테고리만 글쓰기가 가능합니다.");
-            } else if (info.generation === "0010" && generation === "8090") {
-                alert("0010세대는 9000과 0010 카테고리만 글쓰기가 가능합니다.");
-            } else {
-        }  alert("내용을 입력해주세요");
+        alert("내용을 입력해주세요");
       }
     }
   };
+
   //이미지를 등록하는 함수
   const handlePostimg = async (index) => {
     accessToken = window.localStorage.getItem('accessToken');
@@ -117,10 +110,6 @@ const Postwrite = ({ generation, successhandler }) => {
     }
   };
 
-  useEffect(() => {
-    info = memberInfo.getMemberInfo();
-}, []);
-
   return (<div className={"postwritemain" + generation}>
     <div>
       <label className={'posttitle' + generation} htmlFor="postTitle">제목</label>
@@ -133,7 +122,7 @@ const Postwrite = ({ generation, successhandler }) => {
       {uplodfile.length < maximgcount ?
         <span >
           <button onClick={() => handleButtonUploadClick()}>
-            <img height={50} width={50} src={"https://cdn.iconscout.com/icon/free/png-256/free-plus-button-6544256-5479387.png?f=webp"} />
+            <img height={50} width={50} src={plusicon} />
           </button>
           <input
             type="file"

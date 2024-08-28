@@ -12,6 +12,7 @@ const Photowrite = ({ generation, successhandler }) => {
   const [imgurllist, setimgurllist] = useState([]);
   const fileInput = React.useRef(null);
   const maximgcount = 5;
+  const plusicon = require('../../resource/plus_icon.png');
 
  useEffect(() => {
       info = memberInfo.getMemberInfo();
@@ -122,7 +123,7 @@ const Photowrite = ({ generation, successhandler }) => {
       {uplodfile.length < maximgcount ?
         <span >
           <button onClick={() => handleButtonUploadClick()}>
-            <img height={50} width={50} src={"https://cdn.iconscout.com/icon/free/png-256/free-plus-button-6544256-5479387.png?f=webp"} />
+            <img height={50} width={50} src={plusicon} />
           </button>
           <input
             type="file"
