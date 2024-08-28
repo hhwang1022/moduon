@@ -1,32 +1,3 @@
-@font-face {
-    font-family: 'DOSIyagiMedium';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/DOSIyagiMedium.woff2') format('woff2');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'DOSGothic';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_eight@1.0/DOSGothic.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'DungGeunMo';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_six@1.2/DungGeunMo.woff') format('woff');
-    font-weight: normal;
-    font-style: normal;
-}
-
-@font-face {
-    font-family: 'NotoSansKR';
-    font-style: normal;
-    font-weight: 400;
-    src: url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff2) format('woff2'), url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.woff) format('woff'), url(//fonts.gstatic.com/ea/notosanskr/v2/NotoSansKR-Regular.otf) format('opentype');
-}
-
-
 .postmiddle{
     display: flex;
     flex-direction: column;
@@ -41,18 +12,10 @@
 
 .postlist8090mainbox{
     margin-top: 50px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
 }
 
-.postlist8090 td{
+.postlist8090title{
     height: 40px;
-    font-family: 'DOSIyagiMedium';
-    color: white;
-    border-top: 1px solid white;
-    border-bottom: 1px solid white;
 }
 
 .pagebtnselect8090{
@@ -74,45 +37,12 @@
 }
 
 .postlist8090margin{
-    margin: 50px auto;
-    width: 80%;
-    height: auto;
-}
-
-.postlist8090margin td{
-    padding: 10px 0;
-    font-family: 'DOSIyagiMedium';
-    
-}
-
-.postlist8090title {
-    font-weight: bold;
-    cursor: text;
-}
-
-.postlist8090nickname {
-    font-weight: bold;
-    cursor: text;
-}
-
-.postlist8090createdat {
-    font-weight: bold;
-    cursor: text;
-}
-
-.postlist8090views {
-    font-weight: bold;
-    cursor: text;
-}
-
-.postlist8090likes {
-    font-weight: bold;
-    cursor: text;
+    margin: 15px;
+    width: 750px;
 }
 
 .postlist8090line{
     border-bottom: 1px dashed #444444;
-    font-family: 'DOSIyagiMedium';
 }
 
 .postpagebtn8090 {
@@ -121,16 +51,16 @@
     width: 80px;
     height: 30px;
     border: 2px solid #000000;
+    font-family: 'DOSIyagiMedium';
     background-color: #008080;
     color: white;
-    font-family: 'DOSIyagiMedium';
 }
 
 .postpagebtn8090:active {
     box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.5); 
     background-color: #7B7B7B; 
     transform: translateY(2px);
-    margin-left: 10px;
+    margin-left: 15px;
     width: 80px;
     height: 30px;
     border: 1px dashed #444444;
@@ -154,7 +84,6 @@
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
-    font-family: 'DOSIyagiMedium';
 }
 
 .postlistselectitem8090{
@@ -172,19 +101,15 @@
 /*--------------------------------------------------------*/
 
 .postlist9000mainbox{
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
-    padding-right: 5px;
+    height: 500px;
+    overflow: auto;
 }
 
-.postlist9000 td{
+.postlist9000title{
     height: 40px;
-    font-family: 'DOSIyagiMedium';
-    color: black;
-    border-top: 1px solid black;
+    margin: 15px;
     border-bottom: 1px solid black;
+    border-top: 1px solid black;
 }
 
 .pagebtnselect9000{
@@ -200,62 +125,23 @@
 }
 
 .postlist9000margin{
-    margin: 40px auto;
-    width: 90%;
-    height: auto;
-}
-
-.postlist9000margin td{
-    padding: 10px 0;
-    font-family: 'DOSIyagiMedium';
-}
-
-.postlist9000title {
-    font-weight: bold;
-}
-
-.postlist9000nickname {
-    font-weight: bold;
-}
-
-.postlist9000createdat {
-    font-weight: bold;
-}
-
-.postlist9000views {
-    font-weight: bold;
-}
-
-.postlist9000likes {
-    font-weight: bold;
+    margin: 15px;
+    width: 680px;
 }
 
 .postlist9000line{
-    border-bottom: 1px dashed #444444;
+
 }
 
-.postpagebtn9000 {
+.postpagewritebtn9000{
     margin-left: 10px;
-    bottom: 100px;
     width: 80px;
     height: 30px;
     border: 2px solid #000000;
     font-family: 'DOSIyagiMedium';
-    background-color: white;
-    color: black;
 }
 
-.postpagebtn9000:active {
-    box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.5); 
-    background-color: #adadad; 
-    transform: translateY(2px);
-    margin-left: 10px;
-    width: 80px;
-    height: 30px;
-    border: 1px dashed #818181;
-}
-
-.postpagewritebtn9000{
+.postpagebtn9000{
     margin-left: 10px;
     width: 80px;
     height: 30px;
@@ -269,7 +155,7 @@
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
     padding: 5px;
-    font-family: 'DOSIyagiMedium';
+    font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -281,7 +167,7 @@
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
     padding: 5px;
-    font-family: 'DOSIyagiMedium';
+    font-family: 'Roboto';
     font-style: normal;
     font-weight: 400;
     font-size: 14px;
@@ -292,97 +178,49 @@
 
 .postlist0010mainbox{
     margin-top: 20px;
-    display: flex;
-    flex-direction: column;
-    width: 100%;
-    height: 100%;
 }
 
-.postlist0010 td{
+.postlist0010title{
+    background-color: rgb(179, 179, 179);
     height: 40px;
-    font-family: 'DungGeunMo';
-    color: black;
-    border-top: 1px solid black;
-    border-bottom: 1px solid black;
+    margin: 15px;
 }
 
 .pagebtnselect0010{
     color: #ff7b00;
     margin: 5px;
-    font-family: 'DungGeunMo';
 }
 
 .pagebtn0010{
     color: black;
     margin: 5px;
-    font-family: 'DungGeunMo';
 }
 
 .postlist0010margin{
-    margin: 30px auto;
-    width: 90%;
-    height: auto;
-}
-
-.postlist0010title {
-    font-weight: bold;
-}
-
-.postlist0010nickname {
-    font-weight: bold;
-}
-
-.postlist0010createdat {
-    font-weight: bold;
-}
-
-.postlist0010views {
-    font-weight: bold;
-}
-
-.postlist0010likes {
-    font-weight: bold;
-}
-
-.postlist0010margin td{
-    padding: 7px 0;
-    font-family: 'DungGeunMo';
+    margin: 15px;
+    width: 560px;
 }
 
 .postlist0010line{
     border-bottom: 1px dashed #444444;
 }
 
-.postpagebtn0010 {
+.postpagebtn0010{
     margin-left: 10px;
-    bottom: 100px;
-    width: 80px;
-    height: 30px;
-    border: 2px solid #000000;
-    font-family: 'DungGeunMo';
-    background-color: white;
-    color: black;
-}
-
-.postpagebtn0010:active {
-    box-shadow: inset 3px 3px 5px rgba(0, 0, 0, 0.5); 
-    background-color: #adadad; 
-    transform: translateY(2px);
-    margin-left: 10px;
-    width: 80px;
-    height: 30px;
-    border: 1px dashed #818181;
-}
-
-.postpagewritebtn0010{
-    margin-left: 10px;
-    margin-right: 20px;
     width: 80px;
     height: 30px;
     border: 1px solid #444444;
     border-radius: 5px;
-    background-image: linear-gradient(#fff, #b8b8b8);
-    font-family: 'DungGeunMo';
+    background-image: linear-gradient(#fff, #b8b8b8)
+}
+
+.postpagewritebtn0010{
+    margin-left: 10px;
+    width: 80px;
+    height: 30px;
+    border: 1px solid #444444;
+    border-radius: 5px;
+    background-image: linear-gradient(#fff, #b8b8b8)
 }
 
 .postlistselect0010{
@@ -391,7 +229,7 @@
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
     padding: 5px;
-    font-family: 'DungGeunMo';
+    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
@@ -402,7 +240,7 @@
     border: 1px solid #C4C4C4;
     box-sizing: border-box;
     padding: 5px;
-    font-family: 'DungGeunMo';
+    font-style: normal;
     font-weight: 400;
     font-size: 14px;
     line-height: 16px;
