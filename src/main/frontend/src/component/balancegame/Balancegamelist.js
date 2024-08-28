@@ -66,8 +66,8 @@ const Balancegamelist = ({ generation, onClickwirtebtn, balanceGameId }) => {
                     <thead>
                         <tr className={'postlist' + generation + 'title'}>
                             <td width="50"></td>
-                            <td className={'postlist' + generation + 'text'}>제목</td>
-                            <td className={'postlist' + generation + 'text'}>닉네임</td>
+                            <td className={'postlist' + generation + 'text'}>투표 제목</td>
+                            {/* <td className={'postlist' + generation + 'text'}>닉네임</td> */}
                             {/* <td className={'postlist' + generation + 'text'} width="50">작성일</td>
                             <td className={'postlist' + generation + 'text'} width="50">조회수</td>
                             <td className={'postlist' + generation + 'text'} width="50">추천수</td> */}
