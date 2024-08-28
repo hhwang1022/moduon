@@ -103,9 +103,45 @@
 .postlist9000mainbox{
     height: 500px;
     overflow: auto;
+    overflow-x: hidden;
+}
+
+.postlist9000new{
+    height: 40px;
+    margin: 15px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
 }
 
 .postlist9000title{
+    height: 40px;
+    margin: 15px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.postlist9000nickname{
+    height: 40px;
+    margin: 15px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.postlist9000createdat{
+    height: 40px;
+    margin: 15px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.postlist9000views{
+    height: 40px;
+    margin: 15px;
+    border-bottom: 1px solid black;
+    border-top: 1px solid black;
+}
+
+.postlist9000likes{
     height: 40px;
     margin: 15px;
     border-bottom: 1px solid black;
@@ -180,7 +216,33 @@
     margin-top: 20px;
 }
 
+.postlist0010new{
+    background-color: rgb(179, 179, 179);
+    height: 40px;
+    margin: 15px;
+}
+
 .postlist0010title{
+    background-color: rgb(179, 179, 179);
+    height: 40px;
+    margin: 15px;
+}
+.postlist0010nickname{
+    background-color: rgb(179, 179, 179);
+    height: 40px;
+    margin: 15px;
+}
+.postlist0010createdat{
+    background-color: rgb(179, 179, 179);
+    height: 40px;
+    margin: 15px;
+}
+.postlist0010views{
+    background-color: rgb(179, 179, 179);
+    height: 40px;
+    margin: 15px;
+}
+.postlist0010likes{
     background-color: rgb(179, 179, 179);
     height: 40px;
     margin: 15px;
