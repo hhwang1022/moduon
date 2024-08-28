@@ -110,6 +110,7 @@
     border-radius: 10px;
     position: absolute;
     z-index: 3;
+    overflow: auto;
 }
 
 .main9000lefticon{
