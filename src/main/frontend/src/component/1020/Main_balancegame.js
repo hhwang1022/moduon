@@ -17,14 +17,14 @@ const Main_balancegame = ({balancedatas}) => {
 
     return ( ((balancedatas.data !== undefined && balancedatas.data.length > 0) ?
         <div>
-        <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1, x: motionposition, ease: "easeInOut" }}>
+        <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1, x: motionposition, transition: {ease: "easeInOut"}}}>
             <div className='main1020'>
-                <motion.span width={0} className='middlegame' initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionmiddlescale }}>
+                <motion.span width={0} className='middlegame' initial={{ opacity: 0 }} animate={{ opacity: 1, scale: motionmiddlescale, transition: {ease: "easeInOut"}}}>
                     <Main_1020_Game position={"middlegame"}
                         balancedata={balancedatas.data[currentgameindex]}>
                     </Main_1020_Game>
                 </motion.span>
-                <motion.span className='leftgame' initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionleftscale }}>
+                <motion.span className='leftgame' initial={{ opacity: 0 }} animate={{ opacity: 1, scale: motionleftscale, transition: {ease: "easeInOut"}}}>
                     <Main_1020_Game
                         balancedata={balancedatas.data[leftindex]}
                         onClickEvent={() => {
@@ -57,7 +57,7 @@ const Main_balancegame = ({balancedatas}) => {
                     >
                     </Main_1020_Game>
                 </motion.span>
-                <motion.span className='rightgame' width={0} initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionrightscale }}>
+                <motion.span className='rightgame' width={0} initial={{ opacity: 0 }} animate={{ opacity: 1, scale: motionrightscale, transition: {ease: "easeInOut"}}}>
                     <Main_1020_Game
                         balancedata={balancedatas.data[rightindex]}
                         onClickEvent={() => {
@@ -94,15 +94,14 @@ const Main_balancegame = ({balancedatas}) => {
         </motion.span>
         <div>
             <div className="header">
-
                 <div className='middle'>
                     <div className='balencegame_scroll_btncontent'>
                         {balancedatas.data.map((x, index) => {
                             if (index !== currentgameindex) {
-                                return <div className="balencegame_scroll_btn_unactive"></div>
+                                return <div key={index} className="balencegame_scroll_btn_unactive"></div>
                             }
                             else {
-                                return <div className="balencegame_scroll_btn_active"></div>
+                                return <div key={index} className="balencegame_scroll_btn_active"></div>
                             }
                         })}
                     </div>
