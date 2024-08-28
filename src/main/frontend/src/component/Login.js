@@ -3,6 +3,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate, useParams, useLocation } from "react-router-dom";
 import memberInfo from '../MemberInfo';
 import Loading from './Loading';
+import Currentvote_board from './currentvote/Currentvote_board';
 
 const Login = ({ successhandler, issmall, generation }) => {
   const [id, setId] = useState('');
@@ -94,7 +95,6 @@ const Login = ({ successhandler, issmall, generation }) => {
         login: true,
       });
 
-      console.log(memberInfo.getMemberInfo);
 
       if (!issmall) {
         successhandler(4);

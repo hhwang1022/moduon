@@ -12,7 +12,6 @@ import Polaroid from '../Polaroid';
 import { useNavigate } from "react-router-dom";
 const vsicon0010 = require('../../resource/vs_0010.png');
 
-const info = memberInfo.getMemberInfo();
 const Currentvote_board = ({ generation, onclicklistbtn }) => {
 
   // const [generation, setGeneration] = useState('');
@@ -38,21 +37,23 @@ const Currentvote_board = ({ generation, onclicklistbtn }) => {
   const [minutes, setminutes] = useState(0);
   const [hours, sethours] = useState(0);
   const [seconds, setseconds] = useState(0);
-
   let accessToken = window.localStorage.getItem('accessToken');
   const navigate = useNavigate();
 
   useEffect(() => {
     const fetchMemberInfo = async () => {
       try {
-        const info = await memberInfo.getMemberInfo();
-        setnickname(info.name);
-        setInfo(info);
+        const storedInfo = JSON.parse(localStorage.getItem('memberInfo')); // 최신화된 정보를 직접 가져옴
+          setnickname(storedInfo.name);
+          setInfo(storedInfo);
       } catch (error) {
         alert("회원 정보를 가져오는 중 오류가 발생했습니다. 다시 로그인을 시도해주세요.")
       }
     };
+      fetchMemberInfo();
+    }, []);
 
+    useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(process.env.REACT_APP_API_URL + 'balancegames/this-week?'
@@ -84,7 +85,7 @@ const Currentvote_board = ({ generation, onclicklistbtn }) => {
       }
     };
 
-    fetchMemberInfo();
+
     fetchData();
   }, [accessToken, generation, votePageReset]);
 
