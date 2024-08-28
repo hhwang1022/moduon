@@ -68,6 +68,6 @@ public class BalanceGameDto {
 		private LocalDateTime createDate;
 		private LocalDateTime endDate;
 		private List<BalanceGameReplyDto.Response> balanceGameReplesiList;
-		private BalanceGame.Generation generation;
+		private BalanceGame.Generation balanceGameGeneration;
 	}
 }
