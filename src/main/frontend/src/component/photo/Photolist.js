@@ -126,7 +126,7 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
                     ◁
                 </button>
                 {[...Array(parseInt(totalpage))].map((n, index) => {
-                    return <button className={curruntpage === index + 1 ? 'pagebtnselect' + generation : 'pagebtn' + generation} onClick={() => setcurruntpage(index + 1)}> {index + 1}  </button>
+                    return <button key={index} className={curruntpage === index + 1 ? 'pagebtnselect' + generation : 'pagebtn' + generation} onClick={() => setcurruntpage(index + 1)}> {index + 1}  </button>
                 })}
                 <button className={'pagebtn' + generation} onClick={() => {
                     if (currentindex < totalpage - 1)
