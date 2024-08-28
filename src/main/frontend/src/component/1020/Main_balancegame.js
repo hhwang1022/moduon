@@ -15,40 +15,35 @@ const Main_balancegame = ({balancedatas}) => {
     const [motionleftscale, setmotionleftscale] = useState(0.5);
     const [motionrightscale, setmotionrightscale] = useState(0.5);
 
-    const [datas, setdatas] = useState(balancedatas.data);
-
-    console.log("Main_balancegame");
-    console.log(balancedatas);
-
-    return ( ((datas !== undefined && datas.length > 0) ?
+    return ( ((balancedatas.data !== undefined && balancedatas.data.length > 0) ?
         <div>
         <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1, x: motionposition, ease: "easeInOut" }}>
             <div className='main1020'>
                 <motion.span width={0} className='middlegame' initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionmiddlescale }}>
                     <Main_1020_Game position={"middlegame"}
-                        balancedata={datas[currentgameindex]}>
+                        balancedata={balancedatas.data[currentgameindex]}>
                     </Main_1020_Game>
                 </motion.span>
                 <motion.span className='leftgame' initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionleftscale }}>
                     <Main_1020_Game
-                        balancedata={datas[leftindex]}
+                        balancedata={balancedatas.data[leftindex]}
                         onClickEvent={() => {
                             if (leftindex <= 0) {
-                                setleftindex(datas.length - 1);
+                                setleftindex(balancedatas.data.length - 1);
                             }
                             else {
                                 setleftindex(leftindex - 1);
                             }
 
                             if (rightindex <= 0) {
-                                setrightindex(datas.length - 1);
+                                setrightindex(balancedatas.data.length - 1);
                             }
                             else {
                                 setrightindex(rightindex - 1);
                             }
 
                             if (currentgameindex <= 0) {
-                                setcurrentgameindex(datas.length - 1);
+                                setcurrentgameindex(balancedatas.data.length - 1);
                             }
                             else {
                                 setcurrentgameindex(currentgameindex - 1);
@@ -64,23 +59,23 @@ const Main_balancegame = ({balancedatas}) => {
                 </motion.span>
                 <motion.span className='rightgame' width={0} initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionrightscale }}>
                     <Main_1020_Game
-                        balancedata={datas[rightindex]}
+                        balancedata={balancedatas.data[rightindex]}
                         onClickEvent={() => {
-                            if (leftindex >= datas.length - 1) {
+                            if (leftindex >= balancedatas.data.length - 1) {
                                 setleftindex(0);
                             }
                             else {
                                 setleftindex(leftindex + 1);
                             }
 
-                            if (rightindex >= datas.length - 1) {
+                            if (rightindex >= balancedatas.data.length - 1) {
                                 setrightindex(0);
                             }
                             else {
                                 setrightindex(rightindex + 1);
                             }
 
-                            if (currentgameindex >= datas.length - 1) {
+                            if (currentgameindex >= balancedatas.data.length - 1) {
                                 setcurrentgameindex(0);
                             }
                             else {
@@ -106,7 +101,7 @@ const Main_balancegame = ({balancedatas}) => {
                 </div>
                 <div className='middle'>
                     <div className='balencegame_scroll_btncontent'>
-                        {datas.map((x, index) => {
+                        {balancedatas.data.map((x, index) => {
                             if (index !== currentgameindex) {
                                 return <div className="balencegame_scroll_btn_unactive"></div>
                             }

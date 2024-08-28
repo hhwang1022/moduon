@@ -35,6 +35,23 @@ const Main_1020 = () => {
     let accessToken = window.localStorage.getItem('accessToken');
 
 
+    const fetchbalancedatas = async () => {
+        try {
+
+            const response = await axios.get(
+                process.env.REACT_APP_API_URL + 'balancegames/main', {
+                headers: { Authorization: `Bearer ${accessToken}` }
+            });
+
+            console.log(response.data);
+            setbalancedatas(response.data);
+            
+      } catch (error) {
+        console.error("Error fetching balancedatas: ", error);
+        setbalancedatas([]);
+      }
+    };
+
     useEffect(() => {
         setTimeout(function () {
             setmotionposition(0);
@@ -45,29 +62,8 @@ const Main_1020 = () => {
     }, [motionposition]);
 
     useEffect(() => {
-        const fetchbalancedatas = async () => {
-            try {
-
-                const response = await axios.get(
-                    process.env.REACT_APP_API_URL + 'balancegames/main', {
-                    headers: { Authorization: `Bearer ${accessToken}` }
-                });
-
-                console.log(response.data);
-                setbalancedatas(response.data);
-                
-          } catch (error) {
-            console.error("Error fetching balancedatas: ", error);
-            setbalancedatas([]);
-          }
-        };
-
         fetchbalancedatas();
     }, []);
-
-    useEffect(() => {
-        console.log("response.data : " + balancedatas.data);
-    }, [balancedatas]);
 
     const Page = () => {
         if (currentindex === 0) {
