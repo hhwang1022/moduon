@@ -50,7 +50,7 @@ useEffect(() => {
       setmemberId(data.memberId);
 
     } catch (error) {
-      alert(JSON.stringify(error.message));
+      window.location.reload();
     }
   };
   fetchProfile();
@@ -84,6 +84,7 @@ useEffect(() => {
      memberInfo.updateMemberInfo({ login: false });
      navigate('/')
    } catch (error) {
+       window.location.reload();
      }
    };
 

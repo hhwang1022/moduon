@@ -27,7 +27,7 @@ const HotPostList = ({generation}) => {
                     setpostlist(response.data.data);
                 }
             } catch (error) {
-                console.error("Error fetching hotPosts: ", error);
+                alert('인기글을 불러오는 중 오류가 발생했습니다.');
             }
         };
 

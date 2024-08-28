@@ -89,6 +89,7 @@ useEffect(() => {
       navigate(`/main_${generation}/balance`);
     } catch (error) {
       alert("수정 중 오류가 발생했습니다.");
+      window.location.reload();
     }
   };
 

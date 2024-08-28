@@ -20,33 +20,33 @@ const PostUpdate = ({ generation, postid }) => {
   const navigate = useNavigate();
 
   const fetchPost = async () => {
-      try {
-        const response = await axios.get(process.env.REACT_APP_API_URL + 'posts/' + postid, {
-          headers: {
-            Authorization: `Bearer ${accessToken}`,
-          },
-        });
-         setpostTitle(response.data.title);
-          setpostBody(response.data.body);
-          setIsLock(response.data.isNotice === 1);
-          setimgurllist([
-            response.data.image1,
-            response.data.image2,
-            response.data.image3,
-            response.data.image4,
-            response.data.image5,
-          ].filter(Boolean));
-          setisloading(false);
+    try {
+      const response = await axios.get(process.env.REACT_APP_API_URL + 'posts/' + postid, {
+        headers: {
+          Authorization: `Bearer ${accessToken}`,
+        },
+      });
+        setpostTitle(response.data.title);
+        setpostBody(response.data.body);
+        setIsLock(response.data.isNotice === 1);
+        setimgurllist([
+          response.data.image1,
+          response.data.image2,
+          response.data.image3,
+          response.data.image4,
+          response.data.image5,
+        ].filter(Boolean));
+        setisloading(false);
 
-           } catch (error) {
-                alert("게시글을 불러오는 중 오류가 발생했습니다.");
-                navigate('/');
-              }
-            };
+        } catch (error) {
+          alert("게시글을 불러오는 중 오류가 발생했습니다.");
+          navigate('/');
+      }
+  };
 
-     useEffect(() => {
-        fetchPost();
-      }, []);
+  useEffect(() => {
+    fetchPost();
+  }, []);
 
   const handleUpload = (e) => {
     if (uplodfile.length < maximgcount) {
@@ -69,7 +69,8 @@ const PostUpdate = ({ generation, postid }) => {
   };
 
   const handlePostpatch = async () => {
-
+    const title = postTitle || '';
+    const body = postBody || ''; 
     try {
       const response = await axios.patch(
        process.env.REACT_APP_API_URL + 'posts/ ' + postid,
@@ -99,7 +100,22 @@ const PostUpdate = ({ generation, postid }) => {
           navigate('/main_' + generation + '/post/view/' + postid);
       });
     } catch (error) {
-      alert("게시글 수정에 실패했습니다.");
+      if(title.length > 255){
+        alert("제목은 최대 255자까지 입력하실 수 있습니다.");
+        return;
+      }
+      if(body.length > 255){
+        alert("내용은 최대 255자까지 입력하실 수 있습니다.");
+        return;
+      }
+      if (title === '') {
+        alert("제목을 입력해주세요. ");
+        return;
+      }
+      if(body === ''){
+        alert("내용을 입력해주세요. ");
+        return;
+      }
     }
   };
 
@@ -124,6 +140,10 @@ const PostUpdate = ({ generation, postid }) => {
       alert("이미지 등록에 실패했습니다.");
     }
   };
+
+  const handleCancle = (() => {
+    navigate('/main_' + generation + '/post')
+  });
 
   return (
   !isloading ?
@@ -163,7 +183,8 @@ const PostUpdate = ({ generation, postid }) => {
       <label className={'posttitle' + generation} htmlFor="postBody">내용</label>
       <input className={"postbodyinput" + generation} type="text" value={postBody} onChange={(e) => setpostBody(e.target.value)} />
     </div>
-    <div>
+    <div className='postwritebtn-box'>
+      <button className={"postwritebtn" + generation} onClick={handleCancle}>취소</button>
       <button className={"postwritebtn" + generation} onClick={handlePostpatch}>작성</button>
     </div>
   </div> : <div className={"postwritemain" + generation}><Loading generation={generation}/> </div>

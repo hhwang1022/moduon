@@ -29,7 +29,7 @@ const Balancegamelist = ({ generation, onClickwirtebtn, balanceGameId }) => {
                 } 
             }
         } catch (error) {
-            alert("지난 투표 조회 에러");
+            alert("지난 투표를 조회할 수 없습니다.");
         }
     };
 

@@ -45,7 +45,8 @@ const Postwrite = ({ generation, successhandler }) => {
   };
 
   const handlePostpost = async () => {
-
+    const title = postTitle || '';
+    const body = postBody || ''; 
     try {
       const response = await axios.post(
         process.env.REACT_APP_API_URL + 'posts',
@@ -77,20 +78,31 @@ const Postwrite = ({ generation, successhandler }) => {
       if (response !== undefined)
         navigate('/main_' + generation + '/post');
     } catch (error) {
-      if (postTitle === '' && postBody === '' && info.name === "홍길동") {
-        alert("내용을 입력해주세요. ");
+      if(title.length > 255){
+        alert("제목은 최대 255자까지 입력하실 수 있습니다.");
+        return;
+      }
+      if(body.length > 255){
+        alert("내용은 최대 255자까지 입력하실 수 있습니다.");
         return;
       }
       if (info.name === '홍길동') {
         alert("로그인 해주세요.");
         return;
-      } else {
-               if (info.generation === "8090" && generation === "0010") {
-                        alert("8090세대는 8090과 9000 카테고리만 글쓰기가 가능합니다.");
-                    } else if (info.generation === "0010" && generation === "8090") {
-                        alert("0010세대는 9000과 0010 카테고리만 글쓰기가 가능합니다.");
-                    } else {
-                }  alert("내용을 입력해주세요");
+      }
+      if (info.generation === "8090" && generation === "0010") {
+              alert("8090세대는 8090과 9000 카테고리만 글쓰기가 가능합니다.");
+              return;
+          } else if (info.generation === "0010" && generation === "8090") {
+              alert("0010세대는 9000과 0010 카테고리만 글쓰기가 가능합니다.");
+              return;
+          }
+      if (title === '') {
+        alert("제목을 입력해주세요.");
+        return;
+      }
+      if(body === ''){
+          alert("내용을 입력해주세요.");
       }
     }
   };
@@ -114,6 +126,10 @@ const Postwrite = ({ generation, successhandler }) => {
       alert("이미지 등록에 실패했습니다. ")
     }
   };
+
+  const handleCancle = (() => {
+    navigate('/main_' + generation + '/post')
+  });
 
   return (<div className={"postwritemain" + generation}>
     <div>
@@ -148,7 +164,8 @@ const Postwrite = ({ generation, successhandler }) => {
       <label className={'posttitle' + generation} htmlFor="postBody">내용</label>
       <textarea className={"postbodyinput" + generation} type="text" value={postBody} onChange={(e) => setpostBody(e.target.value)} />
     </div>
-    <div>
+    <div className='postwritebtn-box'>
+      <button className={"postwritebtn" + generation} onClick={handleCancle}>취소</button>
       <button className={"postwritebtn" + generation} onClick={handlePostpost}>작성</button>
     </div>
   </div>);

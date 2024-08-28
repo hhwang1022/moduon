@@ -30,7 +30,6 @@
 
   .postwritebtn8090{
     margin-top: 20px;
-    margin-left: 280px;
     bottom: 100px;
     width: 100px;
     height: 50px;
@@ -56,6 +55,8 @@
     font-family: 'DOSIyagiMedium';
     font-size: 16pt;
     color: white;
+    display: flex;
+    margin-left: 10px;
   }
 
   /*----------------------------------------------------*/
@@ -92,7 +93,6 @@
 
   .postwritebtn9000{
     margin-top: 20px;
-    margin-left: 280px;
     bottom: 100px;
     width: 100px;
     height: 50px;
@@ -113,6 +113,8 @@
   .posttitle9000{
     font-family: 'DOSIyagiMedium';
     font-size: 16pt;
+    display: flex;
+    margin-left: 10px;
   }
 
   /*------------------------------------*/
@@ -149,7 +151,6 @@
 
   .postwritebtn0010{
     margin-top: 20px;
-    margin-left: 200px;
     bottom: 100px;
     width: 100px;
     height: 50px;
@@ -174,6 +175,8 @@
   .posttitle0010{
     font-family: 'DungGeunMo';
     font-size: 16pt;
+    display: flex;
+    margin-left: 10px;
   }
 
   /*--------------------------------------------*/
@@ -229,4 +232,9 @@
   .posttitle1020{
     font-family: 'NotoSansKR';
     font-size: 16pt;
+  }
+
+  .postwritebtn-box{
+    display: flex;
+    justify-content: center;
   }

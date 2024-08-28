@@ -109,20 +109,24 @@ const Main_0010 = () => {
     !isloading ?
       <div className='main0010background'>
         <div className='main0010outbox'>
-          <div className='main0010category'><button onClick={() => navigate('/main_1020')}>ModuON</button></div>
-          <div className='main1020categorybuttonarea'>
-            <button className='main1020categorybutton main0010category'
-              onClick={() => navigate('/main_8090/balance/view')}>
-              8090
-            </button>
-            <button className='main1020categorybutton main0010category'
-              onClick={() => navigate('/main_9000/balance/view')}>
-              9000
-            </button>
-            <button className='main1020categorybutton main0010category'
-              onClick={() => navigate('/main_0010/balance/view')}>
-              0010
-            </button>
+          <div className='main0010category-header'>
+            <div className='main0010logo'><button onClick={() => navigate('/main_1020')}>ModuON</button></div>
+            <div>
+              <div className='main1020categorybuttonarea'>
+                <button className='main1020categorybutton main8090category'
+                  onClick={() => navigate('/main_8090/balance/view')}>
+                  80-90
+                </button>
+                <button className='main1020categorybutton main9000category'
+                  onClick={() => navigate('/main_9000/balance/view')}>
+                  90-00
+                </button>
+                <button className='main1020categorybutton main0010category'
+                  onClick={() => navigate('/main_0010/balance/view')}>
+                  00-10
+                </button>
+              </div>
+            </div>
           </div>
           <div className='main0010dotbox'>
             <Menubar_0010 onClickHandler={handleMenuClick} />

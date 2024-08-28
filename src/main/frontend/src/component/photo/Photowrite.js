@@ -50,6 +50,8 @@ const Photowrite = ({ generation, successhandler }) => {
       return;
     }
 
+    const title = photoTitle || '';
+    const body = photoBody || ''; 
     try {
       const response = await axios.post(
         process.env.REACT_APP_API_URL + 'photos',
@@ -75,17 +77,32 @@ const Photowrite = ({ generation, successhandler }) => {
         setimgurllist([]);
         navigate('/main_' + generation + '/photo');
     } catch (error) {
-      if (photoTitle === undefined && photoBody === undefined && imgurllist[0] === undefined) {
-        alert("내용을 입력해주세요");
+      if(title.length > 255){
+        alert("제목은 최대 255자까지 입력하실 수 있습니다.");
         return;
-      } else {
-                if (info.generation === "8090" && generation === "0010") {
-                        alert("8090세대는 8090과 9000 카테고리만 글쓰기가 가능합니다.");
-                    } else if (info.generation === "0010" && generation === "8090") {
-                        alert("0010세대는 9000과 0010 카테고리만 글쓰기가 가능합니다.");
-                    } else {
-                }  alert("내용을 입력해주세요");
-    }
+      }
+      if(body.length > 255){
+        alert("내용은 최대 255자까지 입력하실 수 있습니다.");
+        return;
+      }
+      if (info.name === '홍길동') {
+        alert("로그인 해주세요.");
+        return;
+      }
+      if (info.generation === "8090" && generation === "0010") {
+          alert("8090세대는 8090과 9000 카테고리만 글쓰기가 가능합니다.");
+          return;
+      } else if (info.generation === "0010" && generation === "8090") {
+          alert("0010세대는 9000과 0010 카테고리만 글쓰기가 가능합니다.");
+          return;
+      }
+      if (title === '') {
+        alert("제목을 입력해주세요.");
+        return;
+      } 
+      if (body === ''){
+        alert("내용을 입력해주세요.");
+      }
     }
   };
 
@@ -110,6 +127,10 @@ const Photowrite = ({ generation, successhandler }) => {
       alert(JSON.stringify(error.message));
     }
   };
+
+  const handleCancle = (() => {
+    navigate('/main_' + generation + '/photo')
+  });
 
   return (<div className={"photowritemain" + generation}>
     <div>
@@ -144,7 +165,8 @@ const Photowrite = ({ generation, successhandler }) => {
       <label className={'phototitle' + generation} htmlFor="photoBody">내용</label>
       <textarea className={"photobodyinput" + generation} type="text" value={photoBody} onChange={(e) => setphotoBody(e.target.value)} />
     </div>
-    <div>
+    <div className='photowritebtn-box'>
+      <button className={"photowritebtn" + generation} onClick={handleCancle}>취소</button>
       <button className={"photowritebtn" + generation} onClick={handlePostphoto}>작성</button>
     </div>
   </div>);

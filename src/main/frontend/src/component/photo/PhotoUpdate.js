@@ -73,6 +73,8 @@ const PhotoUpdate = ({ generation, photoid }) => {
       return;
     }
 
+    const title = photoTitle || '';
+    const body = photoBody || ''; 
     try {
       const response = await axios.patch(
         process.env.REACT_APP_API_URL + 'photos/' + photoid,
@@ -102,7 +104,22 @@ const PhotoUpdate = ({ generation, photoid }) => {
         navigate('/main_' + generation + '/photo/view/' + photoid);
       });
     } catch (error) {
-      alert(JSON.stringify(error.message));
+      if(title.length > 255){
+        alert("제목은 최대 255자까지 입력하실 수 있습니다.");
+        return;
+      }
+      if(body.length > 255){
+        alert("내용은 최대 255자까지 입력하실 수 있습니다.");
+        return;
+      }
+      if (title === '') {
+        alert("제목을 입력해주세요. ");
+        return;
+      }
+      if(body === ''){
+        alert("내용을 입력해주세요. ");
+        return;
+      }
     }
   };
 
@@ -125,9 +142,13 @@ const PhotoUpdate = ({ generation, photoid }) => {
         console.log(newimgurllist);
       });
     } catch (error) {
-      alert(JSON.stringify(error.message));
+      alert("사진 업로드에 실패했습니다.");
     }
   };
+
+  const handleCancle = (() => {
+    navigate('/main_' + generation + '/photo')
+  });
 
   return (
   !isloading ?
@@ -164,9 +185,10 @@ const PhotoUpdate = ({ generation, photoid }) => {
     </div>
     <div>
       <label className={'phototitle' + generation} htmlFor="photoBody">내용</label>
-      <input className={"photobodyinput" + generation} type="text" value={photoBody} onChange={(e) => setphotoBody(e.target.value)} />
+      <textarea className={"photobodyinput" + generation} type="text" value={photoBody} onChange={(e) => setphotoBody(e.target.value)} />
     </div>
-    <div>
+    <div className='photowritebtn-box'>
+      <button className={"photowritebtn" + generation} onClick={handleCancle}>취소</button>
       <button className={"photowritebtn" + generation} onClick={handlePostphoto}>작성</button>
     </div>
   </div> : <div className={"photowritemain" + generation}><Loading generation={generation}/></div>
