@@ -50,7 +50,7 @@
 |![](https://i.imgur.com/wQh0uO2.png)|![](https://i.imgur.com/ycdATnY.png)|![](https://i.imgur.com/8RQfmpQ.png)|![](https://i.imgur.com/0YqKVim.png)|
 |------|---|---|---|
 |황해진|방승욱|윤영아|서진형|
-|-팀장<br>-프론트앤드<br>(세대별 기본 프레임)<br>-백앤드 보조<br>(이미지 업로드, 공유, 가입, 로그인)|-팀원<br>-프론트앤드<br>()|-팀원<br>-백앤드<br>(사진첩·일반게시판기능 구현)|-팀원<br>-백앤드<br>()<br>프론트앤드<br>(멤버·투표 기능 구현)|
+|-팀장<br>-프론트앤드<br>(세대별 기본 프레임)<br>-백앤드 보조<br>(이미지 업로드, 공유, 가입, 로그인)|-팀원<br>-프론트앤드<br>(투표 작성, 조회, 게시글 조회)|-팀원<br>-백앤드<br>(사진첩·일반게시판기능 구현)|-팀원<br>-백앤드<br>()<br>프론트앤드<br>(멤버·투표 기능 구현)|
 
 
 <br><br><br>
@@ -64,6 +64,9 @@
 ![](https://i.imgur.com/9lkIytl.png)
 ### 회원가입 화면
 
+![](https://i.imgur.com/jIJUHrZ.png)
+### 사진 게시판 화면(8090)
+
 ![](https://i.imgur.com/i7yPEoU.png)
 ### 일반 게시판 화면(0010)
 
@@ -76,5 +79,3 @@
 ![](https://i.imgur.com/pJ9a9WC.png)
 ### 사진 게시판 화면(9000)
 
-![](https://i.imgur.com/jIJUHrZ.png)
-### 사진 게시판 화면(9000)
