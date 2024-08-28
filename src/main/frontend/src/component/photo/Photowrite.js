@@ -142,7 +142,7 @@ const Photowrite = ({ generation, successhandler }) => {
     </div>
     <div>
       <label className={'phototitle' + generation} htmlFor="photoBody">내용</label>
-      <input className={"photobodyinput" + generation} type="text" value={photoBody} onChange={(e) => setphotoBody(e.target.value)} />
+      <textarea className={"photobodyinput" + generation} type="text" value={photoBody} onChange={(e) => setphotoBody(e.target.value)} />
     </div>
     <div>
       <button className={"photowritebtn" + generation} onClick={handlePostphoto}>작성</button>

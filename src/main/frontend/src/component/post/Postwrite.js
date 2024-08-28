@@ -146,7 +146,7 @@ const Postwrite = ({ generation, successhandler }) => {
     </div>
     <div>
       <label className={'posttitle' + generation} htmlFor="postBody">내용</label>
-      <input className={"postbodyinput" + generation} type="text" value={postBody} onChange={(e) => setpostBody(e.target.value)} />
+      <textarea className={"postbodyinput" + generation} type="text" value={postBody} onChange={(e) => setpostBody(e.target.value)} />
     </div>
     <div>
       <button className={"postwritebtn" + generation} onClick={handlePostpost}>작성</button>

@@ -24,6 +24,8 @@
     border: 1px solid black;
     font-family: 'DOSIyagiMedium';
     font-size: 16pt;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .postwritebtn8090{
@@ -84,6 +86,8 @@
     border: 1px solid black;
     font-family: 'DOSIyagiMedium';
     font-size: 16pt;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .postwritebtn9000{
@@ -139,6 +143,8 @@
     border: 1px solid black;
     font-family: 'DungGeunMo';
     font-size: 16pt;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   .postwritebtn0010{
