@@ -18,16 +18,56 @@ const Main_balancegame = ({balancedatas}) => {
     const [motionleftscale, setmotionleftscale] = useState(0.5);
     const [motionrightscale, setmotionrightscale] = useState(0.5);
 
-    const handleRightClick = () => {
+    const handleLeftClick = () => {
         // setRotation을 콜백 함수로 사용하여 최신 상태 값을 가져옴
         setRotation((prevRotation) => {
-            const newRotation = prevRotation % 3 - 1;
+            const newRotation = (prevRotation + 1) % 3;
 
-            if (newRotation === -3) {
+            if (newRotation === 0) {
                 setcurrentgameindex(1);
                 setleftindex(0);
                 setrightindex(2);
-            } else if (newRotation === -2) {
+            } else if (newRotation === 1) {
+                setcurrentgameindex(0);
+                setleftindex(2);
+                setrightindex(1);
+            } else if (newRotation === -1 || newRotation === 2) {
+                setcurrentgameindex(2);
+                setleftindex(1);
+                setrightindex(0);
+            } 
+
+            // 애니메이션 설정
+            setmotionposition(100);
+            setmotionmiddlescale(0.9);
+            setmotionpositionRight(50);
+            setmotionrightscale(0.5);
+            setmotionpositionLeft(50);
+            setmotionleftscale(0.5);
+
+            setTimeout(() => {
+                setmotionposition(0);
+                setmotionmiddlescale(0.9);
+                setmotionpositionRight(0);
+                setmotionrightscale(0.5);
+                setmotionpositionLeft(0);
+                setmotionleftscale(0.5);
+            }, 100);
+
+            return newRotation; // 새로운 rotation 값을 반환
+        });
+    };
+
+    const handleRightClick = () => {
+        // setRotation을 콜백 함수로 사용하여 최신 상태 값을 가져옴
+        setRotation((prevRotation) => {
+            const newRotation = (prevRotation - 1) % 3;
+
+            if (newRotation === 0) {
+                setcurrentgameindex(1);
+                setleftindex(0);
+                setrightindex(2);
+            } else if (newRotation === -2 || newRotation === 1) {
                 setcurrentgameindex(0);
                 setleftindex(2);
                 setrightindex(1);
@@ -43,46 +83,6 @@ const Main_balancegame = ({balancedatas}) => {
             setmotionpositionRight(-50);
             setmotionrightscale(0.5);
             setmotionpositionLeft(-50);
-            setmotionleftscale(0.5);
-
-            setTimeout(() => {
-                setmotionposition(0);
-                setmotionmiddlescale(0.9);
-                setmotionpositionRight(0);
-                setmotionrightscale(0.5);
-                setmotionpositionLeft(0);
-                setmotionleftscale(0.5);
-            }, 50);
-
-            return newRotation; // 새로운 rotation 값을 반환
-        });
-    };
-
-    const handleLeftClick = () => {
-        // setRotation을 콜백 함수로 사용하여 최신 상태 값을 가져옴
-        setRotation((prevRotation) => {
-            const newRotation = prevRotation % 3 - 1;
-          
-            if (newRotation === -3) {
-                setcurrentgameindex(1);
-                setleftindex(0);
-                setrightindex(2);
-            } else if (newRotation === -2) {
-                setcurrentgameindex(2);
-                setleftindex(1);
-                setrightindex(0);
-            } else if (newRotation === -1) {
-                setcurrentgameindex(0);
-                setleftindex(2);
-                setrightindex(1);
-            } 
-
-            // 애니메이션 설정
-            setmotionposition(100);
-            setmotionmiddlescale(0.9);
-            setmotionpositionRight(50);
-            setmotionrightscale(0.5);
-            setmotionpositionLeft(50);
             setmotionleftscale(0.5);
 
             setTimeout(() => {
