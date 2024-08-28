@@ -119,8 +119,6 @@ const Postwrite = ({ generation, successhandler }) => {
     <div>
       <label className={'posttitle' + generation} htmlFor="postTitle">제목</label>
       <input className={"posttitleinput" + generation} type="text" value={postTitle} onChange={(e) => setpostTitle(e.target.value)} />
-      <input type="checkbox" id="isLock" checked={isLock} onChange={() => setIsLock(!isLock)} />
-      <label htmlFor="isLock">🔒</label>
     </div>
     <div>
       <label className={'posttitle' + generation} htmlFor="postTitle">첨부파일</label>

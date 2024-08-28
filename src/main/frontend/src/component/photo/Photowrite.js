@@ -115,8 +115,6 @@ const Photowrite = ({ generation, successhandler }) => {
     <div>
       <label className={'phototitle' + generation} htmlFor="photoTitle">제목</label>
       <input className={"phototitleinput" + generation} type="text" value={photoTitle} onChange={(e) => setphotoTitle(e.target.value)} />
-      <input type="checkbox" id="isLock" checked={isLock} onChange={() => setIsLock(!isLock)} />
-      <label htmlFor="isLock">🔒</label>
     </div>
     <div>
       <label className={'phototitle' + generation} htmlFor="photoTitle">첨부파일</label>
