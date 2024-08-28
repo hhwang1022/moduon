@@ -200,10 +200,6 @@ useEffect(() => {
 
     const handUpdatePostReply = async (isUpdate, commentId) => {
       if (!isUpdate) return;
-      if (searchkeyword === '') {
-        alert("수정 내용을 입력해주세요.")
-        return;
-      }
       try {
         const response = await  axios.patch(
           process.env.REACT_APP_API_URL + 'posts/' + postId + '/reply/' + commentId,
@@ -216,7 +212,13 @@ useEffect(() => {
           });
         setCommentListUpdated(true);
       } catch (error) {
-        alert("투표 댓글 업데이트 실패");
+        if (searchkeyword === '') {
+          alert("수정 내용을 입력해주세요.")
+          return;
+        }
+        if (searchkeyword.length > 255){
+          alert("댓글은 최대 255자까지 입력하실 수 있습니다.");
+        }
       }
     }
 

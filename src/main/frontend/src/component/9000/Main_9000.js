@@ -200,7 +200,7 @@ const Main_9000 = () => {
                 </span>
                 </div>
             <div className='main9000categorybar'>
-                <button className='main9000categorybutton'
+                <button className='main9000categorybutton8090'
                     onClick={() => {
                         navigate('/main_8090/balance/view');
                     }}>80-90</button>
@@ -208,7 +208,7 @@ const Main_9000 = () => {
                     onClick={() => {
                         navigate('/main_9000/balance/view');
                     }}>90-00</button>
-                <button className='main9000categorybutton'
+                <button className='main9000categorybutton0010'
                     onClick={() => {
                         navigate('/main_0010/balance/view');
                     }}>00-10</button>

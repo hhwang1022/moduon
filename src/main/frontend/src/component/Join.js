@@ -16,6 +16,7 @@ const Join = ({ successhandler }) => {
   const [isuniquenickname, setisuniquenickname] = useState('');
   const[isloading, setisloading] = useState(true);
   const [generation, setGeneration] = useState('');
+  const [nicknamemessage, setNicknamemessage] = useState('');
 
     const validateEmail = /^[A-Za-z0-9]([-_.]?[A-Za-z0-9])*@[A-Za-z0-9]([-_.]?[A-Za-z0-9])*\.[A-Za-z]{2,3}$/i;
   const accessToken = "";
@@ -36,16 +37,40 @@ const Join = ({ successhandler }) => {
 
   const handleJoin = async () => {
 
-    if (password != passwordconfrim) {
-      alert('비밀번호가 틀립니다');
+    if(id === ''){
+      alert('이메일을 입력해주세요.');
       return;
     }
-    else if(!isuniqueemail){
+    if(!isuniqueemail){
       alert('이메일 중복확인을 해주세요!');
       return;
     }
-    else if(!isuniquenickname){
+    if(nickname === ''){
+      alert('닉네임을 입력해주세요.');
+      return;
+    }
+    if(!isuniquenickname){
       alert('닉네임 중복확인을 해주세요!');
+      return;
+    }
+    if(password === ''){
+      alert('비밀번호를 입력해주세요.');
+      return;
+    }
+    if(passwordconfrim === ''){
+      alert('비밀번호 확인을 입력해주세요.');
+      return;
+    }
+    if (password != passwordconfrim) {
+      alert('비밀번호가 틀립니다.');
+      return;
+    }
+    if (generation === '') {
+      alert('세대를 선택해주세요.');
+      return;
+    }
+    if(nickname.length > 100){
+      alert('닉네임은 최대 100자까지 입력 가능합니다.');
       return;
     }
 
@@ -71,11 +96,15 @@ const Join = ({ successhandler }) => {
 
         }
     } catch (error) {
-      alert(JSON.stringify(error.message));
+      alert('예기치 못한 오류가 발생했습니다.');
     }
   };
 
   const handleUniqueEmail = async() => {
+    if(id === '') {
+      alert('이메일을 입력해주세요.');
+      return;
+    }
     if(!emailCheck(id)) {
      alert('유효한 이메일 주소를 입력해 주세요.');
      return;
@@ -101,11 +130,19 @@ const Join = ({ successhandler }) => {
         setisuniqueemail(true);
       }
     } catch (error) {
-      alert(JSON.stringify(error.message));
+      alert('예기치 못한 오류가 발생했습니다.');
     }
   };
 
   const handleUniqueName = async() => {
+    if(nickname.length > 100){
+      alert('닉네임은 최대 100글자 까지만 가능합니다.');
+      return;
+    }
+    if(nickname === ""){
+      alert('닉네임을 입력해주세요.')
+      return;
+    }
     try {
       const response = await axios.get(
         process.env.REACT_APP_API_URL + 'members/checkname?nickname=' + nickname,
@@ -120,13 +157,15 @@ const Join = ({ successhandler }) => {
       if(response.data){
         //alert("이미 존재하는 닉네임입니다.");
         setisuniquenickname(false);
+        setNicknamemessage('이미 존재하는 닉네임입니다.');
       }
       else{
         //alert("사용할 수 있는 닉네임입니다.");
         setisuniquenickname(true);
+        setNicknamemessage('사용할 수 있는 닉네임입니다.');
       }
     } catch (error) {
-      alert(JSON.stringify(error.message));
+      alert('예기치 못한 오류가 발생했습니다.');
     }
   };
 
@@ -149,7 +188,7 @@ const Join = ({ successhandler }) => {
               <input className='joininputmiddle' type="text" placeholder='닉네임' value={nickname} onChange={(e) => setNickname(e.target.value)} />
               <button className="joinuniquebutton gradient" onClick={handleUniqueName}>중복확인</button>
             </div>
-            {(isuniquenickname !== "" ) ? (isuniquenickname ? "사용할 수 있는 닉네임입니다." : "중복된 닉네임입니다.") : ""}
+              {nicknamemessage}
             <div>
               <input className='joininput' type="password" placeholder='비밀번호' value={password} onChange={(e) => setPassword(e.target.value)} />
             </div>

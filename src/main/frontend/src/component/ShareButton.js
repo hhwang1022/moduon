@@ -36,7 +36,7 @@ const ShareButton = ({ sharetype, url, title, description, imageUrl }) => {
                 alert('공유 성공!');
             });
         } catch (error) {
-            alert(error.message);
+            alert('예기치 못한 오류가 발생했습니다.');
         }
     };
 

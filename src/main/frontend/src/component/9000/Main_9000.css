@@ -94,12 +94,37 @@
     flex-direction: row;
 }
 
-.main9000categorybutton{
+.main9000categorybutton8090 {
     color: black;
     font-family: 'DOSIyagiMedium';
     width: 500px;
     font-size: 24pt;
+    background-color: white;
+    border: 2px solid #000000;
 }
+
+.main9000categorybutton {
+    color: black;
+    font-family: 'DOSIyagiMedium';
+    width: 500px;
+    font-size: 24pt;
+    background-color: #cccccc;
+    border-top: 2px solid #333333;
+    border-left: 2px solid #333333;
+    border-right: 2px solid #000000;
+    border-bottom: 2px solid #000000;
+    box-shadow: inset 5px 5px 10px #555555;
+}
+
+.main9000categorybutton0010 {
+    color: black;
+    font-family: 'DOSIyagiMedium';
+    width: 500px;
+    font-size: 24pt;
+    background-color: white;
+    border: 2px solid #000000;
+}
+
 
 .main9000contentbox{
     

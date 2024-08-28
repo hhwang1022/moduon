@@ -67,7 +67,37 @@
     overflow: auto;
 }
 
+.main0010category-header{
+    display: flex;
+    flex-direction: column;
+}
+
+.main8090category {
+    font-family: 'DungGeunMo';
+    color: white;
+    font-size: 20pt;
+    margin-left: 20px;
+}
+
+.main9000category {
+    font-family: 'DungGeunMo';
+    color: white;
+    font-size: 20pt;
+    margin-left: 20px;
+}
+
 .main0010category {
+    font-family: 'DungGeunMo';
+    color: black;
+    font-size: 20pt;
+    margin-left: 20px;
+    padding: 10px;
+    line-height: 24pt;
+    text-align: center;
+    text-shadow: 2px 2px 4px #ff3200, -2px -2px 4px #ff5e00;
+}
+
+.main0010logo {
     font-family: 'DungGeunMo';
     color: white;
     font-size: 20pt;
@@ -76,6 +106,9 @@
 
 .main1020categorybuttonarea {
     margin-left: 120px;
+    margin-right: 300px;
+    display: flex;
+    justify-content: center;
 }
 
 .main1020categorybutton {

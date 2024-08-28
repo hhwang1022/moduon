@@ -47,8 +47,7 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
 
 
       } catch (error) {
-        alert(JSON.stringify(error.message));
-        console.log(error.response.data);
+        alert('예기치 못한 오류가 발생했습니다.');
         }
       };
         fetchProfile();
@@ -58,8 +57,23 @@ const UpdateProfile = ({ successhandler = () => {} }) => {
     if (password != passwordconfrim) {
              alert('비밀번호가 틀립니다!');
              return;
-     };
-
+    };
+    if(nickname === ""){
+      alert('닉네임을 입력해주세요.')
+      return;
+    }
+    if(nickname.length > 100){
+      alert('닉네임은 최대 100자까지 입력 가능합니다.');
+      return;
+    }
+    if(password === ""){
+      alert('비밀번호을 입력해주세요.')
+      return;
+    }
+    if(passwordconfrim === ""){
+      alert('비밀번호 확인을 입력해주세요.')
+      return;
+    }
     try {
       const response = await axios.patch(
         process.env.REACT_APP_API_URL + 'members/',

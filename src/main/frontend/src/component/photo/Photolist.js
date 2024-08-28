@@ -66,7 +66,7 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
                     }
                     setisloading(false);
             } catch (error) {
-                alert("r키워드로 게시물을 검색하는 중 오류가 발생했습니다. 다시 시도해주세요.")
+                alert("키워드로 게시물을 검색하는 중 오류가 발생했습니다. 다시 시도해주세요.")
                 setisloading(false);
             }
         };

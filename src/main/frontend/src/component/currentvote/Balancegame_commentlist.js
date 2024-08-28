@@ -80,16 +80,13 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
           });
         setCommentListUpdated(true);
       } catch (error) {
-        alert("투표 삭제 실패");
+        window.location.reload();
       }
   }
 
   const handUpdateReply = async (isUpdate, commentId) => {
     if (!isUpdate) return;
-    if (value === '') {
-      alert("수정 내용을 입력해주세요");
-      return;
-    }
+    
     try {
       const response = await  axios.patch(
         process.env.REACT_APP_API_URL + 'balancegames/' + balanceGameId + '/reply/' + commentId,
@@ -102,7 +99,13 @@ const Balancegame_commentlist = ({ generation, balanceGameId, commentListUpdated
         });
       setCommentListUpdated(true);
     } catch (error) {
-      alert("투표 댓글 업데이트 실패");
+      if (value === '') {
+        alert("수정 내용을 입력해주세요");
+        return;
+      }
+      if (value.length > 255){
+        alert("댓글 수정 내용은 최대 255자까지 입력하실 수 있습니다.");
+      }
     }
   }
 

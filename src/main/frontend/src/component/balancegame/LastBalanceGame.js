@@ -48,7 +48,7 @@ const LastBalanceGame = ({ generation }) => {
 
     } catch (error) {
       setisloading(false);
-      alert("단일투표 조회 실패");
+      alert("단일투표 조회에 실패했습니다.");
     }
   };
 
