@@ -69,9 +69,11 @@ const Balancegamelist = ({ generation, onClickwirtebtn, balanceGameId }) => {
                         </tr>
                     </thead>
                     <tbody>
+                    <tr>
                         {postlist.map((x, index) => {
                             return <BalancegameItem key={x.postId} post={x} generation={generation} onclickhandler={onClickwirtebtn} />;
                         })}
+                    </tr>
                     </tbody>
                 </table>
             }

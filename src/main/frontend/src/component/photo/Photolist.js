@@ -114,7 +114,7 @@ const Photolist = ({ generation, onClickwirtebtn, onClickreadbtn }) => {
         </div>
         <div className={"photomainconent" + generation}>
             {photolist.map((x, index) => {
-                return <Photolistitem post={x} generation={generation} onclickhandler={() => {onClickreadbtn(x.photoId)}} />
+                return <Photolistitem key={index} post={x} generation={generation} onclickhandler={() => {onClickreadbtn(x.photoId)}} />
             })}
         </div>
         <div className='postmiddle'>

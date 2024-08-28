@@ -13,7 +13,6 @@ const Footer_1020 = ({ title }) => {
           </div>
         </div>
       </div>
-    </div>
   );
 };
 
