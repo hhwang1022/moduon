@@ -35,7 +35,7 @@
 }
 
 .bgmbar_9000{
-    display: flex;
+    position: absolute;
     margin: 15px;
     left: 20px;
     font-family: 'DOSIyagiMedium';
