@@ -76,5 +76,5 @@
 ![](https://i.imgur.com/pJ9a9WC.png)
 ### 사진 게시판 화면(9000)
 
-
-
+![](https://i.imgur.com/jIJUHrZ.png)
+### 사진 게시판 화면(9000)
