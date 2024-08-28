@@ -22,7 +22,9 @@ const Header_1020 = ({ title, setcurrentindex, titleindex }) => {
   return (
     <div>
       <div className="header">
-        <span className="header1020maintitle">𝑴𝒐𝒅𝒖𝑶𝑵</span>
+         <span className="header1020maintitle"><button onClick={() => {
+           navigate('/main_1020');}}>𝑴𝒐𝒅𝒖𝒐𝒏</button>
+         </span>
         <div className="right">
           <img className="padding" src={menuloveicon} width={30} height={30} />
           <img className="padding" src={menuflighticon} width={30} height={30} />
