@@ -31,7 +31,7 @@ const Main_1020_Game = ({ position, balancedata, onClickEvent }) => {
   return (<div className={position}>
     <div className='mainbox'>
       <button className='maingamebutton' onClick={onClickEvent}>
-        <div className='category'>{generation(balancedata.balanceGameGeneration.replace("GENERATION_", ""))}</div>
+        {/* <div className='category'>{generation(balancedata.balanceGameGeneration.replace("GENERATION_", ""))}</div> */}
         <div className='itembox'>
           <Main_1020_BalenceItem img={balancedata.voteImage1} title={balancedata.voteItem1} iswin={balancedata.votePoint1 > balancedata.votePoint2} />
           <span className='gamevs'>

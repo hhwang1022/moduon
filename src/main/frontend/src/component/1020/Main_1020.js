@@ -12,6 +12,7 @@ import Balancegameborad from '../balancegame/Balancegameborad';
 import axios from 'axios';
 import MyProfile from '../MyProfile';
 import UpdateProfile from '../UpdateProfile';
+import Main_balancegame from './Main_balancegame';
 
 
 const Main_1020 = () => {
@@ -48,14 +49,13 @@ const Main_1020 = () => {
             try {
 
                 const response = await axios.get(
-                    process.env.REACT_APP_API_URL + 'balancegames?' +
-                    'page=' + 1 + '&size=' + 100, {
+                    process.env.REACT_APP_API_URL + 'balancegames/main', {
                     headers: { Authorization: `Bearer ${accessToken}` }
                 });
 
-                const data = response.data.data;
-                setbalancedatas(data);
-
+                console.log(response.data);
+                setbalancedatas(response.data);
+                
           } catch (error) {
             console.error("Error fetching balancedatas: ", error);
             setbalancedatas([]);
@@ -65,109 +65,9 @@ const Main_1020 = () => {
         fetchbalancedatas();
     }, []);
 
-    const MainBalancegame = ()=> {
-        if (balancedatas.length > 0) {
-            return (
-                <div>
-                    <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1, x: motionposition, ease: "easeInOut" }}>
-                        <div className='main1020'>
-                            <motion.span width={0} className='middlegame' initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionmiddlescale }}>
-                                <Main_1020_Game position={"middlegame"}
-                                    balancedata={balancedatas[currentgameindex]}>
-                                </Main_1020_Game>
-                            </motion.span>
-                            <motion.span className='leftgame' initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionleftscale }}>
-                                <Main_1020_Game
-                                    balancedata={balancedatas[leftindex]}
-                                    onClickEvent={() => {
-                                        if (leftindex <= 0) {
-                                            setleftindex(balancedatas.length - 1);
-                                        }
-                                        else {
-                                            setleftindex(leftindex - 1);
-                                        }
-
-                                        if (rightindex <= 0) {
-                                            setrightindex(balancedatas.length - 1);
-                                        }
-                                        else {
-                                            setrightindex(rightindex - 1);
-                                        }
-
-                                        if (currentgameindex <= 0) {
-                                            setcurrentgameindex(balancedatas.length - 1);
-                                        }
-                                        else {
-                                            setcurrentgameindex(currentgameindex - 1);
-                                        }
-
-                                        setmotionleftscale(0.7);
-                                        setmotionmiddlescale(0.8);
-                                        setmotionrightscale(0.7);
-                                        setmotionposition(-100);
-                                    }}
-                                >
-                                </Main_1020_Game>
-                            </motion.span>
-                            <motion.span className='rightgame' width={0} initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionrightscale }}>
-                                <Main_1020_Game
-                                    balancedata={balancedatas[rightindex]}
-                                    onClickEvent={() => {
-                                        if (leftindex >= balancedatas.length - 1) {
-                                            setleftindex(0);
-                                        }
-                                        else {
-                                            setleftindex(leftindex + 1);
-                                        }
-
-                                        if (rightindex >= balancedatas.length - 1) {
-                                            setrightindex(0);
-                                        }
-                                        else {
-                                            setrightindex(rightindex + 1);
-                                        }
-
-                                        if (currentgameindex >= balancedatas.length - 1) {
-                                            setcurrentgameindex(0);
-                                        }
-                                        else {
-                                            setcurrentgameindex(currentgameindex + 1);
-                                        }
-
-                                        setmotionleftscale(0.7);
-                                        setmotionmiddlescale(0.8);
-                                        setmotionrightscale(0.7);
-                                        setmotionposition(-100);
-                                    }}
-                                >
-                                </Main_1020_Game>
-                            </motion.span>
-                        </div>
-                    </motion.span>
-                    <div>
-                        <div className="header">
-
-                            <div className='middle'>
-                                <div className='balencegame_scroll_btncontent'>
-                                    {balancedatas.map((x, index) => {
-                                        if (index !== currentgameindex) {
-                                            return <div className="balencegame_scroll_btn_unactive"></div>
-                                        }
-                                        else {
-                                            return <div className="balencegame_scroll_btn_active"></div>
-                                        }
-                                    })}
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            );
-        }
-        else {
-            return <div />
-        }
-    };
+    useEffect(() => {
+        console.log("response.data : " + balancedatas.data);
+    }, [balancedatas]);
 
     const Page = () => {
         if (currentindex === 0) {
@@ -208,7 +108,7 @@ const Main_1020 = () => {
                 <Route path="login" element={<Login successhandler={setcurrentindex} />} />
                 <Route path="myprofile" element={<MyProfile successhandler={setcurrentindex} />} />
                 <Route path="updateprofile" element={<UpdateProfile successhandler={setcurrentindex} />} />
-                <Route path="/" element={<MainBalancegame />} />
+                <Route path="/" element={<Main_balancegame balancedatas={balancedatas}/>} />
             </Routes>
         </div>
     </div>);

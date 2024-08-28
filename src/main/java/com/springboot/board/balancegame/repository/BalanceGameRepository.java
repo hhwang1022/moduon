@@ -10,4 +10,6 @@ public interface BalanceGameRepository extends JpaRepository<BalanceGame, Long> 
 	Optional<BalanceGame> findByVoteItem1(String voteItem1);
 	Optional<BalanceGame> findByVoteItem2(String voteItem2);
 	Optional<BalanceGame> findByBalanceGameId(Long balanceGameId);
+
+    Optional<BalanceGame> findTopByBalanceGameGenerationOrderByEndDateDesc(BalanceGame.Generation generation);
 }

@@ -15,6 +15,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -123,4 +124,24 @@ public class BalanceGameService {
 
 		return balanceGames;
 	}
+
+    public List<BalanceGame> findMainBalanceGames(){
+        List<BalanceGame> balanceGameList = new ArrayList<>();
+
+
+        balanceGameList.add(balanceGameRepository.findTopByBalanceGameGenerationOrderByEndDateDesc(BalanceGame.Generation.GENERATION_8090).orElseThrow(() ->
+                new BusinessLogicException(ExceptionCode.BALANCEGAME_NOT_EXISTS)
+        ));
+
+        balanceGameList.add(balanceGameRepository.findTopByBalanceGameGenerationOrderByEndDateDesc(BalanceGame.Generation.GENERATION_9000).orElseThrow(() ->
+                new BusinessLogicException(ExceptionCode.BALANCEGAME_NOT_EXISTS)
+        ));
+
+        balanceGameList.add(balanceGameRepository.findTopByBalanceGameGenerationOrderByEndDateDesc(BalanceGame.Generation.GENERATION_0010).orElseThrow(() ->
+                new BusinessLogicException(ExceptionCode.BALANCEGAME_NOT_EXISTS)
+        ));
+
+        return balanceGameList;
+    }
+
 }
