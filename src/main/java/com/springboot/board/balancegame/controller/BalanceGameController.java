@@ -79,6 +79,17 @@ public class BalanceGameController {
 				HttpStatus.OK);
 	}
 
+    @GetMapping("/main")
+    public ResponseEntity getMainBalanceGames() {
+        List<BalanceGame> findBalanceGames = balanceGameService.findMainBalanceGames();
+
+        List<BalanceGame> balanceGames = balanceGameService.setVotePoints(findBalanceGames);
+
+        return new ResponseEntity<>(
+                new SingleResponseDto<>(mapper.balanceGameToBalanceGameDtoList(balanceGames)),
+                HttpStatus.OK);
+    }
+
 	@GetMapping("/end")
 	public ResponseEntity getEndBalanceGames(@Positive @RequestParam int page,
 											 @Positive @RequestParam int size,
