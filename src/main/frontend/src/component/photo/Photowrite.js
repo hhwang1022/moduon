@@ -134,8 +134,8 @@ const Photowrite = ({ generation, successhandler }) => {
       {uplodfile.map((x, index) => (
 
         <span key={index}>
-          <button>
-            <img height={50} width={50} src={URL.createObjectURL(uplodfile[index])} className='photouploadsumnailicon' />
+          <button key={index}>
+            <img key={index} height={50} width={50} src={URL.createObjectURL(uplodfile[index])} className='photouploadsumnailicon' />
           </button>
         </span>
 
