@@ -37,7 +37,6 @@ class MemberInfo {
     set name(newName) {
         this._name = newName;
         this.notifyListeners();
-        console.log(this.name);
     }
 
     subscribe(listener) {
