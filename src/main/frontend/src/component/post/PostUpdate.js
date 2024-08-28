@@ -68,7 +68,7 @@ const PostUpdate = ({ generation, postid }) => {
     fileInput.current.click();
   };
 
-  const handlePostpost = async () => {
+  const handlePostpatch = async () => {
 
     try {
       const response = await axios.patch(
@@ -164,7 +164,7 @@ const PostUpdate = ({ generation, postid }) => {
       <input className={"postbodyinput" + generation} type="text" value={postBody} onChange={(e) => setpostBody(e.target.value)} />
     </div>
     <div>
-      <button className={"postwritebtn" + generation} onClick={handlePostpost}>작성</button>
+      <button className={"postwritebtn" + generation} onClick={handlePostpatch}>작성</button>
     </div>
   </div> : <div className={"postwritemain" + generation}><Loading generation={generation}/> </div>
   );
