@@ -87,22 +87,27 @@
 
 .postlist8090title {
     font-weight: bold;
+    cursor: text;
 }
 
 .postlist8090nickname {
     font-weight: bold;
+    cursor: text;
 }
 
 .postlist8090createdat {
     font-weight: bold;
+    cursor: text;
 }
 
 .postlist8090views {
     font-weight: bold;
+    cursor: text;
 }
 
 .postlist8090likes {
     font-weight: bold;
+    cursor: text;
 }
 
 .postlist8090line{

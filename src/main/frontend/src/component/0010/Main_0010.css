@@ -64,7 +64,6 @@
     position: absolute;
     border: 1px solid #000000;
     z-index: 3;
-    overflow-y: auto;
 }
 
 .main0010category {

@@ -9,89 +9,120 @@ const Main_balancegame = ({balancedatas}) => {
     const [currentgameindex, setcurrentgameindex] = useState(1);
     const [leftindex, setleftindex] = useState(0);
     const [rightindex, setrightindex] = useState(2);
+    const [rotation, setRotation] = useState(0);
 
-    const [motionposition, setmotionposition] = useState(100);
+    const [motionposition, setmotionposition] = useState(0);
+    const [motionpositionleft, setmotionpositionLeft] = useState(0);
+    const [motionpositionright, setmotionpositionRight] = useState(0);
     const [motionmiddlescale, setmotionmiddlescale] = useState(0.9);
     const [motionleftscale, setmotionleftscale] = useState(0.5);
     const [motionrightscale, setmotionrightscale] = useState(0.5);
 
+    const handleRightClick = () => {
+        // setRotation을 콜백 함수로 사용하여 최신 상태 값을 가져옴
+        setRotation((prevRotation) => {
+            const newRotation = prevRotation % 3 - 1;
+
+            if (newRotation === -3) {
+                setcurrentgameindex(1);
+                setleftindex(0);
+                setrightindex(2);
+            } else if (newRotation === -2) {
+                setcurrentgameindex(0);
+                setleftindex(2);
+                setrightindex(1);
+            } else if (newRotation === -1) {
+                setcurrentgameindex(2);
+                setleftindex(1);
+                setrightindex(0);
+            } 
+
+            // 애니메이션 설정
+            setmotionposition(-100);
+            setmotionmiddlescale(0.9);
+            setmotionpositionRight(-50);
+            setmotionrightscale(0.5);
+            setmotionpositionLeft(-50);
+            setmotionleftscale(0.5);
+
+            setTimeout(() => {
+                setmotionposition(0);
+                setmotionmiddlescale(0.9);
+                setmotionpositionRight(0);
+                setmotionrightscale(0.5);
+                setmotionpositionLeft(0);
+                setmotionleftscale(0.5);
+            }, 50);
+
+            return newRotation; // 새로운 rotation 값을 반환
+        });
+    };
+
+    const handleLeftClick = () => {
+        // setRotation을 콜백 함수로 사용하여 최신 상태 값을 가져옴
+        setRotation((prevRotation) => {
+            const newRotation = prevRotation % 3 - 1;
+          
+            if (newRotation === -3) {
+                setcurrentgameindex(1);
+                setleftindex(0);
+                setrightindex(2);
+            } else if (newRotation === -2) {
+                setcurrentgameindex(2);
+                setleftindex(1);
+                setrightindex(0);
+            } else if (newRotation === -1) {
+                setcurrentgameindex(0);
+                setleftindex(2);
+                setrightindex(1);
+            } 
+
+            // 애니메이션 설정
+            setmotionposition(100);
+            setmotionmiddlescale(0.9);
+            setmotionpositionRight(50);
+            setmotionrightscale(0.5);
+            setmotionpositionLeft(50);
+            setmotionleftscale(0.5);
+
+            setTimeout(() => {
+                setmotionposition(0);
+                setmotionmiddlescale(0.9);
+                setmotionpositionRight(0);
+                setmotionrightscale(0.5);
+                setmotionpositionLeft(0);
+                setmotionleftscale(0.5);
+            }, 100);
+
+            return newRotation; // 새로운 rotation 값을 반환
+        });
+    };
+
     return ( ((balancedatas.data !== undefined && balancedatas.data.length > 0) ?
         <div>
-        <motion.span initial={{ opacity: 0 }} animate={{ opacity: 1, x: motionposition, transition: {ease: "easeInOut"}}}>
+        <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut" }}>
             <div className='main1020'>
-                <motion.span width={0} className='middlegame' initial={{ opacity: 0 }} animate={{ opacity: 1, scale: motionmiddlescale, transition: {ease: "easeInOut"}}}>
+                <motion.div width={0} className='middlegame' initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionmiddlescale, x: motionposition}}>
                     <Main_1020_Game position={"middlegame"}
                         balancedata={balancedatas.data[currentgameindex]}>
                     </Main_1020_Game>
-                </motion.span>
-                <motion.span className='leftgame' initial={{ opacity: 0 }} animate={{ opacity: 1, scale: motionleftscale, transition: {ease: "easeInOut"}}}>
+                </motion.div>
+                <motion.div className='leftgame' initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionleftscale, x: motionpositionleft }}>
                     <Main_1020_Game
                         balancedata={balancedatas.data[leftindex]}
-                        onClickEvent={() => {
-                            if (leftindex <= 0) {
-                                setleftindex(balancedatas.data.length - 1);
-                            }
-                            else {
-                                setleftindex(leftindex - 1);
-                            }
-
-                            if (rightindex <= 0) {
-                                setrightindex(balancedatas.data.length - 1);
-                            }
-                            else {
-                                setrightindex(rightindex - 1);
-                            }
-
-                            if (currentgameindex <= 0) {
-                                setcurrentgameindex(balancedatas.data.length - 1);
-                            }
-                            else {
-                                setcurrentgameindex(currentgameindex - 1);
-                            }
-
-                            setmotionleftscale(0.7);
-                            setmotionmiddlescale(0.8);
-                            setmotionrightscale(0.7);
-                            setmotionposition(-100);
-                        }}
+                        onClickEvent={handleLeftClick}
                     >
                     </Main_1020_Game>
-                </motion.span>
-                <motion.span className='rightgame' width={0} initial={{ opacity: 0 }} animate={{ opacity: 1, scale: motionrightscale, transition: {ease: "easeInOut"}}}>
+                </motion.div>
+                <motion.div className='rightgame' width={0} initial={{ opacity: 0 }} animate={{ opacity: 1, ease: "easeInOut", scale: motionrightscale, x: motionpositionright }}>
                     <Main_1020_Game
                         balancedata={balancedatas.data[rightindex]}
-                        onClickEvent={() => {
-                            if (leftindex >= balancedatas.data.length - 1) {
-                                setleftindex(0);
-                            }
-                            else {
-                                setleftindex(leftindex + 1);
-                            }
-
-                            if (rightindex >= balancedatas.data.length - 1) {
-                                setrightindex(0);
-                            }
-                            else {
-                                setrightindex(rightindex + 1);
-                            }
-
-                            if (currentgameindex >= balancedatas.data.length - 1) {
-                                setcurrentgameindex(0);
-                            }
-                            else {
-                                setcurrentgameindex(currentgameindex + 1);
-                            }
-
-                            setmotionleftscale(0.7);
-                            setmotionmiddlescale(0.8);
-                            setmotionrightscale(0.7);
-                            setmotionposition(-100);
-                        }}
+                        onClickEvent={handleRightClick}
                     >
                     </Main_1020_Game>
-                </motion.span>
+                </motion.div>
             </div>
-        </motion.span>
+        </motion.div>
         <div>
             <div className="header">
                 <div className='middle'>

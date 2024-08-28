@@ -6,7 +6,9 @@
     margin: 50px;
     padding: 50px;
     background-color: white;
+    display: flex;
 }
+
 
 .leftgame{
     left: -1000px;
@@ -37,9 +39,6 @@
     padding: 50px;
 }
 
-.balancegamemainbox{
-    
-}
 
 .title{
     color: black;

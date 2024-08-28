@@ -117,6 +117,10 @@ const Postwrite = ({ generation, successhandler }) => {
     }
   };
 
+  useEffect(() => {
+    info = memberInfo.getMemberInfo();
+}, []);
+
   return (<div className={"postwritemain" + generation}>
     <div>
       <label className={'posttitle' + generation} htmlFor="postTitle">제목</label>
