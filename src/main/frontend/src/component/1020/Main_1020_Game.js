@@ -31,11 +31,11 @@ const Main_1020_Game = ({ position, balancedata, onClickEvent }) => {
       <button className='maingamebutton' onClick={onClickEvent}>
         <div className='category'>{generation(balancedata.balanceGameGeneration.replace("GENERATION_", ""))}</div>
         <div className='itembox'>
-          <Main_1020_BalenceItem img={balancedata.voteImage1} title={balancedata.voteItem1} iswin={balancedata.votePoint1 > balancedata.votePoint2} />
+          <Main_1020_BalenceItem img={balancedata.voteImage1} title={balancedata.voteItem1} iswin={balancedata.votePoint1 > balancedata.votePoint2} isleft={true} />
           <span className='gamevs'>
             <span className='gamevsfont'>VS</span>
           </span>
-          <Main_1020_BalenceItem img={balancedata.voteImage2} title={balancedata.voteItem2} iswin={balancedata.votePoint1 < balancedata.votePoint2}/>
+          <Main_1020_BalenceItem img={balancedata.voteImage2} title={balancedata.voteItem2} iswin={balancedata.votePoint1 < balancedata.votePoint2} isleft={false}/>
         </div>
         <div className='bodyprogress'>
           <BalanceBar vote1={Math.floor(balancedata.votePoint1)} vote2={Math.floor(balancedata.votePoint2)} generation={"1020"}></BalanceBar>
