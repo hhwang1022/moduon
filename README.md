@@ -58,7 +58,7 @@
 
 ## 팀 문서
 https://sassy-game-f1e.notion.site/eebf21c50a384ea4af09300f3d819027
-
+<br><br><br>
 ## 주요 화면
 
 ### 메인화면
