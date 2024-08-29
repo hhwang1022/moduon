@@ -10,11 +10,11 @@ const Join = ({ successhandler }) => {
   const [id, setId] = useState('');
   const [password, setPassword] = useState('');
   const [passwordconfrim, setPasswordconfrim] = useState('');
-  const [genertion, seGenertion] = useState('');
+
   const [nickname, setNickname] = useState('');
   const [isuniqueemail, setisuniqueemail] = useState('');
   const [isuniquenickname, setisuniquenickname] = useState('');
-  const[isloading, setisloading] = useState(true);
+  const [isloading, setisloading] = useState(true);
   const [generation, setGeneration] = useState('');
   const [nicknamemessage, setNicknamemessage] = useState('');
 
@@ -81,7 +81,7 @@ const Join = ({ successhandler }) => {
           email: id,
           password: password,
           nickname: nickname,
-          generation: genertion
+          generation: generation
         },
         {
           headers: {
@@ -198,7 +198,7 @@ const Join = ({ successhandler }) => {
             {(passwordconfrim !== "" && password !== passwordconfrim )? "비밀번호가 일치하지 않습니다." : ""}
             <div>
               <select className={'joingenerationselect'} onChange={(e) => {
-                seGenertion(e.target.value);
+                setGeneration(e.target.value);
               }}>
                 <option className={"joingenerationselectoption"} disabled hidden selected>세대 선택</option>
                 <option className={"joingenerationselectoption"} value="GENERATION_8090">8090</option>
