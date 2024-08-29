@@ -25,15 +25,6 @@
    - 특정 연령대의 관심사에 맞춘 광고, 제품 판매 등을 통해 수익 창출
 <br><br><br>
 
-## ERD
-![](https://i.imgur.com/1DrhsxS.png)
-
-<br><br><br>
-
-## 시스템 요구사항 명세서
-![](https://i.imgur.com/yK79xTB.png)
-<br><br><br>
-
 ## 기술 스택
 ![Java](https://img.shields.io/badge/java-%23ED8B00.svg?style=for-the-badge&logo=openjdk&logoColor=white)
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E)
@@ -45,12 +36,13 @@
 
 <br><br><br>
 
-## 프로젝트 인원
+## ERD
+![](https://i.imgur.com/1DrhsxS.png)
 
-|![](https://i.imgur.com/wQh0uO2.png)|![](https://i.imgur.com/ycdATnY.png)|![](https://i.imgur.com/8RQfmpQ.png)|![](https://i.imgur.com/0YqKVim.png)|
-|------|---|---|---|
-|황해진|방승욱|윤영아|서진형|
-|-팀장<br>-프론트앤드<br>(세대별 메인 화면, 일반+사진 게시판 목록)<br>-백앤드 보조<br>(이미지 업로드, 공유, 가입, 로그인)<br>-S3,RDS,EC2 연결 및 배포|-팀원<br>-프론트앤드<br>(투표 작성, 조회, 게시글 조회)|-팀원<br>-백앤드<br>(사진첩·일반게시판기능 구현)|-팀원<br>-백앤드<br>(멤버·투표 기능 구현)|
+<br><br><br>
+
+## 시스템 요구사항 명세서
+![](https://i.imgur.com/yK79xTB.png)
 
 
 <br><br><br>
@@ -94,6 +86,15 @@
 | 갤러리 댓글 삭제 | DELETE | /photos/reply/{reply-id}              | 갤러리 댓글 삭제                                               |
 | 갤러리 좋아요   | POST   | /photos/{photo-id}/like               | 갤러리에 좋아요 누르기.                                           |
 | 이미지 업로드   | POST   | /images                               | 이미지 첨부파일등록                                              |
+
+<br><br><br>
+
+## 프로젝트 인원
+
+|![](https://i.imgur.com/wQh0uO2.png)|![](https://i.imgur.com/ycdATnY.png)|![](https://i.imgur.com/8RQfmpQ.png)|![](https://i.imgur.com/0YqKVim.png)|
+|------|---|---|---|
+|황해진|방승욱|윤영아|서진형|
+|-팀장<br>-프론트앤드<br>(세대별 메인 화면, 일반+사진 게시판 목록)<br>-백앤드 보조<br>(이미지 업로드, 공유, 가입, 로그인)<br>-S3,RDS,EC2 연결 및 배포|-팀원<br>-프론트앤드<br>(투표 작성, 조회, 게시글 조회)|-팀원<br>-백앤드<br>(사진첩·일반게시판기능 구현)|-팀원<br>-백앤드<br>(멤버·투표 기능 구현)|
 
 <br><br><br>
 ## 주요 화면
