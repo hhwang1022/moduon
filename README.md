@@ -55,27 +55,31 @@
 
 <br><br><br>
 
+
+## 팀 문서
+https://sassy-game-f1e.notion.site/eebf21c50a384ea4af09300f3d819027
+
 ## 주요 화면
 
-
-![](https://i.imgur.com/J3G03rq.png)
 ### 메인화면
+![](https://i.imgur.com/J3G03rq.png)
 
-![](https://i.imgur.com/9lkIytl.png)
 ### 회원가입 화면
+![](https://i.imgur.com/9lkIytl.png)
 
-![](https://i.imgur.com/jIJUHrZ.png)
 ### 사진 게시판 화면(8090)
+![](https://i.imgur.com/jIJUHrZ.png)
 
-![](https://i.imgur.com/i7yPEoU.png)
 ### 일반 게시판 화면(0010)
+![](https://i.imgur.com/i7yPEoU.png)
 
-![](https://i.imgur.com/BKti1MU.png)
 ### 금주 투표 화면(0010)
+![](https://i.imgur.com/BKti1MU.png)
 
-![](https://i.imgur.com/JUrFKYr.png)
 ### 사진 게시판 글작성 화면(9000)
+![](https://i.imgur.com/JUrFKYr.png)
 
-![](https://i.imgur.com/pJ9a9WC.png)
 ### 사진 게시판 화면(9000)
+![](https://i.imgur.com/pJ9a9WC.png)
+
 
