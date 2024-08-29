@@ -56,8 +56,45 @@
 <br><br><br>
 
 
-## 팀 문서
-https://sassy-game-f1e.notion.site/eebf21c50a384ea4af09300f3d819027
+## API
+| 내용        | 유형     | URL                                   | 설명                                                      |  
+| --------- | ------ | ------------------------------------- | ------------------------------------------------------- |  
+| 게시글 등록    | POST   | /posts                                | 게시글 등록.                                                 |
+| 게시글 수정    | PATCH  | /posts/{post-id}                      | 게시글 수정.                                                 |
+| 게시글 목록 조회 | GET    | /posts                                | 게시글 전체 목록 조회.                                           |
+| 게시글 조회    | GET    | /posts/{post-id}                      | 단일 게시글 조회.                                              |
+| 게시글 삭제    | DELETE | /posts/{post-id}                      | 게시글을 삭제.                                                |
+| 게시글 댓글 등록 | POST   | /posts/{post-id}/reply                | 게시글에 댓글 등록.                                             |
+| 게시글 댓글 수정 | PATCH  | /posts/reply/{reply-id}               | 게시글 댓글 수정                                               |
+| 게시글 댓글 삭제 | DELETE | /posts/reply/{reply-id}               | 게시글 댓글 삭제                                               |
+| 게시글 좋아요   | POST   | /posts/{post-id}/like                 | 게시글에 좋아요 누르기.                                           |
+| 투표 등록     | POST   | /balancegames                         | 투표를 등록하는 기능(관리자 전용)                                     |
+| 투표 삭제     | DELETE | /balancegames/{balance-game-id}       | 투표 삭제.                                                  |  |
+| 투표 수정     | PATCH  | /balancegame/{balance-game-id}        | 투표수정                                                    |  |
+| 투표 하기     | POST   | /balancegames/{balance-game-id}/vote  | 원하는 곳에 투표를 하는 기능                                        |
+| 투표 목록 조회  | GET    | /balancegames                         | 지나간 투표들 조회.                                             |
+| 현재 투표 보기  | GET    | /balancegames/{balance-game-id}       | 지금 투표 보기. (기본 화면)                                       |
+| 투표 댓글 달기  | POST   | /balancegames/{balance-game-id}/reply | 투표에 댓글 달기 기능.                                           |
+| 투표 댓글 수정  | PATCH  | /balancegames/reply/{reply-id}        | 투표 댓글 수정                                                |
+| 투표 댓글 삭제  | DELETE | /balancegames/reply/{reply-id}        | 투표 댓글 삭제                                                |
+| 투표 공유     | POST   | /balancegames/{balance-game-id}/share | 투표 공유                                                   |  |
+| 회원가입      | POST   | /members                              | 회원이 아이디, 닉네임, 비밀번호, 세대를 입력하여 회원가입.                      |
+| 회원정보수정    | PATCH  | /members/{member-id}                  | 회원이 닉네임, 비밀번호를 변경.                                      |
+| 회원탈퇴      | DELETE | /members/{member-id}                  | 회원이 탈퇴.(실제로 삭제하진 않고 상태를 변경)                             |
+| 로그인       | POST   | /members/login                        | 회원이 로그인.                                                |
+| 로그아웃      | POST   | /members/logout                       | 회원이 로그아웃.                                               |
+| 회원정보 조회   | GET    | /members/{member-id}                  | 회원 정보 조회                                                |
+| 갤러리 등록    | POST   | /photos                               | 갤러리 등록.                                                 |
+| 갤러리 수정    | PATCH  | /photos/{photo-id}                    | 갤러리 수정.                                                 |
+| 갤러리 삭제    | DELETE | /photos/{photo-id}                    | 갤러리을 삭제.                                                |
+| 갤러리 조회    | GET    | /photos/{photo-id}                    | 단일 갤러리 조회.                                              |
+| 갤러리 목록 조회 | GET    | /photos                               | 갤러리 전체 목록 조회.                                           |
+| 갤러리 댓글 등록 | POST   | /photo/{photo-id}/reply               | 갤러리에 댓글 등록.                                             |
+| 갤러리 댓글 수정 | PATCH  | /photos/reply/{reply-id}              | 갤러리 댓글 수정                                               |
+| 갤러리 댓글 삭제 | DELETE | /photos/reply/{reply-id}              | 갤러리 댓글 삭제                                               |
+| 갤러리 좋아요   | POST   | /photos/{photo-id}/like               | 갤러리에 좋아요 누르기.                                           |
+| 이미지 업로드   | POST   | /images                               | 이미지 첨부파일등록                                              |
+
 <br><br><br>
 ## 주요 화면
 
